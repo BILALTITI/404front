@@ -4,10 +4,26 @@ import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
 const values = [
-  { number: "01", title: "Innovation", desc: "Pushing the boundaries of what digital can be" },
-  { number: "02", title: "Quality", desc: "Pixel-perfect delivery, zero compromises" },
-  { number: "03", title: "Partnership", desc: "Long-term success over short-term gains" },
-  { number: "04", title: "Results", desc: "Measurable impact on your bottom line" },
+  {
+    number: "01",
+    title: "Innovation",
+    desc: "Pushing the boundaries of what digital can be",
+  },
+  {
+    number: "02",
+    title: "Quality",
+    desc: "Pixel-perfect delivery, zero compromises",
+  },
+  {
+    number: "03",
+    title: "Partnership",
+    desc: "Long-term success over short-term gains",
+  },
+  {
+    number: "04",
+    title: "Results",
+    desc: "Measurable impact on your bottom line",
+  },
 ];
 
 const stats = [
@@ -44,8 +60,13 @@ export function About() {
         ABOUT
       </div>
 
-      <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%)" }} />
+      <div
+        className="absolute top-1/3 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%)",
+        }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-20 lg:gap-28 items-center">
@@ -66,7 +87,11 @@ export function About() {
             <motion.h2
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.9,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-display font-bold text-gray-950 leading-[1.05] mb-7"
               style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
             >
@@ -85,10 +110,10 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-gray-500 font-body text-lg leading-relaxed mb-5"
             >
-              At 4O4 Solutions, we believe exceptional digital experiences are born
-              from the perfect blend of strategy, creativity, and technical mastery.
-              Since 2014, we've been transforming bold ideas into digital realities
-              that drive growth.
+              At 4O4 Solutions, we believe exceptional digital experiences are
+              born from the perfect blend of strategy, creativity, and technical
+              mastery. Since 2014, we've been transforming bold ideas into
+              digital realities that drive growth.
             </motion.p>
 
             <motion.p
@@ -116,7 +141,9 @@ export function About() {
                     {v.number}
                   </span>
                   <div>
-                    <p className="font-heading font-bold text-gray-900 mb-0.5">{v.title}</p>
+                    <p className="font-heading font-bold text-gray-900 mb-0.5">
+                      {v.title}
+                    </p>
                     <p className="font-body text-sm text-gray-400">{v.desc}</p>
                   </div>
                 </motion.div>
@@ -139,7 +166,13 @@ export function About() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               />
               <span className="relative">Work With Us</span>
-              <svg className="relative w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                className="relative w-4 h-4 group-hover:translate-x-1 transition-transform"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </motion.a>
@@ -152,7 +185,8 @@ export function About() {
               <motion.div
                 className="absolute inset-0 rounded-3xl"
                 style={{
-                  background: "linear-gradient(135deg, rgba(255,107,0,0.08) 0%, rgba(255,140,58,0.04) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(255,107,0,0.08) 0%, rgba(255,140,58,0.04) 100%)",
                   transform: "rotate(3deg) scale(1.02)",
                   y: decorY,
                 }}
@@ -172,10 +206,17 @@ export function About() {
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
                       className="p-5 rounded-2xl text-center"
-                      style={{ background: i % 2 === 0 ? "#fff9f5" : "white", border: "1px solid rgba(0,0,0,0.04)" }}
+                      style={{
+                        background: i % 2 === 0 ? "#fff9f5" : "white",
+                        border: "1px solid rgba(0,0,0,0.04)",
+                      }}
                     >
-                      <div className="font-display text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                      <div className="font-heading text-xs text-gray-400 uppercase tracking-wide">{stat.label}</div>
+                      <div className="font-display text-3xl font-bold gradient-text mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="font-heading text-xs text-gray-400 uppercase tracking-wide">
+                        {stat.label}
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -183,21 +224,34 @@ export function About() {
                 {/* Floating brand element */}
                 <motion.div
                   animate={{ y: [-8, 8, -8], rotate: [0, 2, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className="absolute top-6 right-6 w-20 h-20 rounded-2xl flex items-center justify-center"
                   style={{
                     background: "linear-gradient(135deg, #ff6b00, #ff8c3a)",
                     boxShadow: "0 12px 32px rgba(255,107,0,0.35)",
                   }}
                 >
-                  <span className="font-display text-2xl font-bold text-white">4O4</span>
+                  <span className="font-display text-2xl font-bold text-white">
+                    4O4
+                  </span>
                 </motion.div>
 
                 {/* Code-like decoration */}
-                <div className="relative rounded-2xl overflow-hidden" style={{ background: "#0d0d0d", padding: "20px 24px" }}>
+                <div
+                  className="relative rounded-2xl overflow-hidden"
+                  style={{ background: "#0d0d0d", padding: "20px 24px" }}
+                >
                   <div className="flex gap-2 mb-4">
                     {["#ff5f56", "#ffbd2e", "#27c93f"].map((c) => (
-                      <div key={c} className="w-3 h-3 rounded-full" style={{ backgroundColor: c }} />
+                      <div
+                        key={c}
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: c }}
+                      />
                     ))}
                   </div>
                   <div className="font-mono text-sm space-y-1.5">

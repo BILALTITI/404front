@@ -16,6 +16,19 @@ export function CustomCursor() {
   const [hoverState, setHoverState] = useState<"default" | "link" | "project" | "button">("default");
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+  const [isDesktopCursorEnabled, setIsDesktopCursorEnabled] = useState(false);
+
+  useEffect(() => {
+    const checkCursorMode = () => {
+      const finePointer = window.matchMedia("(pointer: fine)").matches;
+      const isDesktopWidth = window.innerWidth >= 1025;
+      setIsDesktopCursorEnabled(finePointer && isDesktopWidth);
+    };
+
+    checkCursorMode();
+    window.addEventListener("resize", checkCursorMode);
+    return () => window.removeEventListener("resize", checkCursorMode);
+  }, []);
 
   const updateHoverState = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -31,6 +44,11 @@ export function CustomCursor() {
   }, []);
 
   useEffect(() => {
+    if (!isDesktopCursorEnabled) {
+      setIsVisible(false);
+      return;
+    }
+
     const onMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -56,7 +74,9 @@ export function CustomCursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
-  }, [cursorX, cursorY, isVisible, updateHoverState]);
+  }, [cursorX, cursorY, isVisible, updateHoverState, isDesktopCursorEnabled]);
+
+  if (!isDesktopCursorEnabled) return null;
 
   const ringSize =
     hoverState === "project" ? 80 :

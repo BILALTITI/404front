@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import { useRef, useState, useCallback } from "react";
 
 const services = [
@@ -11,7 +17,12 @@ const services = [
     subtitle: "Crafting Digital Experiences",
     description:
       "From pixel-perfect landing pages to complex web applications, we build digital platforms that captivate users and convert at every touchpoint.",
-    features: ["Custom Web Apps", "E-Commerce", "CMS Solutions", "API Development"],
+    features: [
+      "Custom Web Apps",
+      "E-Commerce",
+      "CMS Solutions",
+      "API Development",
+    ],
     icon: "⬡",
   },
   {
@@ -21,7 +32,12 @@ const services = [
     subtitle: "Native & Cross-Platform",
     description:
       "Stunning mobile experiences for iOS and Android. React Native and Flutter-powered apps that are fast, beautiful, and built to scale.",
-    features: ["iOS Development", "Android Apps", "Cross-Platform", "App Store Optimization"],
+    features: [
+      "iOS Development",
+      "Android Apps",
+      "Cross-Platform",
+      "App Store Optimization",
+    ],
     icon: "◈",
   },
   {
@@ -47,16 +63,6 @@ const services = [
   {
     id: 5,
     number: "05",
-    title: "Digital Marketing",
-    subtitle: "Growth-Driven Strategy",
-    description:
-      "Data-driven strategies that amplify reach and accelerate growth. SEO, content marketing, and performance advertising for maximum compounding impact.",
-    features: ["SEO Strategy", "Content Marketing", "PPC Campaigns", "Analytics"],
-    icon: "▲",
-  },
-  {
-    id: 6,
-    number: "06",
     title: "Cloud Solutions",
     subtitle: "Scalable Infrastructure",
     description:
@@ -66,26 +72,41 @@ const services = [
   },
 ];
 
-function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: (typeof services)[0];
+  index: number;
+}) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-60px" });
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  const rotateX = useSpring(useTransform(mouseY, [0, 1], [8, -8]), { stiffness: 200, damping: 25 });
-  const rotateY = useSpring(useTransform(mouseX, [0, 1], [-8, 8]), { stiffness: 200, damping: 25 });
+  const rotateX = useSpring(useTransform(mouseY, [0, 1], [8, -8]), {
+    stiffness: 200,
+    damping: 25,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [0, 1], [-8, 8]), {
+    stiffness: 200,
+    damping: 25,
+  });
   const glowX = useTransform(mouseX, [0, 1], [0, 100]);
   const glowY = useTransform(mouseY, [0, 1], [0, 100]);
 
   const [hovered, setHovered] = useState(false);
 
-  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const r = cardRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - r.left) / r.width);
-    mouseY.set((e.clientY - r.top) / r.height);
-  }, [mouseX, mouseY]);
+  const onMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!cardRef.current) return;
+      const r = cardRef.current.getBoundingClientRect();
+      mouseX.set((e.clientX - r.left) / r.width);
+      mouseY.set((e.clientY - r.top) / r.height);
+    },
+    [mouseX, mouseY],
+  );
 
   const onMouseLeave = useCallback(() => {
     mouseX.set(0.5);
@@ -98,7 +119,11 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       ref={cardRef}
       initial={{ opacity: 0, y: 70 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.8,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="group"
       style={{ perspective: "1200px" }}
       onMouseMove={onMouseMove}
@@ -127,7 +152,10 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
           }}
         />
 
-        <div className="relative p-8 lg:p-10 h-full flex flex-col" style={{ transformStyle: "preserve-3d" }}>
+        <div
+          className="relative p-8 lg:p-10 h-full flex flex-col"
+          style={{ transformStyle: "preserve-3d" }}
+        >
           {/* Number watermark */}
           <span
             className="absolute -top-3 -right-2 font-display text-[90px] font-bold select-none pointer-events-none transition-all duration-500"
@@ -142,12 +170,19 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
           {/* Icon */}
           <motion.div
             className="relative mb-7"
-            style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}
+            style={{
+              transform: "translateZ(20px)",
+              transformStyle: "preserve-3d",
+            }}
           >
             <div className="relative w-14 h-14">
               <div
                 className="absolute inset-0 rounded-2xl rotate-6 transition-all duration-300"
-                style={{ backgroundColor: hovered ? "rgba(255,107,0,0.15)" : "rgba(255,107,0,0.08)" }}
+                style={{
+                  backgroundColor: hovered
+                    ? "rgba(255,107,0,0.15)"
+                    : "rgba(255,107,0,0.08)",
+                }}
               />
               <div
                 className="relative w-full h-full rounded-2xl flex items-center justify-center text-2xl font-bold text-white transition-shadow duration-300"
@@ -155,7 +190,9 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
                   background: hovered
                     ? "linear-gradient(135deg, #ff6b00, #ff8c3a)"
                     : "linear-gradient(135deg, #ff7a10, #ff9040)",
-                  boxShadow: hovered ? "0 8px 24px rgba(255,107,0,0.4)" : "0 4px 12px rgba(255,107,0,0.2)",
+                  boxShadow: hovered
+                    ? "0 8px 24px rgba(255,107,0,0.4)"
+                    : "0 4px 12px rgba(255,107,0,0.2)",
                 }}
               >
                 {service.icon}
@@ -188,9 +225,13 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
                   transition={{ delay: 0.4 + index * 0.07 + i * 0.05 }}
                   className="px-3 py-1.5 rounded-full font-heading text-[11px] font-semibold transition-all duration-200"
                   style={{
-                    backgroundColor: hovered ? "rgba(255,107,0,0.08)" : "rgba(0,0,0,0.04)",
+                    backgroundColor: hovered
+                      ? "rgba(255,107,0,0.08)"
+                      : "rgba(0,0,0,0.04)",
                     color: hovered ? "#ff6b00" : "#666",
-                    border: hovered ? "1px solid rgba(255,107,0,0.2)" : "1px solid rgba(0,0,0,0.07)",
+                    border: hovered
+                      ? "1px solid rgba(255,107,0,0.2)"
+                      : "1px solid rgba(0,0,0,0.07)",
                   }}
                 >
                   {f}
@@ -201,18 +242,6 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
 
           {/* Bottom action */}
           <div className="mt-auto flex items-center justify-between">
-            <motion.a
-              href="#contact"
-              className="flex items-center gap-2 font-heading font-bold text-sm transition-colors duration-200"
-              style={{ color: hovered ? "#ff6b00" : "#222" }}
-              animate={{ x: hovered ? 4 : 0 }}
-            >
-              Learn More
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </motion.a>
-
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
               style={{
@@ -237,13 +266,25 @@ export function Services() {
     <section
       id="services"
       className="relative py-40 overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #fff 0%, #fafafa 50%, #fff 100%)" }}
+      style={{
+        background: "linear-gradient(180deg, #fff 0%, #fafafa 50%, #fff 100%)",
+      }}
     >
       {/* Ambient blobs */}
-      <div className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)" }} />
-      <div className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,140,58,0.06) 0%, transparent 70%)" }} />
+      <div
+        className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,140,58,0.06) 0%, transparent 70%)",
+        }}
+      />
 
       <div className="absolute inset-0 grid-pattern opacity-40" />
 
@@ -266,7 +307,11 @@ export function Services() {
             <motion.h2
               initial={{ opacity: 0, y: 40 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.9,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-display font-bold text-gray-950 leading-[1.05] mb-6"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
             >
@@ -301,7 +346,9 @@ export function Services() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mt-24 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 lg:p-10 rounded-3xl border border-gray-100"
-          style={{ background: "linear-gradient(135deg, #fff9f5 0%, #ffffff 100%)" }}
+          style={{
+            background: "linear-gradient(135deg, #fff9f5 0%, #ffffff 100%)",
+          }}
         >
           <div>
             <p className="font-display text-xl font-bold text-gray-900 mb-1">
@@ -325,7 +372,13 @@ export function Services() {
             />
             <span className="relative flex items-center gap-2">
               Get Custom Quote
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </span>

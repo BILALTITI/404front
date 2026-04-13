@@ -64,8 +64,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Hide native cursor on pointer devices */
-  @media (pointer: fine) {
+  /* Hide native cursor on desktop pointer devices only */
+  @media (pointer: fine) and (min-width: 1025px) {
     *, *::before, *::after {
       cursor: none !important;
     }
