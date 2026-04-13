@@ -1,0 +1,164 @@
+Design a next-generation, award-winning, high-end interactive website for a digital agency called **4O4 Solutions**.
+
+This website must NOT feel like a template, dashboard, or standard startup landing page. It must feel like a cinematic digital experience built for Awwwards-level interaction design.
+
+The design must be bold, experimental, and deeply interactive with strong identity expression. The brand personality is futuristic, intelligent, creative, and slightly “glitchy-premium”.
+
+Primary palette: **white + vibrant orange + subtle dark contrast accents**. Orange is not decoration — it is a dynamic energy system used for motion, glow, interaction, and focus states.
+
+---
+
+# CORE EXPERIENCE RULES
+
+## 1. The entire website is a story-driven scroll experience
+
+Scrolling is not navigation — it is progression through a digital narrative.
+
+Each section transitions like a cinematic scene change with:
+
+* parallax depth layers
+* soft zoom transitions
+* motion-based reveal storytelling
+* controlled scroll pacing (not fast layout jumps)
+
+---
+
+## 2. HERO SECTION — “4O4 DIMENSIONAL CORE”
+
+The hero is not static.
+
+It contains a **Three.js living 3D core object** that:
+
+* reacts to mouse movement
+* morphs shape dynamically
+* emits subtle particle trails
+* distorts based on scroll velocity
+
+On scroll:
+
+* the core splits into fragments
+* each fragment represents a site section (Projects, Services, Testimonials, Contact)
+* fragments move toward their section positions as the user scrolls
+
+The hero must feel like:
+
+> “This is the brain of the entire website”
+
+---
+
+## 3. HEADER — “MORPHING GLASS NEURAL NAV”
+
+The navigation is a living system:
+
+* glassmorphism with dynamic blur based on scroll
+* logo transforms with subtle glitch pulse on interaction
+* nav links have magnetic hover behavior
+* header changes state based on section context (Projects / Services / etc.)
+* cursor interaction slightly distorts the header layer
+
+It must feel embedded into the system, not floating on top.
+
+---
+
+## 4. PROJECTS — “INTERACTIVE CASE STUDY TUNNEL”
+
+This is the most important section.
+
+Projects are NOT cards or grid items.
+
+Instead:
+
+* each project is a full viewport cinematic scene
+* scroll transitions between projects like Apple product storytelling pages
+* each project includes:
+
+  * large cinematic visual (image/video)
+  * bold headline
+  * short result metric (impact-focused)
+  * subtle background motion layers
+* hover reveals deeper detail layer with smooth expansion
+
+The experience should feel like:
+
+> “Walking inside a portfolio museum”
+
+---
+
+## 5. SERVICES — “STRUCTURED INTELLIGENCE GRID”
+
+Services are displayed as interactive intelligent modules:
+
+* hover-based 3D tilt
+* radial glow interaction from cursor
+* animated feature chips
+* numbered progression system (01–06)
+* each service feels like a capability engine, not a list
+
+---
+
+## 6. TESTIMONIALS — “FLOATING TRUST LAYERS”
+
+Testimonials are not static cards.
+
+They exist in layered depth space:
+
+* one primary focused testimonial at a time
+* background testimonials float with blur and reduced opacity
+* smooth automatic transitions between testimonials
+* subtle motion breathing effect
+* emotional tone emphasized through typography hierarchy
+
+---
+
+## 7. SPACING SYSTEM — “BREATHING DESIGN”
+
+Spacing must follow cinematic rhythm:
+
+* large vertical breathing spaces (20vh section separation)
+* asymmetric layouts to avoid template feel
+* intentional empty space as part of storytelling
+* no rigid grid repetition
+
+Every section must feel like a scene, not a block.
+
+---
+
+## 8. MOTION LANGUAGE
+
+Motion must be:
+
+* smooth, slow, cinematic
+* scroll-reactive (not just animation-on-load)
+* depth-based (z-axis movement)
+* layered (foreground/background separation)
+
+Avoid generic UI transitions.
+
+---
+
+## 9. MOBILE EXPERIENCE
+
+Mobile is NOT simplified desktop.
+
+Instead:
+
+* restructured storytelling flow
+* stacked cinematic scenes
+* reduced Three.js complexity but preserved identity
+* swipe-based project navigation feel
+
+---
+
+# FINAL RESULT
+
+The final product must feel:
+
+* like a high-end digital agency experience
+* emotionally engaging and interactive
+* deeply custom and non-template
+* award-winning level UI/UX
+* immersive, cinematic, and futuristic
+
+The goal is not to show information.
+
+The goal is to create an experience users remember.
