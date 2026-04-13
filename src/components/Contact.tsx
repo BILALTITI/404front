@@ -9,7 +9,6 @@ export function Contact() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
-    company: "",
     budget: "",
     message: "",
   });
@@ -21,7 +20,7 @@ export function Contact() {
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
-    setFormState({ name: "", email: "", company: "", budget: "", message: "" });
+    setFormState({ name: "", email: "", budget: "", message: "" });
   };
 
   return (
@@ -106,78 +105,6 @@ export function Contact() {
                   </a>
                 </div>
               </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-orange-500"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-heading text-sm text-gray-500">
-                    Call us
-                  </div>
-                  <a
-                    href="tel:+1234567890"
-                    className="font-heading text-white hover:text-orange-500 transition-colors"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-orange-500"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-heading text-sm text-gray-500">
-                    Visit us
-                  </div>
-                  <span className="font-heading text-white">
-                    San Francisco, CA
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Social links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex gap-4 mt-10"
-            >
-              {["twitter", "linkedin", "instagram", "dribbble"].map(
-                (social) => (
-                  <motion.a
-                    key={social}
-                    href="#"
-                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span className="font-heading text-xs uppercase">
-                      {social.slice(0, 2)}
-                    </span>
-                  </motion.a>
-                ),
-              )}
             </motion.div>
           </div>
 
@@ -226,50 +153,43 @@ export function Contact() {
                   </div>
                 </div>
 
-                {/* Company and Budget row */}
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      value={formState.company}
-                      onChange={(e) =>
-                        setFormState({ ...formState, company: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="Your Company"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      Budget Range
-                    </label>
-                    <select
-                      value={formState.budget}
-                      onChange={(e) =>
-                        setFormState({ ...formState, budget: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
-                    >
-                      <option value="" className="bg-gray-900">
-                        Select budget
-                      </option>
-                      <option value="10k-25k" className="bg-gray-900">
-                        $10K - $25K
-                      </option>
-                      <option value="25k-50k" className="bg-gray-900">
-                        $25K - $50K
-                      </option>
-                      <option value="50k-100k" className="bg-gray-900">
-                        $50K - $100K
-                      </option>
-                      <option value="100k+" className="bg-gray-900">
-                        $100K+
-                      </option>
-                    </select>
-                  </div>
+                {/* Budget row */}
+                <div>
+                  <label className="block font-heading text-sm text-gray-400 mb-2">
+                    Budget Range
+                  </label>
+                  <select
+                    value={formState.budget}
+                    onChange={(e) =>
+                      setFormState({ ...formState, budget: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
+                  >
+                    <option value="" className="bg-gray-900">
+                      Select budget
+                    </option>
+                    <option value="100-500-jod" className="bg-gray-900">
+                      JOD 100 - JOD 500
+                    </option>
+                    <option value="500-1k-jod" className="bg-gray-900">
+                      JOD 500 - JOD 1K
+                    </option>
+                    <option value="1k-2k-jod" className="bg-gray-900">
+                      JOD 1K - JOD 2K
+                    </option>
+                    <option value="2k-3k-jod" className="bg-gray-900">
+                      JOD 2K - JOD 3K
+                    </option>
+                    <option value="3k-5k-jod" className="bg-gray-900">
+                      JOD 3K - JOD 5K
+                    </option>
+                    <option value="5k-10k-jod" className="bg-gray-900">
+                      JOD 5K - JOD 10K
+                    </option>
+                    <option value="10k-plus-jod" className="bg-gray-900">
+                      JOD 10K+
+                    </option>
+                  </select>
                 </div>
 
                 {/* Message */}

@@ -203,7 +203,7 @@ export function Testimonials() {
             className="font-display font-bold text-gray-950 leading-[1.05] mb-5"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
-            Trusted by
+            Voices from
             <br />
             <span className="gradient-text">Industry Leaders</span>
           </motion.h2>
@@ -386,32 +386,6 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* Trust bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="mt-28 text-center"
-        >
-          <p className="font-heading text-[11px] font-bold text-gray-300 tracking-[0.35em] uppercase mb-8">
-            Trusted by 150+ companies worldwide
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
-            {["TechCrunch", "Forbes", "Wired", "Fast Company", "Inc."].map((brand, i) => (
-              <motion.span
-                key={brand}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: i * 0.12 }}
-                viewport={{ once: true }}
-                className="font-display text-xl lg:text-2xl font-bold text-gray-200 hover:text-orange-400 transition-colors"
-              >
-                {brand}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

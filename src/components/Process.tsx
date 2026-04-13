@@ -82,7 +82,14 @@ function ProcessStep({
               transformOrigin: "top",
               minHeight: 60,
             }}
-          />
+          >
+            <motion.span
+              className="absolute -left-1 w-2.5 h-2.5 rounded-full"
+              style={{ backgroundColor: step.accent }}
+              animate={{ y: [0, 52, 0], opacity: [0.35, 1, 0.35] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
+            />
+          </motion.div>
         )}
       </div>
 
@@ -178,7 +185,20 @@ export function Process() {
               From vision
               <br />
               to{" "}
-              <span className="gradient-text">reality</span>.
+              <motion.span
+                className="gradient-text inline-block"
+                animate={{
+                  textShadow: [
+                    "0 0 0px rgba(255,107,0,0)",
+                    "0 0 16px rgba(255,107,0,0.35)",
+                    "0 0 0px rgba(255,107,0,0)",
+                  ],
+                }}
+                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                reality
+              </motion.span>
+              .
             </motion.h2>
 
             <motion.p
