@@ -10,6 +10,8 @@ import okal from "../images/okal.jpeg";
 import Lastonewin from "../images/Lastonewin.jpeg";
 import LMS from "../images/LMS.png";
 import CMS from "../images/CMS.jpeg";
+import Breshta from "../images/Breshta.jpeg";
+const INITIAL_VISIBLE = 6;
 
 const projects = [
   {
@@ -20,12 +22,12 @@ const projects = [
     category: "Web Application",
     description:
       "A freelance task marketplace connecting individuals who want to earn with businesses that need work done — built from scratch and scaled on AWS to handle massive concurrent demand.",
-    result: "5,000 concurrent users & 4,000+ tasks completed",
+    result: "5,000 Active users & 4,000+ tasks completed",
     image: cashtics,
     link: "https://cashtics.com/",
     accent: "#ff6b00",
     year: "2025",
-    tags: ["Laravel", "Vue.js", "AWS"],
+    tags: ["php Laravel", "Vue.js", "AWS"],
   },
   {
     id: 2,
@@ -66,7 +68,7 @@ const projects = [
     description:
       "A deals and loyalty platform with real-time notifications, daily rewards, birthday gifts, and a spinning wheel — designed to keep users engaged and coming back every day.",
     result: "3,500+ active users",
-    image: Lastonewin,
+    image: Breshta,
     accent: "#ff6b00",
     year: "2026",
     tags: ["ASP.NET Core", "React Native", "Azure"],
@@ -80,7 +82,7 @@ const projects = [
     description:
       "A high-stakes real-time game where the last player with their hand on the screen wins a prize — engineered to handle thousands of live players with seamless room and session management.",
     result: "3,000 concurrent live players",
-    image: LMS,
+    image: Lastonewin,
     accent: "#ff8c3a",
     year: "2026",
     tags: ["ASP.NET Core", "React Native", "Azure"],
@@ -94,10 +96,25 @@ const projects = [
     description:
       "A complete learning management system handling courses, instructors, student enrollments, certifications, and admin workflows — built for a smooth and secure learning journey.",
     result: "800+ students with daily active classes",
-    image: CMS,
+    image: LMS,
     accent: "#ff6b00",
     year: "2025",
     tags: ["ASP.NET MVC", "SQL Server", "LMS"],
+  },  {
+   id: 7,
+  number: "07",
+  title: "Medical Care System",
+  subtitle: "Clinical Management",
+  category: "Desktop Application",
+  description:
+    "A comprehensive medical management system handling patient records, appointments, billing, and doctor-patient workflows — built from scratch with precision-critical accuracy at its core.",
+  result: "1,000+ patients managed",
+  image: CMS, // replace with your actual clinical image import
+  link: "", // no public URL — will show "Get in Touch" CTA
+  accent: "#ff8c3a",
+  year: "2025",
+  tags: [".NET Framework", "SQL Server", "Healthcare"],
+
   },
 ];
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
@@ -345,7 +362,12 @@ function FocusModal({
               rel="noreferrer noopener"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold text-white transition-transform hover:scale-105"
               style={{ backgroundColor: project.accent }}
-              onClick={onClose}
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                window.open(project.link, "_blank", "noopener,noreferrer");
+                onClose();
+              }}
             >
               <span>Get in Touch</span>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -361,6 +383,10 @@ function FocusModal({
 
 export function Projects() {
   const [focusedProject, setFocusedProject] = useState<(typeof projects)[0] | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_VISIBLE);
+  const hasMore = projects.length > INITIAL_VISIBLE;
 
   return (
     <section id="work" className="relative py-24 sm:py-32 bg-white overflow-hidden">
@@ -375,7 +401,7 @@ export function Projects() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Section header */}
+        {/* Section header — unchanged */}
         <div className="mb-16">
           <motion.div
             className="flex items-center gap-3 mb-6"
@@ -421,26 +447,69 @@ export function Projects() {
 
         {/* Projects grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
-            <div key={project.id} onClick={() => setFocusedProject(project)}>
-              <ProjectCard project={project} index={index} />
-            </div>
-          ))}
+          <AnimatePresence mode="popLayout">
+            {visibleProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 24, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 16, scale: 0.97 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index >= INITIAL_VISIBLE ? (index - INITIAL_VISIBLE) * 0.08 : 0,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                onClick={() => setFocusedProject(project)}
+              >
+                <ProjectCard project={project} index={index} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
-        {/* View all CTA */}
+        {/* Show more + CTA row */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
+          {hasMore && (
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-orange-500 text-white font-heading font-semibold hover:bg-orange-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-200"
+            >
+              <span>
+                {showAll
+                  ? "Show Less"
+                  : `Show More Projects `}
+              </span>
+                          <br/>
+
+              <motion.svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                animate={{ rotate: showAll ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </motion.svg>
+            </button>
+          )}
+            <br/>
+
           <a
             href="#contact"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
-            <span>Start Your Project</span>
+            <br/>
+             <span>Start Your Project</span>
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
