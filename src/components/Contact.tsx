@@ -5,6 +5,9 @@ import { useRef, useState } from "react";
 
 type Tab = "message" | "meeting";
 
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL ?? "http://404soultion.runasp.net";
+
 export function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -26,25 +29,72 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const postContact = async (body: Record<string, unknown>) => {
+    const res = await fetch(`${API_BASE}/api/ContactUs`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      let detail = "Something went wrong. Please try again.";
+      try {
+        const data = (await res.json()) as { detail?: string; title?: string };
+        if (data.detail) detail = data.detail;
+        else if (data.title) detail = data.title;
+      } catch {
+        /* use default */
+      }
+      throw new Error(detail);
+    }
+  };
 
   const handleMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
+    try {
+      await postContact({
+        type: "message",
+        name: formState.name.trim(),
+        email: formState.email.trim(),
+        phone: formState.phone.trim(),
+        topic: formState.budget || null,
+        message: formState.message.trim(),
+      });
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 4000);
+      setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Request failed.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleMeetingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setMeetingState({ name: "", email: "", phone: "", date: "", time: "", topic: "" });
+    try {
+      await postContact({
+        type: "meeting",
+        name: meetingState.name.trim(),
+        email: meetingState.email.trim(),
+        phone: meetingState.phone.trim(),
+        preferredDate: meetingState.date,
+        preferredTime: meetingState.time,
+        meetingTopic: meetingState.topic,
+      });
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 4000);
+      setMeetingState({ name: "", email: "", phone: "", date: "", time: "", topic: "" });
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Request failed.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -178,7 +228,7 @@ export function Contact() {
               <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10 mb-8">
                 <button
                   type="button"
-                  onClick={() => { setActiveTab("message"); setSubmitted(false); }}
+                  onClick={() => { setActiveTab("message"); setSubmitted(false); setSubmitError(null); }}
                   className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-heading text-sm font-semibold transition-all duration-200"
                   style={{
                     backgroundColor: activeTab === "message" ? "#f97316" : "transparent",
@@ -192,7 +242,7 @@ export function Contact() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => { setActiveTab("meeting"); setSubmitted(false); }}
+                  onClick={() => { setActiveTab("meeting"); setSubmitted(false); setSubmitError(null); }}
                   className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-heading text-sm font-semibold transition-all duration-200"
                   style={{
                     backgroundColor: activeTab === "meeting" ? "#f97316" : "transparent",
@@ -307,6 +357,11 @@ export function Contact() {
                     )}
                   </motion.button>
 
+                  {submitError && (
+                    <p className="text-center text-sm text-red-400 font-body" role="alert">
+                      {submitError}
+                    </p>
+                  )}
                   <p className="text-center text-sm text-gray-500 font-body">
                     We'll get back to you within 24 hours.
                   </p>
@@ -437,6 +492,11 @@ export function Contact() {
                     )}
                   </motion.button>
 
+                  {submitError && (
+                    <p className="text-center text-sm text-red-400 font-body" role="alert">
+                      {submitError}
+                    </p>
+                  )}
                   <p className="text-center text-sm text-gray-500 font-body">
                     Available Sun – Thu, 9 AM – 6 PM (AST). We'll confirm within a few hours.
                   </p>
