@@ -12,12 +12,14 @@ export function Contact() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
+    phone: "",
     budget: "",
     message: "",
   });
   const [meetingState, setMeetingState] = useState({
     name: "",
     email: "",
+    phone:"",
     date: "",
     time: "",
     topic: "",
@@ -32,7 +34,7 @@ export function Contact() {
     setIsSubmitting(false);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
-    setFormState({ name: "", email: "", budget: "", message: "" });
+    setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
   };
 
   const handleMeetingSubmit = async (e: React.FormEvent) => {
@@ -42,7 +44,7 @@ export function Contact() {
     setIsSubmitting(false);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
-    setMeetingState({ name: "", email: "", date: "", time: "", topic: "" });
+    setMeetingState({ name: "", email: "", phone: "", date: "", time: "", topic: "" });
   };
 
   return (
@@ -113,8 +115,23 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-heading text-sm text-gray-500">Drop us a line</div>
-                  <a href="mailto:hello@404solutions.com" className="font-heading text-white hover:text-orange-500 transition-colors">
-                    hello@404solutions.com
+                  <a href="mailto:contact@4o4solutions.com" className="font-heading text-white hover:text-orange-500 transition-colors">
+                    contact@4o4solutions.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2A19.77 19.77 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 10.91a16 16 0 007.17 7.17l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-heading text-sm text-gray-500">Call us</div>
+                  <a href="tel:+962791234567" className="font-heading text-white hover:text-orange-500 transition-colors">
+                    +962 79 123 4567
                   </a>
                 </div>
               </div>
@@ -219,20 +236,30 @@ export function Contact() {
                   </div>
 
                   <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">Budget Range</label>
+                    <label className="block font-heading text-sm text-gray-400 mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      value={formState.phone}
+                      onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
+                      placeholder="+962 79 123 4567"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-heading text-sm text-gray-400 mb-2">What is this message about?</label>
                     <select
                       value={formState.budget}
                       onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
                     >
-                      <option value="" className="bg-gray-900">Select budget</option>
-                      <option value="100-500-jod" className="bg-gray-900">JOD 100 – JOD 500</option>
-                      <option value="500-1k-jod" className="bg-gray-900">JOD 500 – JOD 1K</option>
-                      <option value="1k-2k-jod" className="bg-gray-900">JOD 1K – JOD 2K</option>
-                      <option value="2k-3k-jod" className="bg-gray-900">JOD 2K – JOD 3K</option>
-                      <option value="3k-5k-jod" className="bg-gray-900">JOD 3K – JOD 5K</option>
-                      <option value="5k-10k-jod" className="bg-gray-900">JOD 5K – JOD 10K</option>
-                      <option value="10k-plus-jod" className="bg-gray-900">JOD 10K+</option>
+                      <option value="" className="bg-gray-900">Select a topic</option>
+                      <option value="new-project" className="bg-gray-900">Starting a new project</option>
+                      <option value="existing-project" className="bg-gray-900">Helping with an existing project</option>
+                      <option value="consultation" className="bg-gray-900">General consultation</option>
+                      <option value="partnership" className="bg-gray-900">Partnership opportunity</option>
+                      <option value="other" className="bg-gray-900">Something else</option>
                     </select>
                   </div>
 
@@ -312,6 +339,18 @@ export function Contact() {
                         required
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-heading text-sm text-gray-400 mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      value={meetingState.phone}
+                      onChange={(e) => setMeetingState({ ...meetingState, phone: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
+                      placeholder="+962 79 123 4567"
+                      required
+                    />
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
