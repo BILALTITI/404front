@@ -4,93 +4,102 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+import cashtics from "../images/cashtics.jpeg";
+import Sooquk from "../images/Sooquk.jpeg";
+import okal from "../images/okal.jpeg";
+import Lastonewin from "../images/Lastonewin.jpeg";
+import LMS from "../images/LMS.png";
+import CMS from "../images/CMS.jpeg";
+
 const projects = [
   {
     id: 1,
     number: "01",
-    title: "Nexus Banking",
-    subtitle: "Fintech Revolution",
+    title: "Cashtics",
+    subtitle: "Freelance Economy",
     category: "Web Application",
     description:
-      "A next-generation digital banking platform that redefined how millennials interact with their finances.",
-    result: "300% user growth in 6 months",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1400&h=900&fit=crop",
+      "A freelance task marketplace connecting individuals who want to earn with businesses that need work done — built from scratch and scaled on AWS to handle massive concurrent demand.",
+    result: "5,000 concurrent users & 4,000+ tasks completed",
+    image: cashtics,
+    link: "https://cashtics.com/",
     accent: "#ff6b00",
-    year: "2024",
-    tags: ["React", "Node.js", "Real-time"],
+    year: "2025",
+    tags: ["Laravel", "Vue.js", "AWS"],
   },
   {
     id: 2,
     number: "02",
-    title: "Verdant Spaces",
-    subtitle: "Smart Home Evolution",
-    category: "IoT Platform",
+    title: "Sooquk",
+    subtitle: "Jordanian E-Commerce",
+    category: "Marketplace",
     description:
-      "An intelligent home automation system connecting over 200+ smart devices with seamless UX.",
-    result: "200K+ devices connected",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&h=900&fit=crop",
+      "A regional e-commerce platform connecting buyers and sellers across fashion, beauty, and lifestyle — optimized with CDN and region-aware deployment for lightning-fast performance.",
+    result: "3,000+ user visits & rapid vendor growth",
+    image: Sooquk,
+    link: "https://sooquk.com/",
     accent: "#ff8c3a",
-    year: "2024",
-    tags: ["IoT", "React Native", "AI"],
+    year: "2025",
+    tags: ["ASP.NET Core", "Next.js", "React Native"],
   },
   {
     id: 3,
     number: "03",
-    title: "Pulse Health",
-    subtitle: "Wellness Reimagined",
-    category: "Mobile App",
+    title: "Barber",
+    subtitle: "Smart Booking Experience",
+    category: "Booking System",
     description:
-      "A holistic health tracking application combining AI-driven insights with breathtaking design.",
-    result: "1M+ downloads, 92% retention",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&h=900&fit=crop",
+      "A full-featured appointment and management system for a kids' barber shop — covering bookings, email reminders, coupons, ticketing, and parent-friendly UI/UX from the ground up.",
+    result: "100+ kids booked in early launch",
+    image: okal,
+    link: "https://okalforheroes.com/",
     accent: "#ffa556",
-    year: "2023",
-    tags: ["Flutter", "ML", "HealthKit"],
+    year: "2026",
+    tags: ["ASP.NET MVC", "MonsterASP", "UX Design"],
   },
   {
     id: 4,
     number: "04",
-    title: "Atlas Commerce",
-    subtitle: "E-Commerce Mastery",
-    category: "Platform",
+    title: "Breshta",
+    subtitle: "Loyalty & Rewards",
+    category: "Gamification Platform",
     description:
-      "A scalable e-commerce infrastructure powering 500+ global brands with peak performance.",
-    result: "$200M GMV, 99.99% uptime",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&h=900&fit=crop",
+      "A deals and loyalty platform with real-time notifications, daily rewards, birthday gifts, and a spinning wheel — designed to keep users engaged and coming back every day.",
+    result: "3,500+ active users",
+    image: Lastonewin,
     accent: "#ff6b00",
-    year: "2023",
-    tags: ["Next.js", "Postgres", "Stripe"],
+    year: "2026",
+    tags: ["ASP.NET Core", "React Native", "Azure"],
   },
   {
     id: 5,
     number: "05",
-    title: "Quantum Labs",
-    subtitle: "Research Innovation",
-    category: "Web Platform",
+    title: "LastOneWin",
+    subtitle: "Real-Time Competition",
+    category: "Interactive Game",
     description:
-      "Cutting-edge research collaboration for quantum computing scientists with real-time visualization.",
-    result: "50+ universities, 10K researchers",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&h=900&fit=crop",
+      "A high-stakes real-time game where the last player with their hand on the screen wins a prize — engineered to handle thousands of live players with seamless room and session management.",
+    result: "3,000 concurrent live players",
+    image: LMS,
     accent: "#ff8c3a",
-    year: "2023",
-    tags: ["WebGL", "Python", "D3.js"],
+    year: "2026",
+    tags: ["ASP.NET Core", "React Native", "Azure"],
   },
   {
     id: 6,
     number: "06",
-    title: "Stellar Media",
-    subtitle: "Content Platform",
-    category: "Streaming",
+    title: "ILern",
+    subtitle: "E-Learning Platform",
+    category: "EdTech",
     description:
-      "Next-gen video streaming platform with adaptive bitrate and global CDN infrastructure.",
-    result: "5M+ active users daily",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1400&h=900&fit=crop",
+      "A complete learning management system handling courses, instructors, student enrollments, certifications, and admin workflows — built for a smooth and secure learning journey.",
+    result: "800+ students with daily active classes",
+    image: CMS,
     accent: "#ff6b00",
-    year: "2024",
-    tags: ["React", "AWS", "WebRTC"],
+    year: "2025",
+    tags: ["ASP.NET MVC", "SQL Server", "LMS"],
   },
 ];
-
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -329,17 +338,21 @@ function FocusModal({
           </div>
 
           {/* CTA */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold text-white transition-transform hover:scale-105"
-            style={{ backgroundColor: project.accent }}
-            onClick={onClose}
-          >
-            <span>Get in Touch</span>
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
+          {project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold text-white transition-transform hover:scale-105"
+              style={{ backgroundColor: project.accent }}
+              onClick={onClose}
+            >
+              <span>Get in Touch</span>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          ) : null}
         </div>
       </motion.div>
     </motion.div>
