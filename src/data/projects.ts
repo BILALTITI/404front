@@ -1,12 +1,12 @@
 import type { StaticImageData } from "next/image";
 
-import cashtics from "../images/cashtics.jpeg";
-import Sooquk from "../images/Sooquk.jpeg";
-import okal from "../images/okal.jpeg";
-import Lastonewin from "../images/Lastonewin.jpeg";
+import cashtics from "../images/cashtics.com_en.png";
+import Sooquk from "../images/sooquk.com_en.png";
+import okal from "../images/okalforheroes.com.png";
+import Lastonewin from "../images/last_one_win_1920x1440.png";
 import LMS from "../images/LMS.png";
-import CMS from "../images/CMS.jpeg";
-import Breshta from "../images/Breshta.jpeg";
+import CMS from "../images/clincal.png";
+import Breshta from "../images/logo.png";
 
 /** Remote thumbnails for additional case studies (abstract product / workspace imagery). */
 const u = (photoPath: string) =>
@@ -75,8 +75,7 @@ export const PROJECTS: PortfolioProject[] = [
       "Appointment booking and shop operations for a kids’ barber brand—reminders, coupons, ticketing, and a parent‑friendly flow on mobile.",
     result: "Strong early adoption from families in launch neighborhoods",
     image: okal,
-    imageAlt:
-      "Okal for Heroes barber booking web experience designed by 4o4",
+    imageAlt: "Okal for Heroes barber booking web experience designed by 4o4",
     link: "https://okalforheroes.com/",
     accent: "#ffa556",
     year: "2026",
@@ -138,10 +137,9 @@ export const PROJECTS: PortfolioProject[] = [
       "Patient records, scheduling, and billing workflows for a clinic team—desktop‑first, keyboard‑friendly screens where accuracy matters more than animation.",
     result: "Day‑to‑day clinic operations on one reliable database",
     image: CMS,
-    imageAlt:
-      "Healthcare management desktop UI sample from 4o4 delivery work",
+    imageAlt: "Healthcare management desktop UI sample from 4o4 delivery work",
     accent: "#ff8c3a",
     year: "2025",
     tags: [".NET Framework", "SQL Server", "Healthcare"],
-  }
+  },
 ];

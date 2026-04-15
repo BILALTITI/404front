@@ -8,7 +8,7 @@ import { PROJECTS } from "../data/projects";
 
 const projects = PROJECTS;
 
-const INITIAL_VISIBLE = 9;
+const INITIAL_VISIBLE = 6;
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -388,7 +388,7 @@ export function Projects() {
               onClick={() => setShowAll((prev) => !prev)}
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-orange-500 text-white font-heading font-semibold hover:bg-orange-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-200"
             >
-              <span>{showAll ? "Show less" : "Show more projects"}</span>
+              <span>{showAll ? "Show less" : "View more"}</span>
               <motion.svg
                 className="w-4 h-4"
                 viewBox="0 0 24 24"

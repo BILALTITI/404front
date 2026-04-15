@@ -2,74 +2,154 @@
 
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { useRef, useState, useEffect } from "react";
+import type { CSSProperties } from "react";
 
 const testimonials = [
   {
     id: 1,
     quote:
-      "Scope was clear from week one—no surprise change orders. We shipped our customer portal on the date we agreed, and their documentation made handover straightforward for our internal team.",
-    author: "Omar Haddad",
-    role: "CTO",
-    company: "Regional logistics (Jordan)",
-    metric: "On schedule",
-    metricLabel: "Phase 1 launch",
-    logoAbbr: "OH",
+      "I posted my first task on Cashtics and had three offers within two hours. The platform is fast, easy to use, and the payment process felt secure. I've now completed over 40 tasks through it. Never expected this kind of traction so early.",
+    author: "Khaled Al-Rawi",
+    role: "Freelancer",
+    company: "Cashtics User",
+    metric: "40+",
+    metricLabel: "Tasks Done",
+    logoAbbr: "KA",
     accent: "#ff6b00",
   },
   {
     id: 2,
     quote:
-      "4o4 integrated tightly with our existing .NET backend. The mobile app felt native, and when we had production issues, responses were fast and practical—not blame shifting.",
-    author: "Dana Saeed",
-    role: "Product lead",
-    company: "Retail & lifestyle",
-    metric: "2 platforms",
-    metricLabel: "iOS & Android",
-    logoAbbr: "DS",
+      "I opened my shop on Sooquk expecting maybe 20–30 visitors a month. Within the first few weeks I was getting hundreds of views. The site loads fast even on mobile, which makes a huge difference for my customers.",
+    author: "Rima Mansour",
+    role: "Vendor",
+    company: "Fashion Accessories",
+    metric: "3×",
+    metricLabel: "More Traffic",
+    logoAbbr: "RM",
     accent: "#ff8c3a",
   },
   {
     id: 3,
     quote:
-      "We replaced a fragile mix of spreadsheets and email with n8n workflows. Finance finally trusts the numbers because the pipeline is visible and repeatable.",
-    author: "Karim Nasser",
-    role: "Operations director",
-    company: "Services company (MENA)",
-    metric: "Fewer manual",
-    metricLabel: "Monthly reconciliations",
-    logoAbbr: "KN",
+      "Booking used to mean phone calls, back-and-forth, and sometimes showing up to a full shop. Now parents just pick a slot and get a reminder before the appointment. The coupon system was a nice touch — our regulars really appreciate it.",
+    author: "Khalil Okal",
+    role: "Owner",
+    company: "Okal for Heroes",
+    metric: "100+",
+    metricLabel: "Kids Booked",
+    logoAbbr: "OB",
     accent: "#ffa556",
   },
   {
     id: 4,
     quote:
-      "As a small founding team we needed a partner who could challenge assumptions without slowing us down. 4o4 pushed for a thinner MVP, and it was the right call—we validated before overbuilding.",
-    author: "Leila Khoury",
-    role: "Co-founder",
-    company: "Early-stage SaaS",
-    metric: "MVP",
-    metricLabel: "8-week first release",
-    logoAbbr: "LK",
+      "I open Breshta every morning just to spin the wheel. It sounds simple, but the birthday gift I got last month was a genuinely nice surprise. The deals feel real — not just filler. I've recommended it to at least 10 friends.",
+    author: "Sara Wahdan",
+    role: "Loyalty Member",
+    company: "Breshta",
+    metric: "3,500+",
+    metricLabel: "Active Users",
+    logoAbbr: "SW",
+    accent: "#ff6b00",
+  },
+  {
+    id: 5,
+    quote:
+      "I was in a room with over 2,000 players and it didn't lag once. The tension of being one of the last five was actually stressful in the best way. I've played a lot of live games — nothing handles concurrent players this smoothly.",
+    author: "Faris Nader",
+    role: "Player",
+    company: "LastOneWin",
+    metric: "3,000",
+    metricLabel: "Live Players",
+    logoAbbr: "FN",
+    accent: "#ff8c3a",
+  },
+  {
+    id: 6,
+    quote:
+      "I finished my certification in six weeks completely online. The course material was well-organized, the instructor portal made it easy to follow my progress, and I never ran into a bug or a broken link. That's rare for an LMS this new.",
+    author: "Layla Hassan",
+    role: "Student",
+    company: "ILern",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
+    metric: "800+",
+    metricLabel: "Students",
+    logoAbbr: "LH",
+    accent: "#ffa556",
+  },
+  {
+    id: 7,
+    quote:
+      "Before this system, our staff was juggling paper files and spreadsheets. Now every patient record is one search away, billing is automatic, and appointment conflicts are a thing of the past. Onboarding took less than a week.",
+    author: "Dr. Hani Zureikat",
+    role: "Clinic Director",
+    company: "Medical Care System",
+    metric: "1,000+",
+    metricLabel: "Patients",
+    logoAbbr: "HZ",
     accent: "#ff6b00",
   },
 ];
+
+/** First letter of given name + first letter of family name; strips common titles. Single-word names use first two letters. */
+function authorInitials(name: string): string {
+  const cleaned = name.replace(/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s+/i, "").trim();
+  const parts = cleaned.split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) {
+    const w = parts[0];
+    return w.length >= 2
+      ? w.slice(0, 2).toUpperCase()
+      : w.charAt(0).toUpperCase();
+  }
+  return `${parts[0].charAt(0)}${parts[parts.length - 1].charAt(0)}`.toUpperCase();
+}
 
 const ROTATE_INTERVAL = 5200;
 
 function BackgroundCard({
   testimonial,
   position,
-  isExiting,
 }: {
   testimonial: (typeof testimonials)[0];
   position: "left" | "right" | "far-left" | "far-right";
   isExiting: boolean;
 }) {
-  const posStyles: Record<string, React.CSSProperties> = {
-    "far-left": { left: "-2%", top: "15%", scale: "0.72", opacity: 0.18, rotate: "-8deg", zIndex: 1 },
-    left: { left: "3%", top: "20%", scale: "0.82", opacity: 0.32, rotate: "-4deg", zIndex: 2 },
-    right: { right: "3%", top: "20%", scale: "0.82", opacity: 0.32, rotate: "4deg", zIndex: 2 },
-    "far-right": { right: "-2%", top: "15%", scale: "0.72", opacity: 0.18, rotate: "8deg", zIndex: 1 },
+  const posStyles: Record<string, CSSProperties> = {
+    "far-left": {
+      left: "-2%",
+      top: "15%",
+      scale: "0.72",
+      opacity: 0.18,
+      rotate: "-8deg",
+      zIndex: 1,
+    },
+    left: {
+      left: "3%",
+      top: "20%",
+      scale: "0.82",
+      opacity: 0.32,
+      rotate: "-4deg",
+      zIndex: 2,
+    },
+    right: {
+      right: "3%",
+      top: "20%",
+      scale: "0.82",
+      opacity: 0.32,
+      rotate: "4deg",
+      zIndex: 2,
+    },
+    "far-right": {
+      right: "-2%",
+      top: "15%",
+      scale: "0.72",
+      opacity: 0.18,
+      rotate: "8deg",
+      zIndex: 1,
+    },
   };
 
   const s = posStyles[position];
@@ -104,12 +184,16 @@ function BackgroundCard({
             {testimonial.logoAbbr}
           </div>
           <div>
-            <p className="font-heading text-xs font-semibold text-gray-700">{testimonial.author}</p>
-            <p className="font-body text-[10px] text-gray-400">{testimonial.company}</p>
+            <p className="font-heading text-xs font-semibold text-gray-700">
+              {testimonial.author}
+            </p>
+            <p className="font-body text-[10px] text-gray-400">
+              {testimonial.company}
+            </p>
           </div>
         </div>
         <p className="font-body text-xs text-gray-500 leading-relaxed line-clamp-3">
-          "{testimonial.quote.substring(0, 90)}..."
+          &quot;{testimonial.quote.substring(0, 90)}...&quot;
         </p>
       </div>
     </motion.div>
@@ -139,9 +223,11 @@ export function Testimonials() {
   };
 
   const active = testimonials[activeIndex];
-  const bgLeft = testimonials[(activeIndex - 1 + testimonials.length) % testimonials.length];
+  const bgLeft =
+    testimonials[(activeIndex - 1 + testimonials.length) % testimonials.length];
   const bgRight = testimonials[(activeIndex + 1) % testimonials.length];
-  const bgFarLeft = testimonials[(activeIndex - 2 + testimonials.length) % testimonials.length];
+  const bgFarLeft =
+    testimonials[(activeIndex - 2 + testimonials.length) % testimonials.length];
   const bgFarRight = testimonials[(activeIndex + 2) % testimonials.length];
 
   return (
@@ -174,7 +260,7 @@ export function Testimonials() {
           >
             <span className="w-10 h-px bg-orange-500" />
             <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-              Partner feedback
+              Client Stories
             </span>
             <span className="w-10 h-px bg-orange-500" />
           </motion.div>
@@ -186,9 +272,9 @@ export function Testimonials() {
             className="font-display font-bold text-gray-950 leading-[1.05] mb-5"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
-            What partners say
+            Voices from
             <br />
-            <span className="gradient-text">about 4o4</span>
+            <span className="gradient-text">Industry Leaders</span>
           </motion.h2>
 
           <motion.p
@@ -197,8 +283,8 @@ export function Testimonials() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-body text-lg max-w-lg mx-auto"
           >
-            Real quotes from product and operations leaders we have worked with—
-            focused on delivery, clarity, and outcomes you can verify.
+            The founders, executives, and teams who&apos;ve partnered with us to
+            achieve results that matter.
           </motion.p>
         </div>
 
@@ -211,10 +297,26 @@ export function Testimonials() {
         >
           {/* Background cards — desktop only */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none">
-            <BackgroundCard testimonial={bgFarLeft} position="far-left" isExiting={false} />
-            <BackgroundCard testimonial={bgLeft} position="left" isExiting={false} />
-            <BackgroundCard testimonial={bgRight} position="right" isExiting={false} />
-            <BackgroundCard testimonial={bgFarRight} position="far-right" isExiting={false} />
+            <BackgroundCard
+              testimonial={bgFarLeft}
+              position="far-left"
+              isExiting={false}
+            />
+            <BackgroundCard
+              testimonial={bgLeft}
+              position="left"
+              isExiting={false}
+            />
+            <BackgroundCard
+              testimonial={bgRight}
+              position="right"
+              isExiting={false}
+            />
+            <BackgroundCard
+              testimonial={bgFarRight}
+              position="far-right"
+              isExiting={false}
+            />
           </div>
 
           {/* Primary testimonial */}
@@ -223,20 +325,27 @@ export function Testimonials() {
               <motion.div
                 key={activeIndex}
                 custom={direction}
-                initial={{ opacity: 0, y: direction > 0 ? 40 : -40, scale: 0.96 }}
+                initial={{
+                  opacity: 0,
+                  y: direction > 0 ? 40 : -40,
+                  scale: 0.96,
+                }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: direction > 0 ? -40 : 40, scale: 0.96 }}
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 className="relative bg-white rounded-3xl overflow-hidden"
                 style={{
                   border: `1px solid rgba(255,107,0,0.15)`,
-                  boxShadow: "0 32px 80px -16px rgba(255,107,0,0.12), 0 4px 20px rgba(0,0,0,0.04)",
+                  boxShadow:
+                    "0 32px 80px -16px rgba(255,107,0,0.12), 0 4px 20px rgba(0,0,0,0.04)",
                 }}
               >
                 {/* Top orange accent */}
                 <div
                   className="h-1"
-                  style={{ background: `linear-gradient(90deg, ${active.accent}, ${active.accent}88)` }}
+                  style={{
+                    background: `linear-gradient(90deg, ${active.accent}, ${active.accent}88)`,
+                  }}
                 />
 
                 <div className="p-8 lg:p-10">
@@ -246,7 +355,11 @@ export function Testimonials() {
                       className="w-12 h-12 rounded-2xl flex items-center justify-center"
                       style={{ backgroundColor: `${active.accent}18` }}
                     >
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill={active.accent}>
+                      <svg
+                        className="w-6 h-6"
+                        viewBox="0 0 24 24"
+                        fill={active.accent}
+                      >
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
                     </div>
@@ -277,7 +390,11 @@ export function Testimonials() {
                         key={i}
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.06, type: "spring", stiffness: 300 }}
+                        transition={{
+                          delay: i * 0.06,
+                          type: "spring",
+                          stiffness: 300,
+                        }}
                         className="w-4 h-4 text-orange-500"
                         viewBox="0 0 24 24"
                         fill="currentColor"
@@ -289,20 +406,18 @@ export function Testimonials() {
 
                   {/* Quote */}
                   <blockquote className="font-body text-gray-700 text-lg leading-relaxed mb-8">
-                    "{active.quote}"
+                    &quot;{active.quote}&quot;
                   </blockquote>
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
                     <div className="relative">
                       <div
-                        className="w-14 h-14 rounded-full border-2 border-white shadow-md flex items-center justify-center font-heading font-bold text-white text-sm"
-                        style={{
-                          background: `linear-gradient(135deg, ${active.accent}, ${active.accent}99)`,
-                        }}
-                        aria-label={active.author}
+                        className="w-14 h-14 rounded-full flex items-center justify-center font-heading font-bold text-white text-sm border-2 border-white shadow-md"
+                        style={{ backgroundColor: active.accent }}
+                        aria-hidden
                       >
-                        {active.logoAbbr}
+                        {authorInitials(active.author)}
                       </div>
                       <div
                         className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white"
@@ -315,7 +430,9 @@ export function Testimonials() {
                       </div>
                       <div className="font-body text-sm text-gray-400">
                         {active.role},{" "}
-                        <span style={{ color: active.accent }}>{active.company}</span>
+                        <span style={{ color: active.accent }}>
+                          {active.company}
+                        </span>
                       </div>
                     </div>
 
@@ -337,10 +454,21 @@ export function Testimonials() {
             <div className="flex items-center justify-center gap-3 mt-8">
               <button
                 type="button"
-                onClick={() => goTo((activeIndex - 1 + testimonials.length) % testimonials.length)}
+                onClick={() =>
+                  goTo(
+                    (activeIndex - 1 + testimonials.length) %
+                      testimonials.length,
+                  )
+                }
                 className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
               >
-                <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
@@ -365,14 +493,19 @@ export function Testimonials() {
                 onClick={() => goTo((activeIndex + 1) % testimonials.length)}
                 className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
               >
-                <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M9 18l6-6-6-6" />
                 </svg>
               </button>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -5,8 +5,7 @@ import { useRef, useState } from "react";
 
 type Tab = "message" | "meeting";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://404soultion.runasp.net";
+const API_BASE = "https://4o4soultions.premiumasp.net/";
 
 export function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -32,7 +31,7 @@ export function Contact() {
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const postContact = async (body: Record<string, unknown>) => {
-    const res = await fetch(`${API_BASE}/api/ContactUs`, {
+    const res = await fetch(`${API_BASE}api/ContactUs`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
