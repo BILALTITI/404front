@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import Link from "next/link";
 
 export function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -11,8 +12,15 @@ export function Footer() {
 
   const footerLinks = [
     {
-      title: "Services",
-      links: ["Web Development", "Mobile Apps", "UI/UX Design", "Brand Strategy", "Digital Marketing"],
+      title: "Explore",
+      links: [
+        { label: "Work", href: "#work" },
+        { label: "About", href: "#about" },
+        { label: "Services", href: "#services" },
+        { label: "Process", href: "#process" },
+        { label: "Testimonials", href: "#testimonials" },
+        { label: "Contact", href: "#contact" },
+      ],
     },
   ];
 
@@ -37,17 +45,17 @@ export function Footer() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-4"
             >
-              <a href="#" className="inline-block mb-6">
+              <Link href="/#hero" className="inline-block mb-6">
                 <span className="font-display text-3xl font-bold">
                   <span className="text-white">4</span>
-                  <span className="text-orange-500">O</span>
+                  <span className="text-orange-500">o</span>
                   <span className="text-white">4</span>
                   <span className="ml-2 font-heading text-lg font-medium text-gray-400">Solutions</span>
                 </span>
-              </a>
+              </Link>
               <p className="font-body text-gray-400 leading-relaxed mb-6 max-w-sm">
-                We're a forward-thinking digital agency crafting exceptional
-                websites, apps, and smart business solutions.
+                Startup software development from Amman—custom web apps, mobile
+                apps, and workflow automation for teams in Jordan and MENA.
               </p>
               <p className="font-heading text-sm text-gray-500">
                 Amman, Jordan
@@ -68,12 +76,12 @@ export function Footer() {
                 </h3>
                 <ul className="space-y-3">
                   {column.links.map((link) => (
-                    <li key={link}>
+                    <li key={link.href}>
                       <a
-                        href="#"
+                        href={link.href}
                         className="font-body text-gray-400 hover:text-orange-500 transition-colors"
                       >
-                        {link}
+                        {link.label}
                       </a>
                     </li>
                   ))}
@@ -92,7 +100,7 @@ export function Footer() {
         >
           <div className="flex items-center justify-center">
             <p className="font-body text-sm text-gray-500">
-              {currentYear} 4O4 Solutions. All rights reserved.
+              {currentYear} 4o4 Solutions. All rights reserved.
             </p>
           </div>
         </motion.div>

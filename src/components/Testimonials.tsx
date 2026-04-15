@@ -7,67 +7,50 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "4O4 Solutions transformed our outdated platform into a cutting-edge digital experience. The results exceeded all expectations — our conversion rate increased by 340% within 90 days.",
-    author: "Sarah Chen",
-    role: "CEO",
-    company: "Nexus Finance",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
-    metric: "+340%",
-    metricLabel: "Conversions",
-    logoAbbr: "NX",
+      "Scope was clear from week one—no surprise change orders. We shipped our customer portal on the date we agreed, and their documentation made handover straightforward for our internal team.",
+    author: "Omar Haddad",
+    role: "CTO",
+    company: "Regional logistics (Jordan)",
+    metric: "On schedule",
+    metricLabel: "Phase 1 launch",
+    logoAbbr: "OH",
     accent: "#ff6b00",
   },
   {
     id: 2,
     quote:
-      "Working with this team felt like having an elite extension of our own company. Their attention to detail and commitment to quality is unmatched in the entire industry.",
-    author: "Marcus Johnson",
-    role: "CTO",
-    company: "Verdant Tech",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-    metric: "99.9%",
-    metricLabel: "Uptime",
-    logoAbbr: "VT",
+      "4o4 integrated tightly with our existing .NET backend. The mobile app felt native, and when we had production issues, responses were fast and practical—not blame shifting.",
+    author: "Dana Saeed",
+    role: "Product lead",
+    company: "Retail & lifestyle",
+    metric: "2 platforms",
+    metricLabel: "iOS & Android",
+    logoAbbr: "DS",
     accent: "#ff8c3a",
   },
   {
     id: 3,
     quote:
-      "The mobile app they built became the #1 health app in our category. Their user-centric approach and technical excellence made all the difference in a crowded market.",
-    author: "Emily Rodriguez",
-    role: "Product Director",
-    company: "Pulse Health",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
-    metric: "#1",
-    metricLabel: "App Store",
-    logoAbbr: "PH",
+      "We replaced a fragile mix of spreadsheets and email with n8n workflows. Finance finally trusts the numbers because the pipeline is visible and repeatable.",
+    author: "Karim Nasser",
+    role: "Operations director",
+    company: "Services company (MENA)",
+    metric: "Fewer manual",
+    metricLabel: "Monthly reconciliations",
+    logoAbbr: "KN",
     accent: "#ffa556",
   },
   {
     id: 4,
     quote:
-      "From concept to launch in just 8 weeks. 4O4 Solutions delivered a world-class e-commerce platform that handles millions in daily transactions flawlessly.",
-    author: "David Park",
-    role: "Founder",
-    company: "Atlas Commerce",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-    metric: "$50M+",
-    metricLabel: "Processed",
-    logoAbbr: "AC",
+      "As a small founding team we needed a partner who could challenge assumptions without slowing us down. 4o4 pushed for a thinner MVP, and it was the right call—we validated before overbuilding.",
+    author: "Leila Khoury",
+    role: "Co-founder",
+    company: "Early-stage SaaS",
+    metric: "MVP",
+    metricLabel: "8-week first release",
+    logoAbbr: "LK",
     accent: "#ff6b00",
-  },
-  {
-    id: 5,
-    quote:
-      "Their strategic approach to our rebrand completely repositioned us in the market. We went from struggling startup to recognized industry leader in just 18 months.",
-    author: "Lisa Thompson",
-    role: "Marketing VP",
-    company: "Quantum Labs",
-    avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop&crop=face",
-    metric: "10×",
-    metricLabel: "Growth",
-    logoAbbr: "QL",
-    accent: "#ff8c3a",
   },
 ];
 
@@ -191,7 +174,7 @@ export function Testimonials() {
           >
             <span className="w-10 h-px bg-orange-500" />
             <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-              Client Stories
+              Partner feedback
             </span>
             <span className="w-10 h-px bg-orange-500" />
           </motion.div>
@@ -203,9 +186,9 @@ export function Testimonials() {
             className="font-display font-bold text-gray-950 leading-[1.05] mb-5"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
-            Voices from
+            What partners say
             <br />
-            <span className="gradient-text">Industry Leaders</span>
+            <span className="gradient-text">about 4o4</span>
           </motion.h2>
 
           <motion.p
@@ -214,8 +197,8 @@ export function Testimonials() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-body text-lg max-w-lg mx-auto"
           >
-            The founders, executives, and teams who've partnered with us to
-            achieve results that matter.
+            Real quotes from product and operations leaders we have worked with—
+            focused on delivery, clarity, and outcomes you can verify.
           </motion.p>
         </div>
 
@@ -312,11 +295,15 @@ export function Testimonials() {
                   {/* Author */}
                   <div className="flex items-center gap-4">
                     <div className="relative">
-                      <img
-                        src={active.avatar}
-                        alt={active.author}
-                        className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md"
-                      />
+                      <div
+                        className="w-14 h-14 rounded-full border-2 border-white shadow-md flex items-center justify-center font-heading font-bold text-white text-sm"
+                        style={{
+                          background: `linear-gradient(135deg, ${active.accent}, ${active.accent}99)`,
+                        }}
+                        aria-label={active.author}
+                      >
+                        {active.logoAbbr}
+                      </div>
                       <div
                         className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white"
                         style={{ backgroundColor: active.accent }}

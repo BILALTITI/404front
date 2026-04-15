@@ -4,119 +4,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-import cashtics from "../images/cashtics.jpeg";
-import Sooquk from "../images/Sooquk.jpeg";
-import okal from "../images/okal.jpeg";
-import Lastonewin from "../images/Lastonewin.jpeg";
-import LMS from "../images/LMS.png";
-import CMS from "../images/CMS.jpeg";
-import Breshta from "../images/Breshta.jpeg";
-const INITIAL_VISIBLE = 6;
+import { PROJECTS } from "../data/projects";
 
-const projects = [
-  {
-    id: 1,
-    number: "01",
-    title: "Cashtics",
-    subtitle: "Freelance Economy",
-    category: "Web Application",
-    description:
-      "A freelance task marketplace connecting individuals who want to earn with businesses that need work done — built from scratch and scaled on AWS to handle massive concurrent demand.",
-    result: "5,000 Active users & 4,000+ tasks completed",
-    image: cashtics,
-    link: "https://cashtics.com/",
-    accent: "#ff6b00",
-    year: "2025",
-    tags: ["php Laravel", "Vue.js", "AWS"],
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Sooquk",
-    subtitle: "Jordanian E-Commerce",
-    category: "Marketplace",
-    description:
-      "A regional e-commerce platform connecting buyers and sellers across fashion, beauty, and lifestyle — optimized with CDN and region-aware deployment for lightning-fast performance.",
-    result: "3,000+ user visits & rapid vendor growth",
-    image: Sooquk,
-    link: "https://sooquk.com/",
-    accent: "#ff8c3a",
-    year: "2025",
-    tags: ["ASP.NET Core", "Next.js", "React Native"],
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "Barber",
-    subtitle: "Smart Booking Experience",
-    category: "Booking System",
-    description:
-      "A full-featured appointment and management system for a kids' barber shop — covering bookings, email reminders, coupons, ticketing, and parent-friendly UI/UX from the ground up.",
-    result: "100+ kids booked in early launch",
-    image: okal,
-    link: "https://okalforheroes.com/",
-    accent: "#ffa556",
-    year: "2026",
-    tags: ["ASP.NET MVC", "MonsterASP", "UX Design"],
-  },
-  {
-    id: 4,
-    number: "04",
-    title: "Breshta",
-    subtitle: "Loyalty & Rewards",
-    category: "Gamification Platform",
-    description:
-      "A deals and loyalty platform with real-time notifications, daily rewards, birthday gifts, and a spinning wheel — designed to keep users engaged and coming back every day.",
-    result: "3,500+ active users",
-    image: Breshta,
-    accent: "#ff6b00",
-    year: "2026",
-    tags: ["ASP.NET Core", "React Native", "Azure"],
-  },
-  {
-    id: 5,
-    number: "05",
-    title: "LastOneWin",
-    subtitle: "Real-Time Competition",
-    category: "Interactive Game",
-    description:
-      "A high-stakes real-time game where the last player with their hand on the screen wins a prize — engineered to handle thousands of live players with seamless room and session management.",
-    result: "3,000 concurrent live players",
-    image: Lastonewin,
-    accent: "#ff8c3a",
-    year: "2026",
-    tags: ["ASP.NET Core", "React Native", "Azure"],
-  },
-  {
-    id: 6,
-    number: "06",
-    title: "ILern",
-    subtitle: "E-Learning Platform",
-    category: "EdTech",
-    description:
-      "A complete learning management system handling courses, instructors, student enrollments, certifications, and admin workflows — built for a smooth and secure learning journey.",
-    result: "800+ students with daily active classes",
-    image: LMS,
-    accent: "#ff6b00",
-    year: "2025",
-    tags: ["ASP.NET MVC", "SQL Server", "LMS"],
-  },  {
-   id: 7,
-  number: "07",
-  title: "Medical Care System",
-  subtitle: "Clinical Management",
-  category: "Desktop Application",
-  description:
-    "A comprehensive medical management system handling patient records, appointments, billing, and doctor-patient workflows — built from scratch with precision-critical accuracy at its core.",
-  result: "1,000+ patients managed",
-  image: CMS, // replace with your actual clinical image import
-  link: "", // no public URL — will show "Get in Touch" CTA
-  accent: "#ff8c3a",
-  year: "2025",
-  tags: [".NET Framework", "SQL Server", "Healthcare"],
+const projects = PROJECTS;
 
-  },
-];
+const INITIAL_VISIBLE = 9;
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -135,7 +27,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
         <Image
           src={project.image}
-          alt={project.title}
+          alt={project.imageAlt}
           fill
           className="object-cover transition-transform duration-700 ease-out"
           style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
@@ -275,7 +167,7 @@ function FocusModal({
         <div className="relative aspect-[21/9] overflow-hidden bg-gray-100">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={project.imageAlt}
             fill
             className="object-cover"
             sizes="(max-width: 1280px) 100vw, 1280px"
@@ -369,12 +261,24 @@ function FocusModal({
                 onClose();
               }}
             >
-              <span>Get in Touch</span>
+              <span>Visit live site</span>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </a>
-          ) : null}
+          ) : (
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold text-white transition-transform hover:scale-105"
+              style={{ backgroundColor: project.accent }}
+              onClick={() => onClose()}
+            >
+              <span>Ask about this build</span>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          )}
         </div>
       </motion.div>
     </motion.div>
@@ -416,7 +320,7 @@ export function Projects() {
               transition={{ duration: 2, repeat: Infinity }}
             />
             <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-              Featured Work
+              Web & mobile portfolio
             </span>
           </motion.div>
 
@@ -427,9 +331,10 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Selected{" "}
-            <span className="gradient-text" data-text="Projects">
-              Projects
+            Web & mobile apps
+            <br />
+            <span className="gradient-text" data-text="Built for real teams">
+              built for real teams
             </span>
           </motion.h2>
 
@@ -440,8 +345,9 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A curated showcase of digital products we've crafted for forward-thinking brands.
-            Click any project to explore the full story.
+            A selection from <strong className="font-semibold text-gray-800">20+</strong> shipped
+            builds—marketplaces, internal tools, mobile apps, and automation. Open a
+            card for scope and stack; public links open in a new tab when available.
           </motion.p>
         </div>
 
@@ -482,13 +388,7 @@ export function Projects() {
               onClick={() => setShowAll((prev) => !prev)}
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-orange-500 text-white font-heading font-semibold hover:bg-orange-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-200"
             >
-              <span>
-                {showAll
-                  ? "Show Less"
-                  : `Show More Projects `}
-              </span>
-                          <br/>
-
+              <span>{showAll ? "Show less" : "Show more projects"}</span>
               <motion.svg
                 className="w-4 h-4"
                 viewBox="0 0 24 24"
@@ -502,14 +402,12 @@ export function Projects() {
               </motion.svg>
             </button>
           )}
-            <br/>
 
           <a
             href="#contact"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
-            <br/>
-             <span>Start Your Project</span>
+            <span>Start your project</span>
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>

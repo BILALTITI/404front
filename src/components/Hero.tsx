@@ -7,8 +7,12 @@ import {
   useMotionValue,
   useSpring,
 } from "motion/react";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useCallback } from "react";
+import Image from "next/image";
 import { GhostCodeBackground } from "./GhostCodeBackground";
+
+const HERO_BACKGROUND_SRC =
+  "https://framerusercontent.com/images/tc4IY5GwaSnaAH9NzSPU11ALg.webp?width=5760&height=3912";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -46,26 +50,48 @@ export function Hero() {
   const glowX = useTransform(smoothX, [-1, 1], [-20, 20]);
   const glowY = useTransform(smoothY, [-1, 1], [-15, 15]);
 
-  const HEADLINE_WORDS = ["We", "Build", "Digital", "Futures"];
+  const HEADLINE_WORDS = ["Custom", "Software", "For", "Growth"];
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col overflow-hidden bg-white"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-[#faf8f5]"
       id="hero"
       onMouseMove={handleMouseMove}
     >
+      {/* ─── Photo background (responsive, behind headline) ─── */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={HERO_BACKGROUND_SRC}
+          alt="Warm abstract gradient background behind the 4o4 hero"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[75%_100%] sm:object-[85%_100%] md:object-right-bottom"
+          quality={100}
+        />
+        {/* Keeps left/center text readable on warm waves */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-white via-white/88 to-white/25 sm:from-white sm:via-white/80 sm:to-transparent md:from-white/95 md:via-white/55 md:to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/30 sm:from-white/20"
+          aria-hidden
+        />
+      </div>
+
       {/* ─── DEEP LAYER: Ghost Code + Ambient ─── */}
-      <motion.div className="absolute inset-0" style={{ x: bgX, y: bgY }}>
+      <motion.div className="absolute inset-0 z-[1]" style={{ x: bgX, y: bgY }}>
         <GhostCodeBackground />
       </motion.div>
 
       {/* Grid pattern (deep) */}
-      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="absolute inset-0 z-[1] grid-pattern opacity-30" />
 
       {/* ─── GLOW LAYER: Behind "Digital Futures" ─── */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] pointer-events-none z-[2]"
         style={{ x: glowX, y: glowY }}
       >
         <motion.div
@@ -116,7 +142,7 @@ export function Hero() {
                 animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              Digital Excellence
+              Software studio · Since 2025
             </span>
             <motion.span
               className="w-16 h-px"
@@ -133,8 +159,8 @@ export function Hero() {
           {/* ─── HERO HEADLINE ─── */}
           <h1 className="font-display font-bold tracking-tight text-gray-950 mb-8 leading-[0.95]">
             {HEADLINE_WORDS.map((word, i) => {
-              const isOrange = word === "Digital" || word === "Futures";
-              const isLarge = word === "Digital" || word === "Futures";
+              const isOrange = word === "Software" || word === "Growth";
+              const isLarge = word === "Software" || word === "Growth";
               return (
                 <motion.span
                   key={word}
@@ -169,7 +195,7 @@ export function Hero() {
                     <span className="text-gray-900">{word}</span>
                   )}
                   {/* Animated underline on "Futures" */}
-                  {word === "Futures" && (
+                  {word === "Growth" && (
                     <>
                       <motion.svg
                         className="absolute -bottom-2 left-0 w-full overflow-visible"
@@ -236,11 +262,12 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-xl mx-auto text-lg sm:text-xl text-gray-500 font-body mb-14 leading-relaxed"
           >
-            A forward-thinking digital agency crafting{" "}
+            <strong className="font-semibold text-gray-800">4o4</strong> is a
+            startup software team in Amman building{" "}
             <em className="not-italic text-gray-800 font-medium">
-              cinematic websites, apps, and experiences
+              web apps, mobile apps, and workflow automation
             </em>{" "}
-            that transform ideas into unforgettable realities.
+            for founders and growing companies across Jordan and the MENA region.
           </motion.p>
 
           {/* ─── CTA BUTTONS (Enhanced) ─── */}
@@ -248,7 +275,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4"
           >
             {/* Primary CTA: magnetic glow button */}
             <motion.a
@@ -274,7 +301,7 @@ export function Hero() {
                 transition={{ duration: 0.3 }}
               />
               <span className="relative flex items-center gap-3">
-                Explore Our Work
+                View selected work
               </span>
             </motion.a>
 
@@ -286,7 +313,7 @@ export function Hero() {
               whileTap={{ scale: 0.97 }}
             >
               <span className="flex items-center gap-2">
-                Our Services
+                Software services
                 <svg
                   className="w-4 h-4 group-hover:rotate-45 transition-transform duration-300"
                   viewBox="0 0 24 24"
@@ -298,12 +325,32 @@ export function Hero() {
                 </svg>
               </span>
             </motion.a>
+
+            <motion.a
+              href="#contact"
+              className="group px-9 py-4 rounded-full border-2 border-transparent text-gray-700 font-heading font-semibold bg-white/80 hover:border-orange-400 hover:text-orange-600 transition-all duration-300 shadow-sm"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <span className="flex items-center gap-2">
+                Book a discovery call
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2A19.77 19.77 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 10.91a16 16 0 007.17 7.17l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                </svg>
+              </span>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
 
       {/* ─── Corner accent labels ─── */}
-     
+
       <div className="absolute bottom-10 right-8 hidden lg:block z-10">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -312,7 +359,7 @@ export function Hero() {
           className="flex items-center gap-2"
         >
           <span className="font-heading text-[10px] text-gray-300 tracking-widest uppercase">
-            Digital Agency
+            4o4 · Software development
           </span>
           <span className="w-8 h-px bg-orange-400/40" />
         </motion.div>

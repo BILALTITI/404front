@@ -13,61 +13,61 @@ const services = [
   {
     id: 1,
     number: "01",
-    title: "Web Development",
-    subtitle: "Ship Fast. Scale Harder.",
+    title: "Web development",
+    subtitle: "Custom web applications",
     description:
-      "We don't build websites. We build revenue engines. From high-conversion landing pages to complex SaaS platforms — every line of code is intentional, every interaction is earned.",
-    features: ["Custom Web Apps", "E-Commerce", "CMS Solutions", "API Development"],
+      "From marketing sites to internal tools and multi-tenant SaaS—we design APIs, permissions, and frontends you can evolve. MVPs ship with room to grow, not throwaway code.",
+    features: ["SPA & SSR apps", "E‑commerce", "REST / GraphQL APIs", "CMS integration"],
     icon: "⬡",
   },
   {
     id: 2,
     number: "02",
-    title: "Mobile Apps",
-    subtitle: "Pocket-Sized. Power-Packed.",
+    title: "Mobile apps",
+    subtitle: "iOS, Android & cross‑platform",
     description:
-      "Your users live on their phones. We meet them there. Native iOS & Android or cross-platform React Native — apps that feel inevitable, not engineered.",
-    features: ["iOS Development", "Android Apps", "Cross-Platform", "App Store Optimization"],
+      "We build apps where your users already are: native or cross‑platform (e.g. React Native), store-ready builds, and integrations with your existing backend and auth.",
+    features: ["React Native", "App Store releases", "Push & offline", "Secure APIs"],
     icon: "◈",
   },
   {
     id: 3,
     number: "03",
-    title: "UI/UX Design",
-    subtitle: "Beauty That Converts.",
+    title: "UI / UX design",
+    subtitle: "Product‑led interfaces",
     description:
-      "Design is not decoration — it's strategy made visible. We craft interfaces so intuitive that users don't notice them. They just achieve what they came to do.",
-    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+      "Interfaces that match how people work—flows, components, and design systems that keep design and engineering aligned from prototype to production.",
+    features: ["User flows", "Wireframes", "Design systems", "Handoff to dev"],
     icon: "◎",
   },
   {
     id: 4,
     number: "04",
-    title: "Brand Strategy",
-    subtitle: "Identity That Sticks.",
+    title: "Brand & product identity",
+    subtitle: "Clear positioning",
     description:
-      "A great product with a weak brand is an invisible product. We build identities that make you unmistakable — from the very first impression to the hundredth interaction.",
-    features: ["Brand Identity", "Logo Design", "Style Guides", "Brand Voice"],
+      "For startups, brand is how users trust you before the first deploy. We help you define voice, visual basics, and in‑product patterns that stay consistent as you scale.",
+    features: ["Visual direction", "Logo & UI kit", "Tone & messaging", "Launch assets"],
     icon: "◇",
   },
   {
     id: 5,
     number: "05",
-    title: "Cloud Solutions",
-    subtitle: "Infrastructure That Never Sleeps.",
+    title: "Cloud & DevOps",
+    subtitle: "Right‑sized infrastructure",
     description:
-      "Whether you're serving 10 users or 10,000 simultaneously — we architect cloud systems on AWS and Azure that scale on demand and stay up when it matters most.",
-    features: ["Cloud Migration", "DevOps", "Serverless", "Microservices"],
+      "We deploy to AWS or Azure with environments, CI/CD, and monitoring suited to your stage—no oversized clusters for day one; room to scale when traffic proves it.",
+    features: ["Hosting setup", "CI/CD", "Observability", "Security basics"],
     icon: "⬟",
   },
   {
     id: 6,
     number: "06",
-    title: "N8N Automation",
-    subtitle: "Work Smarter. Not Harder.",
+    title: "Workflow automation (n8n)",
+    subtitle: "Connect your stack",
     description:
-      "Manual workflows are a tax on your team's potential. We build N8N automations that connect your tools, eliminate repetition, and free your people for the work that actually matters.",
-    features: ["Workflow Automation", "App Integrations", "Custom Connectors", "Data Sync"],
+      "Replace manual handoffs between CRMs, sheets, and email with reliable n8n workflows—documented, testable, and owned by your team when the integration is live.",
+    features: ["n8n flows", "Third‑party APIs", "Retries & alerts", "Data sync"],
     icon: "⬟",
   },
 ];
@@ -300,7 +300,7 @@ export function Services() {
             >
               <span className="w-10 h-px bg-orange-500" />
               <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-                What We Do
+                Software development services
               </span>
             </motion.div>
 
@@ -315,9 +315,9 @@ export function Services() {
               className="font-display font-bold text-gray-950 leading-[1.05] mb-6"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
             >
-              Capability
+              Web, mobile
               <br />
-              <span className="gradient-text">Engines</span>
+              <span className="gradient-text">& automation</span>
             </motion.h2>
 
             <motion.p
@@ -326,8 +326,9 @@ export function Services() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-gray-500 font-body text-lg max-w-xl leading-relaxed"
             >
-              End-to-end digital solutions designed to elevate your brand,
-              captivate your audience, and compound your growth.
+              End‑to‑end support for startups and SMBs: discovery, design,
+              implementation, and launch—with honest timelines and a bias for
+              maintainable software.
             </motion.p>
           </div>
         </div>
@@ -352,10 +353,11 @@ export function Services() {
         >
           <div>
             <p className="font-display text-xl font-bold text-gray-900 mb-1">
-              Need something bespoke?
+              Need a scoped proposal?
             </p>
             <p className="font-body text-gray-500">
-              Let's build something that doesn't exist yet.
+              Book a 30‑minute discovery call—we will map scope, risks, and a
+              sensible first milestone.
             </p>
           </div>
           <motion.a
@@ -371,7 +373,7 @@ export function Services() {
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             />
             <span className="relative flex items-center gap-2">
-              Get Custom Quote
+              Book discovery call
               <svg
                 className="w-4 h-4"
                 viewBox="0 0 24 24"

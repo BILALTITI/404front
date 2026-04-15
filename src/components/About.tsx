@@ -6,31 +6,31 @@ import { useRef } from "react";
 const values = [
   {
     number: "01",
-    title: "Innovation",
-    desc: "Pushing the boundaries of what digital can be",
+    title: "Clarity",
+    desc: "Requirements you can plan around—no mystery scope",
   },
   {
     number: "02",
-    title: "Quality",
-    desc: "Pixel-perfect delivery, zero compromises",
+    title: "Craft",
+    desc: "Clean code, thoughtful UX, maintainable releases",
   },
   {
     number: "03",
     title: "Partnership",
-    desc: "Long-term success over short-term gains",
+    desc: "We work alongside your team, not in a black box",
   },
   {
     number: "04",
-    title: "Results",
-    desc: "Measurable impact on your bottom line",
+    title: "Momentum",
+    desc: "Shipping in iterations so you learn and improve fast",
   },
 ];
 
 const stats = [
-  { value: "150+", label: "Projects" },
-  { value: "12+", label: "Years" },
-  { value: "50+", label: "Experts" },
-  { value: "98%", label: "Satisfaction" },
+  { value: "20+", label: "Shipped projects" },
+  { value: "2025", label: "Founded" },
+  { value: "Small", label: "Focused team" },
+  { value: "MENA", label: "Primary region" },
 ];
 
 export function About() {
@@ -80,7 +80,7 @@ export function About() {
             >
               <span className="w-10 h-px bg-orange-500" />
               <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-                About Us
+                About 4o4
               </span>
             </motion.div>
 
@@ -95,13 +95,13 @@ export function About() {
               className="font-display font-bold text-gray-950 leading-[1.05] mb-7"
               style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
             >
-              We're not just
+              A software startup
               <br />
-              <span className="gradient-text">developers</span>—
+              <span className="gradient-text">shipping products</span>
               <br />
-              we're digital
+              since 2025
               <br />
-              architects.
+              from Amman.
             </motion.h2>
 
             <motion.p
@@ -110,10 +110,12 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-gray-500 font-body text-lg leading-relaxed mb-5"
             >
-              At 4O4 Solutions, we believe exceptional digital experiences are
-              born from the perfect blend of strategy, creativity, and technical
-              mastery. Since 2014, we've been transforming bold ideas into
-              digital realities that drive growth.
+              <strong className="font-semibold text-gray-700">4o4</strong>{" "}
+              builds custom web applications, mobile apps, and automation for
+              teams that need reliable delivery without enterprise overhead. We
+              started in 2025 with a simple focus: clear scopes, steady
+              communication, and software you can run in production with
+              confidence.
             </motion.p>
 
             <motion.p
@@ -122,9 +124,17 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-gray-500 font-body text-lg leading-relaxed mb-12"
             >
-              Our team of designers, engineers, and strategists work as an
-              extension of your team — bringing passion and precision to every
-              pixel.
+              Our compact team of designers and engineers works as an extension
+              of yours—whether you are validating an MVP or replacing a fragile
+              spreadsheet with a real system. See{" "}
+              <a href="#work" className="text-orange-600 font-medium hover:underline">
+                selected projects
+              </a>{" "}
+              or{" "}
+              <a href="#contact" className="text-orange-600 font-medium hover:underline">
+                tell us what you are building
+              </a>
+              .
             </motion.p>
 
             {/* Values */}
@@ -165,7 +175,7 @@ export function About() {
                 whileHover={{ x: 0 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               />
-              <span className="relative">Work With Us</span>
+              <span className="relative">Plan a project with 4o4</span>
               <svg
                 className="relative w-4 h-4 group-hover:translate-x-1 transition-transform"
                 viewBox="0 0 24 24"
@@ -236,7 +246,7 @@ export function About() {
                   }}
                 >
                   <span className="font-display text-2xl font-bold text-white">
-                    4O4
+                    4o4
                   </span>
                 </motion.div>
 
@@ -257,25 +267,25 @@ export function About() {
                   <div className="font-mono text-sm space-y-1.5">
                     <p>
                       <span className="text-orange-400">const</span>{" "}
-                      <span className="text-blue-300">agency</span>
+                      <span className="text-blue-300">fourOfour</span>
                       <span className="text-white/60"> = {"{"}</span>
                     </p>
                     <p className="pl-4">
-                      <span className="text-green-300">quality</span>
+                      <span className="text-green-300">focus</span>
                       <span className="text-white/60">: </span>
-                      <span className="text-orange-300">"obsessed"</span>
+                      <span className="text-orange-300">"shipping"</span>
                       <span className="text-white/60">,</span>
                     </p>
                     <p className="pl-4">
-                      <span className="text-green-300">clients</span>
+                      <span className="text-green-300">projects</span>
                       <span className="text-white/60">: </span>
-                      <span className="text-orange-300">"150+"</span>
+                      <span className="text-orange-300">"20+"</span>
                       <span className="text-white/60">,</span>
                     </p>
                     <p className="pl-4">
-                      <span className="text-green-300">mindset</span>
+                      <span className="text-green-300">since</span>
                       <span className="text-white/60">: </span>
-                      <span className="text-orange-300">"future-first"</span>
+                      <span className="text-orange-300">2025</span>
                     </p>
                     <p>
                       <span className="text-white/60">{"}"}</span>

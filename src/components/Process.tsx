@@ -8,36 +8,36 @@ const steps = [
     number: "01",
     title: "Discovery",
     description:
-      "We dive deep into your business goals, target audience, and competitive landscape to build a comprehensive project strategy.",
-    duration: "1–2 weeks",
-    deliverables: ["Research Report", "Strategy Brief", "Project Roadmap"],
+      "We align on goals, users, constraints, and success metrics—so scope, budget, and timeline match what you actually need.",
+    duration: "3–10 days",
+    deliverables: ["Problem brief", "Scope & milestones", "Risk notes"],
     accent: "#ff6b00",
   },
   {
     number: "02",
     title: "Design",
     description:
-      "Our designers craft breathtaking visual concepts, prototypes, and user experiences that align perfectly with your brand vision.",
-    duration: "2–4 weeks",
-    deliverables: ["Wireframes", "UI Designs", "Interactive Prototype"],
+      "Wireframes and UI that your team can review early—fewer surprises when we implement, faster feedback loops.",
+    duration: "1–3 weeks",
+    deliverables: ["Flows & wireframes", "UI screens", "Clickable prototype"],
     accent: "#ff8c3a",
   },
   {
     number: "03",
     title: "Development",
     description:
-      "We bring designs to life with clean, scalable code using cutting-edge technologies and industry best practices.",
-    duration: "4–8 weeks",
-    deliverables: ["Frontend Build", "Backend API", "CMS Integration"],
+      "Iterative builds with visible progress: APIs, frontends or apps, automated checks, and demos on a cadence you can plan around.",
+    duration: "3–10 weeks",
+    deliverables: ["Sprint demos", "Staging environment", "Technical docs"],
     accent: "#ffa556",
   },
   {
     number: "04",
     title: "Launch",
     description:
-      "After rigorous testing and optimization, we deploy your project with comprehensive support and continuous monitoring.",
-    duration: "1–2 weeks",
-    deliverables: ["Quality Assurance", "Deployment", "Training"],
+      "Hardening, deployment, handover, and a short stabilization window—so your team owns the system with confidence.",
+    duration: "3–14 days",
+    deliverables: ["Release checklist", "Production deploy", "Handover session"],
     accent: "#ff6b00",
   },
 ];
@@ -207,8 +207,9 @@ export function Process() {
               transition={{ delay: 0.2 }}
               className="font-body text-gray-400 text-lg leading-relaxed max-w-md mb-10"
             >
-              Our battle-tested 4-phase process ensures every project is
-              delivered on time, on budget, and above expectations.
+              A transparent four‑phase process—clear milestones, weekly or
+              bi‑weekly demos on most builds, and documentation you can hand to
+              your own team.
             </motion.p>
 
             {/* Metrics */}
@@ -219,8 +220,8 @@ export function Process() {
               className="flex gap-8"
             >
               {[
-                { v: "8–16", l: "Weeks avg." },
-                { v: "100%", l: "On-time delivery" },
+                { v: "4–12", l: "Weeks typical MVP" },
+                { v: "Weekly", l: "Demos when active" },
               ].map((m) => (
                 <div key={m.l}>
                   <div className="font-display text-3xl font-bold gradient-text">{m.v}</div>

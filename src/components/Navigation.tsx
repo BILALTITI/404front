@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,23 +42,43 @@ export function Navigation() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex items-center justify-between">
-          <motion.a
-            href="#"
-            className="relative group flex items-center gap-3"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
+        <div className="flex items-center justify-between gap-6">
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/#hero"
+              className="relative group flex items-center gap-3 shrink-0"
+            >
+              <span className="font-display text-2xl font-bold tracking-tight">
+                <span className="text-gray-900">4</span>
+                <span className="text-orange-500">o</span>
+                <span className="text-gray-900">4</span>
+              </span>
+              <span className="font-heading text-sm font-medium text-gray-400 hidden sm:block tracking-wider">
+                Solutions
+              </span>
+            </Link>
+          </motion.div>
+
+          <nav
+            className="hidden lg:flex items-center gap-8 font-heading text-sm font-medium text-gray-600"
+            aria-label="Primary"
           >
-            <span className="font-display text-2xl font-bold tracking-tight">
-              <span className="text-gray-900">4</span>
-              <span className="text-orange-500">O</span>
-              <span className="text-gray-900">4</span>
-            </span>
-            <span className="font-heading text-sm font-medium text-gray-400 hidden sm:block tracking-wider">
-              Solutions
-            </span>
-           
-          </motion.a>
+            <a href="#work" className="hover:text-orange-600 transition-colors">
+              Work
+            </a>
+            <a href="#about" className="hover:text-orange-600 transition-colors">
+              About
+            </a>
+            <a href="#services" className="hover:text-orange-600 transition-colors">
+              Services
+            </a>
+            <a href="#process" className="hover:text-orange-600 transition-colors">
+              Process
+            </a>
+            <a href="#testimonials" className="hover:text-orange-600 transition-colors">
+              Stories
+            </a>
+          </nav>
 
           <motion.a
             href="#contact"
