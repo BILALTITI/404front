@@ -9,16 +9,12 @@ import { PROJECTS } from "../data/projects";
 const projects = PROJECTS;
 
 const INITIAL_VISIBLE = 6;
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.article
       className="group relative overflow-hidden rounded-2xl bg-white border border-gray-100 cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -309,16 +305,12 @@ export function Projects() {
         <div className="mb-16">
           <motion.div
             className="flex items-center gap-3 mb-6"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.span
-              className="w-2 h-2 rounded-full bg-orange-500"
-              animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            <span className="w-2 h-2 rounded-full bg-orange-500" aria-hidden />
             <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
               Web & mobile portfolio
             </span>
@@ -326,10 +318,10 @@ export function Projects() {
 
           <motion.h2
             className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-950 mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
+            transition={{ duration: 0.45, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
           >
             Web & mobile apps
             <br />
@@ -340,10 +332,10 @@ export function Projects() {
 
           <motion.p
             className="text-gray-600 font-body text-lg max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
+            transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
             A selection from <strong className="font-semibold text-gray-800">20+</strong> shipped
             builds—marketplaces, internal tools, mobile apps, and automation. Open a
@@ -357,18 +349,21 @@ export function Projects() {
             {visibleProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                layout
-                initial={{ opacity: 0, y: 24, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 16, scale: 0.97 }}
+                layout={false}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
                 transition={{
-                  duration: 0.4,
-                  delay: index >= INITIAL_VISIBLE ? (index - INITIAL_VISIBLE) * 0.08 : 0,
+                  duration: 0.35,
+                  delay:
+                    index >= INITIAL_VISIBLE
+                      ? (index - INITIAL_VISIBLE) * 0.06
+                      : Math.min(index * 0.05, 0.25),
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 onClick={() => setFocusedProject(project)}
               >
-                <ProjectCard project={project} index={index} />
+                <ProjectCard project={project} />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -377,10 +372,10 @@ export function Projects() {
         {/* Show more + CTA row */}
         <motion.div
           className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           {hasMore && (
             <button

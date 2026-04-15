@@ -1,24 +1,15 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const { scrollY } = useScroll();
-
-  const navBg = useTransform(
-    scrollY,
-    [0, 80],
-    ["rgba(255,255,255,0)", "rgba(255,255,255,0.82)"],
-  );
-  const navBorderOpacity = useTransform(scrollY, [0, 80], [0, 1]);
-  const navBlur = useTransform(scrollY, [0, 80], [0, 24]);
-  const navPy = useTransform(scrollY, [0, 80], [28, 14]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 48);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -28,17 +19,20 @@ export function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{ paddingTop: navPy, paddingBottom: navPy }}
+      className={[
+        "fixed top-0 left-0 right-0 z-50 transition-[padding] duration-300 ease-out",
+        scrolled ? "py-3.5" : "py-7",
+      ].join(" ")}
     >
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          backgroundColor: navBg,
-          backdropFilter: `blur(${navBlur}px)`,
-          WebkitBackdropFilter: `blur(${navBlur}px)`,
-          borderBottom: `1px solid rgba(0,0,0,${navBorderOpacity.get() * 0.05})`,
-        }}
+      {/* CSS transitions only — avoids per-frame backdrop-filter + layout from Motion scroll values */}
+      <div
+        className={[
+          "pointer-events-none absolute inset-0 -z-10 transition-[background-color,box-shadow,backdrop-filter,border-color] duration-300 ease-out",
+          scrolled
+            ? "border-b border-black/[0.06] bg-white/85 shadow-sm backdrop-blur-md backdrop-saturate-150"
+            : "border-b border-transparent bg-transparent",
+        ].join(" ")}
+        aria-hidden
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
