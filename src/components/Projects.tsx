@@ -3,13 +3,24 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
-import { PROJECTS } from "../data/projects";
+import { PROJECT_META, type PortfolioProjectMeta } from "../data/projects";
 
-const projects = PROJECTS;
+type ProjectCopy = {
+  title: string;
+  subtitle: string;
+  category: string;
+  description: string;
+  result: string;
+  imageAlt: string;
+};
+
+type ProjectUi = PortfolioProjectMeta & ProjectCopy;
 
 const INITIAL_VISIBLE = 6;
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+
+function ProjectCard({ project }: { project: ProjectUi }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -19,7 +30,6 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      {/* Image container */}
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
         <Image
           src={project.image}
@@ -30,17 +40,15 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-gray-950/20 to-transparent" />
-        
-        {/* Number overlay */}
+
         <div
-          className="absolute top-4 right-4 font-display text-6xl font-bold leading-none opacity-20 select-none"
+          className="absolute top-4 end-4 font-display text-6xl font-bold leading-none opacity-20 select-none"
           style={{ color: project.accent }}
         >
           {project.number}
         </div>
 
-        {/* Category badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 start-4">
           <span
             className="px-3 py-1.5 rounded-full font-heading text-[10px] font-bold tracking-wider uppercase backdrop-blur-md"
             style={{
@@ -54,32 +62,29 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-6">
-        {/* Title */}
         <h3 className="font-display text-2xl font-bold text-gray-950 mb-2 group-hover:text-orange-600 transition-colors">
           {project.title}
         </h3>
 
-        {/* Subtitle */}
         <p className="font-heading text-xs font-semibold tracking-wider uppercase text-gray-400 mb-3">
           {project.subtitle}
         </p>
 
-        {/* Description */}
         <p className="text-gray-600 font-body text-sm leading-relaxed mb-4 line-clamp-2">
           {project.description}
         </p>
 
-        {/* Result metric */}
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-1 h-8 rounded-full" style={{ backgroundColor: project.accent }} />
+          <div
+            className="w-1 h-8 rounded-full"
+            style={{ backgroundColor: project.accent }}
+          />
           <span className="font-heading text-xs font-semibold text-gray-500">
             {project.result}
           </span>
         </div>
 
-        {/* Footer: Tags + Year */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
           <div className="flex gap-1.5">
             {project.tags.slice(0, 2).map((tag) => (
@@ -91,13 +96,14 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
               </span>
             ))}
           </div>
-          <span className="font-heading text-[10px] text-gray-400 tracking-wider">{project.year}</span>
+          <span className="font-heading text-[10px] text-gray-400 tracking-wider">
+            {project.year}
+          </span>
         </div>
       </div>
 
-      {/* Hover indicator */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-1"
+        className="absolute bottom-0 start-0 end-0 h-1 origin-start rtl:origin-end"
         style={{ backgroundColor: project.accent }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: isHovered ? 1 : 0 }}
@@ -111,9 +117,11 @@ function FocusModal({
   project,
   onClose,
 }: {
-  project: (typeof projects)[0];
+  project: ProjectUi;
   onClose: () => void;
 }) {
+  const t = useTranslations("projects");
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -130,7 +138,6 @@ function FocusModal({
       transition={{ duration: 0.3 }}
       onClick={onClose}
     >
-      {/* Backdrop */}
       <motion.div
         className="absolute inset-0 bg-gray-950/80 backdrop-blur-xl"
         initial={{ opacity: 0 }}
@@ -138,7 +145,6 @@ function FocusModal({
         exit={{ opacity: 0 }}
       />
 
-      {/* Modal content */}
       <motion.div
         className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl"
         initial={{ scale: 0.9, y: 20 }}
@@ -147,19 +153,23 @@ function FocusModal({
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
-          aria-label="Close"
+          className="absolute top-6 end-6 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+          aria-label={t("close")}
         >
-          <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            className="w-5 h-5 text-gray-600"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        {/* Hero image */}
         <div className="relative aspect-[21/9] overflow-hidden bg-gray-100">
           <Image
             src={project.image}
@@ -170,22 +180,19 @@ function FocusModal({
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950/40 via-transparent to-transparent" />
-          
-          {/* Floating number */}
+
           <div
-            className="absolute bottom-8 right-8 font-display text-9xl font-bold leading-none opacity-10 select-none"
+            className="absolute bottom-8 end-8 font-display text-9xl font-bold leading-none opacity-10 select-none"
             style={{ color: project.accent }}
           >
             {project.number}
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-8 sm:p-12">
-          {/* Header */}
           <div className="flex items-start justify-between gap-6 mb-8">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
                 <span
                   className="px-4 py-2 rounded-full font-heading text-xs font-bold tracking-wider uppercase"
                   style={{
@@ -200,37 +207,44 @@ function FocusModal({
                   {project.year}
                 </span>
               </div>
-              
-              <p className="font-heading text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: project.accent }}>
+
+              <p
+                className="font-heading text-sm font-semibold tracking-widest uppercase mb-3"
+                style={{ color: project.accent }}
+              >
                 {project.subtitle}
               </p>
-              
+
               <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-950 mb-4">
                 {project.title}
               </h2>
-              
+
               <p className="text-gray-600 font-body text-lg leading-relaxed max-w-2xl">
                 {project.description}
               </p>
             </div>
           </div>
 
-          {/* Result highlight */}
           <div className="mb-8 p-6 rounded-2xl border-2 border-gray-100 bg-gray-50">
             <div className="flex items-center gap-3">
-              <div className="w-1.5 h-12 rounded-full" style={{ backgroundColor: project.accent }} />
+              <div
+                className="w-1.5 h-12 rounded-full"
+                style={{ backgroundColor: project.accent }}
+              />
               <div>
                 <div className="font-heading text-xs text-gray-500 uppercase tracking-wider mb-1">
-                  Key Result
+                  {t("keyResult")}
                 </div>
-                <div className="font-display text-2xl font-bold" style={{ color: project.accent }}>
+                <div
+                  className="font-display text-2xl font-bold"
+                  style={{ color: project.accent }}
+                >
                   {project.result}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
             {project.tags.map((tag) => (
               <span
@@ -242,7 +256,6 @@ function FocusModal({
             ))}
           </div>
 
-          {/* CTA */}
           {project.link ? (
             <a
               href={project.link}
@@ -257,8 +270,14 @@ function FocusModal({
                 onClose();
               }}
             >
-              <span>Visit live site</span>
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <span>{t("visitLive")}</span>
+              <svg
+                className="w-4 h-4 rtl:rotate-180"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </a>
@@ -269,8 +288,14 @@ function FocusModal({
               style={{ backgroundColor: project.accent }}
               onClick={() => onClose()}
             >
-              <span>Ask about this build</span>
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <span>{t("askBuild")}</span>
+              <svg
+                className="w-4 h-4 rtl:rotate-180"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </a>
@@ -282,7 +307,14 @@ function FocusModal({
 }
 
 export function Projects() {
-  const [focusedProject, setFocusedProject] = useState<(typeof projects)[0] | null>(null);
+  const t = useTranslations("projects");
+  const tCommon = useTranslations("common");
+  const projects: ProjectUi[] = PROJECT_META.map((meta) => {
+    const copy = t.raw(`items.${meta.messageKey}`) as ProjectCopy;
+    return { ...meta, ...copy };
+  });
+
+  const [focusedProject, setFocusedProject] = useState<ProjectUi | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_VISIBLE);
@@ -290,7 +322,6 @@ export function Projects() {
 
   return (
     <section id="work" className="relative py-24 sm:py-32 bg-white overflow-hidden">
-      {/* Background elements */}
       <div className="absolute inset-0 grid-pattern opacity-30" />
       <div
         className="absolute inset-0 pointer-events-none"
@@ -301,7 +332,6 @@ export function Projects() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Section header — unchanged */}
         <div className="mb-16">
           <motion.div
             className="flex items-center gap-3 mb-6"
@@ -312,7 +342,7 @@ export function Projects() {
           >
             <span className="w-2 h-2 rounded-full bg-orange-500" aria-hidden />
             <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-              Web & mobile portfolio
+              {t("sectionEyebrow")}
             </span>
           </motion.div>
 
@@ -323,10 +353,10 @@ export function Projects() {
             viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
             transition={{ duration: 0.45, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
           >
-            Web & mobile apps
+            {t("titleLine1")}
             <br />
-            <span className="gradient-text" data-text="Built for real teams">
-              built for real teams
+            <span className="gradient-text" data-text={t("titleGradientData")}>
+              {t("titleGradient")}
             </span>
           </motion.h2>
 
@@ -337,13 +367,10 @@ export function Projects() {
             viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
             transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
-            A selection from <strong className="font-semibold text-gray-800">20+</strong> shipped
-            builds—marketplaces, internal tools, mobile apps, and automation. Open a
-            card for scope and stack; public links open in a new tab when available.
+            {t("intro", { count: tCommon("countShipped") })}
           </motion.p>
         </div>
 
-        {/* Projects grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <AnimatePresence mode="popLayout">
             {visibleProjects.map((project, index) => (
@@ -369,7 +396,6 @@ export function Projects() {
           </AnimatePresence>
         </div>
 
-        {/* Show more + CTA row */}
         <motion.div
           className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 12 }}
@@ -383,7 +409,7 @@ export function Projects() {
               onClick={() => setShowAll((prev) => !prev)}
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-orange-500 text-white font-heading font-semibold hover:bg-orange-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-200"
             >
-              <span>{showAll ? "Show less" : "View more"}</span>
+              <span>{showAll ? t("showLess") : t("viewMore")}</span>
               <motion.svg
                 className="w-4 h-4"
                 viewBox="0 0 24 24"
@@ -402,18 +428,26 @@ export function Projects() {
             href="#contact"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
-            <span>Start your project</span>
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <span>{t("startProject")}</span>
+            <svg
+              className="w-4 h-4 rtl:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </a>
         </motion.div>
       </div>
 
-      {/* Focus modal */}
       <AnimatePresence>
         {focusedProject && (
-          <FocusModal project={focusedProject} onClose={() => setFocusedProject(null)} />
+          <FocusModal
+            project={focusedProject}
+            onClose={() => setFocusedProject(null)}
+          />
         )}
       </AnimatePresence>
     </section>

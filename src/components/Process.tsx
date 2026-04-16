@@ -2,52 +2,23 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
-const steps = [
-  {
-    number: "01",
-    title: "Discovery",
-    description:
-      "We align on goals, users, constraints, and success metrics—so scope, budget, and timeline match what you actually need.",
-    duration: "3–10 days",
-    deliverables: ["Problem brief", "Scope & milestones", "Risk notes"],
-    accent: "#ff6b00",
-  },
-  {
-    number: "02",
-    title: "Design",
-    description:
-      "Wireframes and UI that your team can review early—fewer surprises when we implement, faster feedback loops.",
-    duration: "1–3 weeks",
-    deliverables: ["Flows & wireframes", "UI screens", "Clickable prototype"],
-    accent: "#ff8c3a",
-  },
-  {
-    number: "03",
-    title: "Development",
-    description:
-      "Iterative builds with visible progress: APIs, frontends or apps, automated checks, and demos on a cadence you can plan around.",
-    duration: "3–10 weeks",
-    deliverables: ["Sprint demos", "Staging environment", "Technical docs"],
-    accent: "#ffa556",
-  },
-  {
-    number: "04",
-    title: "Launch",
-    description:
-      "Hardening, deployment, handover, and a short stabilization window—so your team owns the system with confidence.",
-    duration: "3–14 days",
-    deliverables: ["Release checklist", "Production deploy", "Handover session"],
-    accent: "#ff6b00",
-  },
-];
+type ProcessStepCopy = {
+  number: string;
+  title: string;
+  description: string;
+  duration: string;
+  deliverables: string[];
+  accent: string;
+};
 
 function ProcessStep({
   step,
   index,
   total,
 }: {
-  step: (typeof steps)[0];
+  step: ProcessStepCopy;
   index: number;
   total: number;
 }) {
@@ -56,7 +27,6 @@ function ProcessStep({
 
   return (
     <div ref={ref} className="relative flex gap-8 lg:gap-12">
-      {/* Timeline */}
       <div className="flex flex-col items-center flex-shrink-0">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -73,7 +43,7 @@ function ProcessStep({
 
         {index < total - 1 && (
           <motion.div
-            className="flex-1 w-px mt-3"
+            className="relative flex-1 w-px mt-3"
             initial={{ scaleY: 0 }}
             animate={isInView ? { scaleY: 1 } : {}}
             transition={{ duration: 0.9, delay: index * 0.12 + 0.3, ease: "easeOut" }}
@@ -84,7 +54,7 @@ function ProcessStep({
             }}
           >
             <motion.span
-              className="absolute -left-1 w-2.5 h-2.5 rounded-full"
+              className="absolute -start-1 w-2.5 h-2.5 rounded-full"
               style={{ backgroundColor: step.accent }}
               animate={{ y: [0, 52, 0], opacity: [0.35, 1, 0.35] }}
               transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
@@ -93,7 +63,6 @@ function ProcessStep({
         )}
       </div>
 
-      {/* Content */}
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -141,6 +110,8 @@ function ProcessStep({
 }
 
 export function Process() {
+  const t = useTranslations("process");
+  const steps = t.raw("steps") as ProcessStepCopy[];
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
@@ -149,20 +120,18 @@ export function Process() {
       id="process"
       className="relative py-40 overflow-hidden bg-gray-950"
     >
-      {/* Ambient glow */}
       <div
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
+        className="absolute top-0 start-1/4 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)" }}
       />
       <div
-        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-0 end-1/4 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,140,58,0.06) 0%, transparent 70%)" }}
       />
       <div className="absolute inset-0 grid-pattern-light opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left: Header (sticky on desktop) */}
           <div ref={headerRef} className="lg:sticky lg:top-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -171,7 +140,7 @@ export function Process() {
             >
               <span className="w-10 h-px bg-orange-500" />
               <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-500">
-                Our Process
+                {t("eyebrow")}
               </span>
             </motion.div>
 
@@ -182,9 +151,9 @@ export function Process() {
               className="font-display font-bold text-white leading-[1.05] mb-7"
               style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)" }}
             >
-              From vision
+              {t("titleLine1")}
               <br />
-              to{" "}
+              <span className="text-white">{t("to")}</span>{" "}
               <motion.span
                 className="gradient-text inline-block"
                 animate={{
@@ -196,7 +165,7 @@ export function Process() {
                 }}
                 transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
               >
-                reality
+                {t("titleGradient")}
               </motion.span>
               .
             </motion.h2>
@@ -207,31 +176,26 @@ export function Process() {
               transition={{ delay: 0.2 }}
               className="font-body text-gray-400 text-lg leading-relaxed max-w-md mb-10"
             >
-              A transparent four‑phase process—clear milestones, weekly or
-              bi‑weekly demos on most builds, and documentation you can hand to
-              your own team.
+              {t("intro")}
             </motion.p>
 
-            {/* Metrics */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
               className="flex gap-8"
             >
-              {[
-                { v: "4–12", l: "Weeks typical MVP" },
-                { v: "Weekly", l: "Demos when active" },
-              ].map((m) => (
-                <div key={m.l}>
-                  <div className="font-display text-3xl font-bold gradient-text">{m.v}</div>
-                  <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{m.l}</div>
-                </div>
-              ))}
+              <div>
+                <div className="font-display text-3xl font-bold gradient-text">{t("metric1Value")}</div>
+                <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{t("metric1Label")}</div>
+              </div>
+              <div>
+                <div className="font-display text-3xl font-bold gradient-text">{t("metric2Value")}</div>
+                <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{t("metric2Label")}</div>
+              </div>
             </motion.div>
           </div>
 
-          {/* Right: Steps */}
           <div className="pt-4">
             {steps.map((step, i) => (
               <ProcessStep key={step.number} step={step} index={i} total={steps.length} />

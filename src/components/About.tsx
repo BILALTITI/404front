@@ -2,41 +2,19 @@
 
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-
-const values = [
-  {
-    number: "01",
-    title: "Clarity",
-    desc: "Requirements you can plan around—no mystery scope",
-  },
-  {
-    number: "02",
-    title: "Craft",
-    desc: "Clean code, thoughtful UX, maintainable releases",
-  },
-  {
-    number: "03",
-    title: "Partnership",
-    desc: "We work alongside your team, not in a black box",
-  },
-  {
-    number: "04",
-    title: "Momentum",
-    desc: "Shipping in iterations so you learn and improve fast",
-  },
-];
-
-const stats = [
-  { value: "20+", label: "Shipped projects" },
-  { value: "2025", label: "Founded" },
-  { value: "Small", label: "Focused team" },
-  { value: "MENA", label: "Primary region" },
-];
+import { useTranslations } from "next-intl";
 
 export function About() {
+  const t = useTranslations("about");
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headerRef, { once: true, margin: "-100px" });
+  const values = t.raw("values") as {
+    number: string;
+    title: string;
+    desc: string;
+  }[];
+  const stats = t.raw("stats") as { value: string; label: string }[];
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -52,16 +30,15 @@ export function About() {
       ref={sectionRef}
       className="relative py-40 overflow-hidden bg-white"
     >
-      {/* Large background text */}
       <div
-        className="absolute -top-8 left-0 font-display text-[20vw] font-bold text-gray-50 select-none pointer-events-none leading-none whitespace-nowrap"
+        className="absolute -top-8 start-0 font-display text-[20vw] font-bold text-gray-50 select-none pointer-events-none leading-none whitespace-nowrap"
         aria-hidden
       >
-        ABOUT
+        {t("bgWord")}
       </div>
 
       <div
-        className="absolute top-1/3 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/3 end-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%)",
@@ -70,7 +47,6 @@ export function About() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-20 lg:gap-28 items-center">
-          {/* Left: Content */}
           <div ref={headerRef}>
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -80,7 +56,7 @@ export function About() {
             >
               <span className="w-10 h-px bg-orange-500" />
               <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-                About 4o4
+                {t("eyebrow")}
               </span>
             </motion.div>
 
@@ -95,13 +71,13 @@ export function About() {
               className="font-display font-bold text-gray-950 leading-[1.05] mb-7"
               style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
             >
-              A software startup
+              {t("headingLine1")}
               <br />
-              <span className="gradient-text">shipping products</span>
+              <span className="gradient-text">{t("headingGradient")}</span>
               <br />
-              since 2025
+              {t("headingLine2")}
               <br />
-              from Amman.
+              {t("headingLine3")}
             </motion.h2>
 
             <motion.p
@@ -110,12 +86,7 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-gray-500 font-body text-lg leading-relaxed mb-5"
             >
-              <strong className="font-semibold text-gray-700">4o4</strong>{" "}
-              builds custom web applications, mobile apps, and automation for
-              teams that need reliable delivery without enterprise overhead. We
-              started in 2025 with a simple focus: clear scopes, steady
-              communication, and software you can run in production with
-              confidence.
+              {t("p1")}
             </motion.p>
 
             <motion.p
@@ -124,20 +95,20 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-gray-500 font-body text-lg leading-relaxed mb-12"
             >
-              Our compact team of designers and engineers works as an extension
-              of yours—whether you are validating an MVP or replacing a fragile
-              spreadsheet with a real system. See{" "}
+              {t("p2")}{" "}
               <a href="#work" className="text-orange-600 font-medium hover:underline">
-                selected projects
+                {t("p2Projects")}
               </a>{" "}
-              or{" "}
-              <a href="#contact" className="text-orange-600 font-medium hover:underline">
-                tell us what you are building
+              {t("p2Or")}{" "}
+              <a
+                href="#contact"
+                className="text-orange-600 font-medium hover:underline"
+              >
+                {t("p2Contact")}
               </a>
               .
             </motion.p>
 
-            {/* Values */}
             <div className="grid grid-cols-2 gap-5 mb-12">
               {values.map((v, i) => (
                 <motion.div
@@ -175,9 +146,9 @@ export function About() {
                 whileHover={{ x: 0 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               />
-              <span className="relative">Plan a project with 4o4</span>
+              <span className="relative">{t("cta")}</span>
               <svg
-                className="relative w-4 h-4 group-hover:translate-x-1 transition-transform"
+                className="relative w-4 h-4 group-hover:translate-x-1 transition-transform rtl:rotate-180"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -188,10 +159,8 @@ export function About() {
             </motion.a>
           </div>
 
-          {/* Right: Visual */}
           <div className="relative">
             <motion.div style={{ y: imageY }} className="relative">
-              {/* Background shape */}
               <motion.div
                 className="absolute inset-0 rounded-3xl"
                 style={{
@@ -202,12 +171,10 @@ export function About() {
                 }}
               />
 
-              {/* Main card */}
               <div
                 className="relative bg-white rounded-3xl overflow-hidden shadow-premium p-8"
                 style={{ border: "1px solid rgba(0,0,0,0.04)" }}
               >
-                {/* Stats grid */}
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   {stats.map((stat, i) => (
                     <motion.div
@@ -231,7 +198,6 @@ export function About() {
                   ))}
                 </div>
 
-                {/* Floating brand element */}
                 <motion.div
                   animate={{ y: [-8, 8, -8], rotate: [0, 2, 0] }}
                   transition={{
@@ -239,7 +205,7 @@ export function About() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="absolute top-6 right-6 w-20 h-20 rounded-2xl flex items-center justify-center"
+                  className="absolute top-6 end-6 w-20 h-20 rounded-2xl flex items-center justify-center"
                   style={{
                     background: "linear-gradient(135deg, #ff6b00, #ff8c3a)",
                     boxShadow: "0 12px 32px rgba(255,107,0,0.35)",
@@ -250,7 +216,6 @@ export function About() {
                   </span>
                 </motion.div>
 
-                {/* Code-like decoration */}
                 <div
                   className="relative rounded-2xl overflow-hidden"
                   style={{ background: "#0d0d0d", padding: "20px 24px" }}
@@ -264,25 +229,25 @@ export function About() {
                       />
                     ))}
                   </div>
-                  <div className="font-mono text-sm space-y-1.5">
+                  <div className="font-mono text-sm space-y-1.5" dir="ltr">
                     <p>
                       <span className="text-orange-400">const</span>{" "}
                       <span className="text-blue-300">fourOfour</span>
                       <span className="text-white/60"> = {"{"}</span>
                     </p>
-                    <p className="pl-4">
+                    <p className="ps-4">
                       <span className="text-green-300">focus</span>
                       <span className="text-white/60">: </span>
-                      <span className="text-orange-300">"shipping"</span>
+                      <span className="text-orange-300">&quot;shipping&quot;</span>
                       <span className="text-white/60">,</span>
                     </p>
-                    <p className="pl-4">
+                    <p className="ps-4">
                       <span className="text-green-300">projects</span>
                       <span className="text-white/60">: </span>
-                      <span className="text-orange-300">"20+"</span>
+                      <span className="text-orange-300">&quot;20+&quot;</span>
                       <span className="text-white/60">,</span>
                     </p>
-                    <p className="pl-4">
+                    <p className="ps-4">
                       <span className="text-green-300">since</span>
                       <span className="text-white/60">: </span>
                       <span className="text-orange-300">2025</span>

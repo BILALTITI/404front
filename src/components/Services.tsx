@@ -8,75 +8,23 @@ import {
   useTransform,
 } from "motion/react";
 import { useRef, useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
-const services = [
-  {
-    id: 1,
-    number: "01",
-    title: "Web development",
-    subtitle: "Custom web applications",
-    description:
-      "From marketing sites to internal tools and multi-tenant SaaS—we design APIs, permissions, and frontends you can evolve. MVPs ship with room to grow, not throwaway code.",
-    features: ["SPA & SSR apps", "E‑commerce", "REST / GraphQL APIs", "CMS integration"],
-    icon: "⬡",
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Mobile apps",
-    subtitle: "iOS, Android & cross‑platform",
-    description:
-      "We build apps where your users already are: native or cross‑platform (e.g. React Native), store-ready builds, and integrations with your existing backend and auth.",
-    features: ["React Native", "App Store releases", "Push & offline", "Secure APIs"],
-    icon: "◈",
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "UI / UX design",
-    subtitle: "Product‑led interfaces",
-    description:
-      "Interfaces that match how people work—flows, components, and design systems that keep design and engineering aligned from prototype to production.",
-    features: ["User flows", "Wireframes", "Design systems", "Handoff to dev"],
-    icon: "◎",
-  },
-  {
-    id: 4,
-    number: "04",
-    title: "Brand & product identity",
-    subtitle: "Clear positioning",
-    description:
-      "For startups, brand is how users trust you before the first deploy. We help you define voice, visual basics, and in‑product patterns that stay consistent as you scale.",
-    features: ["Visual direction", "Logo & UI kit", "Tone & messaging", "Launch assets"],
-    icon: "◇",
-  },
-  {
-    id: 5,
-    number: "05",
-    title: "Cloud & DevOps",
-    subtitle: "Right‑sized infrastructure",
-    description:
-      "We deploy to AWS or Azure with environments, CI/CD, and monitoring suited to your stage—no oversized clusters for day one; room to scale when traffic proves it.",
-    features: ["Hosting setup", "CI/CD", "Observability", "Security basics"],
-    icon: "⬟",
-  },
-  {
-    id: 6,
-    number: "06",
-    title: "Workflow automation (n8n)",
-    subtitle: "Connect your stack",
-    description:
-      "Replace manual handoffs between CRMs, sheets, and email with reliable n8n workflows—documented, testable, and owned by your team when the integration is live.",
-    features: ["n8n flows", "Third‑party APIs", "Retries & alerts", "Data sync"],
-    icon: "⬟",
-  },
-];
+type ServiceCopy = {
+  id: number;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  features: string[];
+  icon: string;
+};
 
 function ServiceCard({
   service,
   index,
 }: {
-  service: (typeof services)[0];
+  service: ServiceCopy;
   index: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -143,7 +91,6 @@ function ServiceCard({
             : "0 4px 24px -4px rgba(0,0,0,0.06)",
         }}
       >
-        {/* Radial cursor glow */}
         <motion.div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300 rounded-3xl"
           style={{
@@ -156,9 +103,8 @@ function ServiceCard({
           className="relative p-8 lg:p-10 h-full flex flex-col"
           style={{ transformStyle: "preserve-3d" }}
         >
-          {/* Number watermark */}
           <span
-            className="absolute -top-3 -right-2 font-display text-[90px] font-bold select-none pointer-events-none transition-all duration-500"
+            className="absolute -top-3 -end-2 font-display text-[90px] font-bold select-none pointer-events-none transition-all duration-500"
             style={{
               color: hovered ? "rgba(255,107,0,0.12)" : "rgba(0,0,0,0.04)",
               lineHeight: 1,
@@ -167,7 +113,6 @@ function ServiceCard({
             {service.number}
           </span>
 
-          {/* Icon */}
           <motion.div
             className="relative mb-7"
             style={{
@@ -200,7 +145,6 @@ function ServiceCard({
             </div>
           </motion.div>
 
-          {/* Content */}
           <div style={{ transform: "translateZ(16px)" }}>
             <span className="block font-heading text-xs font-bold tracking-[0.2em] uppercase text-orange-500 mb-2">
               {service.subtitle}
@@ -215,7 +159,6 @@ function ServiceCard({
               {service.description}
             </p>
 
-            {/* Feature chips */}
             <div className="flex flex-wrap gap-2 mb-8">
               {service.features.map((f, i) => (
                 <motion.span
@@ -240,7 +183,6 @@ function ServiceCard({
             </div>
           </div>
 
-          {/* Bottom action */}
           <div className="mt-auto flex items-center justify-between">
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
@@ -259,6 +201,8 @@ function ServiceCard({
 }
 
 export function Services() {
+  const t = useTranslations("services");
+  const services = t.raw("list") as ServiceCopy[];
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
@@ -270,16 +214,15 @@ export function Services() {
         background: "linear-gradient(180deg, #fff 0%, #fafafa 50%, #fff 100%)",
       }}
     >
-      {/* Ambient blobs */}
       <div
-        className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/4 -end-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)",
         }}
       />
       <div
-        className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-1/4 -start-40 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(255,140,58,0.06) 0%, transparent 70%)",
@@ -289,7 +232,6 @@ export function Services() {
       <div className="absolute inset-0 grid-pattern opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Header */}
         <div ref={headerRef} className="mb-24">
           <div className="max-w-4xl">
             <motion.div
@@ -300,7 +242,7 @@ export function Services() {
             >
               <span className="w-10 h-px bg-orange-500" />
               <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-                Software development services
+                {t("eyebrow")}
               </span>
             </motion.div>
 
@@ -315,9 +257,9 @@ export function Services() {
               className="font-display font-bold text-gray-950 leading-[1.05] mb-6"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
             >
-              Web, mobile
+              {t("titleLine1")}
               <br />
-              <span className="gradient-text">& automation</span>
+              <span className="gradient-text">{t("titleGradient")}</span>
             </motion.h2>
 
             <motion.p
@@ -326,21 +268,17 @@ export function Services() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-gray-500 font-body text-lg max-w-xl leading-relaxed"
             >
-              End‑to‑end support for startups and SMBs: discovery, design,
-              implementation, and launch—with honest timelines and a bias for
-              maintainable software.
+              {t("intro")}
             </motion.p>
           </div>
         </div>
 
-        {/* Services grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <ServiceCard key={service.id} service={service} index={i} />
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -353,12 +291,9 @@ export function Services() {
         >
           <div>
             <p className="font-display text-xl font-bold text-gray-900 mb-1">
-              Need a scoped proposal?
+              {t("ctaTitle")}
             </p>
-            <p className="font-body text-gray-500">
-              Book a 30‑minute discovery call—we will map scope, risks, and a
-              sensible first milestone.
-            </p>
+            <p className="font-body text-gray-500">{t("ctaBody")}</p>
           </div>
           <motion.a
             href="#contact"
@@ -373,9 +308,9 @@ export function Services() {
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             />
             <span className="relative flex items-center gap-2">
-              Book discovery call
+              {t("ctaButton")}
               <svg
-                className="w-4 h-4"
+                className="w-4 h-4 rtl:rotate-180"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"

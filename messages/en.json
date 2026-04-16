@@ -1,0 +1,413 @@
+{
+  "metadata": {
+    "title": "4o4 — Startup software development | Web & mobile apps (Amman)",
+    "titleTemplate": "%s | 4o4 Solutions",
+    "description": "4o4 is a Jordan-based startup software team (since 2025) building custom web applications, mobile apps, and workflow automation for founders and companies across MENA.",
+    "keywords": "startup software development, custom web applications, mobile app development, MVP, web apps, Jordan software company, Amman developers, MENA tech, workflow automation, n8n, UI UX, cloud deployment, ASP.NET, React, React Native",
+    "openGraphTitle": "4o4 — Custom web & mobile software from Jordan",
+    "openGraphDescription": "Ship reliable web apps, mobile apps, and automation with a focused team. Serving startups and growing businesses in Jordan and MENA since 2025.",
+    "twitterTitle": "4o4 — Startup software development (Jordan)",
+    "twitterDescription": "Custom web applications, mobile apps, and automation for teams in MENA."
+  },
+  "jsonLd": {
+    "organizationDescription": "Startup software development team in Amman, Jordan—custom web applications, mobile apps, and workflow automation for MENA."
+  },
+  "nav": {
+    "primary": "Primary",
+    "brandSuffix": "Solutions",
+    "work": "Work",
+    "about": "About",
+    "services": "Services",
+    "process": "Process",
+    "stories": "Stories",
+    "cta": "Let's Talk"
+  },
+  "hero": {
+    "imageAlt": "Warm abstract gradient background behind the 4o4 hero",
+    "overline": "Software studio · Since 2025",
+    "line1": [
+      { "text": "Custom", "accent": false, "large": false },
+      { "text": "Software", "accent": true, "large": true }
+    ],
+    "line2": [
+      { "text": "For", "accent": false, "large": false },
+      { "text": "Growth", "accent": true, "large": true, "underline": true }
+    ],
+    "descriptionBrand": "4o4",
+    "descriptionMid": "is a startup software team in Amman building",
+    "descriptionScope": "web apps, mobile apps, and workflow automation",
+    "descriptionEnd": "for founders and growing companies across Jordan and the MENA region.",
+    "ctaPrimary": "View selected work",
+    "ctaSecondary": "Software services",
+    "ctaContact": "Book a discovery call",
+    "cornerLabel": "4o4 · Software development"
+  },
+  "projects": {
+    "sectionEyebrow": "Web & mobile portfolio",
+    "titleLine1": "Web & mobile apps",
+    "titleGradient": "built for real teams",
+    "titleGradientData": "Built for real teams",
+    "intro": "A selection from {count} shipped builds—marketplaces, internal tools, mobile apps, and automation. Open a card for scope and stack; public links open in a new tab when available.",
+    "viewMore": "View more",
+    "showLess": "Show less",
+    "startProject": "Start your project",
+    "close": "Close",
+    "keyResult": "Key Result",
+    "visitLive": "Visit live site",
+    "askBuild": "Ask about this build",
+    "items": {
+      "cashtics": {
+        "title": "Cashtics",
+        "subtitle": "Freelance marketplace",
+        "category": "Web application",
+        "description": "A task marketplace connecting people who want flexible work with businesses posting short jobs—profiles, escrow-style flows, and an operator dashboard for moderation.",
+        "result": "Growing user base with steady month‑over‑month task volume",
+        "imageAlt": "Cashtics freelance marketplace web app interface preview for 4o4 portfolio"
+      },
+      "sooquk": {
+        "title": "Sooquk",
+        "subtitle": "Regional e‑commerce",
+        "category": "Marketplace",
+        "description": "A Jordan‑focused storefront for fashion and lifestyle sellers—catalog, checkout, and vendor tools with performance tuned for mobile shoppers.",
+        "result": "Live vendors onboarded with stable checkout in production",
+        "imageAlt": "Sooquk e‑commerce marketplace screenshot for Jordan retailers by 4o4"
+      },
+      "okal": {
+        "title": "Okal for Heroes",
+        "subtitle": "Kids barber booking",
+        "category": "Booking system",
+        "description": "Appointment booking and shop operations for a kids’ barber brand—reminders, coupons, ticketing, and a parent‑friendly flow on mobile.",
+        "result": "Strong early adoption from families in launch neighborhoods",
+        "imageAlt": "Okal for Heroes barber booking web experience designed by 4o4"
+      },
+      "breshta": {
+        "title": "Breshta",
+        "subtitle": "Loyalty & rewards",
+        "category": "Gamification",
+        "description": "Deals, streaks, and notifications to bring shoppers back—daily rewards, birthdays, and lightweight gamification without brittle one‑off scripts.",
+        "result": "Engaged returning users through loyalty loops",
+        "imageAlt": "Breshta loyalty app concept screen from 4o4 client work"
+      },
+      "lastonewin": {
+        "title": "LastOneWin",
+        "subtitle": "Live competition game",
+        "category": "Real‑time app",
+        "description": "A real‑time “last finger on screen” competition—rooms, sessions, and resilient sync so spikes during promos don’t ruin the experience.",
+        "result": "Handled live traffic peaks during campaign windows",
+        "imageAlt": "LastOneWin real‑time mobile game promotional artwork in 4o4 portfolio"
+      },
+      "ilern": {
+        "title": "ILern",
+        "subtitle": "Learning platform",
+        "category": "EdTech",
+        "description": "Courses, enrollments, instructor tools, and certificates—one place for admins, teachers, and students with sensible roles and audit‑friendly data.",
+        "result": "Class operations running on a single consolidated stack",
+        "imageAlt": "ILern LMS dashboard and course view built by 4o4"
+      },
+      "clinical": {
+        "title": "Clinical desktop suite",
+        "subtitle": "Healthcare back office",
+        "category": "Desktop application",
+        "description": "Patient records, scheduling, and billing workflows for a clinic team—desktop‑first, keyboard‑friendly screens where accuracy matters more than animation.",
+        "result": "Day‑to‑day clinic operations on one reliable database",
+        "imageAlt": "Healthcare management desktop UI sample from 4o4 delivery work"
+      }
+    }
+  },
+  "about": {
+    "bgWord": "ABOUT",
+    "eyebrow": "About 4o4",
+    "headingLine1": "A software startup",
+    "headingGradient": "shipping products",
+    "headingLine2": "since 2025",
+    "headingLine3": "from Amman.",
+    "p1": "4o4 builds custom web applications, mobile apps, and automation for teams that need reliable delivery without enterprise overhead. We started in 2025 with a simple focus: clear scopes, steady communication, and software you can run in production with confidence.",
+    "p2": "Our compact team of designers and engineers works as an extension of yours—whether you are validating an MVP or replacing a fragile spreadsheet with a real system. See",
+    "p2Projects": "selected projects",
+    "p2Or": "or",
+    "p2Contact": "tell us what you are building",
+    "cta": "Plan a project with 4o4",
+    "values": [
+      { "number": "01", "title": "Clarity", "desc": "Requirements you can plan around—no mystery scope" },
+      { "number": "02", "title": "Craft", "desc": "Clean code, thoughtful UX, maintainable releases" },
+      { "number": "03", "title": "Partnership", "desc": "We work alongside your team, not in a black box" },
+      { "number": "04", "title": "Momentum", "desc": "Shipping in iterations so you learn and improve fast" }
+    ],
+    "stats": [
+      { "value": "20+", "label": "Shipped projects" },
+      { "value": "2025", "label": "Founded" },
+      { "value": "Small", "label": "Focused team" },
+      { "value": "MENA", "label": "Primary region" }
+    ]
+  },
+  "services": {
+    "eyebrow": "Software development services",
+    "titleLine1": "Web, mobile",
+    "titleGradient": "& automation",
+    "intro": "End‑to‑end support for startups and SMBs: discovery, design, implementation, and launch—with honest timelines and a bias for maintainable software.",
+    "ctaTitle": "Need a scoped proposal?",
+    "ctaBody": "Book a 30‑minute discovery call—we will map scope, risks, and a sensible first milestone.",
+    "ctaButton": "Book discovery call",
+    "list": [
+      {
+        "id": 1,
+        "number": "01",
+        "title": "Web development",
+        "subtitle": "Custom web applications",
+        "description": "From marketing sites to internal tools and multi-tenant SaaS—we design APIs, permissions, and frontends you can evolve. MVPs ship with room to grow, not throwaway code.",
+        "features": ["SPA & SSR apps", "E‑commerce", "REST / GraphQL APIs", "CMS integration"],
+        "icon": "⬡"
+      },
+      {
+        "id": 2,
+        "number": "02",
+        "title": "Mobile apps",
+        "subtitle": "iOS, Android & cross‑platform",
+        "description": "We build apps where your users already are: native or cross‑platform (e.g. React Native), store-ready builds, and integrations with your existing backend and auth.",
+        "features": ["React Native", "App Store releases", "Push & offline", "Secure APIs"],
+        "icon": "◈"
+      },
+      {
+        "id": 3,
+        "number": "03",
+        "title": "UI / UX design",
+        "subtitle": "Product‑led interfaces",
+        "description": "Interfaces that match how people work—flows, components, and design systems that keep design and engineering aligned from prototype to production.",
+        "features": ["User flows", "Wireframes", "Design systems", "Handoff to dev"],
+        "icon": "◎"
+      },
+      {
+        "id": 4,
+        "number": "04",
+        "title": "Brand & product identity",
+        "subtitle": "Clear positioning",
+        "description": "For startups, brand is how users trust you before the first deploy. We help you define voice, visual basics, and in‑product patterns that stay consistent as you scale.",
+        "features": ["Visual direction", "Logo & UI kit", "Tone & messaging", "Launch assets"],
+        "icon": "◇"
+      },
+      {
+        "id": 5,
+        "number": "05",
+        "title": "Cloud & DevOps",
+        "subtitle": "Right‑sized infrastructure",
+        "description": "We deploy to AWS or Azure with environments, CI/CD, and monitoring suited to your stage—no oversized clusters for day one; room to scale when traffic proves it.",
+        "features": ["Hosting setup", "CI/CD", "Observability", "Security basics"],
+        "icon": "⬟"
+      },
+      {
+        "id": 6,
+        "number": "06",
+        "title": "Workflow automation (n8n)",
+        "subtitle": "Connect your stack",
+        "description": "Replace manual handoffs between CRMs, sheets, and email with reliable n8n workflows—documented, testable, and owned by your team when the integration is live.",
+        "features": ["n8n flows", "Third‑party APIs", "Retries & alerts", "Data sync"],
+        "icon": "⬟"
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Client Stories",
+    "titleLine1": "Voices from",
+    "titleGradient": "Industry Leaders",
+    "subtitle": "The founders, executives, and teams who've partnered with us to achieve results that matter.",
+    "items": [
+      {
+        "id": 1,
+        "quote": "I posted my first task on Cashtics and had three offers within two hours. The platform is fast, easy to use, and the payment process felt secure. I've now completed over 40 tasks through it. Never expected this kind of traction so early.",
+        "author": "Khaled Al-Rawi",
+        "role": "Freelancer",
+        "company": "Cashtics User",
+        "metric": "40+",
+        "metricLabel": "Tasks Done",
+        "logoAbbr": "KA",
+        "accent": "#ff6b00"
+      },
+      {
+        "id": 2,
+        "quote": "I opened my shop on Sooquk expecting maybe 20–30 visitors a month. Within the first few weeks I was getting hundreds of views. The site loads fast even on mobile, which makes a huge difference for my customers.",
+        "author": "Rima Mansour",
+        "role": "Vendor",
+        "company": "Fashion Accessories",
+        "metric": "3×",
+        "metricLabel": "More Traffic",
+        "logoAbbr": "RM",
+        "accent": "#ff8c3a"
+      },
+      {
+        "id": 3,
+        "quote": "Booking used to mean phone calls, back-and-forth, and sometimes showing up to a full shop. Now parents just pick a slot and get a reminder before the appointment. The coupon system was a nice touch — our regulars really appreciate it.",
+        "author": "Khalil Okal",
+        "role": "Owner",
+        "company": "Okal for Heroes",
+        "metric": "100+",
+        "metricLabel": "Kids Booked",
+        "logoAbbr": "OB",
+        "accent": "#ffa556"
+      },
+      {
+        "id": 4,
+        "quote": "I open Breshta every morning just to spin the wheel. It sounds simple, but the birthday gift I got last month was a genuinely nice surprise. The deals feel real — not just filler. I've recommended it to at least 10 friends.",
+        "author": "Sara Wahdan",
+        "role": "Loyalty Member",
+        "company": "Breshta",
+        "metric": "3,500+",
+        "metricLabel": "Active Users",
+        "logoAbbr": "SW",
+        "accent": "#ff6b00"
+      },
+      {
+        "id": 5,
+        "quote": "I was in a room with over 2,000 players and it didn't lag once. The tension of being one of the last five was actually stressful in the best way. I've played a lot of live games — nothing handles concurrent players this smoothly.",
+        "author": "Faris Nader",
+        "role": "Player",
+        "company": "LastOneWin",
+        "metric": "3,000",
+        "metricLabel": "Live Players",
+        "logoAbbr": "FN",
+        "accent": "#ff8c3a"
+      },
+      {
+        "id": 6,
+        "quote": "I finished my certification in six weeks completely online. The course material was well-organized, the instructor portal made it easy to follow my progress, and I never ran into a bug or a broken link. That's rare for an LMS this new.",
+        "author": "Layla Hassan",
+        "role": "Student",
+        "company": "ILern",
+        "metric": "800+",
+        "metricLabel": "Students",
+        "logoAbbr": "LH",
+        "accent": "#ffa556"
+      },
+      {
+        "id": 7,
+        "quote": "Before this system, our staff was juggling paper files and spreadsheets. Now every patient record is one search away, billing is automatic, and appointment conflicts are a thing of the past. Onboarding took less than a week.",
+        "author": "Dr. Hani Zureikat",
+        "role": "Clinic Director",
+        "company": "Medical Care System",
+        "metric": "1,000+",
+        "metricLabel": "Patients",
+        "logoAbbr": "HZ",
+        "accent": "#ff6b00"
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "Our Process",
+    "titleLine1": "From vision",
+    "to": "to",
+    "titleGradient": "reality",
+    "intro": "A transparent four‑phase process—clear milestones, weekly or bi‑weekly demos on most builds, and documentation you can hand to your own team.",
+    "metric1Value": "4–12",
+    "metric1Label": "Weeks typical MVP",
+    "metric2Value": "Weekly",
+    "metric2Label": "Demos when active",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Discovery",
+        "description": "We align on goals, users, constraints, and success metrics—so scope, budget, and timeline match what you actually need.",
+        "duration": "3–10 days",
+        "deliverables": ["Problem brief", "Scope & milestones", "Risk notes"],
+        "accent": "#ff6b00"
+      },
+      {
+        "number": "02",
+        "title": "Design",
+        "description": "Wireframes and UI that your team can review early—fewer surprises when we implement, faster feedback loops.",
+        "duration": "1–3 weeks",
+        "deliverables": ["Flows & wireframes", "UI screens", "Clickable prototype"],
+        "accent": "#ff8c3a"
+      },
+      {
+        "number": "03",
+        "title": "Development",
+        "description": "Iterative builds with visible progress: APIs, frontends or apps, automated checks, and demos on a cadence you can plan around.",
+        "duration": "3–10 weeks",
+        "deliverables": ["Sprint demos", "Staging environment", "Technical docs"],
+        "accent": "#ffa556"
+      },
+      {
+        "number": "04",
+        "title": "Launch",
+        "description": "Hardening, deployment, handover, and a short stabilization window—so your team owns the system with confidence.",
+        "duration": "3–14 days",
+        "deliverables": ["Release checklist", "Production deploy", "Handover session"],
+        "accent": "#ff6b00"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact 4o4",
+    "titleLine1": "Start your next",
+    "titleGradient": "build with 4o4",
+    "intro": "Share goals, timeline, and budget band—we reply with next steps, usually a short call to align scope. Use the form for async details or book a slot if you already know you want to talk live.",
+    "emailLabel": "Drop us a line",
+    "responseLabel": "Response time",
+    "responseValue": "Within 24 hours — always.",
+    "scheduleLabel": "Schedule a call",
+    "scheduleValue": "Sun – Thu, 9 AM – 6 PM (AST)",
+    "tabMessage": "Send a Message",
+    "tabMeeting": "Book a Meeting",
+    "name": "Your Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "topicMessage": "What is this message about?",
+    "topicMeeting": "What's the meeting about?",
+    "projectDetails": "Project Details",
+    "preferredDate": "Preferred Date",
+    "preferredTime": "Preferred Time (AST)",
+    "pickTime": "Pick a time",
+    "selectTopic": "Select a topic",
+    "topicNew": "Starting a new project",
+    "topicExisting": "Helping with an existing project",
+    "topicExistingMeeting": "Continuing an existing project",
+    "topicConsult": "General consultation",
+    "topicPartner": "Partnership opportunity",
+    "topicOther": "Something else",
+    "sendMessage": "Send Message",
+    "messageSent": "Message Sent!",
+    "sending": "Sending...",
+    "requestMeeting": "Request Meeting",
+    "meetingRequested": "Meeting Requested!",
+    "booking": "Booking...",
+    "footnoteMessage": "We'll get back to you within 24 hours.",
+    "footnoteMeeting": "Available Sun – Thu, 9 AM – 6 PM (AST). We'll confirm within a few hours.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorFailed": "Request failed.",
+    "placeholders": {
+      "name": "John Doe",
+      "email": "john@company.com",
+      "phone": "+962 79 123 4567",
+      "message": "Tell us about your project, goals, and timeline..."
+    },
+    "times": [
+      { "value": "09:00", "label": "9:00 AM" },
+      { "value": "10:00", "label": "10:00 AM" },
+      { "value": "11:00", "label": "11:00 AM" },
+      { "value": "12:00", "label": "12:00 PM" },
+      { "value": "13:00", "label": "1:00 PM" },
+      { "value": "14:00", "label": "2:00 PM" },
+      { "value": "15:00", "label": "3:00 PM" },
+      { "value": "16:00", "label": "4:00 PM" },
+      { "value": "17:00", "label": "5:00 PM" }
+    ]
+  },
+  "footer": {
+    "explore": "Explore",
+    "links": {
+      "work": "Work",
+      "about": "About",
+      "services": "Services",
+      "process": "Process",
+      "testimonials": "Testimonials",
+      "contact": "Contact"
+    },
+    "blurb": "Startup software development from Amman—custom web apps, mobile apps, and workflow automation for teams in Jordan and MENA.",
+    "location": "Amman, Jordan",
+    "rights": "{year} 4o4 Solutions. All rights reserved."
+  },
+  "common": {
+    "languageSwitcher": "Language",
+    "brandSuffix": "Solutions",
+    "countShipped": "20+"
+  }
+}

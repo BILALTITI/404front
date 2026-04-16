@@ -2,12 +2,19 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Tab = "message" | "meeting";
 
 const API_BASE = "https://4o4soultions.premiumasp.net/";
 
+type TimeOpt = { value: string; label: string };
+
 export function Contact() {
+  const t = useTranslations("contact");
+  const times = t.raw("times") as TimeOpt[];
+  const ph = t.raw("placeholders") as Record<string, string>;
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [activeTab, setActiveTab] = useState<Tab>("message");
@@ -37,7 +44,7 @@ export function Contact() {
       body: JSON.stringify(body),
     });
     if (!res.ok) {
-      let detail = "Something went wrong. Please try again.";
+      let detail = t("errorGeneric");
       try {
         const data = (await res.json()) as { detail?: string; title?: string };
         if (data.detail) detail = data.detail;
@@ -66,7 +73,7 @@ export function Contact() {
       setTimeout(() => setSubmitted(false), 4000);
       setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Request failed.");
+      setSubmitError(err instanceof Error ? err.message : t("errorFailed"));
     } finally {
       setIsSubmitting(false);
     }
@@ -97,7 +104,7 @@ export function Contact() {
         topic: "",
       });
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Request failed.");
+      setSubmitError(err instanceof Error ? err.message : t("errorFailed"));
     } finally {
       setIsSubmitting(false);
     }
@@ -109,16 +116,14 @@ export function Contact() {
       ref={sectionRef}
       className="relative py-32 lg:py-40 bg-gray-900 overflow-hidden"
     >
-      {/* Background decorations */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 start-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 end-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl" />
       </div>
       <div className="absolute inset-0 grid-pattern opacity-5" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* ── Left: Content ── */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -128,7 +133,7 @@ export function Contact() {
             >
               <span className="w-12 h-px bg-orange-500" />
               <span className="font-heading text-sm font-semibold tracking-[0.2em] uppercase text-orange-500">
-                Contact 4o4
+                {t("eyebrow")}
               </span>
             </motion.div>
 
@@ -138,9 +143,9 @@ export function Contact() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              Start your next
+              {t("titleLine1")}
               <br />
-              <span className="gradient-text">build with 4o4</span>
+              <span className="gradient-text">{t("titleGradient")}</span>
             </motion.h2>
 
             <motion.p
@@ -149,19 +154,15 @@ export function Contact() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-gray-400 font-body mb-10 leading-relaxed"
             >
-              Share goals, timeline, and budget band—we reply with next steps,
-              usually a short call to align scope. Use the form for async
-              details or book a slot if you already know you want to talk live.
+              {t("intro")}
             </motion.p>
 
-            {/* Two ways to reach us */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="space-y-5"
             >
-              {/* Email */}
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
                   <svg
@@ -176,7 +177,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-heading text-sm text-gray-500">
-                    Drop us a line
+                    {t("emailLabel")}
                   </div>
                   <a
                     href="mailto:contact@4o4solutions.com"
@@ -187,7 +188,6 @@ export function Contact() {
                 </div>
               </div>
 
-              {/* Response time badge */}
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
                   <svg
@@ -203,15 +203,14 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-heading text-sm text-gray-500">
-                    Response time
+                    {t("responseLabel")}
                   </div>
                   <span className="font-heading text-white">
-                    Within 24 hours — always.
+                    {t("responseValue")}
                   </span>
                 </div>
               </div>
 
-              {/* Meeting availability */}
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
                   <svg
@@ -227,24 +226,22 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-heading text-sm text-gray-500">
-                    Schedule a call
+                    {t("scheduleLabel")}
                   </div>
                   <span className="font-heading text-white">
-                    Sun – Thu, 9 AM – 6 PM (AST)
+                    {t("scheduleValue")}
                   </span>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* ── Right: Tabbed Form ── */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/10">
-              {/* Tab switcher */}
               <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10 mb-8">
                 <button
                   type="button"
@@ -272,7 +269,7 @@ export function Contact() {
                   >
                     <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                   </svg>
-                  Send a Message
+                  {t("tabMessage")}
                 </button>
                 <button
                   type="button"
@@ -301,17 +298,16 @@ export function Contact() {
                     <rect x="3" y="4" width="18" height="18" rx="2" />
                     <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
                   </svg>
-                  Book a Meeting
+                  {t("tabMeeting")}
                 </button>
               </div>
 
-              {/* ── Message Form ── */}
               {activeTab === "message" && (
                 <form onSubmit={handleMessageSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-heading text-sm text-gray-400 mb-2">
-                        Your Name
+                        {t("name")}
                       </label>
                       <input
                         type="text"
@@ -320,13 +316,13 @@ export function Contact() {
                           setFormState({ ...formState, name: e.target.value })
                         }
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder="John Doe"
+                        placeholder={ph.name}
                         required
                       />
                     </div>
                     <div>
                       <label className="block font-heading text-sm text-gray-400 mb-2">
-                        Email Address
+                        {t("email")}
                       </label>
                       <input
                         type="email"
@@ -335,7 +331,7 @@ export function Contact() {
                           setFormState({ ...formState, email: e.target.value })
                         }
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder="john@company.com"
+                        placeholder={ph.email}
                         required
                       />
                     </div>
@@ -343,7 +339,7 @@ export function Contact() {
 
                   <div>
                     <label className="block font-heading text-sm text-gray-400 mb-2">
-                      Phone Number
+                      {t("phone")}
                     </label>
                     <input
                       type="tel"
@@ -352,14 +348,14 @@ export function Contact() {
                         setFormState({ ...formState, phone: e.target.value })
                       }
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="+962 79 123 4567"
+                      placeholder={ph.phone}
                       required
                     />
                   </div>
 
                   <div>
                     <label className="block font-heading text-sm text-gray-400 mb-2">
-                      What is this message about?
+                      {t("topicMessage")}
                     </label>
                     <select
                       value={formState.budget}
@@ -369,29 +365,29 @@ export function Contact() {
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
                     >
                       <option value="" className="bg-gray-900">
-                        Select a topic
+                        {t("selectTopic")}
                       </option>
                       <option value="new-project" className="bg-gray-900">
-                        Starting a new project
+                        {t("topicNew")}
                       </option>
                       <option value="existing-project" className="bg-gray-900">
-                        Helping with an existing project
+                        {t("topicExisting")}
                       </option>
                       <option value="consultation" className="bg-gray-900">
-                        General consultation
+                        {t("topicConsult")}
                       </option>
                       <option value="partnership" className="bg-gray-900">
-                        Partnership opportunity
+                        {t("topicPartner")}
                       </option>
                       <option value="other" className="bg-gray-900">
-                        Something else
+                        {t("topicOther")}
                       </option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block font-heading text-sm text-gray-400 mb-2">
-                      Project Details
+                      {t("projectDetails")}
                     </label>
                     <textarea
                       value={formState.message}
@@ -400,7 +396,7 @@ export function Contact() {
                       }
                       rows={5}
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors resize-none"
-                      placeholder="Tell us about your project, goals, and timeline..."
+                      placeholder={ph.message}
                       required
                     />
                   </div>
@@ -427,7 +423,7 @@ export function Contact() {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <span>Message Sent!</span>
+                        <span>{t("messageSent")}</span>
                       </>
                     ) : isSubmitting ? (
                       <>
@@ -456,11 +452,11 @@ export function Contact() {
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                           />
                         </motion.svg>
-                        <span>Sending...</span>
+                        <span>{t("sending")}</span>
                       </>
                     ) : (
                       <>
-                        <span>Send Message</span>
+                        <span>{t("sendMessage")}</span>
                         <svg
                           className="w-5 h-5"
                           viewBox="0 0 24 24"
@@ -483,18 +479,17 @@ export function Contact() {
                     </p>
                   )}
                   <p className="text-center text-sm text-gray-500 font-body">
-                    We'll get back to you within 24 hours.
+                    {t("footnoteMessage")}
                   </p>
                 </form>
               )}
 
-              {/* ── Meeting Form ── */}
               {activeTab === "meeting" && (
                 <form onSubmit={handleMeetingSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-heading text-sm text-gray-400 mb-2">
-                        Your Name
+                        {t("name")}
                       </label>
                       <input
                         type="text"
@@ -506,13 +501,13 @@ export function Contact() {
                           })
                         }
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder="John Doe"
+                        placeholder={ph.name}
                         required
                       />
                     </div>
                     <div>
                       <label className="block font-heading text-sm text-gray-400 mb-2">
-                        Email Address
+                        {t("email")}
                       </label>
                       <input
                         type="email"
@@ -524,7 +519,7 @@ export function Contact() {
                           })
                         }
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder="john@company.com"
+                        placeholder={ph.email}
                         required
                       />
                     </div>
@@ -532,7 +527,7 @@ export function Contact() {
 
                   <div>
                     <label className="block font-heading text-sm text-gray-400 mb-2">
-                      Phone Number
+                      {t("phone")}
                     </label>
                     <input
                       type="tel"
@@ -544,7 +539,7 @@ export function Contact() {
                         })
                       }
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder="+962 79 123 4567"
+                      placeholder={ph.phone}
                       required
                     />
                   </div>
@@ -552,7 +547,7 @@ export function Contact() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-heading text-sm text-gray-400 mb-2">
-                        Preferred Date
+                        {t("preferredDate")}
                       </label>
                       <input
                         type="date"
@@ -570,7 +565,7 @@ export function Contact() {
                     </div>
                     <div>
                       <label className="block font-heading text-sm text-gray-400 mb-2">
-                        Preferred Time (AST)
+                        {t("preferredTime")}
                       </label>
                       <select
                         value={meetingState.time}
@@ -584,42 +579,24 @@ export function Contact() {
                         required
                       >
                         <option value="" className="bg-gray-900">
-                          Pick a time
+                          {t("pickTime")}
                         </option>
-                        <option value="09:00" className="bg-gray-900">
-                          9:00 AM
-                        </option>
-                        <option value="10:00" className="bg-gray-900">
-                          10:00 AM
-                        </option>
-                        <option value="11:00" className="bg-gray-900">
-                          11:00 AM
-                        </option>
-                        <option value="12:00" className="bg-gray-900">
-                          12:00 PM
-                        </option>
-                        <option value="13:00" className="bg-gray-900">
-                          1:00 PM
-                        </option>
-                        <option value="14:00" className="bg-gray-900">
-                          2:00 PM
-                        </option>
-                        <option value="15:00" className="bg-gray-900">
-                          3:00 PM
-                        </option>
-                        <option value="16:00" className="bg-gray-900">
-                          4:00 PM
-                        </option>
-                        <option value="17:00" className="bg-gray-900">
-                          5:00 PM
-                        </option>
+                        {times.map((opt) => (
+                          <option
+                            key={opt.value}
+                            value={opt.value}
+                            className="bg-gray-900"
+                          >
+                            {opt.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
 
                   <div>
                     <label className="block font-heading text-sm text-gray-400 mb-2">
-                      What's the meeting about?
+                      {t("topicMeeting")}
                     </label>
                     <select
                       value={meetingState.topic}
@@ -633,22 +610,22 @@ export function Contact() {
                       required
                     >
                       <option value="" className="bg-gray-900">
-                        Select a topic
+                        {t("selectTopic")}
                       </option>
                       <option value="new-project" className="bg-gray-900">
-                        Starting a new project
+                        {t("topicNew")}
                       </option>
                       <option value="existing-project" className="bg-gray-900">
-                        Continuing an existing project
+                        {t("topicExistingMeeting")}
                       </option>
                       <option value="consultation" className="bg-gray-900">
-                        General consultation
+                        {t("topicConsult")}
                       </option>
                       <option value="partnership" className="bg-gray-900">
-                        Partnership opportunity
+                        {t("topicPartner")}
                       </option>
                       <option value="other" className="bg-gray-900">
-                        Something else
+                        {t("topicOther")}
                       </option>
                     </select>
                   </div>
@@ -675,7 +652,7 @@ export function Contact() {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <span>Meeting Requested!</span>
+                        <span>{t("meetingRequested")}</span>
                       </>
                     ) : isSubmitting ? (
                       <>
@@ -704,11 +681,11 @@ export function Contact() {
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                           />
                         </motion.svg>
-                        <span>Booking...</span>
+                        <span>{t("booking")}</span>
                       </>
                     ) : (
                       <>
-                        <span>Request Meeting</span>
+                        <span>{t("requestMeeting")}</span>
                         <svg
                           className="w-5 h-5"
                           viewBox="0 0 24 24"
@@ -735,8 +712,7 @@ export function Contact() {
                     </p>
                   )}
                   <p className="text-center text-sm text-gray-500 font-body">
-                    Available Sun – Thu, 9 AM – 6 PM (AST). We'll confirm within
-                    a few hours.
+                    {t("footnoteMeeting")}
                   </p>
                 </form>
               )}
