@@ -10,6 +10,20 @@ export const metadata: Metadata = {
     default: "4o4 Solutions",
     template: "%s | 4o4 Solutions",
   },
+  openGraph: {
+    title: "4o4 Solutions",
+    description: "Professional software solutions",
+    url: siteUrl,
+    siteName: "4o4 Solutions",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

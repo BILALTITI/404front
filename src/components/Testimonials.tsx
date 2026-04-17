@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useInView } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import type { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
+import { MountGuard } from "./MountGuard";
 
 /** First letter of given name + first letter of family name; strips common titles. Single-word names use first two letters. */
 function authorInitials(name: string): string {
@@ -20,6 +21,14 @@ function authorInitials(name: string): string {
 }
 
 const ROTATE_INTERVAL = 5200;
+
+/** Stable pseudo-random motion params so SSR and the client match. */
+function backgroundCardWave(position: string, id: number) {
+  const p = position.length + (position.charCodeAt(0) ?? 0);
+  const duration = 6 + ((id * 7 + p) % 40) / 10;
+  const delay = ((id * 3 + p) % 20) / 10;
+  return { duration, delay };
+}
 
 type TestimonialItem = {
   id: number;
@@ -76,6 +85,7 @@ function BackgroundCard({
   };
 
   const s = posStyles[position];
+  const wave = backgroundCardWave(position, testimonial.id);
 
   return (
     <motion.div
@@ -87,10 +97,10 @@ function BackgroundCard({
       }}
       transition={{
         y: {
-          duration: 6 + Math.random() * 4,
+          duration: wave.duration,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: Math.random() * 2,
+          delay: wave.delay,
         },
         filter: { duration: 0 },
       }}
@@ -348,59 +358,68 @@ export function Testimonials() {
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex items-center justify-center gap-3 mt-8">
-              <button
-                type="button"
-                onClick={() =>
-                  goTo(
-                    (activeIndex - 1 + testimonials.length) %
-                      testimonials.length,
-                  )
-                }
-                className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
-              >
-                <svg
-                  className="w-4 h-4 text-gray-400 rtl:rotate-180"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => goTo(i)}
-                  className="relative overflow-hidden rounded-full transition-all duration-300"
-                  style={{
-                    width: i === activeIndex ? 32 : 8,
-                    height: 8,
-                    backgroundColor:
-                      i === activeIndex ? active.accent : "rgba(0,0,0,0.12)",
-                  }}
+            <MountGuard
+              fallback={
+                <div
+                  className="flex items-center justify-center gap-3 mt-8 min-h-10"
+                  aria-hidden
                 />
-              ))}
-
-              <button
-                type="button"
-                onClick={() => goTo((activeIndex + 1) % testimonials.length)}
-                className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
-              >
-                <svg
-                  className="w-4 h-4 text-gray-400 rtl:rotate-180"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+              }
+            >
+              <div className="flex items-center justify-center gap-3 mt-8">
+                <button
+                  type="button"
+                  onClick={() =>
+                    goTo(
+                      (activeIndex - 1 + testimonials.length) %
+                        testimonials.length,
+                    )
+                  }
+                  className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
                 >
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            </div>
+                  <svg
+                    className="w-4 h-4 text-gray-400 rtl:rotate-180"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => goTo(i)}
+                    className="relative overflow-hidden rounded-full transition-all duration-300"
+                    style={{
+                      width: i === activeIndex ? 32 : 8,
+                      height: 8,
+                      backgroundColor:
+                        i === activeIndex ? active.accent : "rgba(0,0,0,0.12)",
+                    }}
+                  />
+                ))}
+
+                <button
+                  type="button"
+                  onClick={() => goTo((activeIndex + 1) % testimonials.length)}
+                  className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
+                >
+                  <svg
+                    className="w-4 h-4 text-gray-400 rtl:rotate-180"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            </MountGuard>
           </div>
         </div>
       </div>

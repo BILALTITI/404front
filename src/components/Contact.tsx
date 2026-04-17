@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { MountGuard } from "./MountGuard";
 
 type Tab = "message" | "meeting";
 
@@ -36,6 +37,12 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  /** Set after mount so `min` matches client date and avoids SSR/client mismatch. */
+  const [minDateStr, setMinDateStr] = useState("");
+
+  useEffect(() => {
+    setMinDateStr(new Date().toISOString().split("T")[0] ?? "");
+  }, []);
 
   const postContact = async (body: Record<string, unknown>) => {
     const res = await fetch(`${API_BASE}api/ContactUs`, {
@@ -242,7 +249,15 @@ export function Contact() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/10">
-              <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10 mb-8">
+              <MountGuard
+                fallback={
+                  <div
+                    className="min-h-[28rem] rounded-2xl bg-white/[0.03] border border-white/5 animate-pulse"
+                    aria-hidden
+                  />
+                }
+              >
+                <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10 mb-8">
                 <button
                   type="button"
                   onClick={() => {
@@ -558,7 +573,7 @@ export function Contact() {
                             date: e.target.value,
                           })
                         }
-                        min={new Date().toISOString().split("T")[0]}
+                        min={minDateStr || undefined}
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
                         required
                       />
@@ -716,6 +731,7 @@ export function Contact() {
                   </p>
                 </form>
               )}
+              </MountGuard>
             </div>
           </motion.div>
         </div>
