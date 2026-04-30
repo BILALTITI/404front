@@ -111,6 +111,22 @@
         "description": "Patient records, appointment scheduling, and a complete billing cycle for clinic teams — desktop-first interfaces, keyboard-optimized, where accuracy matters more than visual flair.",
         "result": "Daily operations for over 1,000 patients on a single reliable database",
         "imageAlt": "Healthcare management desktop UI sample from 4o4 delivery work"
+      },
+      "Auto Care": {
+        "title": "Auto Care",
+        "subtitle": "Vehicle maintenance tracking",
+        "category": "Web application",
+        "description": "A vehicle maintenance management system for car owners and service shops — service history tracking, maintenance reminders, parts inventory, and cost analysis. Helps owners stay on top of their vehicle health with automated alerting.",
+        "result": "Thousands of vehicle owners maintaining accurate service records with predictive maintenance alerts",
+        "imageAlt": "Auto Care vehicle maintenance dashboard designed by 4o4"
+      },
+      "Cafe Menu QR": {
+        "title": "Cafe Menu QR",
+        "subtitle": "Digital menu system",
+        "category": "Web application",
+        "description": "A contactless digital menu solution for cafes and restaurants — QR code menus, real-time updates, photo galleries, and pricing management. Customers scan once for instant access without printing or paper waste.",
+        "result": "Hundreds of establishments reducing waste and enabling instant menu updates",
+        "imageAlt": "Cafe Menu QR digital solution for restaurants and cafes by 4o4"
       }
     }
   },
