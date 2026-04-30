@@ -7,6 +7,8 @@ import Lastonewin from "../images/last_one_win_1920x1440.png";
 import LMS from "../images/LMS.png";
 import CMS from "../images/clincal.png";
 import Breshta from "../images/logo.png";
+import CafeMenu from "../images/CafeMenu.jpeg";
+import AutoCare from "../images/AutoCare.jpeg";
 
 /** Non-translatable portfolio metadata; copy lives in messages/{locale}.json under projects.items.<key> */
 export type PortfolioProjectMeta = {
@@ -74,15 +76,33 @@ export const PROJECT_META: PortfolioProjectMeta[] = [
   },
   {
     id: 6,
+    messageKey: "Auto Care",
+    number: n(7),
+    image: AutoCare,
+    accent: "#ff6b00",
+    year: "2026",
+    tags: ["ASP.NET MVC", "SQL Server", "Auto Care"],
+  },
+  {
+    id: 7,
+    messageKey: "Cafe Menu QR",
+    number: n(8),
+    image: CafeMenu,
+    accent: "#ff8c3a",
+    year: "2026",
+    tags: ["ASP.NET MVC", "SQL Server", "Cafe Menu QR"],
+  }
+  ,{
+    id: 8,
     messageKey: "ilern",
     number: n(6),
     image: LMS,
     accent: "#ff6b00",
     year: "2025",
     tags: ["ASP.NET MVC", "SQL Server", "LMS"],
-  },
+  } ,
   {
-    id: 7,
+    id: 9,
     messageKey: "clinical",
     number: n(7),
     image: CMS,
