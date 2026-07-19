@@ -73,8 +73,8 @@ export function Hero() {
         key={lineKey}
         className={`relative inline-block ${
           row === "rest" ? "block" : "inline-block"
-        } ${row === "first" && i === 0 ? "text-5xl sm:text-7xl lg:text-8xl me-4" : row === "first" && i === 1 ? "text-5xl sm:text-7xl lg:text-8xl" : ""} ${
-          isLarge ? "text-6xl sm:text-8xl lg:text-[108px]" : ""
+        } ${row === "first" && i === 0 ? "text-[clamp(2.25rem,10vw,3rem)] sm:text-7xl lg:text-8xl me-3 sm:me-4" : row === "first" && i === 1 ? "text-[clamp(2.25rem,10vw,3rem)] sm:text-7xl lg:text-8xl" : ""} ${
+          isLarge ? "text-[clamp(2.75rem,12.5vw,3.75rem)] sm:text-8xl lg:text-[108px]" : ""
         }`}
         initial={{ opacity: 0, y: 80, rotateX: -30 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -209,7 +209,7 @@ export function Hero() {
         />
       </motion.div>
 
-      <div className="flex-1 flex items-center justify-center relative z-10">
+      <div className="flex-1 flex items-center justify-center relative z-10 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-24">
         <motion.div
           style={{
             y: contentY,
@@ -217,16 +217,16 @@ export function Hero() {
             scale: contentScale,
             x: fgX,
           }}
-          className="max-w-7xl mx-auto px-6 lg:px-10 text-center"
+          className="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 text-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-center gap-3 mb-10"
+            className="flex items-center justify-center gap-3 mb-7 sm:mb-10"
           >
             <motion.span
-              className="w-16 h-px"
+              className="w-10 sm:w-16 h-px"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.2, delay: 0.5 }}
@@ -235,7 +235,7 @@ export function Hero() {
                 transformOrigin: "left",
               }}
             />
-            <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600 flex items-center gap-2">
+            <span className="font-heading text-[10px] sm:text-xs font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase text-orange-600 flex items-center gap-2">
               <motion.span
                 className="inline-block w-1.5 h-1.5 bg-orange-500 rounded-full"
                 animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
@@ -244,7 +244,7 @@ export function Hero() {
               {t("overline")}
             </span>
             <motion.span
-              className="w-16 h-px"
+              className="w-10 sm:w-16 h-px"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.2, delay: 0.5 }}
@@ -255,7 +255,7 @@ export function Hero() {
             />
           </motion.div>
 
-          <h1 className="font-display font-bold tracking-tight text-gray-950 mb-8 leading-[0.95]">
+          <h1 className="font-display font-bold tracking-tight text-gray-950 mb-6 sm:mb-8 leading-[1.02] sm:leading-[0.95]">
             <span className="block">
               {line1.map((w, i) => renderWord(w, i, "first", i))}
             </span>
@@ -270,7 +270,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-xl mx-auto text-lg sm:text-xl text-gray-500 font-body mb-14 leading-relaxed"
+            className="max-w-xl mx-auto text-base sm:text-lg md:text-xl text-gray-500 font-body mb-10 sm:mb-14 leading-relaxed"
           >
             <strong className="font-semibold text-gray-800">
               {t("descriptionBrand")}
@@ -290,7 +290,7 @@ export function Hero() {
           >
             <motion.a
               href="#work"
-              className="group relative overflow-hidden px-10 py-4 bg-gray-950 text-white font-heading font-bold rounded-full shadow-glow"
+              className="group relative overflow-hidden w-full sm:w-auto text-center px-8 sm:px-10 py-4 bg-gray-950 text-white font-heading font-bold rounded-full shadow-glow animate-pulse-glow"
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -308,18 +308,18 @@ export function Hero() {
                 }}
                 transition={{ duration: 0.3 }}
               />
-              <span className="relative flex items-center gap-3">
+              <span className="relative flex items-center justify-center gap-3">
                 {t("ctaPrimary")}
               </span>
             </motion.a>
 
             <motion.a
               href="#services"
-              className="group px-9 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
+              className="group w-full sm:w-auto px-8 sm:px-9 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center justify-center gap-2">
                 {t("ctaSecondary")}
                 <svg
                   className="w-4 h-4 group-hover:rotate-45 transition-transform duration-300 rtl:-scale-x-100"
@@ -335,11 +335,11 @@ export function Hero() {
 
             <motion.a
               href="#contact"
-              className="group px-9 py-4 rounded-full border-2 border-transparent text-gray-700 font-heading font-semibold bg-white/80 hover:border-orange-400 hover:text-orange-600 transition-all duration-300 shadow-sm"
+              className="group w-full sm:w-auto px-8 sm:px-9 py-4 rounded-full border-2 border-transparent text-gray-700 font-heading font-semibold bg-white/80 hover:border-orange-400 hover:text-orange-600 transition-all duration-300 shadow-sm"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center justify-center gap-2">
                 {t("ctaContact")}
                 <svg
                   className="w-4 h-4"

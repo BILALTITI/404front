@@ -63,7 +63,7 @@ function ProjectCard({ project }: { project: ProjectUi }) {
       </div>
 
       <div className="p-6">
-        <h3 className="font-display text-2xl font-bold text-gray-950 mb-2 group-hover:text-orange-600 transition-colors">
+        <h3 className="font-display text-xl sm:text-2xl font-bold text-gray-950 mb-2 group-hover:text-orange-600 transition-colors">
           {project.title}
         </h3>
 
@@ -189,7 +189,7 @@ function FocusModal({
           </div>
         </div>
 
-        <div className="p-8 sm:p-12">
+        <div className="p-5 sm:p-8 md:p-12">
           <div className="flex items-start justify-between gap-6 mb-8">
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -215,11 +215,11 @@ function FocusModal({
                 {project.subtitle}
               </p>
 
-              <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-950 mb-4">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-gray-950 mb-4">
                 {project.title}
               </h2>
 
-              <p className="text-gray-600 font-body text-lg leading-relaxed max-w-2xl">
+              <p className="text-gray-600 font-body text-base sm:text-lg leading-relaxed max-w-2xl">
                 {project.description}
               </p>
             </div>
@@ -236,7 +236,7 @@ function FocusModal({
                   {t("keyResult")}
                 </div>
                 <div
-                  className="font-display text-2xl font-bold"
+                  className="font-display text-xl sm:text-2xl font-bold"
                   style={{ color: project.accent }}
                 >
                   {project.result}
@@ -332,7 +332,7 @@ export function Projects() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="mb-16">
+        <div className="mb-10 sm:mb-16">
           <motion.div
             className="flex items-center gap-3 mb-6"
             initial={{ opacity: 0, y: 12 }}
@@ -347,7 +347,7 @@ export function Projects() {
           </motion.div>
 
           <motion.h2
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-950 mb-4"
+            className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-950 mb-4"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
@@ -355,13 +355,16 @@ export function Projects() {
           >
             {t("titleLine1")}
             <br />
-            <span className="gradient-text" data-text={t("titleGradientData")}>
+            <span
+              className="gradient-text gradient-text-shine"
+              data-text={t("titleGradientData")}
+            >
               {t("titleGradient")}
             </span>
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 font-body text-lg max-w-2xl"
+            className="text-gray-600 font-body text-base sm:text-lg max-w-2xl"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
@@ -397,7 +400,7 @@ export function Projects() {
         </div>
 
         <motion.div
-          className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.2 }}
@@ -407,7 +410,7 @@ export function Projects() {
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-orange-500 text-white font-heading font-semibold hover:bg-orange-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-200"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 rounded-full bg-orange-500 text-white font-heading font-semibold hover:bg-orange-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-200 animate-pulse-glow"
             >
               <span>{showAll ? t("showLess") : t("viewMore")}</span>
               <motion.svg
@@ -426,7 +429,7 @@ export function Projects() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
             <span>{t("startProject")}</span>
             <svg

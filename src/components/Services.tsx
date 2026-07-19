@@ -100,7 +100,7 @@ function ServiceCard({
         />
 
         <div
-          className="relative p-8 lg:p-10 h-full flex flex-col"
+          className="relative p-6 sm:p-8 lg:p-10 h-full flex flex-col"
           style={{ transformStyle: "preserve-3d" }}
         >
           <span
@@ -150,7 +150,7 @@ function ServiceCard({
               {service.subtitle}
             </span>
             <h3
-              className="font-display text-2xl lg:text-[1.65rem] font-bold mb-4 transition-colors duration-300"
+              className="font-display text-xl sm:text-2xl lg:text-[1.65rem] font-bold mb-4 transition-colors duration-300"
               style={{ color: hovered ? "#ff6b00" : "#0d0d0d" }}
             >
               {service.title}
@@ -209,7 +209,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="relative py-40 overflow-hidden"
+      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
       style={{
         background: "linear-gradient(180deg, #fff 0%, #fafafa 50%, #fff 100%)",
       }}
@@ -232,7 +232,7 @@ export function Services() {
       <div className="absolute inset-0 grid-pattern opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div ref={headerRef} className="mb-24">
+        <div ref={headerRef} className="mb-14 sm:mb-20 lg:mb-24">
           <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -255,18 +255,20 @@ export function Services() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="font-display font-bold text-gray-950 leading-[1.05] mb-6"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
+              style={{ fontSize: "clamp(2rem, 8vw, 5.5rem)" }}
             >
               {t("titleLine1")}
               <br />
-              <span className="gradient-text">{t("titleGradient")}</span>
+              <span className="gradient-text gradient-text-shine">
+                {t("titleGradient")}
+              </span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-gray-500 font-body text-lg max-w-xl leading-relaxed"
+              className="text-gray-500 font-body text-base sm:text-lg max-w-xl leading-relaxed"
             >
               {t("intro")}
             </motion.p>
@@ -284,7 +286,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-24 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 lg:p-10 rounded-3xl border border-gray-100"
+          className="mt-14 sm:mt-20 lg:mt-24 flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 lg:p-10 rounded-3xl border border-gray-100"
           style={{
             background: "linear-gradient(135deg, #fff9f5 0%, #ffffff 100%)",
           }}
@@ -297,7 +299,7 @@ export function Services() {
           </div>
           <motion.a
             href="#contact"
-            className="group relative overflow-hidden flex-shrink-0 px-8 py-4 rounded-full bg-gray-950 text-white font-heading font-bold"
+            className="group relative overflow-hidden flex-shrink-0 w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-gray-950 text-white font-heading font-bold animate-pulse-glow inline-flex"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >

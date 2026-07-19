@@ -170,7 +170,7 @@ export function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative py-40 overflow-hidden"
+      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
       style={{
         background:
           "linear-gradient(180deg, #ffffff 0%, #fff9f5 40%, #fff5ee 60%, #ffffff 100%)",
@@ -186,7 +186,7 @@ export function Testimonials() {
       <div className="absolute inset-0 grid-pattern opacity-30" />
 
       <div className="relative max-w-6xl mx-auto px-6 lg:px-10">
-        <div ref={headerRef} className="text-center mb-24">
+        <div ref={headerRef} className="text-center mb-14 sm:mb-20 lg:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
@@ -204,18 +204,20 @@ export function Testimonials() {
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-bold text-gray-950 leading-[1.05] mb-5"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+            style={{ fontSize: "clamp(2rem, 8vw, 5rem)" }}
           >
             {t("titleLine1")}
             <br />
-            <span className="gradient-text">{t("titleGradient")}</span>
+            <span className="gradient-text gradient-text-shine">
+              {t("titleGradient")}
+            </span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-gray-500 font-body text-lg max-w-lg mx-auto"
+            className="text-gray-500 font-body text-base sm:text-lg max-w-lg mx-auto"
           >
             {t("subtitle")}
           </motion.p>
@@ -261,7 +263,7 @@ export function Testimonials() {
                   }}
                 />
 
-                <div className="p-8 lg:p-10">
+                <div className="p-6 sm:p-8 lg:p-10">
                   <div className="flex items-start justify-between gap-4 mb-7">
                     <div
                       className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
@@ -284,7 +286,7 @@ export function Testimonials() {
                       }}
                     >
                       <div
-                        className="font-display text-3xl font-bold"
+                        className="font-display text-2xl sm:text-3xl font-bold"
                         style={{ color: active.accent }}
                       >
                         {active.metric}
@@ -315,7 +317,7 @@ export function Testimonials() {
                     ))}
                   </div>
 
-                  <blockquote className="font-body text-gray-700 text-lg leading-relaxed mb-8">
+                  <blockquote className="font-body text-gray-700 text-base sm:text-lg leading-relaxed mb-8">
                     &quot;{active.quote}&quot;
                   </blockquote>
 

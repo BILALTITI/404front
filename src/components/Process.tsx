@@ -26,13 +26,13 @@ function ProcessStep({
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <div ref={ref} className="relative flex gap-8 lg:gap-12">
+    <div ref={ref} className="relative flex gap-5 sm:gap-8 lg:gap-12">
       <div className="flex flex-col items-center flex-shrink-0">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={isInView ? { scale: 1, opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: index * 0.12, type: "spring", stiffness: 200 }}
-          className="relative w-14 h-14 rounded-full flex items-center justify-center font-display font-bold text-white z-10"
+          className="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display text-sm sm:text-base font-bold text-white z-10"
           style={{
             background: `linear-gradient(135deg, ${step.accent}, ${step.accent}99)`,
             boxShadow: `0 8px 24px ${step.accent}40`,
@@ -70,7 +70,7 @@ function ProcessStep({
         className="pb-12 flex-1"
       >
         <div className="flex flex-wrap items-center gap-4 mb-3">
-          <h3 className="font-display text-2xl lg:text-3xl font-bold text-white">
+          <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white">
             {step.title}
           </h3>
           <span
@@ -85,7 +85,7 @@ function ProcessStep({
           </span>
         </div>
 
-        <p className="font-body text-gray-400 leading-relaxed mb-6 max-w-lg">
+        <p className="font-body text-sm sm:text-base text-gray-400 leading-relaxed mb-6 max-w-lg">
           {step.description}
         </p>
 
@@ -118,7 +118,7 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative py-40 overflow-hidden bg-gray-950"
+      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden bg-gray-950"
     >
       <div
         className="absolute top-0 start-1/4 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
@@ -131,7 +131,7 @@ export function Process() {
       <div className="absolute inset-0 grid-pattern-light opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-start">
           <div ref={headerRef} className="lg:sticky lg:top-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,7 @@ export function Process() {
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-bold text-white leading-[1.05] mb-7"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)" }}
+              style={{ fontSize: "clamp(2rem, 8vw, 5rem)" }}
             >
               {t("titleLine1")}
               <br />
@@ -174,7 +174,7 @@ export function Process() {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="font-body text-gray-400 text-lg leading-relaxed max-w-md mb-10"
+              className="font-body text-gray-400 text-base sm:text-lg leading-relaxed max-w-md mb-10"
             >
               {t("intro")}
             </motion.p>
@@ -186,11 +186,11 @@ export function Process() {
               className="flex gap-8"
             >
               <div>
-                <div className="font-display text-3xl font-bold gradient-text">{t("metric1Value")}</div>
+                <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{t("metric1Value")}</div>
                 <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{t("metric1Label")}</div>
               </div>
               <div>
-                <div className="font-display text-3xl font-bold gradient-text">{t("metric2Value")}</div>
+                <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{t("metric2Value")}</div>
                 <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{t("metric2Label")}</div>
               </div>
             </motion.div>

@@ -340,4 +340,67 @@
   .clip-reveal.revealed {
     clip-path: inset(0 0% 0 0);
   }
+
+  /* Attention: pulsing orange glow for primary CTAs */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow:
+        0 0 0 0 rgba(255, 107, 0, 0.35),
+        0 0 24px rgba(255, 107, 0, 0.2);
+    }
+    50% {
+      box-shadow:
+        0 0 0 10px rgba(255, 107, 0, 0),
+        0 0 48px rgba(255, 107, 0, 0.45);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.6s ease-in-out infinite;
+  }
+
+  /* Attention: moving shine across gradient headings */
+  @keyframes gradient-shine {
+    0% { background-position: 0% center; }
+    100% { background-position: -200% center; }
+  }
+
+  .gradient-text-shine {
+    background-image: linear-gradient(
+      90deg,
+      #ff6b00,
+      #ff8c3a,
+      #ffc199,
+      #ff8c3a,
+      #ff6b00
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shine 4s linear infinite;
+  }
+
+  /* Attention: gentle bob for scroll cues / arrows */
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  .animate-bob {
+    animation: bob 1.8s ease-in-out infinite;
+  }
+
+  /* Respect users who opt out of motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse-glow,
+    .gradient-text-shine,
+    .animate-bob,
+    .animate-float,
+    .animate-float-delayed,
+    .animate-breathe,
+    .shimmer {
+      animation: none !important;
+    }
+  }
 }

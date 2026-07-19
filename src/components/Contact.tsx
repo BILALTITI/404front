@@ -121,7 +121,7 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-32 lg:py-40 bg-gray-900 overflow-hidden"
+      className="relative py-24 sm:py-32 lg:py-40 bg-gray-900 overflow-hidden"
     >
       <div className="absolute inset-0">
         <div className="absolute top-0 start-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
@@ -130,7 +130,7 @@ export function Contact() {
       <div className="absolute inset-0 grid-pattern opacity-5" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-start">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -148,18 +148,20 @@ export function Contact() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+              className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
               {t("titleLine1")}
               <br />
-              <span className="gradient-text">{t("titleGradient")}</span>
+              <span className="gradient-text gradient-text-shine">
+                {t("titleGradient")}
+              </span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-gray-400 font-body mb-10 leading-relaxed"
+              className="text-base sm:text-lg text-gray-400 font-body mb-8 sm:mb-10 leading-relaxed"
             >
               {t("intro")}
             </motion.p>
@@ -248,7 +250,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/10">
+            <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-5 sm:p-8 lg:p-10 border border-white/10">
               <MountGuard
                 fallback={
                   <div

@@ -28,7 +28,7 @@ export function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-40 overflow-hidden bg-white"
+      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden bg-white"
     >
       <div
         className="absolute -top-8 start-0 font-display text-[20vw] font-bold text-gray-50 select-none pointer-events-none leading-none whitespace-nowrap"
@@ -46,7 +46,7 @@ export function About() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-20 lg:gap-28 items-center">
+        <div className="grid lg:grid-cols-2 gap-14 sm:gap-20 lg:gap-28 items-center">
           <div ref={headerRef}>
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -69,11 +69,13 @@ export function About() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="font-display font-bold text-gray-950 leading-[1.05] mb-7"
-              style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
+              style={{ fontSize: "clamp(1.9rem, 7.5vw, 4.5rem)" }}
             >
               {t("headingLine1")}
               <br />
-              <span className="gradient-text">{t("headingGradient")}</span>
+              <span className="gradient-text gradient-text-shine">
+                {t("headingGradient")}
+              </span>
               <br />
               {t("headingLine2")}
               <br />
@@ -84,7 +86,7 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-gray-500 font-body text-lg leading-relaxed mb-5"
+              className="text-gray-500 font-body text-base sm:text-lg leading-relaxed mb-5"
             >
               {t("p1")}
             </motion.p>
@@ -93,7 +95,7 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-gray-500 font-body text-lg leading-relaxed mb-12"
+              className="text-gray-500 font-body text-base sm:text-lg leading-relaxed mb-8 sm:mb-12"
             >
               {t("p2")}{" "}
               <a href="#work" className="text-orange-600 font-medium hover:underline">
@@ -109,7 +111,7 @@ export function About() {
               .
             </motion.p>
 
-            <div className="grid grid-cols-2 gap-5 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 mb-8 sm:mb-12">
               {values.map((v, i) => (
                 <motion.div
                   key={v.title}
@@ -172,7 +174,7 @@ export function About() {
               />
 
               <div
-                className="relative bg-white rounded-3xl overflow-hidden shadow-premium p-8"
+                className="relative bg-white rounded-3xl overflow-hidden shadow-premium p-5 sm:p-8"
                 style={{ border: "1px solid rgba(0,0,0,0.04)" }}
               >
                 <div className="grid grid-cols-2 gap-4 mb-8">
@@ -188,7 +190,7 @@ export function About() {
                         border: "1px solid rgba(0,0,0,0.04)",
                       }}
                     >
-                      <div className="font-display text-3xl font-bold gradient-text mb-1">
+                      <div className="font-display text-2xl sm:text-3xl font-bold gradient-text mb-1">
                         {stat.value}
                       </div>
                       <div className="font-heading text-xs text-gray-400 uppercase tracking-wide">

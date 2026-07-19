@@ -41,7 +41,7 @@ export function Footer() {
               className="lg:col-span-4"
             >
               <Link href="/" className="inline-block mb-6">
-                <span className="font-display text-3xl font-bold">
+                <span className="font-display text-2xl sm:text-3xl font-bold">
                   <span className="text-white">4</span>
                   <span className="text-orange-500">o</span>
                   <span className="text-white">4</span>
