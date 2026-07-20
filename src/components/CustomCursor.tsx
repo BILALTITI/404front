@@ -90,15 +90,15 @@ export function CustomCursor() {
     isClicking ? 18 : 6;
 
   const ringBg =
-    hoverState === "project" ? "rgba(255, 107, 0, 0.12)" :
-    hoverState === "button" ? "rgba(255, 107, 0, 0.08)" :
+    hoverState === "project" ? "rgba(34, 184, 222, 0.12)" :
+    hoverState === "button" ? "rgba(34, 184, 222, 0.08)" :
     "transparent";
 
   const ringBorder =
-    hoverState === "project" ? "rgba(255, 107, 0, 0.7)" :
-    hoverState === "button" ? "rgba(255, 107, 0, 0.8)" :
-    hoverState === "link" ? "rgba(255, 107, 0, 0.5)" :
-    "rgba(255, 107, 0, 0.35)";
+    hoverState === "project" ? "rgba(34, 184, 222, 0.7)" :
+    hoverState === "button" ? "rgba(34, 184, 222, 0.8)" :
+    hoverState === "link" ? "rgba(34, 184, 222, 0.5)" :
+    "rgba(34, 184, 222, 0.35)";
 
   return (
     <>
@@ -123,8 +123,8 @@ export function CustomCursor() {
             width: ringSize,
             height: ringSize,
             boxShadow: hoverState !== "default"
-              ? `0 0 ${ringSize}px rgba(255, 107, 0, 0.15)`
-              : "0 0 12px rgba(255, 107, 0, 0.06)",
+              ? `0 0 ${ringSize}px rgba(34, 184, 222, 0.15)`
+              : "0 0 12px rgba(34, 184, 222, 0.06)",
           }}
           transition={{ duration: 0.25, ease: "easeOut" }}
         />
@@ -146,7 +146,7 @@ export function CustomCursor() {
           animate={{
             width: dotSize,
             height: dotSize,
-            boxShadow: "0 0 12px rgba(255, 107, 0, 0.6)",
+            boxShadow: "0 0 12px rgba(34, 184, 222, 0.6)",
           }}
           transition={{ duration: 0.15 }}
         />

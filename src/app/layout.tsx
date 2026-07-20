@@ -3,25 +3,19 @@ import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-/** Default metadata when middleware has not yet resolved locale (overridden per `[locale]`). */
+/** Default metadata when middleware has not yet resolved locale (overridden per `[locale]`).
+ *  The OG image comes from the app/opengraph-image.tsx file convention (1200×630). */
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "4o4 Solutions",
-    template: "%s | 4o4 Solutions",
+    default: "Watad",
+    template: "%s | Watad",
   },
   openGraph: {
-    title: "4o4 Solutions",
-    description: "Professional software solutions",
+    title: "Watad",
+    description: "Custom software, delivered and handed over.",
     url: siteUrl,
-    siteName: "4o4 Solutions",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
+    siteName: "Watad",
     type: "website",
   },
 };

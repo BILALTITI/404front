@@ -10,6 +10,35 @@ export default {
   theme: {
     extend: {
       colors: {
+        /* Watad rebrand: canonical brand tokens. */
+        watad: {
+          "navy-900": "#0C2740",
+          "navy-700": "#123A5F",
+          "blue-500": "#1B6491",
+          "cyan-400": "#22B8DE",
+          "cyan-300": "#3ED2F0",
+          ink: "#1A1A1A",
+          mist: "#E8EDF1",
+          success: "#10B981",
+          warning: "#F59E0B",
+          error: "#EF4444",
+        },
+        /* Rebrand shim: the legacy `orange` utility scale now resolves to the
+           Watad cyan/blue palette, so every existing *-orange-* class renders
+           on-brand without touching component markup. */
+        orange: {
+          "50": "#EAF6FA",
+          "100": "#D8EFF7",
+          "200": "#B5E4F2",
+          "300": "#3ED2F0",
+          "400": "#22B8DE",
+          "500": "#22B8DE",
+          "600": "#1B6491",
+          "700": "#123A5F",
+          "800": "#0C2740",
+          "900": "#0C2740",
+          "950": "#081A2C",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

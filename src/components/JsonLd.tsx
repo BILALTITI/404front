@@ -10,8 +10,8 @@ export async function JsonLd({ locale }: { locale: string }) {
   const organizationJson = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "4o4 Solutions",
-    alternateName: "4o4",
+    name: "Watad",
+    alternateName: "وتد",
     url: siteUrl,
     description,
     address: {
@@ -33,7 +33,7 @@ export async function JsonLd({ locale }: { locale: string }) {
   const websiteJson = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "4o4 Solutions",
+    name: "Watad",
     url: siteUrl,
     publisher: { "@id": `${siteUrl}/#organization` },
   };

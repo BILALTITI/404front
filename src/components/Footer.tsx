@@ -25,7 +25,7 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative bg-gray-950 border-t border-white/5 overflow-hidden"
+      className="relative bg-[#0C2740] border-t border-white/5 overflow-hidden"
     >
       <div className="absolute inset-0">
         <div className="absolute bottom-0 start-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
@@ -42,11 +42,17 @@ export function Footer() {
             >
               <Link href="/" className="inline-block mb-6">
                 <span className="font-display text-2xl sm:text-3xl font-bold">
-                  <span className="text-white">4</span>
-                  <span className="text-orange-500">o</span>
-                  <span className="text-white">4</span>
-                  <span className="ms-2 font-heading text-lg font-medium text-gray-400">
-                    {tCommon("brandSuffix")}
+                  <span className="text-white">
+                    {/^[A-Za-z]+$/.test(tCommon("brand")) ? (
+                      <>
+                        {tCommon("brand").slice(0, -2)}
+                        <span className="text-[#22B8DE]">
+                          {tCommon("brand").slice(-2)}
+                        </span>
+                      </>
+                    ) : (
+                      tCommon("brand")
+                    )}
                   </span>
                 </span>
               </Link>

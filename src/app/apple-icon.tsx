@@ -1,13 +1,15 @@
 import { ImageResponse } from "next/og";
-import { get404ImageDataUri } from "@/lib/faviconSource";
+import { getWatadLogoDataUri } from "@/lib/faviconSource";
 
 export const runtime = "nodejs";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
+/** Apple touch icon: the Watad logo mark, cropped from the wide lockup
+ *  (1408×768, mark on the left) into the square. */
 export default async function AppleIcon() {
-  const src = await get404ImageDataUri();
+  const src = await getWatadLogoDataUri();
 
   return new ImageResponse(
     (
@@ -16,23 +18,33 @@ export default async function AppleIcon() {
           width: 180,
           height: 180,
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#141414",
-          borderRadius: "50%",
+          position: "relative",
+          background: "#ffffff",
           overflow: "hidden",
         }}
       >
         <img
           alt=""
           src={src}
-          width={180}
-          height={180}
+          width={399}
+          height={218}
           style={{
-            width: 180,
+            position: "absolute",
+            width: 399,
+            height: 218,
+            left: 8,
+            top: -19,
+          }}
+        />
+        {/* Mask the wordmark that sits right of the mark in the lockup. */}
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            width: 20,
             height: 180,
-            objectFit: "cover",
-            borderRadius: "50%",
+            background: "#ffffff",
           }}
         />
       </div>

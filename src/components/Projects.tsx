@@ -63,7 +63,7 @@ function ProjectCard({ project }: { project: ProjectUi }) {
       </div>
 
       <div className="p-6">
-        <h3 className="font-display text-xl sm:text-2xl font-bold text-gray-950 mb-2 group-hover:text-orange-600 transition-colors">
+        <h3 className="font-display text-xl sm:text-2xl font-bold text-[#123A5F] mb-2 group-hover:text-orange-600 transition-colors">
           {project.title}
         </h3>
 
@@ -139,7 +139,7 @@ function FocusModal({
       onClick={onClose}
     >
       <motion.div
-        className="absolute inset-0 bg-gray-950/80 backdrop-blur-xl"
+        className="absolute inset-0 bg-[#0C2740]/80 backdrop-blur-xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -215,7 +215,7 @@ function FocusModal({
                 {project.subtitle}
               </p>
 
-              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-gray-950 mb-4">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#123A5F] mb-4">
                 {project.title}
               </h2>
 
@@ -327,7 +327,7 @@ export function Projects() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,107,0,0.03) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(34,184,222,0.03) 0%, transparent 70%)",
         }}
       />
 
@@ -347,11 +347,11 @@ export function Projects() {
           </motion.div>
 
           <motion.h2
-            className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-950 mb-4"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-[#123A5F] mb-4"
+            initial={{ opacity: 0, y: 44, filter: "blur(14px)", scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
             viewport={{ once: true, margin: "0px 0px -10% 0px", amount: 0.3 }}
-            transition={{ duration: 0.45, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.95, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
           >
             {t("titleLine1")}
             <br />
@@ -380,11 +380,11 @@ export function Projects() {
               <motion.div
                 key={project.id}
                 layout={false}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 40, filter: "blur(12px)", scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+                exit={{ opacity: 0, y: 12, filter: "blur(8px)" }}
                 transition={{
-                  duration: 0.35,
+                  duration: 0.6,
                   delay:
                     index >= INITIAL_VISIBLE
                       ? (index - INITIAL_VISIBLE) * 0.06

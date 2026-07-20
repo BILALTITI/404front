@@ -64,9 +64,11 @@ function ProcessStep({
       </div>
 
       <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, delay: index * 0.12 + 0.1, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0, x: 30, filter: "blur(12px)" }}
+        animate={
+          isInView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}
+        }
+        transition={{ duration: 0.8, delay: index * 0.12 + 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="pb-12 flex-1"
       >
         <div className="flex flex-wrap items-center gap-4 mb-3">
@@ -118,15 +120,15 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden bg-gray-950"
+      className="relative py-24 sm:py-32 lg:py-40 overflow-hidden bg-[#0C2740]"
     >
       <div
         className="absolute top-0 start-1/4 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(34,184,222,0.08) 0%, transparent 70%)" }}
       />
       <div
         className="absolute bottom-0 end-1/4 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,140,58,0.06) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(62,210,240,0.06) 0%, transparent 70%)" }}
       />
       <div className="absolute inset-0 grid-pattern-light opacity-30" />
 
@@ -145,9 +147,13 @@ export function Process() {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 44, filter: "blur(14px)", scale: 0.97 }}
+              animate={
+                isHeaderInView
+                  ? { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }
+                  : {}
+              }
+              transition={{ delay: 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-bold text-white leading-[1.05] mb-7"
               style={{ fontSize: "clamp(2rem, 8vw, 5rem)" }}
             >
@@ -158,16 +164,15 @@ export function Process() {
                 className="gradient-text inline-block"
                 animate={{
                   textShadow: [
-                    "0 0 0px rgba(255,107,0,0)",
-                    "0 0 16px rgba(255,107,0,0.35)",
-                    "0 0 0px rgba(255,107,0,0)",
+                    "0 0 0px rgba(34,184,222,0)",
+                    "0 0 16px rgba(34,184,222,0.35)",
+                    "0 0 0px rgba(34,184,222,0)",
                   ],
                 }}
                 transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
               >
                 {t("titleGradient")}
               </motion.span>
-              .
             </motion.h2>
 
             <motion.p

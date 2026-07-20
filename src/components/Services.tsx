@@ -65,11 +65,13 @@ function ServiceCard({
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 70 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      initial={{ opacity: 0, y: 60, filter: "blur(14px)", scale: 0.94 }}
+      animate={
+        isInView ? { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 } : {}
+      }
       transition={{
-        duration: 0.8,
-        delay: index * 0.08,
+        duration: 0.9,
+        delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
       className="group"
@@ -85,9 +87,9 @@ function ServiceCard({
           rotateY,
           transformStyle: "preserve-3d",
           background: "white",
-          borderColor: hovered ? "rgba(255,107,0,0.25)" : "rgba(0,0,0,0.06)",
+          borderColor: hovered ? "rgba(34,184,222,0.25)" : "rgba(0,0,0,0.06)",
           boxShadow: hovered
-            ? "0 24px 60px -12px rgba(255,107,0,0.18), 0 0 0 1px rgba(255,107,0,0.12)"
+            ? "0 24px 60px -12px rgba(34,184,222,0.18), 0 0 0 1px rgba(34,184,222,0.12)"
             : "0 4px 24px -4px rgba(0,0,0,0.06)",
         }}
       >
@@ -95,7 +97,7 @@ function ServiceCard({
           className="absolute inset-0 pointer-events-none transition-opacity duration-300 rounded-3xl"
           style={{
             opacity: hovered ? 1 : 0,
-            background: `radial-gradient(circle 220px at ${glowX.get()}% ${glowY.get()}%, rgba(255,107,0,0.09) 0%, transparent 80%)`,
+            background: `radial-gradient(circle 220px at ${glowX.get()}% ${glowY.get()}%, rgba(34,184,222,0.09) 0%, transparent 80%)`,
           }}
         />
 
@@ -106,7 +108,7 @@ function ServiceCard({
           <span
             className="absolute -top-3 -end-2 font-display text-[90px] font-bold select-none pointer-events-none transition-all duration-500"
             style={{
-              color: hovered ? "rgba(255,107,0,0.12)" : "rgba(0,0,0,0.04)",
+              color: hovered ? "rgba(34,184,222,0.12)" : "rgba(0,0,0,0.04)",
               lineHeight: 1,
             }}
           >
@@ -125,19 +127,19 @@ function ServiceCard({
                 className="absolute inset-0 rounded-2xl rotate-6 transition-all duration-300"
                 style={{
                   backgroundColor: hovered
-                    ? "rgba(255,107,0,0.15)"
-                    : "rgba(255,107,0,0.08)",
+                    ? "rgba(34,184,222,0.15)"
+                    : "rgba(34,184,222,0.08)",
                 }}
               />
               <div
                 className="relative w-full h-full rounded-2xl flex items-center justify-center text-2xl font-bold text-white transition-shadow duration-300"
                 style={{
                   background: hovered
-                    ? "linear-gradient(135deg, #ff6b00, #ff8c3a)"
-                    : "linear-gradient(135deg, #ff7a10, #ff9040)",
+                    ? "linear-gradient(135deg, #22B8DE, #3ED2F0)"
+                    : "linear-gradient(135deg, #22B8DE, #3ED2F0)",
                   boxShadow: hovered
-                    ? "0 8px 24px rgba(255,107,0,0.4)"
-                    : "0 4px 12px rgba(255,107,0,0.2)",
+                    ? "0 8px 24px rgba(34,184,222,0.4)"
+                    : "0 4px 12px rgba(34,184,222,0.2)",
                 }}
               >
                 {service.icon}
@@ -151,7 +153,7 @@ function ServiceCard({
             </span>
             <h3
               className="font-display text-xl sm:text-2xl lg:text-[1.65rem] font-bold mb-4 transition-colors duration-300"
-              style={{ color: hovered ? "#ff6b00" : "#0d0d0d" }}
+              style={{ color: hovered ? "#22B8DE" : "#0d0d0d" }}
             >
               {service.title}
             </h3>
@@ -169,11 +171,11 @@ function ServiceCard({
                   className="px-3 py-1.5 rounded-full font-heading text-[11px] font-semibold transition-all duration-200"
                   style={{
                     backgroundColor: hovered
-                      ? "rgba(255,107,0,0.08)"
+                      ? "rgba(34,184,222,0.08)"
                       : "rgba(0,0,0,0.04)",
-                    color: hovered ? "#ff6b00" : "#666",
+                    color: hovered ? "#22B8DE" : "#666",
                     border: hovered
-                      ? "1px solid rgba(255,107,0,0.2)"
+                      ? "1px solid rgba(34,184,222,0.2)"
                       : "1px solid rgba(0,0,0,0.07)",
                   }}
                 >
@@ -187,7 +189,7 @@ function ServiceCard({
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
               style={{
-                backgroundColor: hovered ? "#ff6b00" : "rgba(0,0,0,0.05)",
+                backgroundColor: hovered ? "#22B8DE" : "rgba(0,0,0,0.05)",
                 color: hovered ? "white" : "#999",
               }}
             >
@@ -218,14 +220,14 @@ export function Services() {
         className="absolute top-1/4 -end-40 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(34,184,222,0.06) 0%, transparent 70%)",
         }}
       />
       <div
         className="absolute bottom-1/4 -start-40 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,140,58,0.06) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(62,210,240,0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -247,14 +249,18 @@ export function Services() {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, y: 44, filter: "blur(14px)", scale: 0.97 }}
+              animate={
+                isHeaderInView
+                  ? { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }
+                  : {}
+              }
               transition={{
-                duration: 0.9,
+                duration: 1,
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-display font-bold text-gray-950 leading-[1.05] mb-6"
+              className="font-display font-bold text-[#123A5F] leading-[1.05] mb-6"
               style={{ fontSize: "clamp(2rem, 8vw, 5.5rem)" }}
             >
               {t("titleLine1")}
@@ -288,7 +294,7 @@ export function Services() {
           viewport={{ once: true }}
           className="mt-14 sm:mt-20 lg:mt-24 flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 lg:p-10 rounded-3xl border border-gray-100"
           style={{
-            background: "linear-gradient(135deg, #fff9f5 0%, #ffffff 100%)",
+            background: "linear-gradient(135deg, #F2F7FA 0%, #ffffff 100%)",
           }}
         >
           <div>
@@ -299,7 +305,7 @@ export function Services() {
           </div>
           <motion.a
             href="#contact"
-            className="group relative overflow-hidden flex-shrink-0 w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-gray-950 text-white font-heading font-bold animate-pulse-glow inline-flex"
+            className="group relative overflow-hidden flex-shrink-0 w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-[#0C2740] text-white font-heading font-bold animate-pulse-glow inline-flex"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >

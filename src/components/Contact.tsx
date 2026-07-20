@@ -121,7 +121,7 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-24 sm:py-32 lg:py-40 bg-gray-900 overflow-hidden"
+      className="relative py-24 sm:py-32 lg:py-40 bg-[#0C2740] overflow-hidden"
     >
       <div className="absolute inset-0">
         <div className="absolute top-0 start-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
@@ -145,9 +145,13 @@ export function Contact() {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              initial={{ opacity: 0, y: 44, filter: "blur(14px)", scale: 0.97 }}
+              animate={
+                isInView
+                  ? { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }
+                  : {}
+              }
+              transition={{ duration: 1, delay: 0.1 }}
               className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
               {t("titleLine1")}
@@ -189,10 +193,10 @@ export function Contact() {
                     {t("emailLabel")}
                   </div>
                   <a
-                    href="mailto:contact@4o4solutions.com"
+                    href={`mailto:${t("emailValue")}`}
                     className="font-heading text-white hover:text-orange-500 transition-colors"
                   >
-                    contact@4o4solutions.com
+                    {t("emailValue")}
                   </a>
                 </div>
               </div>
@@ -270,10 +274,10 @@ export function Contact() {
                   className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-heading text-sm font-semibold transition-all duration-200"
                   style={{
                     backgroundColor:
-                      activeTab === "message" ? "#f97316" : "transparent",
+                      activeTab === "message" ? "#22B8DE" : "transparent",
                     color:
                       activeTab === "message"
-                        ? "white"
+                        ? "#0C2740"
                         : "rgba(255,255,255,0.4)",
                   }}
                 >
@@ -298,10 +302,10 @@ export function Contact() {
                   className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-heading text-sm font-semibold transition-all duration-200"
                   style={{
                     backgroundColor:
-                      activeTab === "meeting" ? "#f97316" : "transparent",
+                      activeTab === "meeting" ? "#22B8DE" : "transparent",
                     color:
                       activeTab === "meeting"
-                        ? "white"
+                        ? "#0C2740"
                         : "rgba(255,255,255,0.4)",
                   }}
                 >
@@ -381,22 +385,22 @@ export function Contact() {
                       }
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
                     >
-                      <option value="" className="bg-gray-900">
+                      <option value="" className="bg-[#0C2740]">
                         {t("selectTopic")}
                       </option>
-                      <option value="new-project" className="bg-gray-900">
+                      <option value="new-project" className="bg-[#0C2740]">
                         {t("topicNew")}
                       </option>
-                      <option value="existing-project" className="bg-gray-900">
+                      <option value="existing-project" className="bg-[#0C2740]">
                         {t("topicExisting")}
                       </option>
-                      <option value="consultation" className="bg-gray-900">
+                      <option value="consultation" className="bg-[#0C2740]">
                         {t("topicConsult")}
                       </option>
-                      <option value="partnership" className="bg-gray-900">
+                      <option value="partnership" className="bg-[#0C2740]">
                         {t("topicPartner")}
                       </option>
-                      <option value="other" className="bg-gray-900">
+                      <option value="other" className="bg-[#0C2740]">
                         {t("topicOther")}
                       </option>
                     </select>
@@ -595,14 +599,14 @@ export function Contact() {
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
                         required
                       >
-                        <option value="" className="bg-gray-900">
+                        <option value="" className="bg-[#0C2740]">
                           {t("pickTime")}
                         </option>
                         {times.map((opt) => (
                           <option
                             key={opt.value}
                             value={opt.value}
-                            className="bg-gray-900"
+                            className="bg-[#0C2740]"
                           >
                             {opt.label}
                           </option>
@@ -626,22 +630,22 @@ export function Contact() {
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
                       required
                     >
-                      <option value="" className="bg-gray-900">
+                      <option value="" className="bg-[#0C2740]">
                         {t("selectTopic")}
                       </option>
-                      <option value="new-project" className="bg-gray-900">
+                      <option value="new-project" className="bg-[#0C2740]">
                         {t("topicNew")}
                       </option>
-                      <option value="existing-project" className="bg-gray-900">
+                      <option value="existing-project" className="bg-[#0C2740]">
                         {t("topicExistingMeeting")}
                       </option>
-                      <option value="consultation" className="bg-gray-900">
+                      <option value="consultation" className="bg-[#0C2740]">
                         {t("topicConsult")}
                       </option>
-                      <option value="partnership" className="bg-gray-900">
+                      <option value="partnership" className="bg-[#0C2740]">
                         {t("topicPartner")}
                       </option>
-                      <option value="other" className="bg-gray-900">
+                      <option value="other" className="bg-[#0C2740]">
                         {t("topicOther")}
                       </option>
                     </select>

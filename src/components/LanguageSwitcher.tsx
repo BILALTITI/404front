@@ -8,14 +8,19 @@ const locales = [
   { code: "ar" as const, label: "عربي" },
 ];
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ light = false }: { light?: boolean }) {
   const locale = useLocale();
   const pathname = usePathname();
   const t = useTranslations("common");
 
   return (
     <div
-      className="flex items-center gap-1 rounded-full border border-black/[0.08] bg-white/80 p-1 text-xs font-heading font-semibold shadow-sm backdrop-blur-sm"
+      className={[
+        "flex items-center gap-1 rounded-full p-1 text-xs font-heading font-semibold backdrop-blur-sm transition-colors duration-300",
+        light
+          ? "border border-white/20 bg-white/10"
+          : "border border-black/[0.08] bg-white/80 shadow-sm",
+      ].join(" ")}
       role="navigation"
       aria-label={t("languageSwitcher")}
     >
@@ -29,8 +34,12 @@ export function LanguageSwitcher() {
             className={[
               "rounded-full px-3 py-1.5 transition-colors",
               active
-                ? "bg-gray-900 text-white"
-                : "text-gray-600 hover:text-orange-600",
+                ? light
+                  ? "bg-[#22B8DE] text-[#0C2740]"
+                  : "bg-[#123A5F] text-white"
+                : light
+                  ? "text-white/70 hover:text-white"
+                  : "text-gray-600 hover:text-orange-600",
             ].join(" ")}
             hrefLang={code}
             lang={code}

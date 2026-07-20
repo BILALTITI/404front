@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useState, useEffect, useCallback } from "react";
 
 const CODE_LINES = [
-  "initializing 4O4 systems...",
+  "initializing WATAD systems...",
   "building digital experiences...",
   "deploying intelligent interfaces...",
   "optimizing performance layer...",
@@ -12,7 +12,7 @@ const CODE_LINES = [
   "systems active",
   "rendering future-ready solutions...",
   "compiling innovation framework...",
-  "4O4.solutions :: ready",
+  "watad.co :: ready",
   "establishing secure connections...",
   "loading adaptive components...",
   "synchronizing design protocols...",
@@ -190,7 +190,7 @@ export function GhostCodeBackground() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(255,107,0,0.06) 0%, transparent 60%)",
+            "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(34,184,222,0.06) 0%, transparent 60%)",
         }}
       />
 
@@ -198,7 +198,7 @@ export function GhostCodeBackground() {
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(ellipse, rgba(255,107,0,0.04) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(34,184,222,0.04) 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.08, 1],

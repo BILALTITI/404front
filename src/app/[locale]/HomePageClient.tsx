@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionConfig } from "motion/react";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -13,17 +14,21 @@ import { CustomCursor } from "@/components/CustomCursor";
 
 export function HomePageClient() {
   return (
-    <main className="min-h-screen">
-      <CustomCursor />
-      <Navigation />
-      <Hero />
-      <Projects />
-      <About />
-      <Services />
-      <Testimonials />
-      <Process />
-      <Contact />
-      <Footer />
-    </main>
+    // reducedMotion="user" → visitors with prefers-reduced-motion get clean
+    // opacity fades with no transform/blur movement, site-wide.
+    <MotionConfig reducedMotion="user">
+      <main className="min-h-screen">
+        <CustomCursor />
+        <Navigation />
+        <Hero />
+        <Projects />
+        <About />
+        <Services />
+        <Testimonials />
+        <Process />
+        <Contact />
+        <Footer />
+      </main>
+    </MotionConfig>
   );
 }

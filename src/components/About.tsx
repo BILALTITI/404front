@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 export function About() {
   const t = useTranslations("about");
+  const tCommon = useTranslations("common");
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headerRef, { once: true, margin: "-100px" });
@@ -41,7 +42,7 @@ export function About() {
         className="absolute top-1/3 end-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(34,184,222,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -61,14 +62,18 @@ export function About() {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, y: 44, filter: "blur(14px)", scale: 0.97 }}
+              animate={
+                isInView
+                  ? { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }
+                  : {}
+              }
               transition={{
-                duration: 0.9,
+                duration: 1,
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-display font-bold text-gray-950 leading-[1.05] mb-7"
+              className="font-display font-bold text-[#123A5F] leading-[1.05] mb-7"
               style={{ fontSize: "clamp(1.9rem, 7.5vw, 4.5rem)" }}
             >
               {t("headingLine1")}
@@ -78,8 +83,6 @@ export function About() {
               </span>
               <br />
               {t("headingLine2")}
-              <br />
-              {t("headingLine3")}
             </motion.h2>
 
             <motion.p
@@ -135,7 +138,7 @@ export function About() {
 
             <motion.a
               href="#contact"
-              className="group relative inline-flex overflow-hidden items-center gap-3 px-8 py-4 rounded-full bg-gray-950 text-white font-heading font-bold"
+              className="group relative inline-flex overflow-hidden items-center gap-3 px-8 py-4 rounded-full bg-[#0C2740] text-white font-heading font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.7 }}
@@ -167,7 +170,7 @@ export function About() {
                 className="absolute inset-0 rounded-3xl"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(255,107,0,0.08) 0%, rgba(255,140,58,0.04) 100%)",
+                    "linear-gradient(135deg, rgba(34,184,222,0.08) 0%, rgba(62,210,240,0.04) 100%)",
                   transform: "rotate(3deg) scale(1.02)",
                   y: decorY,
                 }}
@@ -186,7 +189,7 @@ export function About() {
                       transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
                       className="p-5 rounded-2xl text-center"
                       style={{
-                        background: i % 2 === 0 ? "#fff9f5" : "white",
+                        background: i % 2 === 0 ? "#F2F7FA" : "white",
                         border: "1px solid rgba(0,0,0,0.04)",
                       }}
                     >
@@ -209,12 +212,12 @@ export function About() {
                   }}
                   className="absolute top-6 end-6 w-20 h-20 rounded-2xl flex items-center justify-center"
                   style={{
-                    background: "linear-gradient(135deg, #ff6b00, #ff8c3a)",
-                    boxShadow: "0 12px 32px rgba(255,107,0,0.35)",
+                    background: "linear-gradient(135deg, #22B8DE, #3ED2F0)",
+                    boxShadow: "0 12px 32px rgba(34,184,222,0.35)",
                   }}
                 >
-                  <span className="font-display text-2xl font-bold text-white">
-                    4o4
+                  <span className="font-display text-xl font-bold text-white">
+                    {tCommon("brand")}
                   </span>
                 </motion.div>
 
@@ -234,7 +237,7 @@ export function About() {
                   <div className="font-mono text-sm space-y-1.5" dir="ltr">
                     <p>
                       <span className="text-orange-400">const</span>{" "}
-                      <span className="text-blue-300">fourOfour</span>
+                      <span className="text-blue-300">watad</span>
                       <span className="text-white/60"> = {"{"}</span>
                     </p>
                     <p className="ps-4">
@@ -244,7 +247,7 @@ export function About() {
                       <span className="text-white/60">,</span>
                     </p>
                     <p className="ps-4">
-                      <span className="text-green-300">projects</span>
+                      <span className="text-green-300">shipped</span>
                       <span className="text-white/60">: </span>
                       <span className="text-orange-300">&quot;20+&quot;</span>
                       <span className="text-white/60">,</span>

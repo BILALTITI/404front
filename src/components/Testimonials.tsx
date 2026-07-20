@@ -173,14 +173,14 @@ export function Testimonials() {
       className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
       style={{
         background:
-          "linear-gradient(180deg, #ffffff 0%, #fff9f5 40%, #fff5ee 60%, #ffffff 100%)",
+          "linear-gradient(180deg, #ffffff 0%, #F2F7FA 40%, #E8EDF1 60%, #ffffff 100%)",
       }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 60%, rgba(255,107,0,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 60% at 50% 60%, rgba(34,184,222,0.06) 0%, transparent 70%)",
         }}
       />
       <div className="absolute inset-0 grid-pattern opacity-30" />
@@ -200,10 +200,14 @@ export function Testimonials() {
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-bold text-gray-950 leading-[1.05] mb-5"
+            initial={{ opacity: 0, y: 44, filter: "blur(14px)", scale: 0.97 }}
+            animate={
+              isHeaderInView
+                ? { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }
+                : {}
+            }
+            transition={{ delay: 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-bold text-[#123A5F] leading-[1.05] mb-5"
             style={{ fontSize: "clamp(2rem, 8vw, 5rem)" }}
           >
             {t("titleLine1")}
@@ -251,9 +255,9 @@ export function Testimonials() {
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 className="relative bg-white rounded-3xl overflow-hidden"
                 style={{
-                  border: `1px solid rgba(255,107,0,0.15)`,
+                  border: `1px solid rgba(34,184,222,0.15)`,
                   boxShadow:
-                    "0 32px 80px -16px rgba(255,107,0,0.12), 0 4px 20px rgba(0,0,0,0.04)",
+                    "0 32px 80px -16px rgba(34,184,222,0.12), 0 4px 20px rgba(0,0,0,0.04)",
                 }}
               >
                 <div
