@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 type ProcessStepCopy = {
   number: string;
@@ -113,6 +113,8 @@ function ProcessStep({
 
 export function Process() {
   const t = useTranslations("process");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const steps = t.raw("steps") as ProcessStepCopy[];
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
@@ -192,11 +194,23 @@ export function Process() {
             >
               <div>
                 <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{t("metric1Value")}</div>
-                <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{t("metric1Label")}</div>
+                <div
+                  className={`font-heading text-xs text-gray-500 ${
+                    isArabic ? "tracking-normal" : "uppercase tracking-wide"
+                  }`}
+                >
+                  {t("metric1Label")}
+                </div>
               </div>
               <div>
                 <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{t("metric2Value")}</div>
-                <div className="font-heading text-xs text-gray-500 uppercase tracking-wide">{t("metric2Label")}</div>
+                <div
+                  className={`font-heading text-xs text-gray-500 ${
+                    isArabic ? "tracking-normal" : "uppercase tracking-wide"
+                  }`}
+                >
+                  {t("metric2Label")}
+                </div>
               </div>
             </motion.div>
           </div>

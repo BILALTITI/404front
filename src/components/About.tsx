@@ -2,14 +2,18 @@
 
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import watadLogo from "@/images/Watadlogo.png";
 
 export function About() {
   const t = useTranslations("about");
   const tCommon = useTranslations("common");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(headerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(headerRef, { once: true, margin: "-40px" });
   const values = t.raw("values") as {
     number: string;
     title: string;
@@ -50,13 +54,19 @@ export function About() {
         <div className="grid lg:grid-cols-2 gap-14 sm:gap-20 lg:gap-28 items-center">
           <div ref={headerRef}>
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: isArabic ? 30 : -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-3 mb-7"
             >
-              <span className="w-10 h-px bg-orange-500" />
-              <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
+              <span className="w-10 h-px bg-orange-500 shrink-0" />
+              <span
+                className={`font-heading text-xs font-bold text-orange-600 ${
+                  isArabic
+                    ? "tracking-normal"
+                    : "tracking-[0.3em] uppercase"
+                }`}
+              >
                 {t("eyebrow")}
               </span>
             </motion.div>
@@ -73,12 +83,14 @@ export function About() {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-display font-bold text-[#123A5F] leading-[1.05] mb-7"
+              className={`font-display font-bold text-[#123A5F] mb-7 ${
+                isArabic ? "leading-[1.35]" : "leading-[1.05]"
+              }`}
               style={{ fontSize: "clamp(1.9rem, 7.5vw, 4.5rem)" }}
             >
               {t("headingLine1")}
               <br />
-              <span className="gradient-text gradient-text-shine">
+              <span className="gradient-text gradient-text-shine inline-block py-[0.08em]">
                 {t("headingGradient")}
               </span>
               <br />
@@ -180,46 +192,52 @@ export function About() {
                 className="relative bg-white rounded-3xl overflow-hidden shadow-premium p-5 sm:p-8"
                 style={{ border: "1px solid rgba(0,0,0,0.04)" }}
               >
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-5">
                   {stats.map((stat, i) => (
                     <motion.div
                       key={stat.label}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
-                      className="p-5 rounded-2xl text-center"
+                      className="p-4 sm:p-5 rounded-2xl text-center"
                       style={{
                         background: i % 2 === 0 ? "#F2F7FA" : "white",
                         border: "1px solid rgba(0,0,0,0.04)",
                       }}
                     >
-                      <div className="font-display text-2xl sm:text-3xl font-bold gradient-text mb-1">
+                      <div className="font-display text-xl sm:text-3xl font-bold gradient-text mb-1 break-words">
                         {stat.value}
                       </div>
-                      <div className="font-heading text-xs text-gray-400 uppercase tracking-wide">
+                      <div
+                        className={`font-heading text-xs text-gray-400 ${
+                          isArabic ? "tracking-normal" : "uppercase tracking-wide"
+                        }`}
+                      >
                         {stat.label}
                       </div>
                     </motion.div>
                   ))}
                 </div>
 
-                <motion.div
-                  animate={{ y: [-8, 8, -8], rotate: [0, 2, 0] }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute top-6 end-6 w-20 h-20 rounded-2xl flex items-center justify-center"
-                  style={{
-                    background: "linear-gradient(135deg, #22B8DE, #3ED2F0)",
-                    boxShadow: "0 12px 32px rgba(34,184,222,0.35)",
-                  }}
-                >
-                  <span className="font-display text-xl font-bold text-white">
-                    {tCommon("brand")}
-                  </span>
-                </motion.div>
+                {/* Full logo — no circle, no empty padding */}
+                <div className="flex justify-end mb-5">
+                  <motion.div
+                    animate={{ y: [-4, 4, -4] }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="shrink-0"
+                  >
+                    <Image
+                      src={watadLogo}
+                      alt={tCommon("brand")}
+                      className="h-10 sm:h-12 md:h-14 w-auto max-w-[min(55vw,14rem)] object-contain object-right drop-shadow-md"
+                      sizes="(max-width: 640px) 55vw, 224px"
+                    />
+                  </motion.div>
+                </div>
 
                 <div
                   className="relative rounded-2xl overflow-hidden"

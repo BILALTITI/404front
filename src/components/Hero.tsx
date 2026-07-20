@@ -42,12 +42,12 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col overflow-hidden bg-[#0C2740]"
+      className="relative min-h-dvh min-h-screen flex flex-col overflow-hidden bg-[#0C2740]"
       id="hero"
       onMouseMove={handleMouseMove}
     >
-      {/* Signal field — behind copy; poster paints first for LCP */}
-      <WatadHeroAnimation className="absolute inset-0 z-[1]" />
+      {/* Signal field — full bleed; poster paints first for LCP */}
+      <WatadHeroAnimation className="absolute inset-0 z-[1] h-full w-full" />
 
       {/* Soft vignette so headline stays AA over any animation frame */}
       <div
@@ -69,9 +69,9 @@ export function Hero() {
           }}
           className="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 text-center"
         >
-          <h1 className="font-display font-bold tracking-tight mb-6 sm:mb-8 leading-[0.95]">
+          <h1 className="font-display font-bold tracking-tight mb-8 sm:mb-10 leading-[1.1] sm:leading-[0.95]">
             <motion.span
-              className="block text-[clamp(3.5rem,18vw,7.5rem)] sm:text-8xl lg:text-[120px] text-white [transform:translateZ(0)]"
+              className="block text-[clamp(3.25rem,16vw,7.5rem)] sm:text-8xl lg:text-[120px] text-white [transform:translateZ(0)]"
               initial={{ opacity: 0, y: 60, filter: "blur(18px)", scale: 0.92 }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
               transition={{

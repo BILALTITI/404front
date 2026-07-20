@@ -14,7 +14,8 @@ export const HERO_NETWORK_CONFIG = {
     blue500: "#1B6491",
     cyan400: "#22B8DE",
     cyan300: "#3ED2F0",
-    ink: "#1A1A1A",
+    /** Matches navy so the horizon never reads as a black bar on mobile. */
+    ink: "#0C2740",
   },
   /** Active orthogonal paths per tier. Mobile is ~60% fewer than desktop. */
   lineCount: { base: 10, sm: 18, lg: 26 },
@@ -32,7 +33,7 @@ export const HERO_NETWORK_CONFIG = {
   dprCap: { base: 1.5, sm: 2 },
   /** Half-extents of the routing volume (world units). */
   bounds: { x: 22, y: 14, z: 10 },
-  /** Ground plane: solid, dark, never moves. */
+  /** Ground plane: navy-matched, never moves — no black cut-off band. */
   ground: {
     width: 28,
     depth: 14,
@@ -113,11 +114,11 @@ export function HeroNetwork({
       className={`${className} overflow-hidden pointer-events-none`}
       aria-hidden
     >
-      {/* Static poster: brand navy field — first paint, never regresses LCP. */}
+      {/* Static poster: full-bleed navy — no near-black edge bands on mobile. */}
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 80% 70% at 50% 78%, ${colors.navy700} 0%, ${colors.navy900} 55%, #081828 100%)`,
+          background: `radial-gradient(ellipse 90% 80% at 50% 55%, ${colors.navy700} 0%, ${colors.navy900} 58%, ${colors.navy900} 100%)`,
         }}
       />
       {sceneReady && <HeroNetworkScene config={HERO_NETWORK_CONFIG} />}

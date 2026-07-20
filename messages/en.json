@@ -292,9 +292,9 @@
     "titleLine1": "From idea",
     "to": "to",
     "titleGradient": "production.",
-    "intro": "Four phases. Every week you know exactly where the project stands and what comes next — because in our experience, most software failures start as communication failures.",
-    "metric1Value": "4–12",
-    "metric1Label": "Weeks to a complete MVP",
+    "intro": "Four phases — the full process typically lands in one month, and the exact timeline depends on the project size. Every week you know exactly where things stand and what comes next.",
+    "metric1Value": "1 month",
+    "metric1Label": "Full process — depends on project size",
     "metric2Value": "Weekly",
     "metric2Label": "Progress demos during the build",
     "steps": [
@@ -302,7 +302,7 @@
         "number": "01",
         "title": "Discovery",
         "description": "We agree on goals, users, constraints, and what success will be measured by — before any code exists. Changing your mind on paper costs a conversation; changing it in code costs a sprint.",
-        "duration": "3–10 days",
+        "duration": "3–5 days",
         "deliverables": ["Problem brief", "Scope & milestones", "Risk notes"],
         "accent": "#22B8DE"
       },
@@ -310,7 +310,7 @@
         "number": "02",
         "title": "Design",
         "description": "You see and click through the product before it's built. Wireframes, then screens, then a working prototype your team reviews — so ideas change in Figma rather than in production.",
-        "duration": "1–3 weeks",
+        "duration": "5–7 days",
         "deliverables": ["Flows & wireframes", "UI screens", "Clickable prototype"],
         "accent": "#3ED2F0"
       },
@@ -318,7 +318,7 @@
         "number": "03",
         "title": "Development",
         "description": "Iterative builds with something tangible to look at every week — APIs, frontend or app, and automated checks running from the start. Nothing is saved up for a single delivery-day reveal.",
-        "duration": "3–10 weeks",
+        "duration": "2–3 weeks",
         "deliverables": ["Sprint demos", "Staging environment", "Technical docs"],
         "accent": "#1B6491"
       },
@@ -326,7 +326,7 @@
         "number": "04",
         "title": "Launch",
         "description": "We launch alongside you, stabilise alongside you, and hand over properly — documentation, credentials, and a walkthrough — until your team can run the system without calling us for small things.",
-        "duration": "3–14 days",
+        "duration": "2–5 days",
         "deliverables": ["Release checklist", "Production deploy", "Handover session"],
         "accent": "#22B8DE"
       }

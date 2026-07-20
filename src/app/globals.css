@@ -111,11 +111,13 @@
     font-family: "Inter", sans-serif;
   }
 
+  /* Arabic: avoid letter-spacing that breaks connected script */
   .font-arabic .font-display,
   .font-arabic .font-heading,
   .font-arabic .font-body,
   .font-arabic {
     font-family: "IBM Plex Sans Arabic", "Inter", sans-serif;
+    letter-spacing: normal;
   }
 
   /* Premium gradient utilities */

@@ -236,17 +236,18 @@ export function HeroNetworkScene({ config }: { config: HeroNetworkConfig }) {
       cfg.ground.thickness,
       cfg.ground.depth,
     );
+    // Invisible collider only — paths still terminate here, but no black bar.
     const groundMat = new THREE.MeshBasicMaterial({
       color: cfg.colors.ink,
       transparent: true,
-      opacity: 0.92,
-      depthWrite: true,
+      opacity: 0,
+      depthWrite: false,
     });
     const ground = new THREE.Mesh(groundGeo, groundMat);
     ground.position.set(0, cfg.ground.y, 0);
     scene.add(ground);
 
-    // Thin structural lip on the ground — blue mid-tone, low opacity.
+    // Soft cyan lip — keeps depth cue without a solid black band.
     const groundPlaneGeo = new THREE.PlaneGeometry(
       cfg.ground.width * 0.98,
       cfg.ground.depth * 0.98,
@@ -254,9 +255,9 @@ export function HeroNetworkScene({ config }: { config: HeroNetworkConfig }) {
     const edgeGeo = new THREE.EdgesGeometry(groundPlaneGeo);
     groundPlaneGeo.dispose();
     const edgeMat = new THREE.LineBasicMaterial({
-      color: cfg.colors.blue500,
+      color: cfg.colors.cyan400,
       transparent: true,
-      opacity: 0.22,
+      opacity: 0.18,
     });
     const groundEdge = new THREE.LineSegments(edgeGeo, edgeMat);
     groundEdge.rotation.x = -Math.PI / 2;

@@ -61,13 +61,14 @@ export function Navigation() {
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/"
-              className="relative group flex items-center gap-3 shrink-0"
+              className="relative group flex items-center shrink-0"
             >
               <Image
                 src={watadLogo}
                 alt={tCommon("brand")}
                 priority
-                className="h-9 sm:h-11 w-auto rounded-lg shadow-sm"
+                className="h-8 sm:h-10 md:h-11 w-auto max-w-[min(52vw,13rem)] object-contain object-left"
+                sizes="(max-width: 640px) 52vw, 208px"
               />
             </Link>
           </motion.div>
