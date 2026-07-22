@@ -2,19 +2,18 @@
   "metadata": {
     "title": "Watad — software that holds | Web, mobile & automation",
     "titleTemplate": "%s | Watad",
-    "description": "Watad is a software studio building web applications, mobile apps, and workflow automation for founders and operators across the region. Written scope, weekly demos, production on schedule.",
-    "keywords": "software development studio, custom web applications, mobile app development, MVP development, workflow automation, n8n, UI UX design, cloud deployment, ASP.NET Core, React, React Native, Jordan software company, Amman developers, MENA software",
+    "description": "Watad is a technology company building web applications, mobile apps, and workflow automation for founders and operators across the region. Written scope, weekly demos, production on schedule.",
+    "keywords": "software development company, custom web applications, mobile app development, MVP development, workflow automation, n8n, UI UX design, cloud deployment, ASP.NET Core, React, React Native, Jordan software company, Amman developers, MENA software",
     "openGraphTitle": "Watad — your idea, built to hold",
-    "openGraphDescription": "A software studio for founders who need the thing to actually work. Written scope, weekly demos, and a handover that leaves you owning your product.",
+    "openGraphDescription": "A technology company for founders who need the thing to actually work. Written scope, weekly demos, and a handover that leaves you owning your product.",
     "twitterTitle": "Watad — your idea, built to hold",
     "twitterDescription": "Custom software delivered on a timeline you can plan around — and documented well enough that your team can run it without us."
   },
   "jsonLd": {
-    "organizationDescription": "Watad is a software studio in Amman, Jordan, delivering custom web applications, mobile apps, and workflow automation to founders and operating businesses across the MENA region."
+    "organizationDescription": "Watad is a technology company in Amman, Jordan, delivering custom web applications, mobile apps, and workflow automation to founders and operating businesses across the MENA region."
   },
   "nav": {
     "primary": "Primary navigation",
-    "brandSuffix": "Studio",
     "work": "Work",
     "about": "About",
     "services": "Services",
@@ -25,16 +24,10 @@
   "hero": {
     "imageAlt": "Orthogonal signal field behind the Watad hero section",
     "overline": "Scope · Build · Hand over",
-    "line1": [
-      { "text": "Watad", "accent": false, "large": true }
-    ],
-    "line2": [
-      { "text": "Studio", "accent": true, "large": true }
-    ],
-    "descriptionBrand": "A watad",
-    "descriptionMid": "is the peg that keeps the whole tent standing. That is the job we take on. Bring us an idea, a stalled project, or a process still running on spreadsheets — we turn it into",
-    "descriptionScope": "a working product,",
-    "descriptionEnd": "on a timeline you can plan a launch around.",
+    "descriptionBrand": "Watad",
+    "descriptionMid": "is an emerging technology company specialising in the design and development of digital solutions, building tech products and services that combine performance, ease of use, and scalability. We turn ideas into",
+    "descriptionScope": "practical solutions with real value,",
+    "descriptionEnd": "committed to the highest standards of quality and innovation in everything we deliver.",
     "ctaPrimary": "See what we've built",
     "ctaSecondary": "Explore our services",
     "ctaContact": "Book a call — 30 minutes",
@@ -132,7 +125,7 @@
     ],
     "stats": [
       { "value": "20+", "label": "Products in production" },
-      { "value": "2025", "label": "Studio founded" },
+      { "value": "2025", "label": "Company founded" },
       { "value": "Direct", "label": "You talk to who builds" },
       { "value": "MENA", "label": "Primary region" }
     ]
@@ -412,7 +405,6 @@
   "common": {
     "languageSwitcher": "Language",
     "brand": "Watad",
-    "brandSuffix": "Studio",
     "countShipped": "20"
   }
 }
