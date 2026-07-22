@@ -156,12 +156,12 @@ function ServiceCard({
           </motion.div>
 
           <div style={{ transform: "translateZ(16px)" }}>
-            <span className="block font-heading text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-orange-500 mb-1.5 sm:mb-2">
+            <span className="hidden md:block font-heading text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-orange-500 mb-1.5 sm:mb-2">
               {service.subtitle}
             </span>
             <div className="flex items-start justify-between gap-2 mb-0 md:mb-4">
               <h3
-                className="font-display text-base sm:text-2xl lg:text-[1.65rem] font-bold transition-colors duration-300"
+                className="font-display text-base sm:text-2xl lg:text-[1.65rem] font-bold transition-colors duration-300 line-clamp-2 md:line-clamp-none min-h-[2.9em] md:min-h-0"
                 style={{ color: hovered ? "#22B8DE" : "#0d0d0d" }}
               >
                 {service.title}
