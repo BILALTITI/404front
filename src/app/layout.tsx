@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 /** Default metadata when middleware has not yet resolved locale (overridden per `[locale]`).
  *  The OG image comes from the app/opengraph-image.tsx file convention (1200×630). */

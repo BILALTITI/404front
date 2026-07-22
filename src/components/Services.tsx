@@ -45,6 +45,13 @@ function ServiceCard({
   const glowY = useTransform(mouseY, [0, 1], [0, 100]);
 
   const [hovered, setHovered] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  // Compact on mobile: description + chips collapse (grid-rows 0fr→1fr);
+  // always expanded from md up.
+  const collapseCls = `grid transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[1fr] ${
+    open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+  }`;
 
   const onMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -102,11 +109,12 @@ function ServiceCard({
         />
 
         <div
-          className="relative p-6 sm:p-8 lg:p-10 h-full flex flex-col"
+          className="relative p-4 sm:p-8 lg:p-10 h-full flex flex-col cursor-pointer md:cursor-default"
           style={{ transformStyle: "preserve-3d" }}
+          onClick={() => setOpen((v) => !v)}
         >
           <span
-            className="absolute -top-3 -end-2 font-display text-[90px] font-bold select-none pointer-events-none transition-all duration-500"
+            className="hidden md:block absolute -top-3 -end-2 font-display text-[90px] font-bold select-none pointer-events-none transition-all duration-500"
             style={{
               color: hovered ? "rgba(34,184,222,0.12)" : "rgba(0,0,0,0.04)",
               lineHeight: 1,
@@ -116,13 +124,13 @@ function ServiceCard({
           </span>
 
           <motion.div
-            className="relative mb-7"
+            className="relative mb-4 sm:mb-7"
             style={{
               transform: "translateZ(20px)",
               transformStyle: "preserve-3d",
             }}
           >
-            <div className="relative w-14 h-14">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14">
               <div
                 className="absolute inset-0 rounded-2xl rotate-6 transition-all duration-300"
                 style={{
@@ -148,44 +156,64 @@ function ServiceCard({
           </motion.div>
 
           <div style={{ transform: "translateZ(16px)" }}>
-            <span className="block font-heading text-xs font-bold tracking-[0.2em] uppercase text-orange-500 mb-2">
+            <span className="block font-heading text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-orange-500 mb-1.5 sm:mb-2">
               {service.subtitle}
             </span>
-            <h3
-              className="font-display text-xl sm:text-2xl lg:text-[1.65rem] font-bold mb-4 transition-colors duration-300"
-              style={{ color: hovered ? "#22B8DE" : "#0d0d0d" }}
-            >
-              {service.title}
-            </h3>
-            <p className="font-body text-gray-500 leading-relaxed text-[0.93rem] mb-6">
-              {service.description}
-            </p>
+            <div className="flex items-start justify-between gap-2 mb-0 md:mb-4">
+              <h3
+                className="font-display text-base sm:text-2xl lg:text-[1.65rem] font-bold transition-colors duration-300"
+                style={{ color: hovered ? "#22B8DE" : "#0d0d0d" }}
+              >
+                {service.title}
+              </h3>
+              <svg
+                className={`md:hidden shrink-0 mt-1 w-4 h-4 text-[#1B6491] transition-transform duration-300 ${
+                  open ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                aria-hidden
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
 
-            <div className="flex flex-wrap gap-2 mb-8">
-              {service.features.map((f, i) => (
-                <motion.span
-                  key={f}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.4 + index * 0.07 + i * 0.05 }}
-                  className="px-3 py-1.5 rounded-full font-heading text-[11px] font-semibold transition-all duration-200"
-                  style={{
-                    backgroundColor: hovered
-                      ? "rgba(34,184,222,0.08)"
-                      : "rgba(0,0,0,0.04)",
-                    color: hovered ? "#22B8DE" : "#666",
-                    border: hovered
-                      ? "1px solid rgba(34,184,222,0.2)"
-                      : "1px solid rgba(0,0,0,0.07)",
-                  }}
-                >
-                  {f}
-                </motion.span>
-              ))}
+            {/* Description + chips — collapse on mobile, open md+ */}
+            <div className={collapseCls}>
+              <div className="overflow-hidden min-h-0">
+                <p className="font-body text-gray-500 leading-relaxed text-[0.9rem] sm:text-[0.93rem] pt-2 md:pt-0 mb-6">
+                  {service.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-2 md:mb-8">
+                  {service.features.map((f, i) => (
+                    <motion.span
+                      key={f}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: 0.4 + index * 0.07 + i * 0.05 }}
+                      className="px-3 py-1.5 rounded-full font-heading text-[11px] font-semibold transition-all duration-200"
+                      style={{
+                        backgroundColor: hovered
+                          ? "rgba(34,184,222,0.08)"
+                          : "rgba(0,0,0,0.04)",
+                        color: hovered ? "#22B8DE" : "#666",
+                        border: hovered
+                          ? "1px solid rgba(34,184,222,0.2)"
+                          : "1px solid rgba(0,0,0,0.07)",
+                      }}
+                    >
+                      {f}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="mt-auto flex items-center justify-between">
+          <div className="mt-auto hidden md:flex items-center justify-between">
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
               style={{
@@ -281,7 +309,7 @@ export function Services() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 items-start md:items-stretch">
           {services.map((service, i) => (
             <ServiceCard key={service.id} service={service} index={i} />
           ))}

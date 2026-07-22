@@ -11,6 +11,7 @@ import { Process } from "@/components/Process";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 export function HomePageClient() {
   return (
@@ -28,6 +29,7 @@ export function HomePageClient() {
         <Process />
         <Contact />
         <Footer />
+        <MobileStickyCTA />
       </main>
     </MotionConfig>
   );

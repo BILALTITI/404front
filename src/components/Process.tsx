@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 type ProcessStepCopy = {
@@ -24,6 +24,12 @@ function ProcessStep({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [open, setOpen] = useState(false);
+
+  // Accordion on mobile (grid-rows 0fr→1fr); always expanded from md up.
+  const collapseCls = `grid transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[1fr] ${
+    open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+  }`;
 
   return (
     <div ref={ref} className="relative flex gap-5 sm:gap-8 lg:gap-12">
@@ -71,7 +77,12 @@ function ProcessStep({
         transition={{ duration: 0.8, delay: index * 0.12 + 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="pb-12 flex-1"
       >
-        <div className="flex flex-wrap items-center gap-4 mb-3">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="w-full text-start flex flex-wrap items-center gap-3 mb-3 md:pointer-events-none md:cursor-default"
+        >
           <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white">
             {step.title}
           </h3>
@@ -85,26 +96,42 @@ function ProcessStep({
           >
             {step.duration}
           </span>
-        </div>
+          <svg
+            className={`md:hidden ms-auto w-5 h-5 text-white/50 transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
 
-        <p className="font-body text-sm sm:text-base text-gray-400 leading-relaxed mb-6 max-w-lg">
-          {step.description}
-        </p>
+        {/* Description + deliverables — accordion on mobile, open md+ */}
+        <div className={collapseCls}>
+          <div className="overflow-hidden min-h-0">
+            <p className="font-body text-sm sm:text-base text-gray-400 leading-relaxed mb-6 max-w-lg pt-1">
+              {step.description}
+            </p>
 
-        <div className="flex flex-wrap gap-2">
-          {step.deliverables.map((d) => (
-            <span
-              key={d}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-heading text-xs text-white/60"
-              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                style={{ backgroundColor: step.accent }}
-              />
-              {d}
-            </span>
-          ))}
+            <div className="flex flex-wrap gap-2">
+              {step.deliverables.map((d) => (
+                <span
+                  key={d}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-heading text-xs text-white/60"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: step.accent }}
+                  />
+                  {d}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </motion.div>
     </div>

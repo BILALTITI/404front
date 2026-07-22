@@ -22,6 +22,13 @@ const INITIAL_VISIBLE = 6;
 
 function ProjectCard({ project }: { project: ProjectUi }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [open, setOpen] = useState(false);
+  const tCommon = useTranslations("common");
+
+  // Collapsible on mobile (grid-rows 0fr→1fr); always expanded from md up.
+  const collapseCls = `grid transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[1fr] ${
+    open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+  }`;
 
   return (
     <motion.article
@@ -71,10 +78,16 @@ function ProjectCard({ project }: { project: ProjectUi }) {
           {project.subtitle}
         </p>
 
-        <p className="text-gray-600 font-body text-sm leading-relaxed mb-4 line-clamp-2">
-          {project.description}
-        </p>
+        {/* Description — collapsible on mobile, always visible md+ */}
+        <div className={collapseCls}>
+          <div className="overflow-hidden min-h-0">
+            <p className="text-gray-600 font-body text-sm leading-relaxed mb-4 line-clamp-2">
+              {project.description}
+            </p>
+          </div>
+        </div>
 
+        {/* Metric / result — always visible */}
         <div className="flex items-center gap-2 mb-4">
           <div
             className="w-1 h-8 rounded-full"
@@ -85,20 +98,49 @@ function ProjectCard({ project }: { project: ProjectUi }) {
           </span>
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <div className="flex gap-1.5">
-            {project.tags.slice(0, 2).map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-1 rounded-md bg-gray-50 font-heading text-[10px] text-gray-500"
-              >
-                {tag}
+        {/* Details toggle — mobile only */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen((v) => !v);
+          }}
+          aria-expanded={open}
+          className="md:hidden inline-flex items-center gap-1.5 mb-1 font-heading text-xs font-semibold text-[#1B6491]"
+        >
+          <span>{tCommon("details")}</span>
+          <svg
+            className={`w-3.5 h-3.5 transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+
+        {/* Tags + year — collapsible on mobile, always visible md+ */}
+        <div className={collapseCls}>
+          <div className="overflow-hidden min-h-0">
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+              <div className="flex gap-1.5">
+                {project.tags.slice(0, 2).map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-1 rounded-md bg-gray-50 font-heading text-[10px] text-gray-500"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="font-heading text-[10px] text-gray-400 tracking-wider">
+                {project.year}
               </span>
-            ))}
+            </div>
           </div>
-          <span className="font-heading text-[10px] text-gray-400 tracking-wider">
-            {project.year}
-          </span>
         </div>
       </div>
 

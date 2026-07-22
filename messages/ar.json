@@ -405,6 +405,7 @@
   "common": {
     "languageSwitcher": "اللغة",
     "brand": "وتد",
-    "countShipped": "٢٠"
+    "countShipped": "٢٠",
+    "details": "التفاصيل"
   }
 }

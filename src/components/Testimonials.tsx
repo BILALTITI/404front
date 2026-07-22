@@ -3,7 +3,7 @@
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import type { CSSProperties } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { MountGuard } from "./MountGuard";
 
 /** First letter of given name + first letter of family name; strips common titles. Single-word names use first two letters. */
@@ -135,6 +135,8 @@ function BackgroundCard({
 
 export function Testimonials() {
   const t = useTranslations("testimonials");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
   const testimonials = t.raw("items") as TestimonialItem[];
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -253,7 +255,26 @@ export function Testimonials() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: direction > 0 ? -40 : 40, scale: 0.96 }}
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="relative bg-white rounded-3xl overflow-hidden"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.18}
+                onDragEnd={(_, info) => {
+                  const threshold = 60;
+                  const forward = isRTL
+                    ? info.offset.x > threshold
+                    : info.offset.x < -threshold;
+                  const backward = isRTL
+                    ? info.offset.x < -threshold
+                    : info.offset.x > threshold;
+                  if (forward)
+                    goTo((activeIndex + 1) % testimonials.length);
+                  else if (backward)
+                    goTo(
+                      (activeIndex - 1 + testimonials.length) %
+                        testimonials.length,
+                    );
+                }}
+                className="relative bg-white rounded-3xl overflow-hidden touch-pan-y cursor-grab active:cursor-grabbing md:cursor-default"
                 style={{
                   border: `1px solid rgba(34,184,222,0.15)`,
                   boxShadow:

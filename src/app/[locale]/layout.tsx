@@ -5,8 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/JsonLd";
 import { LocaleAttributes } from "@/components/LocaleAttributes";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 type Props = {
   children: React.ReactNode;

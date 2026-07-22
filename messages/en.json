@@ -405,6 +405,7 @@
   "common": {
     "languageSwitcher": "Language",
     "brand": "Watad",
-    "countShipped": "20"
+    "countShipped": "20",
+    "details": "Details"
   }
 }
