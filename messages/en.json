@@ -1,0 +1,411 @@
+{
+  "metadata": {
+    "title": "Watad — software that holds | Web, mobile & automation",
+    "titleTemplate": "%s | Watad",
+    "description": "Watad is a technology company building web applications, mobile apps, and workflow automation for founders and operators across the region. Written scope, weekly demos, production on schedule.",
+    "keywords": "software development company, custom web applications, mobile app development, MVP development, workflow automation, n8n, UI UX design, cloud deployment, ASP.NET Core, React, React Native, Jordan software company, Amman developers, MENA software",
+    "openGraphTitle": "Watad — your idea, built to hold",
+    "openGraphDescription": "A technology company for founders who need the thing to actually work. Written scope, weekly demos, and a handover that leaves you owning your product.",
+    "twitterTitle": "Watad — your idea, built to hold",
+    "twitterDescription": "Custom software delivered on a timeline you can plan around — and documented well enough that your team can run it without us."
+  },
+  "jsonLd": {
+    "organizationDescription": "Watad is a technology company in Amman, Jordan, delivering custom web applications, mobile apps, and workflow automation to founders and operating businesses across the MENA region."
+  },
+  "nav": {
+    "primary": "Primary navigation",
+    "work": "Work",
+    "about": "About",
+    "services": "Services",
+    "process": "Process",
+    "stories": "Client Stories",
+    "cta": "Book a call"
+  },
+  "hero": {
+    "imageAlt": "Orthogonal signal field behind the Watad hero section",
+    "overline": "Scope · Build · Hand over",
+    "descriptionBrand": "Watad",
+    "descriptionMid": "is an emerging technology company specialising in the design and development of digital solutions, building tech products and services that combine performance, ease of use, and scalability. We turn ideas into",
+    "descriptionScope": "practical solutions with real value,",
+    "descriptionEnd": "committed to the highest standards of quality and innovation in everything we deliver.",
+    "ctaPrimary": "See what we've built",
+    "ctaSecondary": "Explore our services",
+    "ctaContact": "Book a call — 30 minutes",
+    "cornerLabel": "Watad · built to hold"
+  },
+  "projects": {
+    "sectionEyebrow": "Live products, not demos",
+    "titleLine1": "Web & mobile products",
+    "titleGradient": "running in production today",
+    "titleGradientData": "running in production today",
+    "intro": "Over 20 products delivered and still in daily use — marketplaces, booking systems, internal tools, and automation. Open a card for scope and outcome; live links open in a new tab.",
+    "viewMore": "View more",
+    "showLess": "Show less",
+    "startProject": "Start your project",
+    "close": "Close",
+    "keyResult": "Key result",
+    "visitLive": "Visit live site",
+    "askBuild": "How we built this",
+    "items": {
+      "cashtics": {
+        "title": "Cashtics",
+        "subtitle": "Freelance marketplace",
+        "category": "Web application",
+        "description": "A task marketplace connecting flexible workers with businesses posting short jobs — verified profiles, escrow-style payment flow, and an operator dashboard that clears a day's queue in one pass.",
+        "result": "Steady month-over-month growth in posted tasks since launch",
+        "imageAlt": "Cashtics freelance marketplace interface, built by Watad"
+      },
+      "sooquk": {
+        "title": "Sooquk",
+        "subtitle": "Regional e-commerce",
+        "category": "Marketplace platform",
+        "description": "A storefront for fashion and lifestyle sellers — organised catalogue, checkout that holds under load, practical vendor tooling, and mobile performance tuned for how customers here actually shop.",
+        "result": "Active vendors and stable checkout in production since launch",
+        "imageAlt": "Sooquk e-commerce marketplace built by Watad"
+      },
+      "okal": {
+        "title": "Okal for Heroes",
+        "subtitle": "Kids' barber booking",
+        "category": "Booking system",
+        "description": "Appointment booking and shop operations for a children's barber brand — automated reminders, digital coupons, and a parent-friendly flow that removed the phone calls entirely.",
+        "result": "Adopted by families across launch neighbourhoods within weeks",
+        "imageAlt": "Okal for Heroes booking experience designed by Watad"
+      },
+      "breshta": {
+        "title": "Breshta",
+        "subtitle": "Loyalty & rewards",
+        "category": "Engagement platform",
+        "description": "A loyalty system built to feel worth opening — daily deals, birthday rewards, and light gamification. Offers that land as genuine rather than as filler.",
+        "result": "3,500+ active members returning through loyalty loops",
+        "imageAlt": "Breshta loyalty app screen from Watad client work"
+      },
+      "lastonewin": {
+        "title": "LastOneWin",
+        "subtitle": "Live competition game",
+        "category": "Real-time application",
+        "description": "A real-time last-finger-on-screen competition — rooms, sessions, and sync resilient enough to absorb campaign-window traffic spikes without lag or dropped players.",
+        "result": "3,000 concurrent players at peak with no downtime",
+        "imageAlt": "LastOneWin real-time mobile game artwork in the Watad portfolio"
+      },
+      "ilern": {
+        "title": "ILern",
+        "subtitle": "Learning platform",
+        "category": "EdTech",
+        "description": "A complete learning platform — structured courses, enrolment, instructor tooling, and digital certificates, with clean role separation between admins, teachers, and students.",
+        "result": "800+ students on one consolidated, auditable stack",
+        "imageAlt": "ILern learning platform dashboard built by Watad"
+      },
+      "clinical": {
+        "title": "Clinical desktop suite",
+        "subtitle": "Full clinic management",
+        "category": "Desktop application",
+        "description": "Patient records, scheduling, and a complete billing cycle for clinic teams — keyboard-first interfaces designed for staff who work faster than a mouse allows.",
+        "result": "1,000+ patients handled daily on a single database",
+        "imageAlt": "Clinic management desktop interface delivered by Watad"
+      }
+    }
+  },
+  "about": {
+    "bgWord": "ABOUT",
+    "eyebrow": "About Watad",
+    "headingLine1": "The team you wish",
+    "headingGradient": "you had started",
+    "headingLine2": "with.",
+    "p1": "Most people arrive here having been burned once already — a developer who went quiet, or an agency that took the budget and assigned a junior who relearns the project every week. Watad was founded in 2025 by engineers who had already spent years shipping production systems in healthcare, e-commerce, and fintech. That experience is why the first thing we give you is a written scope, and why nothing we build stops at a demo.",
+    "p2": "You talk directly to the people building your product — no account manager relaying your words into a ticket. Designer and engineer working side by side, which is why decisions take hours instead of weeks. Browse",
+    "p2Projects": "our shipped work",
+    "p2Or": "or",
+    "p2Contact": "tell us what you're building",
+    "cta": "Plan your project with Watad",
+    "values": [
+      { "number": "01", "title": "Clarity", "desc": "A written scope before the first line of code — no fuzzy boundaries, no 'we'll see how it goes'" },
+      { "number": "02", "title": "Craft", "desc": "Code you can still work in two years from now, not code that merely passes today" },
+      { "number": "03", "title": "Partnership", "desc": "You're in every decision as it's made, not informed about it on delivery day" },
+      { "number": "04", "title": "Momentum", "desc": "We ship early, because the market teaches you more in a week than a meeting does in a month" }
+    ],
+    "stats": [
+      { "value": "20+", "label": "Products in production" },
+      { "value": "2025", "label": "Company founded" },
+      { "value": "Direct", "label": "You talk to who builds" },
+      { "value": "MENA", "label": "Primary region" }
+    ]
+  },
+  "services": {
+    "eyebrow": "What we build with you",
+    "titleLine1": "Web, mobile",
+    "titleGradient": "& automation",
+    "intro": "From first conversation to handover. We build what the product actually needs — no scope bloat, no invoice you didn't see coming, and a timeline you can commit to in front of your own investors.",
+    "ctaTitle": "A project this size shouldn't be scoped alone",
+    "ctaBody": "Give us 30 minutes and we'll map the scope, name the risks, and agree on a first milestone worth building. No commitment — and if we're not the right team for it, we'll say so on the call.",
+    "ctaButton": "Book a call — 30 minutes",
+    "list": [
+      {
+        "id": 1,
+        "number": "01",
+        "title": "Web development",
+        "subtitle": "Custom web applications",
+        "description": "Running a business inside a spreadsheet and three WhatsApp groups? We turn it into an application that holds — from marketing sites to multi-tenant SaaS, with the APIs, permissions, and frontends to grow into.",
+        "features": ["SPA & SSR apps", "E-commerce", "REST / GraphQL APIs", "CMS integration"],
+        "icon": "⬡"
+      },
+      {
+        "id": 2,
+        "number": "02",
+        "title": "Mobile apps",
+        "subtitle": "iOS, Android & cross-platform",
+        "description": "Your customers are on a phone, so the product has to be there too. Native or cross-platform, store-ready, with authentication and backend integration handled from day one rather than bolted on later.",
+        "features": ["React Native", "App Store releases", "Push & offline", "Secure APIs"],
+        "icon": "◈"
+      },
+      {
+        "id": 3,
+        "number": "03",
+        "title": "UI / UX design",
+        "subtitle": "Interfaces that match how users think",
+        "description": "We map the real journeys before we style a single screen — where users hesitate, where they drop off, what they need in front of them at each step. The result is a product that needs less explaining.",
+        "features": ["User flows", "Wireframes", "Design systems", "Handoff to dev"],
+        "icon": "◎"
+      },
+      {
+        "id": 4,
+        "number": "04",
+        "title": "Brand & identity",
+        "subtitle": "Trust starts before the first deploy",
+        "description": "For a new company, brand is what makes someone willing to try you at all. We build a visual voice, the core assets, and in-product patterns that stay coherent as you grow instead of fragmenting.",
+        "features": ["Visual direction", "Logo & UI kit", "Tone & messaging", "Launch assets"],
+        "icon": "◇"
+      },
+      {
+        "id": 5,
+        "number": "05",
+        "title": "Cloud & DevOps",
+        "subtitle": "Infrastructure sized for now, ready for later",
+        "description": "Deployment on AWS or Azure with environments, CI/CD, and monitoring matched to your actual scale — no enterprise cluster on day one, and real headroom once traffic earns it.",
+        "features": ["Hosting setup", "CI/CD", "Observability", "Security basics"],
+        "icon": "⬟"
+      },
+      {
+        "id": 6,
+        "number": "06",
+        "title": "Workflow automation",
+        "subtitle": "How many hours a week does your team spend moving data by hand?",
+        "description": "We replace the manual handoffs between your CRM, sheets, and inbox with n8n flows that are documented, testable, and fully yours after delivery — including the credentials and the runbook.",
+        "features": ["n8n flows", "Third-party APIs", "Retries & alerts", "Data sync"],
+        "icon": "⬟"
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "In the words of the people who lived it",
+    "titleLine1": "They didn't pay",
+    "titleGradient": "for promises",
+    "subtitle": "Founders, operators, and end users of the products we've delivered.",
+    "items": [
+      {
+        "id": 1,
+        "quote": "I posted my first task and had three offers within two hours. The platform is fast, the payment flow felt secure, and I've completed over 40 tasks through it since. I didn't expect that kind of traction this early.",
+        "author": "Khaled Al-Rawi",
+        "role": "Freelancer",
+        "company": "Cashtics",
+        "metric": "40+",
+        "metricLabel": "Tasks completed",
+        "logoAbbr": "KA",
+        "accent": "#22B8DE"
+      },
+      {
+        "id": 2,
+        "quote": "I opened my shop expecting maybe twenty or thirty visitors a month. Within a few weeks I was seeing hundreds. It loads fast on a phone, and almost all of my customers are on a phone.",
+        "author": "Rima Mansour",
+        "role": "Vendor",
+        "company": "Sooquk",
+        "metric": "3×",
+        "metricLabel": "Traffic increase",
+        "logoAbbr": "RM",
+        "accent": "#3ED2F0"
+      },
+      {
+        "id": 3,
+        "quote": "Booking used to mean phone calls, back-and-forth, and parents arriving to a full shop. Now they pick a slot and get a reminder. The coupon system was a nice addition — our regulars use it constantly.",
+        "author": "Khalil Okal",
+        "role": "Owner",
+        "company": "Okal for Heroes",
+        "metric": "100+",
+        "metricLabel": "Bookings",
+        "logoAbbr": "OB",
+        "accent": "#1B6491"
+      },
+      {
+        "id": 4,
+        "quote": "I open it every morning to spin the wheel. It sounds small, but the birthday reward last month was a genuine surprise, and the deals feel real rather than filler. I've sent it to about ten friends.",
+        "author": "Sara Wahdan",
+        "role": "Loyalty member",
+        "company": "Breshta",
+        "metric": "3,500+",
+        "metricLabel": "Active members",
+        "logoAbbr": "SW",
+        "accent": "#22B8DE"
+      },
+      {
+        "id": 5,
+        "quote": "I was in a room with thousands of other players and it didn't stutter once. Being one of the last five was genuinely tense. I've played a lot of live games and none of them handle that many people this cleanly.",
+        "author": "Faris Nader",
+        "role": "Player",
+        "company": "LastOneWin",
+        "metric": "3,000",
+        "metricLabel": "Concurrent players at peak",
+        "logoAbbr": "FN",
+        "accent": "#3ED2F0"
+      },
+      {
+        "id": 6,
+        "quote": "I finished my certification in six weeks, entirely online. The material was well organised, the portal made progress easy to track, and I never hit a broken link — which is rare for a platform this new.",
+        "author": "Layla Hassan",
+        "role": "Student",
+        "company": "ILern",
+        "metric": "800+",
+        "metricLabel": "Students on the platform",
+        "logoAbbr": "LH",
+        "accent": "#1B6491"
+      },
+      {
+        "id": 7,
+        "quote": "Before this our team was juggling paper files and spreadsheets. Now a patient record is one search away, billing runs itself, and double-booked appointments have basically stopped. Onboarding took under a week.",
+        "author": "Dr. Hani Zureikat",
+        "role": "Clinic Director",
+        "company": "Medical Care System",
+        "metric": "1,000+",
+        "metricLabel": "Patients managed daily",
+        "logoAbbr": "HZ",
+        "accent": "#22B8DE"
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "No black boxes",
+    "titleLine1": "From idea",
+    "to": "to",
+    "titleGradient": "production.",
+    "intro": "Four phases — the full process typically lands in one month, and the exact timeline depends on the project size. Every week you know exactly where things stand and what comes next.",
+    "metric1Value": "1 month",
+    "metric1Label": "Full process — depends on project size",
+    "metric2Value": "Weekly",
+    "metric2Label": "Progress demos during the build",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Discovery",
+        "description": "We agree on goals, users, constraints, and what success will be measured by — before any code exists. Changing your mind on paper costs a conversation; changing it in code costs a sprint.",
+        "duration": "3–5 days",
+        "deliverables": ["Problem brief", "Scope & milestones", "Risk notes"],
+        "accent": "#22B8DE"
+      },
+      {
+        "number": "02",
+        "title": "Design",
+        "description": "You see and click through the product before it's built. Wireframes, then screens, then a working prototype your team reviews — so ideas change in Figma rather than in production.",
+        "duration": "5–7 days",
+        "deliverables": ["Flows & wireframes", "UI screens", "Clickable prototype"],
+        "accent": "#3ED2F0"
+      },
+      {
+        "number": "03",
+        "title": "Development",
+        "description": "Iterative builds with something tangible to look at every week — APIs, frontend or app, and automated checks running from the start. Nothing is saved up for a single delivery-day reveal.",
+        "duration": "2–3 weeks",
+        "deliverables": ["Sprint demos", "Staging environment", "Technical docs"],
+        "accent": "#1B6491"
+      },
+      {
+        "number": "04",
+        "title": "Launch",
+        "description": "We launch alongside you, stabilise alongside you, and hand over properly — documentation, credentials, and a walkthrough — until your team can run the system without calling us for small things.",
+        "duration": "2–5 days",
+        "deliverables": ["Release checklist", "Production deploy", "Handover session"],
+        "accent": "#22B8DE"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Better than 'we'll be in touch'",
+    "titleLine1": "Start your project",
+    "titleGradient": "with a team that finishes",
+    "intro": "Tell us what you're working on — an idea, a stalled build, or a problem you haven't named yet. You'll get a reply within 24 hours with concrete next steps rather than a sales sequence. If we're not the right team for it, we'll tell you that instead.",
+    "emailLabel": "Email us directly",
+    "emailValue": "hello@watad.co",
+    "responseLabel": "Response time",
+    "responseValue": "Within 24 hours — including when the answer is no",
+    "scheduleLabel": "Call availability",
+    "scheduleValue": "Sun – Thu, 9 AM – 6 PM (AST)",
+    "tabMessage": "Send project details",
+    "tabMeeting": "Book a call",
+    "name": "Name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "topicMessage": "What's this about?",
+    "topicMeeting": "What's the call about?",
+    "projectDetails": "Project details",
+    "preferredDate": "Preferred date",
+    "preferredTime": "Preferred time (AST)",
+    "pickTime": "Pick a time",
+    "selectTopic": "Select a topic",
+    "topicNew": "Starting something new",
+    "topicExisting": "Rescuing or fixing an existing project",
+    "topicExistingMeeting": "Continuing a project with you",
+    "topicConsult": "Consultation — not sure where to start",
+    "topicPartner": "Partnership or collaboration",
+    "topicOther": "Something else",
+    "sendMessage": "Send details",
+    "messageSent": "Message received",
+    "sending": "Sending...",
+    "requestMeeting": "Book the call",
+    "meetingRequested": "Call booked",
+    "booking": "Booking...",
+    "footnoteMessage": "We'll reply within 24 hours with clear next steps.",
+    "footnoteMeeting": "Available Sun – Thu, 9 AM – 6 PM. We confirm within a few hours.",
+    "errorGeneric": "Something went wrong — please try again, or email us directly.",
+    "errorFailed": "Submission failed — check your connection and try again.",
+    "placeholders": {
+      "name": "Full name",
+      "email": "name@company.com",
+      "phone": "+962 79 123 4567",
+      "message": "The goal, who it's for, and roughly when you need it live..."
+    },
+    "times": [
+      { "value": "09:00", "label": "9:00 AM" },
+      { "value": "10:00", "label": "10:00 AM" },
+      { "value": "11:00", "label": "11:00 AM" },
+      { "value": "12:00", "label": "12:00 PM" },
+      { "value": "13:00", "label": "1:00 PM" },
+      { "value": "14:00", "label": "2:00 PM" },
+      { "value": "15:00", "label": "3:00 PM" },
+      { "value": "16:00", "label": "4:00 PM" },
+      { "value": "17:00", "label": "5:00 PM" }
+    ]
+  },
+  "footer": {
+    "explore": "Explore",
+    "links": {
+      "work": "Work",
+      "about": "About",
+      "services": "Services",
+      "process": "Process",
+      "testimonials": "Client Stories",
+      "contact": "Contact"
+    },
+    "blurb": "A watad is the peg that holds the tent down. We build the software layer businesses depend on — web, mobile, and automation, delivered and handed over.",
+    "location": "Amman, Jordan",
+    "rights": "{year} Watad. All rights reserved."
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "This page isn't here",
+    "body": "The page you're looking for has moved or no longer exists. Everything else is still standing.",
+    "cta": "Back to home"
+  },
+  "common": {
+    "languageSwitcher": "Language",
+    "brand": "Watad",
+    "countShipped": "20",
+    "details": "Details"
+  }
+}

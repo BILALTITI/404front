@@ -1,0 +1,53 @@
+import { getTranslations } from "next-intl/server";
+import { SITE_URL as siteUrl } from "@/lib/site";
+
+export async function JsonLd({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: "jsonLd" });
+  const description = t("organizationDescription");
+
+  const organizationJson = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Watad",
+    alternateName: "وتد",
+    url: siteUrl,
+    description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Amman",
+      addressCountry: "JO",
+    },
+    foundingDate: "2025",
+    areaServed: ["JO", "MENA"],
+    knowsAbout: [
+      "Software development",
+      "Web applications",
+      "Mobile application development",
+      "Workflow automation",
+    ],
+    "@id": `${siteUrl}/#organization`,
+  };
+
+  const websiteJson = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Watad",
+    url: siteUrl,
+    publisher: { "@id": `${siteUrl}/#organization` },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationJson),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJson) }}
+      />
+    </>
+  );
+}
