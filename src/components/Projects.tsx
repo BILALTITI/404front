@@ -2,8 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import Image from "next/image";
-
+import Image from "next/imagimpoe";
 const projects = [
   {
     id: 1,
@@ -428,6 +427,18 @@ export function Projects() {
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
             <span>Start Your Project</span>
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Focus modal */}
+      <AnimatePresence>
+        {focusedProject && (
+          <FocusModal project={focusedProject} onClose={() => setFocusedProject(null)} />
+tart Your Project</span>
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
