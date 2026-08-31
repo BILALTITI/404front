@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_URL as siteUrl } from "@/lib/site";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 /** Default metadata when middleware has not yet resolved locale (overridden per `[locale]`).
  *  The OG image comes from the app/opengraph-image.tsx file convention (1200×630). */
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );
