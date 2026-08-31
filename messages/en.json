@@ -19,6 +19,7 @@
     "services": "Services",
     "process": "Process",
     "stories": "Client Stories",
+    "faq": "FAQ",
     "cta": "Book a call"
   },
   "hero": {
@@ -280,6 +281,46 @@
       }
     ]
   },
+  "faq": {
+    "eyebrow": "Before you book a call",
+    "titleLine1": "Questions founders",
+    "titleGradient": "ask us first",
+    "intro": "Short, direct answers — the same ones you'd get on a call, without booking one.",
+    "items": [
+      {
+        "question": "What does Watad do?",
+        "answer": "Watad builds custom web applications, mobile apps, and workflow automation for founders and operating businesses — primarily across Jordan and the wider MENA region. Every engagement starts with a written scope and ends with a full handover, not just a demo."
+      },
+      {
+        "question": "Who is Watad for?",
+        "answer": "Founders launching a new product, and operators running an existing business who need software built and properly handed over — with documentation and access, not held together by a team you can't reach afterward."
+      },
+      {
+        "question": "Where is Watad based, and which regions do you work with?",
+        "answer": "Watad is based in Amman, Jordan, and works primarily with founders and businesses across Jordan and the MENA region, though the team also takes on projects outside the region."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "Most engagements run the full process — discovery, design, development, and launch — in about a month, depending on project size. You get a demo every week, so you always know where things stand."
+      },
+      {
+        "question": "What's included when a project is handed over?",
+        "answer": "A production deploy, technical documentation, full credentials, and a walkthrough session — enough for your own team to run and extend the system without calling us for small things."
+      },
+      {
+        "question": "What technologies does Watad use?",
+        "answer": "The stack is chosen per project rather than fixed — commonly ASP.NET Core, React and React Native, cloud hosting on AWS or Azure, and n8n for workflow automation, picked for what the product actually needs."
+      },
+      {
+        "question": "How much does a project cost?",
+        "answer": "Pricing is scoped per project after a discovery call. Watad avoids fixed package pricing because a marketing site, an MVP, and a multi-tenant platform don't cost the same to build properly."
+      },
+      {
+        "question": "How do I start a project with Watad?",
+        "answer": "Book a 30-minute call or send project details through the contact form. You'll get a reply within 24 hours — including if Watad isn't the right fit for it."
+      }
+    ]
+  },
   "process": {
     "eyebrow": "No black boxes",
     "titleLine1": "From idea",
@@ -390,6 +431,7 @@
       "services": "Services",
       "process": "Process",
       "testimonials": "Client Stories",
+      "faq": "FAQ",
       "contact": "Contact"
     },
     "blurb": "A watad is the peg that holds the tent down. We build the software layer businesses depend on — web, mobile, and automation, delivered and handed over.",

@@ -4,6 +4,8 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 export async function JsonLd({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "jsonLd" });
   const description = t("organizationDescription");
+  const tFaq = await getTranslations({ locale, namespace: "faq" });
+  const faqItems = tFaq.raw("items") as { question: string; answer: string }[];
 
   const organizationJson = {
     "@context": "https://schema.org",
@@ -36,6 +38,19 @@ export async function JsonLd({ locale }: { locale: string }) {
     publisher: { "@id": `${siteUrl}/#organization` },
   };
 
+  const faqJson = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <>
       <script
@@ -47,6 +62,10 @@ export async function JsonLd({ locale }: { locale: string }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJson) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }}
       />
     </>
   );

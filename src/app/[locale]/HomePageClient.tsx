@@ -7,6 +7,7 @@ import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { Projects } from "@/components/Projects";
 import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
 import { Process } from "@/components/Process";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -26,6 +27,7 @@ export function HomePageClient() {
         <About />
         <Services />
         <Testimonials />
+        <FAQ />
         <Process />
         <Contact />
         <Footer />

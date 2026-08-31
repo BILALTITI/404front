@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { key: "services", href: "#services" },
   { key: "process", href: "#process" },
   { key: "stories", href: "#testimonials" },
+  { key: "faq", href: "#faq" },
 ] as const;
 
 export function Navigation() {
@@ -109,6 +110,12 @@ export function Navigation() {
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("stories")}
+            </a>
+            <a
+              href="#faq"
+              className="hover:text-[#22B8DE] transition-colors"
+            >
+              {t("faq")}
             </a>
           </nav>
 

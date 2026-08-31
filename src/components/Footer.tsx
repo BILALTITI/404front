@@ -19,6 +19,7 @@ export function Footer() {
     { key: "services" as const, href: "#services" },
     { key: "process" as const, href: "#process" },
     { key: "testimonials" as const, href: "#testimonials" },
+    { key: "faq" as const, href: "#faq" },
     { key: "contact" as const, href: "#contact" },
   ];
 
