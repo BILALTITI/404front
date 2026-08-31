@@ -20,6 +20,11 @@ export async function JsonLd({ locale }: { locale: string }) {
       addressCountry: "JO",
     },
     foundingDate: "2025",
+    founder: {
+      "@type": "Person",
+      name: "Bilal Altiti",
+      jobTitle: "Founder",
+    },
     areaServed: ["JO", "MENA"],
     knowsAbout: [
       "Software development",
