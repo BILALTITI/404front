@@ -37,7 +37,7 @@ export async function JsonLd({ locale }: { locale: string }) {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
-      telephone: "+962-7-0812-4169",
+      telephone: "+962-7-9812-4169",
       areaServed: ["JO", "MENA"],
       availableLanguage: ["English", "Arabic"],
     },
