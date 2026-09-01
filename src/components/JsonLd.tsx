@@ -1,18 +1,27 @@
 import { getTranslations } from "next-intl/server";
 import { SITE_URL as siteUrl } from "@/lib/site";
 
+type ServiceCopy = {
+  title: string;
+  description: string;
+};
+
 export async function JsonLd({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "jsonLd" });
   const description = t("organizationDescription");
   const tFaq = await getTranslations({ locale, namespace: "faq" });
   const faqItems = tFaq.raw("items") as { question: string; answer: string }[];
+  const tServices = await getTranslations({ locale, namespace: "services" });
+  const serviceItems = tServices.raw("list") as ServiceCopy[];
 
   const organizationJson = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
     name: "Watad",
-    alternateName: "وتد",
+    alternateName: ["وتد", "4o4 Solutions"],
     url: siteUrl,
+    logo: `${siteUrl}/watad-logo.png`,
+    image: `${siteUrl}/watad-logo.png`,
     description,
     address: {
       "@type": "PostalAddress",
@@ -25,6 +34,13 @@ export async function JsonLd({ locale }: { locale: string }) {
       name: "Bilal Altiti",
       jobTitle: "Founder",
     },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: "+962-7-0812-4169",
+      areaServed: ["JO", "MENA"],
+      availableLanguage: ["English", "Arabic"],
+    },
     areaServed: ["JO", "MENA"],
     knowsAbout: [
       "Software development",
@@ -32,6 +48,20 @@ export async function JsonLd({ locale }: { locale: string }) {
       "Mobile application development",
       "Workflow automation",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Watad services",
+      itemListElement: serviceItems.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.description,
+          areaServed: ["JO", "MENA"],
+          provider: { "@id": `${siteUrl}/#organization` },
+        },
+      })),
+    },
     "@id": `${siteUrl}/#organization`,
   };
 
