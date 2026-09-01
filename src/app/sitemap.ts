@@ -3,6 +3,7 @@ import { routing } from "@/i18n/routing";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { SERVICE_META } from "@/data/services";
 import { PROJECT_META } from "@/data/projects";
+import { BLOG_META } from "@/data/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const homeEntries: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
@@ -30,5 +31,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...homeEntries, ...serviceEntries, ...projectEntries];
+  const blogIndexEntries: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
+    url: `${siteUrl}/${locale}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  const blogPostEntries: MetadataRoute.Sitemap = routing.locales.flatMap((locale) =>
+    BLOG_META.map((post) => ({
+      url: `${siteUrl}/${locale}/blog/${post.slug}`,
+      lastModified: post.date,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    })),
+  );
+
+  return [
+    ...homeEntries,
+    ...serviceEntries,
+    ...projectEntries,
+    ...blogIndexEntries,
+    ...blogPostEntries,
+  ];
 }

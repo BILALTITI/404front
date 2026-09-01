@@ -21,6 +21,7 @@ export function Footer() {
     { key: "process" as const, href: "#process" },
     { key: "testimonials" as const, href: "#testimonials" },
     { key: "faq" as const, href: "#faq" },
+    { key: "blog" as const, href: "/blog" },
     { key: "contact" as const, href: "#contact" },
   ];
 

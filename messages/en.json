@@ -20,6 +20,7 @@
     "process": "Process",
     "stories": "Client Stories",
     "faq": "FAQ",
+    "blog": "Blog",
     "cta": "Book a call"
   },
   "hero": {
@@ -451,6 +452,7 @@
       "process": "Process",
       "testimonials": "Client Stories",
       "faq": "FAQ",
+      "blog": "Blog",
       "contact": "Contact"
     },
     "blurb": "A watad is the peg that holds the tent down. We build the software layer businesses depend on — web, mobile, and automation, delivered and handed over.",
@@ -479,5 +481,61 @@
     "eyebrow": "Case study",
     "techHeading": "Built with",
     "otherProjectsHeading": "More projects"
+  },
+  "blog": {
+    "eyebrow": "Knowledge Hub",
+    "titleLine1": "Notes from",
+    "titleGradient": "building software",
+    "intro": "Short, specific pieces on how we actually run projects — not marketing copy, just the reasoning behind the process.",
+    "readTime": "min read",
+    "readMore": "Read article",
+    "backToBlog": "All articles",
+    "items": {
+      "scoping-before-code": {
+        "title": "How We Scope a Project Before Writing Any Code",
+        "excerpt": "A written scope costs a conversation to change. Code costs a sprint. Here's why discovery comes first, every time.",
+        "readTime": "4",
+        "body": [
+          "Most bad software projects don't fail in development — they fail in the gap between what a founder meant and what a developer heard. By the time that gap shows up, it's usually three sprints deep and expensive to fix.",
+          "Before we open an editor, we agree in writing on three things: what the product needs to do, who's actually going to use it, and what \"done\" looks like. Not a vague pitch-deck version of these — specific enough that a disagreement about scope becomes visible on paper instead of surfacing in a delivery-day demo.",
+          "This is also where we name the risks out loud. Every project has at least one part that's genuinely uncertain — an integration nobody's tested, a workflow nobody's mapped end to end, a deadline that assumes something goes right the first time. Writing these down doesn't make them disappear, but it means nobody's surprised later.",
+          "In practice, this phase takes three to five days and produces a problem brief, a scoped milestone plan, and a short list of risks. It's the cheapest part of the entire project to get right, because changing your mind here costs a conversation. Changing your mind three weeks into development costs a sprint — sometimes more, if the change touches something already built on top of the old assumption.",
+          "We've worked with clients who arrived having been burned by a developer who skipped this step, jumped straight into code, and spent a month building the wrong thing beautifully. Discovery is slower on day one and faster for every day after it."
+        ]
+      },
+      "see-it-before-its-built": {
+        "title": "Why You Should See Your Product Before It's Built",
+        "excerpt": "Wireframes and a clickable prototype cost days. The same misunderstanding caught in production costs weeks.",
+        "readTime": "3",
+        "body": [
+          "There's a specific kind of expensive mistake that only shows up once code exists: a feature built exactly as specified, that still feels wrong the moment someone actually uses it. Specs describe intent; screens and prototypes describe experience, and those aren't always the same thing.",
+          "After discovery, we move straight into flows and wireframes — rough enough to change in an afternoon, clear enough to argue about. From there we build actual UI screens, and then a clickable prototype: something you and your team can click through on a phone or a laptop before a single line of production code exists.",
+          "The point isn't polish at this stage. It's catching the moment where a flow that made sense in a meeting turns out to take six taps to complete a task that should take two. That's a five-minute fix in a design tool, and a much bigger one once it's wired into a working backend.",
+          "This phase usually runs five to seven days and ends with something concrete: flows, screens, and a prototype your team has actually used, not just looked at. Anything that needs to change, changes here — which is exactly why we don't skip it, even under deadline pressure."
+        ]
+      },
+      "ship-something-every-week": {
+        "title": "Why We Ship Something Every Week",
+        "excerpt": "No surprise reveal on delivery day. Every week, there's something real to look at — because that's when problems are still cheap to fix.",
+        "readTime": "4",
+        "body": [
+          "The traditional way to run a software project is to disappear for a few weeks and reappear with a finished thing. It feels efficient. It also means the first time you see whether the product actually works the way you imagined is the same day it's supposed to be done — which is the worst possible time to discover it isn't.",
+          "We build in weekly cycles instead. Every week there's a demo — APIs, frontend, or the app itself, whatever's furthest along — plus a staging environment your team can look at directly if they want to, and technical docs that grow alongside the code rather than getting written in a rush at the end.",
+          "Automated checks run from the start of development, not bolted on before launch. That's a smaller decision than it sounds, but it's the difference between catching a broken checkout flow in a test suite the same day it breaks, versus catching it when a real customer hits it in production.",
+          "This phase is usually the longest — two to three weeks for a typical scope, more for something bigger — but it's also the one where \"longest\" doesn't mean \"riskiest.\" By the time development wraps, nothing in it should be a surprise, because you've already seen most of it working, one week at a time."
+        ]
+      },
+      "what-handover-includes": {
+        "title": "What a Real Software Handover Actually Includes",
+        "excerpt": "A demo isn't a handover. If your team can't run the system without calling the people who built it, the project isn't actually finished.",
+        "readTime": "3",
+        "body": [
+          "A lot of clients come to us having been through a handover that was really just a demo — someone screen-shared the finished product, said \"any questions?\", and then became increasingly hard to reach. That's not a handover. It's a goodbye with extra steps.",
+          "We treat launch as its own phase, not an afterthought tacked onto the end of development. It includes a release checklist, the actual production deploy, and — the part that's easy to skip and expensive to skip — a real handover session: documentation your team can actually follow, full credentials, not a promise to send them \"later,\" and a walkthrough where someone can ask \"what happens if this breaks\" and get a real answer.",
+          "The test we hold ourselves to is simple: can your own team run and extend the system without calling us for small things? If the answer is no, the handover isn't done, regardless of whether the product is technically live.",
+          "This phase is usually short — two to five days — because by the time we reach it, there's nothing left to figure out. Launch has already been de-risked by weeks of demos and a staging environment your team has already seen working. The only thing left is making it official."
+        ]
+      }
+    }
   }
 }

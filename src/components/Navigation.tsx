@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { key: "process", href: "#process" },
   { key: "stories", href: "#testimonials" },
   { key: "faq", href: "#faq" },
+  { key: "blog", href: "/blog" },
 ] as const;
 
 export function Navigation() {
@@ -120,6 +121,12 @@ export function Navigation() {
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("faq")}
+            </a>
+            <a
+              href={`/${locale}/blog`}
+              className="hover:text-[#22B8DE] transition-colors"
+            >
+              {t("blog")}
             </a>
           </nav>
 
