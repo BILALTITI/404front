@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     siteName: "Watad",
     type: "website",
   },
+  verification: {
+    google: "tFgjC0cr61vbHLOP4qcHKNHL4Vyel10TgthZphxBiiw",
+  },
 };
 
 export default function RootLayout({
