@@ -20,6 +20,7 @@ export async function JsonLd({ locale }: { locale: string }) {
     name: "Watad",
     alternateName: ["وتد", "4o4 Solutions"],
     url: siteUrl,
+    sameAs: ["https://www.instagram.com/4o4_solution"],
     logo: `${siteUrl}/watad-logo.png`,
     image: `${siteUrl}/watad-logo.png`,
     description,
