@@ -2,95 +2,33 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import Image from "next/imagimpoe";
-const projects = [
-  {
-    id: 1,
-    number: "01",
-    title: "Nexus Banking",
-    subtitle: "Fintech Revolution",
-    category: "Web Application",
-    description:
-      "A next-generation digital banking platform that redefined how millennials interact with their finances.",
-    result: "300% user growth in 6 months",
-    image: "../",
-    accent: "#ff6b00",
-    year: "2024",
-    tags: ["React", "Node.js", "Real-time"],
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Verdant Spaces",
-    subtitle: "Smart Home Evolution",
-    category: "IoT Platform",
-    description:
-      "An intelligent home automation system connecting over 200+ smart devices with seamless UX.",
-    result: "200K+ devices connected",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&h=900&fit=crop",
-    accent: "#ff8c3a",
-    year: "2024",
-    tags: ["IoT", "React Native", "AI"],
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "Pulse Health",
-    subtitle: "Wellness Reimagined",
-    category: "Mobile App",
-    description:
-      "A holistic health tracking application combining AI-driven insights with breathtaking design.",
-    result: "1M+ downloads, 92% retention",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&h=900&fit=crop",
-    accent: "#ffa556",
-    year: "2023",
-    tags: ["Flutter", "ML", "HealthKit"],
-  },
-  {
-    id: 4,
-    number: "04",
-    title: "Atlas Commerce",
-    subtitle: "E-Commerce Mastery",
-    category: "Platform",
-    description:
-      "A scalable e-commerce infrastructure powering 500+ global brands with peak performance.",
-    result: "$200M GMV, 99.99% uptime",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&h=900&fit=crop",
-    accent: "#ff6b00",
-    year: "2023",
-    tags: ["Next.js", "Postgres", "Stripe"],
-  },
-  {
-    id: 5,
-    number: "05",
-    title: "Quantum Labs",
-    subtitle: "Research Innovation",
-    category: "Web Platform",
-    description:
-      "Cutting-edge research collaboration for quantum computing scientists with real-time visualization.",
-    result: "50+ universities, 10K researchers",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&h=900&fit=crop",
-    accent: "#ff8c3a",
-    year: "2023",
-    tags: ["WebGL", "Python", "D3.js"],
-  },
-  {
-    id: 6,
-    number: "06",
-    title: "Stellar Media",
-    subtitle: "Content Platform",
-    category: "Streaming",
-    description:
-      "Next-gen video streaming platform with adaptive bitrate and global CDN infrastructure.",
-    result: "5M+ active users daily",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1400&h=900&fit=crop",
-    accent: "#ff6b00",
-    year: "2024",
-    tags: ["React", "AWS", "WebRTC"],
-  },
-];
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { PROJECT_META, type PortfolioProjectMeta } from "@/data/projects";
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+type ProjectItemCopy = {
+  title: string;
+  subtitle: string;
+  category: string;
+  description: string;
+  result: string;
+  imageAlt: string;
+};
+
+type Project = PortfolioProjectMeta & ProjectItemCopy;
+
+/** Merges the non-translatable portfolio metadata (images, links, tags) with
+ *  the locale-specific copy from messages/{locale}.json under projects.items.<key>. */
+function useProjects(): Project[] {
+  const t = useTranslations("projects");
+  const items = t.raw("items") as Record<string, ProjectItemCopy>;
+  return PROJECT_META.map((meta) => ({
+    ...meta,
+    ...items[meta.messageKey],
+  }));
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -108,24 +46,24 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
         <Image
           src={project.image}
-          alt={project.title}
+          alt={project.imageAlt}
           fill
           className="object-cover transition-transform duration-700 ease-out"
           style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-gray-950/20 to-transparent" />
-        
+
         {/* Number overlay */}
         <div
-          className="absolute top-4 right-4 font-display text-6xl font-bold leading-none opacity-20 select-none"
+          className="absolute top-4 end-4 font-display text-6xl font-bold leading-none opacity-20 select-none"
           style={{ color: project.accent }}
         >
           {project.number}
         </div>
 
         {/* Category badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 start-4">
           <span
             className="px-3 py-1.5 rounded-full font-heading text-[10px] font-bold tracking-wider uppercase backdrop-blur-md"
             style={{
@@ -195,9 +133,11 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 function FocusModal({
   project,
   onClose,
+  t,
 }: {
-  project: (typeof projects)[0];
+  project: Project;
   onClose: () => void;
+  t: (key: string) => string;
 }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -236,8 +176,8 @@ function FocusModal({
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
-          aria-label="Close"
+          className="absolute top-6 end-6 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+          aria-label={t("close")}
         >
           <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M6 18L18 6M6 6l12 12" />
@@ -248,17 +188,17 @@ function FocusModal({
         <div className="relative aspect-[21/9] overflow-hidden bg-gray-100">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={project.imageAlt}
             fill
             className="object-cover"
             sizes="(max-width: 1280px) 100vw, 1280px"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950/40 via-transparent to-transparent" />
-          
+
           {/* Floating number */}
           <div
-            className="absolute bottom-8 right-8 font-display text-9xl font-bold leading-none opacity-10 select-none"
+            className="absolute bottom-8 end-8 font-display text-9xl font-bold leading-none opacity-10 select-none"
             style={{ color: project.accent }}
           >
             {project.number}
@@ -285,15 +225,15 @@ function FocusModal({
                   {project.year}
                 </span>
               </div>
-              
+
               <p className="font-heading text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: project.accent }}>
                 {project.subtitle}
               </p>
-              
+
               <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-950 mb-4">
                 {project.title}
               </h2>
-              
+
               <p className="text-gray-600 font-body text-lg leading-relaxed max-w-2xl">
                 {project.description}
               </p>
@@ -306,7 +246,7 @@ function FocusModal({
               <div className="w-1.5 h-12 rounded-full" style={{ backgroundColor: project.accent }} />
               <div>
                 <div className="font-heading text-xs text-gray-500 uppercase tracking-wider mb-1">
-                  Key Result
+                  {t("keyResult")}
                 </div>
                 <div className="font-display text-2xl font-bold" style={{ color: project.accent }}>
                   {project.result}
@@ -327,18 +267,33 @@ function FocusModal({
             ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold text-white transition-transform hover:scale-105"
-            style={{ backgroundColor: project.accent }}
-            onClick={onClose}
-          >
-            <span>Get in Touch</span>
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-4">
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold text-white transition-transform hover:scale-105"
+                style={{ backgroundColor: project.accent }}
+              >
+                <span>{t("visitLive")}</span>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
+            )}
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold border-2 border-gray-200 text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
+              onClick={onClose}
+            >
+              <span>{t("startProject")}</span>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -346,7 +301,9 @@ function FocusModal({
 }
 
 export function Projects() {
-  const [focusedProject, setFocusedProject] = useState<(typeof projects)[0] | null>(null);
+  const t = useTranslations("projects");
+  const projects = useProjects();
+  const [focusedProject, setFocusedProject] = useState<Project | null>(null);
 
   return (
     <section id="work" className="relative py-24 sm:py-32 bg-white overflow-hidden">
@@ -376,7 +333,7 @@ export function Projects() {
               transition={{ duration: 2, repeat: Infinity }}
             />
             <span className="font-heading text-xs font-bold tracking-[0.3em] uppercase text-orange-600">
-              Featured Work
+              {t("sectionEyebrow")}
             </span>
           </motion.div>
 
@@ -387,9 +344,9 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Selected{" "}
-            <span className="gradient-text" data-text="Projects">
-              Projects
+            {t("titleLine1")}{" "}
+            <span className="gradient-text" data-text={t("titleGradientData")}>
+              {t("titleGradient")}
             </span>
           </motion.h2>
 
@@ -400,8 +357,7 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A curated showcase of digital products we've crafted for forward-thinking brands.
-            Click any project to explore the full story.
+            {t("intro")}
           </motion.p>
         </div>
 
@@ -426,7 +382,7 @@ export function Projects() {
             href="#contact"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
-            <span>Start Your Project</span>
+            <span>{t("startProject")}</span>
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
@@ -437,19 +393,7 @@ export function Projects() {
       {/* Focus modal */}
       <AnimatePresence>
         {focusedProject && (
-          <FocusModal project={focusedProject} onClose={() => setFocusedProject(null)} />
-tart Your Project</span>
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Focus modal */}
-      <AnimatePresence>
-        {focusedProject && (
-          <FocusModal project={focusedProject} onClose={() => setFocusedProject(null)} />
+          <FocusModal project={focusedProject} onClose={() => setFocusedProject(null)} t={t} />
         )}
       </AnimatePresence>
     </section>
