@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { PROJECT_META, type PortfolioProjectMeta } from "@/data/projects";
+import { Link } from "@/i18n/navigation";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ProjectItemCopy = {
@@ -272,6 +273,16 @@ function FocusModal({
 
           {/* CTAs */}
           <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href={`/projects/${project.messageKey}`}
+              onClick={onClose}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold border-2 border-gray-200 text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
+            >
+              <span>{t("askBuild")}</span>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </Link>
             {project.link && (
               <a
                 href={project.link}

@@ -9,6 +9,8 @@ import {
 } from "motion/react";
 import { useRef, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { SERVICE_META } from "@/data/services";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ServiceCopy = {
@@ -24,9 +26,11 @@ type ServiceCopy = {
 function ServiceCard({
   service,
   index,
+  learnMoreLabel,
 }: {
   service: ServiceCopy;
   index: number;
+  learnMoreLabel: string;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-60px" });
@@ -224,6 +228,18 @@ function ServiceCard({
             >
               {service.number}
             </div>
+            {(() => {
+              const meta = SERVICE_META.find((m) => m.id === service.id);
+              if (!meta) return null;
+              return (
+                <Link
+                  href={`/services/${meta.slug}`}
+                  className="font-heading text-xs font-semibold text-gray-500 hover:text-orange-500 transition-colors"
+                >
+                  {learnMoreLabel} →
+                </Link>
+              );
+            })()}
           </div>
         </div>
       </motion.div>
@@ -314,7 +330,12 @@ export function Services() {
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 items-start md:items-stretch">
           {services.map((service, i) => (
-            <ServiceCard key={service.id} service={service} index={i} />
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={i}
+              learnMoreLabel={t("learnMore")}
+            />
           ))}
         </div>
 
