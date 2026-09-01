@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { useRef, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ServiceCopy = {
   id: number;
@@ -232,6 +233,8 @@ function ServiceCard({
 
 export function Services() {
   const t = useTranslations("services");
+  const tWa = useTranslations("whatsapp");
+  const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
   const services = t.raw("list") as ServiceCopy[];
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
@@ -332,7 +335,9 @@ export function Services() {
             <p className="font-body text-gray-500">{t("ctaBody")}</p>
           </div>
           <motion.a
-            href="#contact"
+            href={bookCallLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative overflow-hidden flex-shrink-0 w-full sm:w-auto justify-center px-8 py-4 rounded-full bg-[#0C2740] text-white font-heading font-bold animate-pulse-glow inline-flex"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}

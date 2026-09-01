@@ -423,6 +423,12 @@
       { "value": "17:00", "label": "5:00 PM" }
     ]
   },
+  "whatsapp": {
+    "bookCall": "Hi Watad! I'd like to book a call to discuss a project.",
+    "startProject": "Hi Watad! I'd like to start a project with you.",
+    "sendDetails": "Hi Watad! I'd like to share some project details with you.",
+    "general": "Hi Watad! I'd like to get in touch about a project."
+  },
   "footer": {
     "explore": "Explore",
     "links": {

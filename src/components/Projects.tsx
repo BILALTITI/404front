@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { PROJECT_META, type PortfolioProjectMeta } from "@/data/projects";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ProjectItemCopy = {
   title: string;
@@ -134,10 +135,12 @@ function FocusModal({
   project,
   onClose,
   t,
+  startProjectLink,
 }: {
   project: Project;
   onClose: () => void;
   t: (key: string) => string;
+  startProjectLink: string;
 }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -284,7 +287,9 @@ function FocusModal({
               </a>
             )}
             <a
-              href="#contact"
+              href={startProjectLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-heading font-bold border-2 border-gray-200 text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
               onClick={onClose}
             >
@@ -302,6 +307,8 @@ function FocusModal({
 
 export function Projects() {
   const t = useTranslations("projects");
+  const tWa = useTranslations("whatsapp");
+  const startProjectLink = buildWhatsAppLink(tWa("startProject"));
   const projects = useProjects();
   const [focusedProject, setFocusedProject] = useState<Project | null>(null);
 
@@ -379,7 +386,9 @@ export function Projects() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <a
-            href="#contact"
+            href={startProjectLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-heading font-semibold hover:border-orange-400 hover:text-orange-500 transition-all duration-300"
           >
             <span>{t("startProject")}</span>
@@ -393,7 +402,12 @@ export function Projects() {
       {/* Focus modal */}
       <AnimatePresence>
         {focusedProject && (
-          <FocusModal project={focusedProject} onClose={() => setFocusedProject(null)} t={t} />
+          <FocusModal
+            project={focusedProject}
+            onClose={() => setFocusedProject(null)}
+            t={t}
+            startProjectLink={startProjectLink}
+          />
         )}
       </AnimatePresence>
     </section>

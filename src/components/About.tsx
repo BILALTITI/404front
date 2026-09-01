@@ -5,10 +5,13 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import watadLogo from "@/images/Watadlogo.png";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function About() {
   const t = useTranslations("about");
   const tCommon = useTranslations("common");
+  const tWa = useTranslations("whatsapp");
+  const startProjectLink = buildWhatsAppLink(tWa("startProject"));
   const locale = useLocale();
   const isArabic = locale === "ar";
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -118,7 +121,9 @@ export function About() {
               </a>{" "}
               {t("p2Or")}{" "}
               <a
-                href="#contact"
+                href={startProjectLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-orange-600 font-medium hover:underline"
               >
                 {t("p2Contact")}
@@ -149,7 +154,9 @@ export function About() {
             </div>
 
             <motion.a
-              href="#contact"
+              href={startProjectLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex overflow-hidden items-center gap-3 px-8 py-4 rounded-full bg-[#0C2740] text-white font-heading font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

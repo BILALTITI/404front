@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 import watadLogo from "@/images/Watadlogo.png";
 
 const NAV_LINKS = [
@@ -21,6 +22,8 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("nav");
+  const tWa = useTranslations("whatsapp");
+  const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
   const tCommon = useTranslations("common");
 
   useEffect(() => {
@@ -122,7 +125,9 @@ export function Navigation() {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <LanguageSwitcher light={!scrolled && !menuOpen} />
             <motion.a
-              href="#contact"
+              href={bookCallLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className={[
                 "relative group overflow-hidden hidden sm:inline-block px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-heading text-xs sm:text-sm font-semibold transition-colors duration-300",
                 scrolled || menuOpen
@@ -213,7 +218,9 @@ export function Navigation() {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href={bookCallLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}

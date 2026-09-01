@@ -10,10 +10,13 @@ import {
 import { useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import WatadHeroAnimation from "./WatadHeroAnimation";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function Hero() {
   const t = useTranslations("hero");
   const tCommon = useTranslations("common");
+  const tWa = useTranslations("whatsapp");
+  const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -126,7 +129,9 @@ export function Hero() {
             </motion.a>
 
             <motion.a
-              href="#contact"
+              href={bookCallLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 sm:px-9 py-4 rounded-full border border-white/25 text-white/90 font-heading font-semibold hover:border-[#22B8DE] hover:text-[#3ED2F0] transition-colors duration-300"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}

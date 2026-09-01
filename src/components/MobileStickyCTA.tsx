@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 /**
  * Fixed bottom CTA bar, mobile only (hidden at md+). Stays hidden while the
@@ -11,6 +12,8 @@ import { useTranslations } from "next-intl";
  */
 export function MobileStickyCTA() {
   const t = useTranslations("hero");
+  const tWa = useTranslations("whatsapp");
+  const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
   const [atHero, setAtHero] = useState(true);
   const [atContact, setAtContact] = useState(false);
 
@@ -54,7 +57,9 @@ export function MobileStickyCTA() {
       aria-hidden={hidden}
     >
       <a
-        href="#contact"
+        href={bookCallLink}
+        target="_blank"
+        rel="noopener noreferrer"
         tabIndex={hidden ? -1 : 0}
         className="flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full bg-[#22B8DE] text-[#0C2740] font-heading font-bold shadow-lg shadow-[#22B8DE]/30 active:scale-[0.98] transition-transform"
       >

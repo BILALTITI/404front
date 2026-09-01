@@ -1,121 +1,19 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { MountGuard } from "./MountGuard";
-
-type Tab = "message" | "meeting";
-
-const API_BASE = "https://4o4soultions.premiumasp.net/";
-
-type TimeOpt = { value: string; label: string };
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function Contact() {
   const t = useTranslations("contact");
-  const times = t.raw("times") as TimeOpt[];
-  const ph = t.raw("placeholders") as Record<string, string>;
+  const tWa = useTranslations("whatsapp");
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const [activeTab, setActiveTab] = useState<Tab>("message");
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    budget: "",
-    message: "",
-  });
-  const [meetingState, setMeetingState] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    time: "",
-    topic: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  /** Set after mount so `min` matches client date and avoids SSR/client mismatch. */
-  const [minDateStr, setMinDateStr] = useState("");
 
-  useEffect(() => {
-    setMinDateStr(new Date().toISOString().split("T")[0] ?? "");
-  }, []);
-
-  const postContact = async (body: Record<string, unknown>) => {
-    const res = await fetch(`${API_BASE}api/ContactUs`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) {
-      let detail = t("errorGeneric");
-      try {
-        const data = (await res.json()) as { detail?: string; title?: string };
-        if (data.detail) detail = data.detail;
-        else if (data.title) detail = data.title;
-      } catch {
-        /* use default */
-      }
-      throw new Error(detail);
-    }
-  };
-
-  const handleMessageSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitError(null);
-    setIsSubmitting(true);
-    try {
-      await postContact({
-        type: "message",
-        name: formState.name.trim(),
-        email: formState.email.trim(),
-        phone: formState.phone.trim(),
-        topic: formState.budget || null,
-        message: formState.message.trim(),
-      });
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000);
-      setFormState({ name: "", email: "", phone: "", budget: "", message: "" });
-    } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : t("errorFailed"));
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleMeetingSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitError(null);
-    setIsSubmitting(true);
-    try {
-      await postContact({
-        type: "meeting",
-        name: meetingState.name.trim(),
-        email: meetingState.email.trim(),
-        phone: meetingState.phone.trim(),
-        preferredDate: meetingState.date,
-        preferredTime: meetingState.time,
-        meetingTopic: meetingState.topic,
-      });
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000);
-      setMeetingState({
-        name: "",
-        email: "",
-        phone: "",
-        date: "",
-        time: "",
-        topic: "",
-      });
-    } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : t("errorFailed"));
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const sendDetailsLink = buildWhatsAppLink(tWa("sendDetails"));
+  const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
 
   return (
     <section
@@ -255,489 +153,57 @@ export function Contact() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-5 sm:p-8 lg:p-10 border border-white/10">
-              <MountGuard
-                fallback={
-                  <div
-                    className="min-h-[28rem] rounded-2xl bg-white/[0.03] border border-white/5 animate-pulse"
-                    aria-hidden
-                  />
-                }
-              >
-                <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10 mb-8">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setActiveTab("message");
-                    setSubmitted(false);
-                    setSubmitError(null);
-                  }}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-heading text-sm font-semibold transition-all duration-200"
-                  style={{
-                    backgroundColor:
-                      activeTab === "message" ? "#22B8DE" : "transparent",
-                    color:
-                      activeTab === "message"
-                        ? "#0C2740"
-                        : "rgba(255,255,255,0.4)",
-                  }}
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 rounded-full bg-[#25D366]/15 flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6 text-[#25D366]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm0 18.15h-.01a8.23 8.23 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 01-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25a8.2 8.2 0 015.84 2.42 8.19 8.19 0 012.42 5.83c0 4.55-3.71 8.24-8.26 8.24zm4.52-6.18c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.24-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14 0-.31-.01-.48-.01-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.08 0 1.22.89 2.4 1.02 2.57.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.19-.06-.11-.23-.17-.48-.29z" />
+                  </svg>
+                </div>
+                <p className="font-body text-sm text-gray-300 leading-relaxed">
+                  {t("intro")}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <motion.a
+                  href={sendDetailsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-5 px-6 bg-[#25D366] text-[#0C2740] font-heading font-bold rounded-2xl flex items-center justify-center gap-3 hover:bg-[#20bd5a] transition-colors"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                 >
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
+                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2z" />
+                  </svg>
+                  <span>{t("tabMessage")}</span>
+                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                   </svg>
-                  {t("tabMessage")}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setActiveTab("meeting");
-                    setSubmitted(false);
-                    setSubmitError(null);
-                  }}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-heading text-sm font-semibold transition-all duration-200"
-                  style={{
-                    backgroundColor:
-                      activeTab === "meeting" ? "#22B8DE" : "transparent",
-                    color:
-                      activeTab === "meeting"
-                        ? "#0C2740"
-                        : "rgba(255,255,255,0.4)",
-                  }}
+                </motion.a>
+
+                <motion.a
+                  href={bookCallLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-5 px-6 bg-white/10 border border-white/20 text-white font-heading font-bold rounded-2xl flex items-center justify-center gap-3 hover:bg-white/15 transition-colors"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                 >
-                  <svg
-                    className="w-4 h-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
+                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="4" width="18" height="18" rx="2" />
                     <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
                   </svg>
-                  {t("tabMeeting")}
-                </button>
+                  <span>{t("tabMeeting")}</span>
+                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                  </svg>
+                </motion.a>
               </div>
 
-              {activeTab === "message" && (
-                <form onSubmit={handleMessageSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block font-heading text-sm text-gray-400 mb-2">
-                        {t("name")}
-                      </label>
-                      <input
-                        type="text"
-                        value={formState.name}
-                        onChange={(e) =>
-                          setFormState({ ...formState, name: e.target.value })
-                        }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder={ph.name}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-heading text-sm text-gray-400 mb-2">
-                        {t("email")}
-                      </label>
-                      <input
-                        type="email"
-                        value={formState.email}
-                        onChange={(e) =>
-                          setFormState({ ...formState, email: e.target.value })
-                        }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder={ph.email}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      {t("phone")}
-                    </label>
-                    <input
-                      type="tel"
-                      value={formState.phone}
-                      onChange={(e) =>
-                        setFormState({ ...formState, phone: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder={ph.phone}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      {t("topicMessage")}
-                    </label>
-                    <select
-                      value={formState.budget}
-                      onChange={(e) =>
-                        setFormState({ ...formState, budget: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
-                    >
-                      <option value="" className="bg-[#0C2740]">
-                        {t("selectTopic")}
-                      </option>
-                      <option value="new-project" className="bg-[#0C2740]">
-                        {t("topicNew")}
-                      </option>
-                      <option value="existing-project" className="bg-[#0C2740]">
-                        {t("topicExisting")}
-                      </option>
-                      <option value="consultation" className="bg-[#0C2740]">
-                        {t("topicConsult")}
-                      </option>
-                      <option value="partnership" className="bg-[#0C2740]">
-                        {t("topicPartner")}
-                      </option>
-                      <option value="other" className="bg-[#0C2740]">
-                        {t("topicOther")}
-                      </option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      {t("projectDetails")}
-                    </label>
-                    <textarea
-                      value={formState.message}
-                      onChange={(e) =>
-                        setFormState({ ...formState, message: e.target.value })
-                      }
-                      rows={5}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors resize-none"
-                      placeholder={ph.message}
-                      required
-                    />
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting || submitted}
-                    className="w-full py-4 bg-orange-500 text-white font-heading font-semibold rounded-xl hover:bg-orange-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
-                    {submitted ? (
-                      <>
-                        <svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                        >
-                          <path
-                            d="M5 13l4 4L19 7"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        <span>{t("messageSent")}</span>
-                      </>
-                    ) : isSubmitting ? (
-                      <>
-                        <motion.svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            fill="none"
-                          />
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                          />
-                        </motion.svg>
-                        <span>{t("sending")}</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>{t("sendMessage")}</span>
-                        <svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                        </svg>
-                      </>
-                    )}
-                  </motion.button>
-
-                  {submitError && (
-                    <p
-                      className="text-center text-sm text-red-400 font-body"
-                      role="alert"
-                    >
-                      {submitError}
-                    </p>
-                  )}
-                  <p className="text-center text-sm text-gray-500 font-body">
-                    {t("footnoteMessage")}
-                  </p>
-                </form>
-              )}
-
-              {activeTab === "meeting" && (
-                <form onSubmit={handleMeetingSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block font-heading text-sm text-gray-400 mb-2">
-                        {t("name")}
-                      </label>
-                      <input
-                        type="text"
-                        value={meetingState.name}
-                        onChange={(e) =>
-                          setMeetingState({
-                            ...meetingState,
-                            name: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder={ph.name}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-heading text-sm text-gray-400 mb-2">
-                        {t("email")}
-                      </label>
-                      <input
-                        type="email"
-                        value={meetingState.email}
-                        onChange={(e) =>
-                          setMeetingState({
-                            ...meetingState,
-                            email: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                        placeholder={ph.email}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      {t("phone")}
-                    </label>
-                    <input
-                      type="tel"
-                      value={meetingState.phone}
-                      onChange={(e) =>
-                        setMeetingState({
-                          ...meetingState,
-                          phone: e.target.value,
-                        })
-                      }
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
-                      placeholder={ph.phone}
-                      required
-                    />
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block font-heading text-sm text-gray-400 mb-2">
-                        {t("preferredDate")}
-                      </label>
-                      <input
-                        type="date"
-                        value={meetingState.date}
-                        onChange={(e) =>
-                          setMeetingState({
-                            ...meetingState,
-                            date: e.target.value,
-                          })
-                        }
-                        min={minDateStr || undefined}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-heading text-sm text-gray-400 mb-2">
-                        {t("preferredTime")}
-                      </label>
-                      <select
-                        value={meetingState.time}
-                        onChange={(e) =>
-                          setMeetingState({
-                            ...meetingState,
-                            time: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
-                        required
-                      >
-                        <option value="" className="bg-[#0C2740]">
-                          {t("pickTime")}
-                        </option>
-                        {times.map((opt) => (
-                          <option
-                            key={opt.value}
-                            value={opt.value}
-                            className="bg-[#0C2740]"
-                          >
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block font-heading text-sm text-gray-400 mb-2">
-                      {t("topicMeeting")}
-                    </label>
-                    <select
-                      value={meetingState.topic}
-                      onChange={(e) =>
-                        setMeetingState({
-                          ...meetingState,
-                          topic: e.target.value,
-                        })
-                      }
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-body focus:outline-none focus:border-orange-500 transition-colors"
-                      required
-                    >
-                      <option value="" className="bg-[#0C2740]">
-                        {t("selectTopic")}
-                      </option>
-                      <option value="new-project" className="bg-[#0C2740]">
-                        {t("topicNew")}
-                      </option>
-                      <option value="existing-project" className="bg-[#0C2740]">
-                        {t("topicExistingMeeting")}
-                      </option>
-                      <option value="consultation" className="bg-[#0C2740]">
-                        {t("topicConsult")}
-                      </option>
-                      <option value="partnership" className="bg-[#0C2740]">
-                        {t("topicPartner")}
-                      </option>
-                      <option value="other" className="bg-[#0C2740]">
-                        {t("topicOther")}
-                      </option>
-                    </select>
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting || submitted}
-                    className="w-full py-4 bg-orange-500 text-white font-heading font-semibold rounded-xl hover:bg-orange-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
-                    {submitted ? (
-                      <>
-                        <svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                        >
-                          <path
-                            d="M5 13l4 4L19 7"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        <span>{t("meetingRequested")}</span>
-                      </>
-                    ) : isSubmitting ? (
-                      <>
-                        <motion.svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            fill="none"
-                          />
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                          />
-                        </motion.svg>
-                        <span>{t("booking")}</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>{t("requestMeeting")}</span>
-                        <svg
-                          className="w-5 h-5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <rect x="3" y="4" width="18" height="18" rx="2" />
-                          <path
-                            d="M16 2v4M8 2v4M3 10h18"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </>
-                    )}
-                  </motion.button>
-
-                  {submitError && (
-                    <p
-                      className="text-center text-sm text-red-400 font-body"
-                      role="alert"
-                    >
-                      {submitError}
-                    </p>
-                  )}
-                  <p className="text-center text-sm text-gray-500 font-body">
-                    {t("footnoteMeeting")}
-                  </p>
-                </form>
-              )}
-              </MountGuard>
+              <p className="text-center text-sm text-gray-500 font-body mt-6">
+                {t("footnoteMessage")}
+              </p>
             </div>
           </motion.div>
         </div>
