@@ -466,6 +466,17 @@
     "languageSwitcher": "اللغة",
     "brand": "وتد",
     "countShipped": "٢٠",
-    "details": "التفاصيل"
+    "details": "التفاصيل",
+    "breadcrumbHome": "الرئيسية"
+  },
+  "servicePage": {
+    "eyebrow": "خدمة",
+    "featuresHeading": "ما الذي يتضمنه",
+    "otherServicesHeading": "خدمات أخرى"
+  },
+  "projectPage": {
+    "eyebrow": "دراسة حالة",
+    "techHeading": "بُني باستخدام",
+    "otherProjectsHeading": "مشاريع أخرى"
   }
 }

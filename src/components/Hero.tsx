@@ -8,12 +8,13 @@ import {
   useSpring,
 } from "motion/react";
 import { useRef, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import WatadHeroAnimation from "./WatadHeroAnimation";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function Hero() {
   const t = useTranslations("hero");
+  const locale = useLocale();
   const tCommon = useTranslations("common");
   const tWa = useTranslations("whatsapp");
   const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
@@ -119,7 +120,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4"
           >
             <motion.a
-              href="#work"
+              href={`/${locale}#work`}
               className="w-full sm:w-auto text-center px-8 sm:px-10 py-4 font-heading font-bold text-[#0C2740] rounded-full"
               style={{ background: "#22B8DE" }}
               whileHover={{ scale: 1.04 }}

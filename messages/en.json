@@ -466,6 +466,17 @@
     "languageSwitcher": "Language",
     "brand": "Watad",
     "countShipped": "20",
-    "details": "Details"
+    "details": "Details",
+    "breadcrumbHome": "Home"
+  },
+  "servicePage": {
+    "eyebrow": "Service",
+    "featuresHeading": "What's included",
+    "otherServicesHeading": "Other services"
+  },
+  "projectPage": {
+    "eyebrow": "Case study",
+    "techHeading": "Built with",
+    "otherProjectsHeading": "More projects"
   }
 }

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
@@ -22,6 +22,7 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("nav");
+  const locale = useLocale();
   const tWa = useTranslations("whatsapp");
   const bookCallLink = buildWhatsAppLink(tWa("bookCall"));
   const tCommon = useTranslations("common");
@@ -85,37 +86,37 @@ export function Navigation() {
             aria-label={t("primary")}
           >
             <a
-              href="#work"
+              href={`/${locale}#work`}
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("work")}
             </a>
             <a
-              href="#about"
+              href={`/${locale}#about`}
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("about")}
             </a>
             <a
-              href="#services"
+              href={`/${locale}#services`}
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("services")}
             </a>
             <a
-              href="#process"
+              href={`/${locale}#process`}
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("process")}
             </a>
             <a
-              href="#testimonials"
+              href={`/${locale}#testimonials`}
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("stories")}
             </a>
             <a
-              href="#faq"
+              href={`/${locale}#faq`}
               className="hover:text-[#22B8DE] transition-colors"
             >
               {t("faq")}
@@ -207,7 +208,7 @@ export function Navigation() {
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.key}
-                  href={link.href}
+                  href={`/${locale}${link.href}`}
                   onClick={() => setMenuOpen(false)}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}

@@ -2,11 +2,12 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 export function Footer() {
   const t = useTranslations("footer");
+  const locale = useLocale();
   const tCommon = useTranslations("common");
   const footerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(footerRef, { once: true });
@@ -78,7 +79,7 @@ export function Footer() {
                 {linkDefs.map((item) => (
                   <li key={item.key}>
                     <a
-                      href={item.href}
+                      href={`/${locale}${item.href}`}
                       className="font-body text-gray-400 hover:text-orange-500 transition-colors"
                     >
                       {t(`links.${item.key}`)}

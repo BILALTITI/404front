@@ -116,7 +116,7 @@ export function About() {
               className="text-gray-500 font-body text-base sm:text-lg leading-relaxed mb-8 sm:mb-12"
             >
               {t("p2")}{" "}
-              <a href="#work" className="text-orange-600 font-medium hover:underline">
+              <a href={`/${locale}#work`} className="text-orange-600 font-medium hover:underline">
                 {t("p2Projects")}
               </a>{" "}
               {t("p2Or")}{" "}
