@@ -34,6 +34,7 @@ export async function JsonLd({ locale }: { locale: string }) {
       "@type": "Person",
       name: "Bilal Altiti",
       jobTitle: "Founder",
+      sameAs: ["https://github.com/BILALTITI"],
     },
     contactPoint: {
       "@type": "ContactPoint",
