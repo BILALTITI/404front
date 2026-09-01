@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { syne, spaceGrotesk, inter, ibmPlexSansArabic } from "@/lib/fonts";
 
 /** Default metadata when middleware has not yet resolved locale (overridden per `[locale]`).
  *  The OG image comes from the app/opengraph-image.tsx file convention (1200×630). */
@@ -26,7 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth ${syne.variable} ${spaceGrotesk.variable} ${inter.variable} ${ibmPlexSansArabic.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased" suppressHydrationWarning>
         {children}
         <GoogleAnalytics />
