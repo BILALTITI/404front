@@ -402,6 +402,7 @@ export function Testimonials() {
                         testimonials.length,
                     )
                   }
+                  aria-label={t("previous")}
                   className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
                 >
                   <svg
@@ -410,6 +411,7 @@ export function Testimonials() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
+                    aria-hidden="true"
                   >
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
@@ -420,19 +422,26 @@ export function Testimonials() {
                     key={i}
                     type="button"
                     onClick={() => goTo(i)}
-                    className="relative overflow-hidden rounded-full transition-all duration-300"
-                    style={{
-                      width: i === activeIndex ? 32 : 8,
-                      height: 8,
-                      backgroundColor:
-                        i === activeIndex ? active.accent : "rgba(0,0,0,0.12)",
-                    }}
-                  />
+                    aria-label={t("goTo", { number: i + 1 })}
+                    aria-current={i === activeIndex ? "true" : undefined}
+                    className="relative flex items-center justify-center p-2 -m-2"
+                  >
+                    <span
+                      className="block overflow-hidden rounded-full transition-all duration-300"
+                      style={{
+                        width: i === activeIndex ? 32 : 8,
+                        height: 8,
+                        backgroundColor:
+                          i === activeIndex ? active.accent : "rgba(0,0,0,0.12)",
+                      }}
+                    />
+                  </button>
                 ))}
 
                 <button
                   type="button"
                   onClick={() => goTo((activeIndex + 1) % testimonials.length)}
+                  aria-label={t("next")}
                   className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:border-orange-300 transition-colors shadow-sm"
                 >
                   <svg
@@ -441,6 +450,7 @@ export function Testimonials() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
+                    aria-hidden="true"
                   >
                     <path d="M9 18l6-6-6-6" />
                   </svg>

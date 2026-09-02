@@ -203,6 +203,9 @@
     "titleLine1": "They didn't pay",
     "titleGradient": "for promises",
     "subtitle": "Founders, operators, and end users of the products we've delivered.",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "goTo": "Go to testimonial {number}",
     "items": [
       {
         "id": 1,
