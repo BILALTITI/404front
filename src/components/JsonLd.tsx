@@ -24,6 +24,8 @@ export async function JsonLd({ locale }: { locale: string }) {
     logo: `${siteUrl}/watad-logo.png`,
     image: `${siteUrl}/watad-logo.png`,
     description,
+    telephone: "+962-7-9812-4169",
+    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Amman",
