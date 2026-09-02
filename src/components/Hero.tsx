@@ -100,7 +100,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-lg mx-auto text-base sm:text-lg text-white/75 font-body mb-10 sm:mb-12 leading-relaxed"
           >
             <strong className="font-semibold text-white">
