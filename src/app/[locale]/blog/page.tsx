@@ -106,6 +106,13 @@ export default async function BlogIndexPage({ params }: Props) {
                   </p>
                   <span className="font-heading text-xs font-semibold tracking-wider uppercase text-gray-400">
                     {copy.readTime} {t("readTime")}
+                    <span aria-hidden="true"> &middot; </span>
+                    <time dateTime={meta.date}>
+                      {new Date(meta.date).toLocaleDateString(
+                        locale === "ar" ? "ar" : "en-US",
+                        { year: "numeric", month: "long", day: "numeric" },
+                      )}
+                    </time>
                   </span>
                 </Link>
               );

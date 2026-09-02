@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
@@ -24,14 +25,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // getLocale() reads the locale next-intl's middleware already resolved for
+  // this request, so <html lang>/dir> are correct in the very first
+  // server-rendered response instead of only after client-side hydration
+  // (see src/components/LocaleAttributes.tsx, kept as a client-nav backstop).
+  const locale = await getLocale();
+
   return (
     <html
-      lang="en"
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
       className={`scroll-smooth ${syne.variable} ${spaceGrotesk.variable} ${inter.variable} ${ibmPlexSansArabic.variable}`}
       suppressHydrationWarning
     >

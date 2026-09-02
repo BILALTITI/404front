@@ -24,6 +24,7 @@ export async function JsonLd({ locale }: { locale: string }) {
     logo: `${siteUrl}/watad-logo.png`,
     image: `${siteUrl}/watad-logo.png`,
     description,
+    email: "hello@watad.co",
     telephone: "+962-7-9812-4169",
     priceRange: "$$",
     address: {
@@ -48,9 +49,16 @@ export async function JsonLd({ locale }: { locale: string }) {
     areaServed: ["JO", "MENA"],
     knowsAbout: [
       "Software development",
+      "Custom software development",
       "Web applications",
+      "Web development",
       "Mobile application development",
+      "SaaS development",
+      "UI/UX design",
+      "Business automation",
       "Workflow automation",
+      "Cloud solutions",
+      "API development",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -74,6 +82,8 @@ export async function JsonLd({ locale }: { locale: string }) {
     "@type": "WebSite",
     name: "Watad",
     url: siteUrl,
+    description,
+    inLanguage: locale === "ar" ? "ar" : "en",
     publisher: { "@id": `${siteUrl}/#organization` },
   };
 

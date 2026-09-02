@@ -1,25 +1,27 @@
 # Watad (4o4 Solutions)
 
-> Watad is a software development company in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan and the MENA region. Engagements run discovery through launch in about a month, ending with a full production handover: deploy, documentation, credentials, and a walkthrough.
+> Watad is a software development company based in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and beyond. Engagements run discovery through launch in about a month, ending with a full production handover: deploy, documentation, credentials, and a walkthrough.
 
 Founded 2025 by Bilal Altiti. Also known as 4o4 Solutions / وتد.
 
 ## Services
 
-- [Web development](https://www.4o4solutions.com/en/services/web-development): SPA and SSR web applications, e-commerce, REST/GraphQL APIs, from marketing sites to multi-tenant SaaS.
-- [Mobile apps](https://www.4o4solutions.com/en/services/mobile-apps): Native and cross-platform iOS/Android apps with authentication and backend integration handled from day one.
-- [UI/UX design](https://www.4o4solutions.com/en/services/ui-ux-design): User flow mapping and design systems focused on reducing drop-off and confusion.
+- [Web development](https://www.4o4solutions.com/en/services/web-development): Custom web applications and SaaS platforms — SPA and SSR, e-commerce, REST/GraphQL APIs, from marketing sites to multi-tenant SaaS. Stack: React, Next.js, ASP.NET Core, Vue.js, Laravel, SQL Server.
+- [Mobile apps](https://www.4o4solutions.com/en/services/mobile-apps): Native-feeling iOS/Android apps, most commonly React Native, with authentication and backend integration handled from day one, including App Store and Google Play release.
+- [UI/UX design](https://www.4o4solutions.com/en/services/ui-ux-design): User flow mapping, wireframes, design systems, and clickable prototypes focused on reducing drop-off and confusion.
 - [Brand & identity](https://www.4o4solutions.com/en/services/brand-identity): Visual identity, core assets, and in-product patterns for new companies.
 - [Cloud & DevOps](https://www.4o4solutions.com/en/services/cloud-devops): AWS/Azure deployment, CI/CD, and monitoring sized to actual traffic.
-- [Workflow automation](https://www.4o4solutions.com/en/services/workflow-automation): n8n-based automation replacing manual handoffs between CRMs, spreadsheets, and inboxes.
+- [Workflow automation](https://www.4o4solutions.com/en/services/workflow-automation): n8n-based business automation replacing manual handoffs between CRMs, spreadsheets, and inboxes.
 
 ## Projects
 
-- [Cashtics](https://www.4o4solutions.com/en/projects/cashtics): Freelance task marketplace with escrow-style payments.
-- [Sooquk](https://www.4o4solutions.com/en/projects/sooquk): Regional e-commerce marketplace for fashion and lifestyle sellers.
-- [Okal for Heroes](https://www.4o4solutions.com/en/projects/okal): Kids' barber booking system with automated reminders.
-- [Breshta](https://www.4o4solutions.com/en/projects/breshta): Loyalty and rewards platform with daily deals and gamification.
-- [LastOneWin](https://www.4o4solutions.com/en/projects/lastonewin): Real-time last-finger-on-screen competition app.
+- [Cashtics](https://www.4o4solutions.com/en/projects/cashtics): Freelance task marketplace with escrow-style payments (Laravel, Vue.js, AWS).
+- [Sooquk](https://www.4o4solutions.com/en/projects/sooquk): Regional e-commerce marketplace for fashion and lifestyle sellers (ASP.NET Core, Next.js, React Native).
+- [Okal for Heroes](https://www.4o4solutions.com/en/projects/okal): Kids' barber booking system with automated reminders (ASP.NET MVC, UX design).
+- [Breshta](https://www.4o4solutions.com/en/projects/breshta): Loyalty and rewards platform with daily deals and gamification (ASP.NET Core, React Native, Azure).
+- [LastOneWin](https://www.4o4solutions.com/en/projects/lastonewin): Real-time last-finger-on-screen competition app (ASP.NET Core, React Native, Azure).
+- [ILern](https://www.4o4solutions.com/en/projects/ilern): Learning management platform with structured courses, enrolment, instructor tooling, and digital certificates (ASP.NET MVC, SQL Server).
+- [Clinical desktop suite](https://www.4o4solutions.com/en/projects/clinical): Patient records, scheduling, and billing for clinic teams (.NET Framework, SQL Server).
 
 ## Blog
 
@@ -31,4 +33,4 @@ Founded 2025 by Bilal Altiti. Also known as 4o4 Solutions / وتد.
 
 ## Contact
 
-Amman, Jordan. Phone: +962 7 9812 4169. [Instagram](https://www.instagram.com/4o4_solution).
+Amman, Jordan. Email: hello@watad.co. Phone: +962 7 9812 4169. [Instagram](https://www.instagram.com/4o4_solution).

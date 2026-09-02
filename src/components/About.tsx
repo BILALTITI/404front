@@ -23,6 +23,7 @@ export function About() {
     desc: string;
   }[];
   const stats = t.raw("stats") as { value: string; label: string }[];
+  const techList = t.raw("techList") as string[];
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -296,6 +297,71 @@ export function About() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+
+        {/* AI/GEO-readable company overview: crawlable, non-animated structured content */}
+        <div className="mt-20 sm:mt-28 lg:mt-32 grid sm:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 border-t border-gray-100 pt-16 sm:pt-20">
+          <div>
+            <h3
+              className={`font-heading text-xs font-bold text-orange-600 mb-3 ${
+                isArabic ? "tracking-normal" : "tracking-[0.2em] uppercase"
+              }`}
+            >
+              {t("whoHeading")}
+            </h3>
+            <p className="text-gray-500 font-body text-base leading-relaxed">
+              {t("whoBody")}
+            </p>
+          </div>
+
+          <div>
+            <h3
+              className={`font-heading text-xs font-bold text-orange-600 mb-3 ${
+                isArabic ? "tracking-normal" : "tracking-[0.2em] uppercase"
+              }`}
+            >
+              {t("whereHeading")}
+            </h3>
+            <p className="text-gray-500 font-body text-base leading-relaxed">
+              {t("whereBody")}
+            </p>
+          </div>
+
+          <div>
+            <h3
+              className={`font-heading text-xs font-bold text-orange-600 mb-3 ${
+                isArabic ? "tracking-normal" : "tracking-[0.2em] uppercase"
+              }`}
+            >
+              {t("techHeading")}
+            </h3>
+            <p className="text-gray-500 font-body text-base leading-relaxed mb-4">
+              {t("techBody")}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {techList.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200 font-heading text-xs text-gray-600"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3
+              className={`font-heading text-xs font-bold text-orange-600 mb-3 ${
+                isArabic ? "tracking-normal" : "tracking-[0.2em] uppercase"
+              }`}
+            >
+              {t("differentHeading")}
+            </h3>
+            <p className="text-gray-500 font-body text-base leading-relaxed">
+              {t("differentBody")}
+            </p>
           </div>
         </div>
       </div>

@@ -99,11 +99,21 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@id": `${siteUrl}/#organization` },
+    author: {
+      "@type": "Person",
+      name: "Bilal Altiti",
+      jobTitle: "Founder",
+      url: `${siteUrl}/${locale}#about`,
+    },
     publisher: { "@id": `${siteUrl}/#organization` },
     url,
     mainEntityOfPage: url,
   };
+
+  const formattedDate = new Date(post.date).toLocaleDateString(
+    locale === "ar" ? "ar" : "en-US",
+    { year: "numeric", month: "long", day: "numeric" },
+  );
 
   const breadcrumbJson = {
     "@context": "https://schema.org",
@@ -164,9 +174,15 @@ export default async function BlogPostPage({ params }: Props) {
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#123A5F] mb-6 leading-tight">
             {post.title}
           </h1>
-          <p className="font-heading text-xs font-semibold tracking-wider uppercase text-gray-400 mb-12">
-            {post.readTime} {t("readTime")}
-          </p>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-heading text-xs font-semibold tracking-wider uppercase text-gray-400 mb-12">
+            <span>{t("byLine", { author: t("authorName") })}</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>{t("authorRole")}</span>
+            <span aria-hidden="true">&middot;</span>
+            <time dateTime={post.date}>{formattedDate}</time>
+            <span aria-hidden="true">&middot;</span>
+            <span>{post.readTime} {t("readTime")}</span>
+          </div>
 
           <div className="space-y-6 mb-16">
             {post.body.map((paragraph, i) => (

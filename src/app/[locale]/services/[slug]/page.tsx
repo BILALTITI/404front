@@ -7,6 +7,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { SERVICE_META } from "@/data/services";
+import { PROJECT_META } from "@/data/projects";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ServiceCopy = {
@@ -17,6 +18,7 @@ type ServiceCopy = {
   description: string;
   features: string[];
   icon: string;
+  faqs?: { question: string; answer: string }[];
 };
 
 type Props = {
@@ -89,6 +91,7 @@ export default async function ServicePage({ params }: Props) {
   const tPage = await getTranslations({ locale, namespace: "servicePage" });
   const tWa = await getTranslations({ locale, namespace: "whatsapp" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
+  const tProjects = await getTranslations({ locale, namespace: "projects" });
   const list = t.raw("list") as ServiceCopy[];
   const service = findService(list, slug);
   if (!service) notFound();
@@ -96,6 +99,16 @@ export default async function ServicePage({ params }: Props) {
   const startLink = buildWhatsAppLink(tWa("startProject"));
   const otherServices = SERVICE_META.filter((s) => s.slug !== slug);
   const url = `${siteUrl}/${locale}/services/${slug}`;
+
+  const projectItems = tProjects.raw("items") as Record<string, { title: string }>;
+  const relatedProjects = (service.relatedProjects ?? [])
+    .map((key) => {
+      const meta = PROJECT_META.find((p) => p.messageKey === key);
+      const copy = projectItems[key];
+      if (!meta || !copy) return null;
+      return { slug: key, title: copy.title };
+    })
+    .filter((p): p is { slug: string; title: string } => p !== null);
 
   const serviceJson = {
     "@context": "https://schema.org",
@@ -106,6 +119,19 @@ export default async function ServicePage({ params }: Props) {
     areaServed: ["JO", "MENA"],
     url,
   };
+
+  const serviceFaqJson =
+    service.faqs && service.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: service.faqs.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }
+      : null;
 
   const breadcrumbJson = {
     "@context": "https://schema.org",
@@ -142,6 +168,12 @@ export default async function ServicePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJson) }}
       />
+      {serviceFaqJson && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceFaqJson) }}
+        />
+      )}
 
       <Navigation />
 
@@ -190,6 +222,24 @@ export default async function ServicePage({ params }: Props) {
             ))}
           </ul>
 
+          {service.techStack && service.techStack.length > 0 && (
+            <>
+              <h2 className="font-display text-2xl font-bold text-[#123A5F] mb-5">
+                {tPage("techStackHeading")}
+              </h2>
+              <div className="flex flex-wrap gap-2 mb-14">
+                {service.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-4 py-2 rounded-full bg-gray-100 border border-gray-200 font-heading text-xs text-gray-600"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+
           <div
             className="p-6 sm:p-8 rounded-3xl border border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6 mb-16"
             style={{ background: "linear-gradient(135deg, #F2F7FA 0%, #ffffff 100%)" }}
@@ -209,6 +259,45 @@ export default async function ServicePage({ params }: Props) {
               {t("ctaButton")}
             </a>
           </div>
+
+          {relatedProjects.length > 0 && (
+            <>
+              <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
+                {tPage("relatedProjectsHeading")}
+              </h2>
+              <div className="flex flex-wrap gap-3 mb-16">
+                {relatedProjects.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/projects/${p.slug}`}
+                    className="px-5 py-3 rounded-full border border-gray-200 font-heading text-sm text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
+                  >
+                    {p.title}
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+
+          {service.faqs && service.faqs.length > 0 && (
+            <>
+              <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
+                {tPage("faqHeading")}
+              </h2>
+              <div className="mb-16 divide-y divide-gray-100 border-t border-b border-gray-100">
+                {service.faqs.map((item) => (
+                  <div key={item.question} className="py-5">
+                    <p className="font-heading font-semibold text-[#123A5F] mb-2">
+                      {item.question}
+                    </p>
+                    <p className="font-body text-gray-600 leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
           <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
             {tPage("otherServicesHeading")}
