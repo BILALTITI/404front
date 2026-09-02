@@ -20,6 +20,11 @@ function authorInitials(name: string): string {
   return `${parts[0].charAt(0)}${parts[parts.length - 1].charAt(0)}`.toUpperCase();
 }
 
+/** Darkens a brand accent color enough to meet WCAG AA text/icon contrast (4.5:1) against white or with white text on top of it, while keeping the hue. */
+function readableAccent(accent: string): string {
+  return `color-mix(in srgb, ${accent} 60%, black)`;
+}
+
 const ROTATE_INTERVAL = 5200;
 
 /** Stable pseudo-random motion params so SSR and the client match. */
@@ -350,7 +355,7 @@ export function Testimonials() {
                     <div className="relative">
                       <div
                         className="w-14 h-14 rounded-full flex items-center justify-center font-heading font-bold text-white text-sm border-2 border-white shadow-md"
-                        style={{ backgroundColor: active.accent }}
+                        style={{ backgroundColor: readableAccent(active.accent) }}
                         aria-hidden
                       >
                         {authorInitials(active.author)}
@@ -364,9 +369,9 @@ export function Testimonials() {
                       <div className="font-heading font-bold text-gray-900 text-base">
                         {active.author}
                       </div>
-                      <div className="font-body text-sm text-gray-400">
+                      <div className="font-body text-sm text-gray-600">
                         {active.role},{" "}
-                        <span style={{ color: active.accent }}>
+                        <span style={{ color: readableAccent(active.accent) }}>
                           {active.company}
                         </span>
                       </div>
@@ -375,7 +380,7 @@ export function Testimonials() {
                     <div className="ms-auto shrink-0">
                       <div
                         className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-bold text-white text-sm"
-                        style={{ backgroundColor: `${active.accent}dd` }}
+                        style={{ backgroundColor: readableAccent(active.accent) }}
                       >
                         {active.logoAbbr}
                       </div>
@@ -424,7 +429,7 @@ export function Testimonials() {
                     onClick={() => goTo(i)}
                     aria-label={t("goTo", { number: i + 1 })}
                     aria-current={i === activeIndex ? "true" : undefined}
-                    className="relative flex items-center justify-center p-2 -m-2"
+                    className="relative flex items-center justify-center p-2"
                   >
                     <span
                       className="block overflow-hidden rounded-full transition-all duration-300"
