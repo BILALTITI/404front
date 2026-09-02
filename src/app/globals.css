@@ -403,6 +403,20 @@
     animation: bob 1.8s ease-in-out infinite;
   }
 
+  /* Fade-up-blur reveal for above-the-fold text (e.g. the hero subtitle,
+     which is the page's LCP element). Runs as a plain CSS animation on
+     the compositor rather than a JS-driven one, so it starts as soon as
+     the element paints instead of waiting on React hydration -- that
+     wait was adding multiple seconds to LCP under throttled mobile CPUs. */
+  @keyframes hero-reveal {
+    from { opacity: 0; transform: translateY(28px); filter: blur(10px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0px); }
+  }
+
+  .animate-hero-reveal {
+    animation: hero-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+
   /* Respect users who opt out of motion */
   @media (prefers-reduced-motion: reduce) {
     .animate-pulse-glow,
@@ -411,6 +425,7 @@
     .animate-float,
     .animate-float-delayed,
     .animate-breathe,
+    .animate-hero-reveal,
     .shimmer {
       animation: none !important;
     }

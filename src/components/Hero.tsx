@@ -97,11 +97,16 @@ export function Hero() {
             </motion.span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-lg mx-auto text-base sm:text-lg text-white/75 font-body mb-10 sm:mb-12 leading-relaxed"
+          {/*
+            Plain <p> + CSS animation, not motion.p: this text is the
+            page's LCP element, and a JS-driven Framer Motion reveal here
+            was gating its final paint behind React hydration, adding
+            multiple seconds to LCP on throttled mobile connections. The
+            hero-reveal keyframe (globals.css) gives the identical
+            fade-up-blur look without that dependency.
+          */}
+          <p
+            className="animate-hero-reveal max-w-lg mx-auto text-base sm:text-lg text-white/75 font-body mb-10 sm:mb-12 leading-relaxed"
           >
             <strong className="font-semibold text-white">
               {t("descriptionBrand")}
@@ -111,7 +116,7 @@ export function Hero() {
               {t("descriptionScope")}
             </em>{" "}
             {t("descriptionEnd")}
-          </motion.p>
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
