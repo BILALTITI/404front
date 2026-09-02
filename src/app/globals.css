@@ -417,6 +417,19 @@
     animation: hero-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
   }
 
+  /* Same idea, for the hero headline: Lighthouse re-elected it as the LCP
+     element once the subtitle above stopped being the slowest thing on
+     the page, since it's also a large text block gated behind a JS-driven
+     Framer Motion reveal. Same fix, different starting transform. */
+  @keyframes hero-title-reveal {
+    from { opacity: 0; transform: translateY(60px) scale(0.92); filter: blur(18px); }
+    to { opacity: 1; transform: translateY(0) scale(1) translateZ(0); filter: blur(0px); }
+  }
+
+  .animate-hero-title-reveal {
+    animation: hero-title-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  }
+
   /* Respect users who opt out of motion */
   @media (prefers-reduced-motion: reduce) {
     .animate-pulse-glow,
@@ -426,6 +439,7 @@
     .animate-float-delayed,
     .animate-breathe,
     .animate-hero-reveal,
+    .animate-hero-title-reveal,
     .shimmer {
       animation: none !important;
     }

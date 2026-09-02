@@ -74,15 +74,14 @@ export function Hero() {
           className="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 text-center"
         >
           <h1 className="font-display font-bold tracking-tight mb-8 sm:mb-10 leading-[1.1] sm:leading-[0.95]">
-            <motion.span
-              className="block text-[clamp(3.25rem,16vw,7.5rem)] sm:text-8xl lg:text-[120px] text-white [transform:translateZ(0)]"
-              initial={{ opacity: 0, y: 60, filter: "blur(18px)", scale: 0.92 }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
-              transition={{
-                duration: 1.2,
-                delay: 0.25,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+            {/*
+              Plain <span> + CSS animation, not motion.span: once the
+              subtitle below stopped being the LCP element (see the note
+              on that <p>), Lighthouse re-elected this headline instead --
+              same root cause, a JS-gated reveal on a large text block.
+            */}
+            <span
+              className="animate-hero-title-reveal block text-[clamp(3.25rem,16vw,7.5rem)] sm:text-8xl lg:text-[120px] text-white"
             >
               {/^[A-Za-z]+$/.test(tCommon("brand")) ? (
                 <>
@@ -94,7 +93,7 @@ export function Hero() {
               ) : (
                 tCommon("brand")
               )}
-            </motion.span>
+            </span>
           </h1>
 
           {/*
