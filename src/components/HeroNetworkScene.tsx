@@ -518,6 +518,13 @@ export function HeroNetworkScene({ config }: { config: HeroNetworkConfig }) {
     let inView = true;
     let elapsed = 0;
 
+    // Phones spend far more main-thread time per WebGL draw call than
+    // desktop, which is what showed up as a very high Total Blocking Time
+    // in Lighthouse mobile audits. The scene is a slow ambient loop, so
+    // drawing it at ~30fps instead of 60fps on the "base" tier is visually
+    // unnoticeable but roughly halves the JS work Lighthouse penalizes.
+    let frameAcc = 0;
+
     const tick = () => {
       const dt = Math.min(clock.getDelta(), 0.05);
       elapsed += dt;
@@ -535,8 +542,13 @@ export function HeroNetworkScene({ config }: { config: HeroNetworkConfig }) {
         if (p.active) p.age += dt;
       }
 
-      writeFrame(elapsed);
-      renderer.render(scene, camera);
+      frameAcc += dt;
+      const minInterval = currentTier() === "base" ? 1 / 30 : 0;
+      if (frameAcc >= minInterval) {
+        frameAcc = 0;
+        writeFrame(elapsed);
+        renderer.render(scene, camera);
+      }
       rafId = requestAnimationFrame(tick);
     };
 
