@@ -43,12 +43,13 @@ export function Navigation() {
   }, [menuOpen]);
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+    // Plain <nav> + CSS animation, not motion.nav: this bar (and the
+    // logo inside it) was gated behind a JS-driven Framer Motion reveal,
+    // which Lighthouse re-elected as the LCP element once the hero's own
+    // reveals were fixed -- same root cause, different component.
+    <nav
       className={[
-        "fixed top-0 inset-x-0 z-50 transition-[padding] duration-300 ease-out",
+        "animate-nav-reveal fixed top-0 inset-x-0 z-50 transition-[padding] duration-300 ease-out",
         scrolled ? "py-3" : "py-4 sm:py-7",
       ].join(" ")}
     >
@@ -241,6 +242,6 @@ export function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }

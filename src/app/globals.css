@@ -439,6 +439,19 @@
     animation: hero-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
   }
 
+  /* Same pattern again, outside the hero this time: the site nav bar
+     (including its logo image) was wrapped in a JS-driven Framer Motion
+     slide-down-fade-in, which is what Lighthouse re-elected as the LCP
+     element once the hero's own reveals were fixed. */
+  @keyframes nav-reveal {
+    from { opacity: 0; transform: translateY(-100px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-nav-reveal {
+    animation: nav-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
   /* Respect users who opt out of motion */
   @media (prefers-reduced-motion: reduce) {
     .animate-pulse-glow,
@@ -450,6 +463,7 @@
     .animate-hero-reveal,
     .animate-hero-title-reveal,
     .animate-hero-cta-reveal,
+    .animate-nav-reveal,
     .shimmer {
       animation: none !important;
     }
