@@ -430,6 +430,15 @@
     animation: hero-title-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
   }
 
+  /* Same fix again, for the hero's CTA button row: it's the last
+     JS-gated reveal directly in the hero's above-the-fold content, and
+     Lighthouse re-elected it as LCP (a "Book a call" button link) once
+     the headline above was fixed. Whack-a-mole -- fixing this one too
+     rather than chasing it element-by-element on every redeploy. */
+  .animate-hero-cta-reveal {
+    animation: hero-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+  }
+
   /* Respect users who opt out of motion */
   @media (prefers-reduced-motion: reduce) {
     .animate-pulse-glow,
@@ -440,6 +449,7 @@
     .animate-breathe,
     .animate-hero-reveal,
     .animate-hero-title-reveal,
+    .animate-hero-cta-reveal,
     .shimmer {
       animation: none !important;
     }

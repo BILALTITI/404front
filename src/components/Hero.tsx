@@ -117,11 +117,15 @@ export function Hero() {
             {t("descriptionEnd")}
           </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4"
+          {/*
+            Plain <div> + CSS animation, not motion.div: this row was the
+            third JS-gated hero reveal Lighthouse kept re-electing as the
+            LCP element as each earlier one got fixed (see the notes
+            above). The buttons inside stay motion.a for their hover/tap
+            micro-interactions -- those don't gate initial paint.
+          */}
+          <div
+            className="animate-hero-cta-reveal flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4"
           >
             <motion.a
               href={`/${locale}#work`}
@@ -143,7 +147,7 @@ export function Hero() {
             >
               {t("ctaContact")}
             </motion.a>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
