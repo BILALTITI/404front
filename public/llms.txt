@@ -30,6 +30,13 @@ Founded 2025 by Bilal Altiti. Also known as 4o4 Solutions / وتد.
 - [See it before it's built](https://www.4o4solutions.com/en/blog/see-it-before-its-built)
 - [Ship something every week](https://www.4o4solutions.com/en/blog/ship-something-every-week)
 - [What handover includes](https://www.4o4solutions.com/en/blog/what-handover-includes)
+- [Cost of mobile app development in Jordan](https://www.4o4solutions.com/en/blog/cost-of-mobile-app-development-in-jordan)
+- [How to choose a software development company in Jordan](https://www.4o4solutions.com/en/blog/how-to-choose-a-software-development-company-in-jordan)
+- [Mobile app development process, idea to launch](https://www.4o4solutions.com/en/blog/mobile-app-development-process-idea-to-launch)
+- [React Native vs native development](https://www.4o4solutions.com/en/blog/react-native-vs-native-development)
+- [How custom software automates business operations](https://www.4o4solutions.com/en/blog/how-custom-software-automates-business-operations)
+- [How to choose a SaaS development partner](https://www.4o4solutions.com/en/blog/how-to-choose-a-saas-development-partner)
+- [Web app vs mobile app](https://www.4o4solutions.com/en/blog/web-app-vs-mobile-app-which-is-right-for-your-business)
 
 ## Contact
 

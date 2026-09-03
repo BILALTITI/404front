@@ -597,6 +597,86 @@
           "The test we hold ourselves to is simple: can your own team run and extend the system without calling us for small things? If the answer is no, the handover isn't done, regardless of whether the product is technically live.",
           "This phase is usually short — two to five days — because by the time we reach it, there's nothing left to figure out. Launch has already been de-risked by weeks of demos and a staging environment your team has already seen working. The only thing left is making it official."
         ]
+      },
+      "cost-of-mobile-app-development-in-jordan": {
+        "title": "What Does Mobile App Development Cost in Jordan?",
+        "excerpt": "There's no single number — but there is a way to reason about it before you get a quote.",
+        "readTime": "5",
+        "body": [
+          "Ask five agencies \"what does an app cost\" and you'll get five different numbers, because the question is missing the variables that actually drive price: how many platforms, how much backend logic, how many integrations, and how polished the design needs to be on day one.",
+          "The biggest lever is scope, not location. A single-platform app with a handful of screens and no backend of its own costs a fraction of a two-platform app with real-time features, payments, and an admin dashboard behind it — the difference is measured in weeks of engineering, not in which country builds it.",
+          "Jordan-based development is generally more cost-effective than hiring a Western agency for comparable senior-level engineering, without the time-zone friction that can come with lower-cost teams further away. That's a real advantage for founders, but it doesn't remove scope as the main driver of price.",
+          "The only honest way to get a number worth planning around is a discovery conversation — Watad doesn't sell fixed packages, because a marketing app and a full booking platform with push notifications and payments genuinely don't cost the same to build properly. What a discovery call gives you instead is an estimate tied to what your product actually needs.",
+          "If you want a ballpark before that call, focus on three questions: how many user roles does the app need, does it need to work offline, and does it need to talk to systems you already run. Those three answers move the estimate more than almost anything else."
+        ]
+      },
+      "how-to-choose-a-software-development-company-in-jordan": {
+        "title": "How to Choose a Software Development Company in Jordan",
+        "excerpt": "The signals that matter are boring: a written scope, weekly visibility, and what happens after launch.",
+        "readTime": "4",
+        "body": [
+          "Jordan's software market has grown fast enough that picking a partner is no longer about finding someone who can code — it's about finding someone who won't disappear for six weeks and reappear with the wrong thing.",
+          "Start with process, not portfolio. Ask what happens in the first week: do they hand you a written scope before writing code, or do they start building off a phone call? A written scope is what lets you catch a misunderstanding on paper instead of three sprints into development.",
+          "Ask how you'll see progress. A weekly demo or a staging link you can check yourself is a much stronger signal than a promised delivery date, because it means problems surface while they're still cheap to fix.",
+          "Ask what handover actually includes, specifically — documentation, full credentials, and a walkthrough, or just a live link and a \"let us know if anything breaks.\" The difference decides whether your team can run the product without the agency, or stays quietly dependent on them.",
+          "Finally, ask who you'll actually talk to during the project. A team where designers and engineers work side by side, and you talk to them directly, moves faster and drifts less than one where every question passes through an account manager first."
+        ]
+      },
+      "mobile-app-development-process-idea-to-launch": {
+        "title": "The Mobile App Development Process, From Idea to Launch",
+        "excerpt": "A good process turns a rough idea into a shipped app in stages you can actually see.",
+        "readTime": "5",
+        "body": [
+          "Discovery (three to five days): before any screen is designed, the goal is agreeing in writing on what the app needs to do, who's using it, and what \"done\" looks like for a first version — plus naming the parts that are genuinely uncertain, like a payment integration nobody's tested yet.",
+          "Design (five to seven days): flows and wireframes turn the written scope into something you can react to, followed by real UI screens and a clickable prototype you can test on an actual phone before any production code exists.",
+          "Development (two to four weeks, depending on scope): built in weekly cycles with a demo every week — often on a real device or an internal test build — so you're never seeing the app for the first time on delivery day.",
+          "Launch (a few days): a release checklist, App Store and Google Play submission, and a real handover — documentation, credentials, and a walkthrough — because a demo isn't the same thing as your team being able to run and extend the app afterward.",
+          "Store review is worth planning for separately: Apple and Google both review submissions before an app goes live, which is why the release checklist starts before development technically \"ends,\" not after."
+        ]
+      },
+      "react-native-vs-native-development": {
+        "title": "React Native vs. Native: Which Should Your App Use?",
+        "excerpt": "The honest answer is that most products don't need native development — until a specific feature says otherwise.",
+        "readTime": "4",
+        "body": [
+          "React Native builds one codebase that runs on both iOS and Android, sharing most of the app's logic and UI between platforms. Fully native development means writing the app twice — once in Swift for iOS, once in Kotlin for Android — with no code shared between them.",
+          "For most products, React Native is the more practical choice: one team, one codebase, and feature parity between platforms by default, since there's no risk of iOS and Android quietly drifting apart as two separate teams ship at different speeds.",
+          "Native still earns its cost in specific cases — apps that lean heavily on cutting-edge platform APIs, intensive background processing, or graphics-heavy experiences like games, where the overhead of a cross-platform bridge genuinely costs something. Most business apps — booking systems, marketplaces, internal tools, loyalty apps — aren't in that category.",
+          "Watad builds most mobile apps in React Native for exactly this reason: it gets a store-ready app on both platforms faster, with one place to fix a bug instead of two, without giving up the native-feeling performance users expect from push notifications, offline support, and smooth navigation."
+        ]
+      },
+      "how-custom-software-automates-business-operations": {
+        "title": "How Custom Software Automates Business Operations",
+        "excerpt": "The most expensive part of most businesses isn't the work — it's the manual handoffs between systems that don't talk to each other.",
+        "readTime": "4",
+        "body": [
+          "A lot of operational cost isn't the actual work — it's the time spent moving information between a CRM, a spreadsheet, an inbox, and whatever tool handles invoicing, none of which were built to talk to each other.",
+          "Custom software closes those gaps in two ways: purpose-built systems that replace the spreadsheet entirely — with the roles, permissions, and workflows that match how the business actually runs — and automation layers, commonly built with tools like n8n, that connect the systems a business already uses without replacing any of them.",
+          "The difference matters. A custom system is worth building when the core workflow itself is the problem — bookings, patient records, course enrolment, loyalty tracking. Automation is worth building when the systems are fine individually but nobody's connected them — a form submission that should create a CRM record and send an alert, instead of someone copying it over by hand.",
+          "Either way, the return isn't abstract: it's measured in hours a week a team stops spending on repetitive handoffs, and in mistakes that stop happening because a human isn't retyping the same data three times."
+        ]
+      },
+      "how-to-choose-a-saas-development-partner": {
+        "title": "How to Choose the Right SaaS Development Partner",
+        "excerpt": "A SaaS product has to be built to run for years, not just to demo well once.",
+        "readTime": "4",
+        "body": [
+          "Building a SaaS product is different from building a typical web app because it has to be multi-tenant from day one — separating each customer's data cleanly, handling billing and subscription tiers, and scaling without a rewrite once the first hundred customers sign up.",
+          "The technical decisions that matter early are the ones that are expensive to undo later: how tenants are isolated, how permissions and roles are structured, and how the product handles growth in usage, not just growth in customers. A partner who's actually shipped multi-tenant products before will ask about these in the first conversation, not after the first outage.",
+          "Look for the same fundamentals that matter on any custom software project — a written scope, weekly visibility into progress, and a real handover — but weighted more heavily toward long-term ownership, since a SaaS product is something you'll keep building on for years, not something you launch once and leave alone.",
+          "Ask directly whether the team building it has delivered a SaaS platform before, what stack they'd use for your specific scale, and what happens if you want to bring development in-house later. A partner confident in the answer to that last question is usually the right one to start with."
+        ]
+      },
+      "web-app-vs-mobile-app-which-is-right-for-your-business": {
+        "title": "Web App vs. Mobile App: Which Is Right for Your Business?",
+        "excerpt": "The right answer depends on where your users already are, not on which one feels more impressive to launch.",
+        "readTime": "4",
+        "body": [
+          "A web app reaches anyone with a browser, updates instantly for every user the moment you ship, and costs less to build for a first version. A mobile app lives on the device, supports push notifications and offline use, and generally feels faster and more native — but has to be built (and reviewed) separately for iOS and Android, and updates roll out on app-store timelines, not instantly.",
+          "The deciding question is usage pattern, not preference: if people will use the product for a few minutes at a time, occasionally, a web app usually serves them better. If they'll open it daily, need it to work without a strong connection, or need notifications to bring them back, a mobile app earns its extra cost.",
+          "Plenty of products don't have to choose — they start as a web app to validate the idea with lower upfront cost, then add a mobile app once usage patterns show it's needed. That sequencing avoids paying for two platforms before knowing whether either is worth maintaining long-term.",
+          "The businesses that get this wrong are usually the ones that pick mobile first because it looks more like a \"real\" product, then discover most of their actual usage would have been fine — and cheaper — on the web the whole time."
+        ]
       }
     }
   }
