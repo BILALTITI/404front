@@ -7,6 +7,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { SERVICE_META } from "@/data/services";
+import { BLOG_META } from "@/data/blog";
 import { PROJECT_META } from "@/data/projects";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
@@ -44,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!routing.locales.includes(locale as "en" | "ar")) return {};
 
   const t = await getTranslations({ locale, namespace: "services" });
+  const tBlog = await getTranslations({ locale, namespace: "blog" });
   const list = t.raw("list") as ServiceCopy[];
   const service = findService(list, slug);
   if (!service) return {};
@@ -92,6 +94,7 @@ export default async function ServicePage({ params }: Props) {
   const tWa = await getTranslations({ locale, namespace: "whatsapp" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
   const tProjects = await getTranslations({ locale, namespace: "projects" });
+  const tBlog = await getTranslations({ locale, namespace: "blog" });
   const list = t.raw("list") as ServiceCopy[];
   const service = findService(list, slug);
   if (!service) notFound();
@@ -298,6 +301,42 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </>
           )}
+
+          {/* Related articles */}
+          {(() => {
+            const relArticles = BLOG_META.filter((b) =>
+              b.relatedServices?.includes(slug),
+            );
+            if (relArticles.length === 0) return null;
+            const blogItems = tBlog.raw("items") as Record<string, { title: string; excerpt: string }>;
+            return (
+              <>
+                <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
+                  {tPage("relatedArticlesHeading")}
+                </h2>
+                <div className="space-y-3 mb-16">
+                  {relArticles.map((article) => {
+                    const copy = blogItems[article.slug];
+                    if (!copy) return null;
+                    return (
+                      <Link
+                        key={article.slug}
+                        href={`/blog/${article.slug}`}
+                        className="block p-4 rounded-xl border border-gray-100 hover:border-orange-300 transition-colors group"
+                      >
+                        <p className="font-display text-base font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-1">
+                          {copy.title}
+                        </p>
+                        <p className="font-body text-sm text-gray-500 line-clamp-1">
+                          {copy.excerpt}
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </>
+            );
+          })()}
 
           <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
             {tPage("otherServicesHeading")}

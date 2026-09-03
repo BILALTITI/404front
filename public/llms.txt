@@ -38,6 +38,10 @@ Founded 2025 by Bilal Altiti. Also known as 4o4 Solutions / وتد.
 - [How to choose a SaaS development partner](https://www.4o4solutions.com/en/blog/how-to-choose-a-saas-development-partner)
 - [Web app vs mobile app](https://www.4o4solutions.com/en/blog/web-app-vs-mobile-app-which-is-right-for-your-business)
 
+## Team
+
+- [Bilal Altiti — Founder & Lead Engineer](https://www.4o4solutions.com/en/authors/bilal-altiti): Hands-on experience with ASP.NET, React, Next.js, React Native, Laravel, AWS, and Azure. Leads every project from architecture through deployment.
+
 ## Contact
 
-Amman, Jordan. Email: hello@watad.co. Phone: +962 7 9812 4169. [Instagram](https://www.instagram.com/4o4_solution).
+Amman, Jordan. Email: hello@watad.co. Phone: +962 7 9812 4169. [Instagram](https://www.instagram.com/4o4_solution). [GitHub](https://github.com/BILALTITI).

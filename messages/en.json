@@ -55,7 +55,17 @@
         "category": "Web application",
         "description": "A task marketplace connecting flexible workers with businesses posting short jobs — verified profiles, escrow-style payment flow, and an operator dashboard that clears a day's queue in one pass.",
         "result": "Steady month-over-month growth in posted tasks since launch",
-        "imageAlt": "Cashtics freelance marketplace interface, built by Watad"
+        "imageAlt": "Cashtics freelance marketplace interface, built by Watad",
+        "challenge": "Freelancers and short-job employers in the region lacked a unified platform. Existing solutions were generic, had no payment protection, and offered limited Arabic-language support for local operators.",
+        "solution": "We built a task marketplace from scratch using Laravel and Vue.js, deployed on AWS. The platform includes verified user profiles, an escrow-style payment flow that protects both parties, and an operator dashboard designed to clear a full day's queue in a single pass.",
+        "features": [
+          "Escrow-style payment flow with automated release",
+          "Verified freelancer and employer profiles",
+          "Operator dashboard for bulk task management",
+          "Real-time notifications and task status tracking",
+          "Responsive Arabic and English interface"
+        ],
+        "outcome": "Cashtics launched with steady month-over-month growth in posted tasks. The operator dashboard reduced manual queue processing time significantly, and the escrow system built enough trust for repeat usage from both sides of the marketplace."
       },
       "sooquk": {
         "title": "Sooquk",
@@ -63,7 +73,17 @@
         "category": "Marketplace platform",
         "description": "A storefront for fashion and lifestyle sellers — organised catalogue, checkout that holds under load, practical vendor tooling, and mobile performance tuned for how customers here actually shop.",
         "result": "Active vendors and stable checkout in production since launch",
-        "imageAlt": "Sooquk e-commerce marketplace built by Watad"
+        "imageAlt": "Sooquk e-commerce marketplace built by Watad",
+        "challenge": "Fashion and lifestyle sellers in the region needed a marketplace that could handle high catalogue volumes, support vendor self-management, and maintain stable checkout even under load spikes during promotions.",
+        "solution": "We developed a full-stack marketplace using ASP.NET Core on the backend and Next.js for the storefront, with a React Native mobile app for on-the-go shopping. The architecture was designed to sustain checkout stability under concurrent traffic.",
+        "features": [
+          "Organised product catalogue with vendor self-management tools",
+          "Checkout flow tested for load resilience",
+          "Cross-platform mobile app (React Native)",
+          "Vendor analytics and order management dashboard",
+          "Multi-language support (Arabic/English)"
+        ],
+        "outcome": "Sooquk launched with active vendors and a stable checkout in production. The vendor tools reduced onboarding friction, and the mobile app extended the platform's reach to mobile-first shoppers across the region."
       },
       "okal": {
         "title": "Okal for Heroes",
@@ -71,7 +91,17 @@
         "category": "Booking system",
         "description": "Appointment booking and shop operations for a children's barber brand — automated reminders, digital coupons, and a parent-friendly flow that removed the phone calls entirely.",
         "result": "Adopted by families across launch neighbourhoods within weeks",
-        "imageAlt": "Okal for Heroes booking experience designed by Watad"
+        "imageAlt": "Okal for Heroes booking experience designed by Watad",
+        "challenge": "A children's barber brand needed to move from phone-based booking to a digital system — one that parents would actually use, with automated reminders and a way to manage promotions without manual effort.",
+        "solution": "We built a booking and operations platform using ASP.NET MVC with a focus on UX designed for parents. The system includes automated appointment reminders, digital coupon management, and a clean parent-facing interface that works on any device.",
+        "features": [
+          "Online appointment booking for parents",
+          "Automated SMS and push reminders",
+          "Digital coupon and promotion engine",
+          "Shop operations dashboard",
+          "Mobile-responsive parent interface"
+        ],
+        "outcome": "Okal for Heroes was adopted by families across its launch neighbourhoods within weeks. The automated reminders reduced no-shows, and the digital coupon system replaced the manual paper-based promotions the brand had been running."
       },
       "breshta": {
         "title": "Breshta",
@@ -79,7 +109,17 @@
         "category": "Engagement platform",
         "description": "A loyalty system built to feel worth opening — daily deals, birthday rewards, and light gamification. Offers that land as genuine rather than as filler.",
         "result": "3,500+ active members returning through loyalty loops",
-        "imageAlt": "Breshta loyalty app screen from Watad client work"
+        "imageAlt": "Breshta loyalty app screen from Watad client work",
+        "challenge": "A retail loyalty programme needed to move beyond generic punch cards to a digital experience that would keep customers returning — with personalised offers, gamification elements, and seamless mobile access.",
+        "solution": "We designed and built a loyalty platform using ASP.NET Core for the backend and React Native for the mobile app, deployed on Azure. The system includes daily deals, birthday rewards, and light gamification to make earning and redeeming points feel rewarding.",
+        "features": [
+          "Points-based loyalty system with tiered rewards",
+          "Daily deals and personalised birthday offers",
+          "Light gamification for customer engagement",
+          "Cross-platform mobile app (React Native)",
+          "Merchant dashboard for campaign management"
+        ],
+        "outcome": "Breshta grew to over 3,500 active members returning through loyalty loops. The gamification elements and personalised offers drove repeat visits beyond what the previous paper-based system achieved."
       },
       "lastonewin": {
         "title": "LastOneWin",
@@ -87,7 +127,17 @@
         "category": "Real-time application",
         "description": "A real-time last-finger-on-screen competition — rooms, sessions, and sync resilient enough to absorb campaign-window traffic spikes without lag or dropped players.",
         "result": "3,000 concurrent players at peak with no downtime",
-        "imageAlt": "LastOneWin real-time mobile game artwork in the Watad portfolio"
+        "imageAlt": "LastOneWin real-time mobile game artwork in the Watad portfolio",
+        "challenge": "A gaming concept needed real-time infrastructure that could handle thousands of concurrent players in a last-finger-on-screen competition — with synchronised sessions, room management, and zero tolerance for downtime during peak campaign windows.",
+        "solution": "We engineered a real-time application using ASP.NET Core with WebSocket-based synchronisation and React Native for the mobile client. The backend was deployed on Azure with auto-scaling configured for traffic spikes during promotional campaigns.",
+        "features": [
+          "Real-time player synchronisation via WebSockets",
+          "Room and session management system",
+          "Auto-scaling infrastructure for traffic spikes",
+          "Cross-platform mobile app (React Native)",
+          "Campaign-window traffic handling"
+        ],
+        "outcome": "LastOneWin handled 3,000 concurrent players at peak with no downtime. The infrastructure scaled smoothly during campaign windows, and the synchronisation layer maintained consistency across all active sessions."
       },
       "ilern": {
         "title": "ILern",
@@ -95,7 +145,17 @@
         "category": "EdTech",
         "description": "A complete learning platform — structured courses, enrolment, instructor tooling, and digital certificates, with clean role separation between admins, teachers, and students.",
         "result": "800+ students on one consolidated, auditable stack",
-        "imageAlt": "ILern learning platform dashboard built by Watad"
+        "imageAlt": "ILern learning platform dashboard built by Watad",
+        "challenge": "An educational institution needed to consolidate fragmented learning tools into a single platform — structured courses, student enrolment, instructor management, and verifiable digital certificates, all on one auditable system.",
+        "solution": "We built a complete learning management system using ASP.NET MVC and SQL Server. The platform covers the full student lifecycle from enrolment through course completion and certificate generation, with role-based access for instructors and administrators.",
+        "features": [
+          "Structured course creation and management",
+          "Student enrolment and progress tracking",
+          "Instructor tooling and content management",
+          "Digital certificate generation and verification",
+          "Role-based access control for admins and instructors"
+        ],
+        "outcome": "ILern consolidated the institution onto a single stack, serving over 800 students. The digital certificate system replaced manual issuance, and the unified platform eliminated the need for separate tools across the student lifecycle."
       },
       "clinical": {
         "title": "Clinical desktop suite",
@@ -103,7 +163,17 @@
         "category": "Desktop application",
         "description": "Patient records, scheduling, and a complete billing cycle for clinic teams — keyboard-first interfaces designed for staff who work faster than a mouse allows.",
         "result": "1,000+ patients handled daily on a single database",
-        "imageAlt": "Clinic management desktop interface delivered by Watad"
+        "imageAlt": "Clinic management desktop interface delivered by Watad",
+        "challenge": "Clinic teams were managing patient records, scheduling, and billing across disconnected systems — resulting in data entry duplication, scheduling conflicts, and slow end-of-day reconciliation.",
+        "solution": "We developed a desktop application using .NET Framework and SQL Server, designed for keyboard-first operation. The system unifies patient records, appointment scheduling, and the complete billing cycle into a single interface optimised for clinical workflow speed.",
+        "features": [
+          "Unified patient records and medical history",
+          "Appointment scheduling with conflict detection",
+          "Complete billing cycle management",
+          "Keyboard-first interface for clinical speed",
+          "Single-database architecture for data consistency"
+        ],
+        "outcome": "The clinical suite now handles over 1,000 patients daily on a single database. Staff eliminated duplicate data entry across systems, and the keyboard-first design reduced time per patient interaction compared to the previous multi-system workflow."
       }
     }
   },
@@ -120,26 +190,67 @@
     "p2Contact": "tell us what you're building",
     "cta": "Plan your project with Watad",
     "values": [
-      { "number": "01", "title": "Clarity", "desc": "A written scope before the first line of code — no fuzzy boundaries, no 'we'll see how it goes'" },
-      { "number": "02", "title": "Craft", "desc": "Code you can still work in two years from now, not code that merely passes today" },
-      { "number": "03", "title": "Partnership", "desc": "You're in every decision as it's made, not informed about it on delivery day" },
-      { "number": "04", "title": "Momentum", "desc": "We ship early, because the market teaches you more in a week than a meeting does in a month" }
+      {
+        "number": "01",
+        "title": "Clarity",
+        "desc": "A written scope before the first line of code — no fuzzy boundaries, no 'we'll see how it goes'"
+      },
+      {
+        "number": "02",
+        "title": "Craft",
+        "desc": "Code you can still work in two years from now, not code that merely passes today"
+      },
+      {
+        "number": "03",
+        "title": "Partnership",
+        "desc": "You're in every decision as it's made, not informed about it on delivery day"
+      },
+      {
+        "number": "04",
+        "title": "Momentum",
+        "desc": "We ship early, because the market teaches you more in a week than a meeting does in a month"
+      }
     ],
     "stats": [
-      { "value": "20+", "label": "Products in production" },
-      { "value": "2025", "label": "Company founded" },
-      { "value": "Direct", "label": "You talk to who builds" },
-      { "value": "MENA", "label": "Primary region" }
+      {
+        "value": "20+",
+        "label": "Products in production"
+      },
+      {
+        "value": "2025",
+        "label": "Company founded"
+      },
+      {
+        "value": "Direct",
+        "label": "You talk to who builds"
+      },
+      {
+        "value": "MENA",
+        "label": "Primary region"
+      }
     ],
     "whoHeading": "Who Is Watad?",
-    "whoBody": "Watad is a software development company based in Amman, Jordan, founded in 2025 by engineers who had already spent years shipping production systems in healthcare, e-commerce, and fintech. The team builds custom web applications, mobile apps, and business automation for founders launching new products and operators scaling existing ones \u2014 with a written scope, weekly demos, and a full production handover on every engagement.",
+    "whoBody": "Watad is a software development company based in Amman, Jordan, founded in 2025 by engineers who had already spent years shipping production systems in healthcare, e-commerce, and fintech. The team builds custom web applications, mobile apps, and business automation for founders launching new products and operators scaling existing ones — with a written scope, weekly demos, and a full production handover on every engagement.",
     "whereHeading": "Where Does Watad Work?",
     "whereBody": "Watad is based in Amman, Jordan, and works primarily with founders and businesses across Jordan and the wider MENA region. The team also takes on projects outside the region, working remotely with clients who need the same level of direct communication and structured delivery.",
     "techHeading": "What Technologies Does Watad Use?",
     "techBody": "The stack is chosen per project rather than fixed. Across delivered work, that has included ASP.NET Core and .NET for backend systems, React, Next.js, and Vue.js for web frontends, React Native for cross-platform mobile apps, SQL Server for relational data, AWS and Azure for hosting and infrastructure, and n8n for workflow automation.",
-    "techList": ["ASP.NET Core", "ASP.NET MVC", ".NET Framework", "React", "Next.js", "React Native", "Vue.js", "Laravel", "SQL Server", "AWS", "Azure", "n8n"],
+    "techList": [
+      "ASP.NET Core",
+      "ASP.NET MVC",
+      ".NET Framework",
+      "React",
+      "Next.js",
+      "React Native",
+      "Vue.js",
+      "Laravel",
+      "SQL Server",
+      "AWS",
+      "Azure",
+      "n8n"
+    ],
     "differentHeading": "What Makes Watad Different?",
-    "differentBody": "You talk directly to the people building your product, not an account manager relaying messages into a ticket. Every project starts with a written scope and ships in weekly increments, so nothing arrives as a surprise on delivery day \u2014 and every handover includes full documentation, credentials, and a walkthrough, not just a demo."
+    "differentBody": "You talk directly to the people building your product, not an account manager relaying messages into a ticket. Every project starts with a written scope and ships in weekly increments, so nothing arrives as a surprise on delivery day — and every handover includes full documentation, credentials, and a walkthrough, not just a demo."
   },
   "services": {
     "eyebrow": "What we build with you",
@@ -157,14 +268,34 @@
         "title": "Web development",
         "subtitle": "Custom web applications",
         "description": "Running a business inside a spreadsheet and three WhatsApp groups? We turn it into an application that holds — from marketing sites to multi-tenant SaaS, with the APIs, permissions, and frontends to grow into.",
-        "features": ["SPA & SSR apps", "E-commerce", "REST / GraphQL APIs", "CMS integration"],
+        "features": [
+          "SPA & SSR apps",
+          "E-commerce",
+          "REST / GraphQL APIs",
+          "CMS integration"
+        ],
         "icon": "⬡",
         "faqs": [
-          {"question": "What kind of web applications does Watad build?", "answer": "Everything from marketing sites to multi-tenant SaaS platforms — dashboards, e-commerce storefronts, marketplaces, and internal tools — built as single-page apps or server-rendered apps depending on what the product actually needs."},
-          {"question": "Which technologies does Watad use for web development?", "answer": "Most commonly React and Next.js on the frontend, ASP.NET Core on the backend, and SQL Server for data, deployed on AWS or Azure. The exact stack is chosen per project rather than fixed."},
-          {"question": "How long does a typical web app take to build?", "answer": "Most engagements run discovery through launch in about a month, depending on scope, with a demo every week so you always know where the project stands."},
-          {"question": "How much does a web development project cost?", "answer": "Pricing is scoped per project after a discovery call — a marketing site, an MVP, and a multi-tenant platform don't cost the same to build properly, so Watad avoids fixed package pricing."},
-          {"question": "Does Watad build web apps for businesses outside Jordan?", "answer": "Yes. Most clients are in Jordan and the wider MENA region, but Watad also works with businesses outside the region on web projects."}
+          {
+            "question": "What kind of web applications does Watad build?",
+            "answer": "Everything from marketing sites to multi-tenant SaaS platforms — dashboards, e-commerce storefronts, marketplaces, and internal tools — built as single-page apps or server-rendered apps depending on what the product actually needs."
+          },
+          {
+            "question": "Which technologies does Watad use for web development?",
+            "answer": "Most commonly React and Next.js on the frontend, ASP.NET Core on the backend, and SQL Server for data, deployed on AWS or Azure. The exact stack is chosen per project rather than fixed."
+          },
+          {
+            "question": "How long does a typical web app take to build?",
+            "answer": "Most engagements run discovery through launch in about a month, depending on scope, with a demo every week so you always know where the project stands."
+          },
+          {
+            "question": "How much does a web development project cost?",
+            "answer": "Pricing is scoped per project after a discovery call — a marketing site, an MVP, and a multi-tenant platform don't cost the same to build properly, so Watad avoids fixed package pricing."
+          },
+          {
+            "question": "Does Watad build web apps for businesses outside Jordan?",
+            "answer": "Yes. Most clients are in Jordan and the wider MENA region, but Watad also works with businesses outside the region on web projects."
+          }
         ]
       },
       {
@@ -173,14 +304,34 @@
         "title": "Mobile apps",
         "subtitle": "iOS, Android & cross-platform",
         "description": "Your customers are on a phone, so the product has to be there too. Native or cross-platform, store-ready, with authentication and backend integration handled from day one rather than bolted on later.",
-        "features": ["React Native", "App Store releases", "Push & offline", "Secure APIs"],
+        "features": [
+          "React Native",
+          "App Store releases",
+          "Push & offline",
+          "Secure APIs"
+        ],
         "icon": "◈",
         "faqs": [
-          {"question": "Does Watad build native or cross-platform mobile apps?", "answer": "Most mobile apps are built with React Native for a native feel across iOS and Android from a single codebase, with authentication and backend integration handled from day one."},
-          {"question": "Does Watad handle App Store and Google Play submission?", "answer": "Yes — store-ready release, including App Store and Google Play submission, is part of every mobile engagement."},
-          {"question": "How long does it take to build a mobile app?", "answer": "Most engagements run discovery through launch in about a month for a focused first version, with a weekly demo so you can see progress on a real device throughout."},
-          {"question": "What does a mobile app cost to build?", "answer": "Cost depends on scope — a single-platform MVP and a full-featured app with push notifications, offline sync, and backend integration aren't priced the same. Watad scopes pricing per project rather than using fixed packages."},
-          {"question": "Can Watad add push notifications and offline support?", "answer": "Yes — push notifications and offline support are common additions, built in from the start rather than bolted on after launch."}
+          {
+            "question": "Does Watad build native or cross-platform mobile apps?",
+            "answer": "Most mobile apps are built with React Native for a native feel across iOS and Android from a single codebase, with authentication and backend integration handled from day one."
+          },
+          {
+            "question": "Does Watad handle App Store and Google Play submission?",
+            "answer": "Yes — store-ready release, including App Store and Google Play submission, is part of every mobile engagement."
+          },
+          {
+            "question": "How long does it take to build a mobile app?",
+            "answer": "Most engagements run discovery through launch in about a month for a focused first version, with a weekly demo so you can see progress on a real device throughout."
+          },
+          {
+            "question": "What does a mobile app cost to build?",
+            "answer": "Cost depends on scope — a single-platform MVP and a full-featured app with push notifications, offline sync, and backend integration aren't priced the same. Watad scopes pricing per project rather than using fixed packages."
+          },
+          {
+            "question": "Can Watad add push notifications and offline support?",
+            "answer": "Yes — push notifications and offline support are common additions, built in from the start rather than bolted on after launch."
+          }
         ]
       },
       {
@@ -189,14 +340,34 @@
         "title": "UI / UX design",
         "subtitle": "Interfaces that match how users think",
         "description": "We map the real journeys before we style a single screen — where users hesitate, where they drop off, what they need in front of them at each step. The result is a product that needs less explaining.",
-        "features": ["User flows", "Wireframes", "Design systems", "Handoff to dev"],
+        "features": [
+          "User flows",
+          "Wireframes",
+          "Design systems",
+          "Handoff to dev"
+        ],
         "icon": "◎",
         "faqs": [
-          {"question": "What does Watad's UI/UX design process include?", "answer": "Real user journeys are mapped before a single screen is styled — where users hesitate, where they drop off, and what they need at each step — followed by wireframes, a design system, and a clickable prototype your team can test before development starts."},
-          {"question": "Can I see my product before it's built?", "answer": "Yes — after discovery, flows and wireframes lead into a clickable prototype you and your team can click through on a phone or laptop before any production code exists."},
-          {"question": "Does Watad design and build the product, or just design?", "answer": "Both — design and engineering work side by side at Watad, so the handoff from design system to working product happens inside one team rather than across a wall between agencies."},
-          {"question": "How long does the design phase take?", "answer": "Flows, screens, and a working prototype usually take five to seven days, though it depends on how many screens and flows the product needs."},
-          {"question": "Does Watad design for mobile apps as well as web?", "answer": "Yes — UI/UX design covers both web and mobile products, using the same flow-first process either way."}
+          {
+            "question": "What does Watad's UI/UX design process include?",
+            "answer": "Real user journeys are mapped before a single screen is styled — where users hesitate, where they drop off, and what they need at each step — followed by wireframes, a design system, and a clickable prototype your team can test before development starts."
+          },
+          {
+            "question": "Can I see my product before it's built?",
+            "answer": "Yes — after discovery, flows and wireframes lead into a clickable prototype you and your team can click through on a phone or laptop before any production code exists."
+          },
+          {
+            "question": "Does Watad design and build the product, or just design?",
+            "answer": "Both — design and engineering work side by side at Watad, so the handoff from design system to working product happens inside one team rather than across a wall between agencies."
+          },
+          {
+            "question": "How long does the design phase take?",
+            "answer": "Flows, screens, and a working prototype usually take five to seven days, though it depends on how many screens and flows the product needs."
+          },
+          {
+            "question": "Does Watad design for mobile apps as well as web?",
+            "answer": "Yes — UI/UX design covers both web and mobile products, using the same flow-first process either way."
+          }
         ]
       },
       {
@@ -205,14 +376,34 @@
         "title": "Brand & identity",
         "subtitle": "Trust starts before the first deploy",
         "description": "For a new company, brand is what makes someone willing to try you at all. We build a visual voice, the core assets, and in-product patterns that stay coherent as you grow instead of fragmenting.",
-        "features": ["Visual direction", "Logo & UI kit", "Tone & messaging", "Launch assets"],
+        "features": [
+          "Visual direction",
+          "Logo & UI kit",
+          "Tone & messaging",
+          "Launch assets"
+        ],
         "icon": "◇",
         "faqs": [
-          {"question": "What does Watad's brand & identity service include?", "answer": "A visual direction, core assets like logo and UI kit, and tone-of-voice guidelines that stay coherent as the product grows, rather than fragmenting across screens and channels."},
-          {"question": "Is brand identity done separately from product design?", "answer": "It's usually done alongside UI/UX design and development, so the visual identity and the in-product patterns are consistent from day one instead of retrofitted later."},
-          {"question": "Who is the brand & identity service for?", "answer": "Mainly new companies and products launching for the first time, where the brand is what makes someone willing to try the product at all."},
-          {"question": "Does Watad design launch assets like social and marketing graphics?", "answer": "Yes — launch assets are part of the brand & identity engagement, sized and styled to match the core visual identity."},
-          {"question": "Does Watad work with businesses outside Jordan on branding?", "answer": "Yes — like the rest of Watad's services, brand & identity work is available to clients in Jordan, the MENA region, and beyond."}
+          {
+            "question": "What does Watad's brand & identity service include?",
+            "answer": "A visual direction, core assets like logo and UI kit, and tone-of-voice guidelines that stay coherent as the product grows, rather than fragmenting across screens and channels."
+          },
+          {
+            "question": "Is brand identity done separately from product design?",
+            "answer": "It's usually done alongside UI/UX design and development, so the visual identity and the in-product patterns are consistent from day one instead of retrofitted later."
+          },
+          {
+            "question": "Who is the brand & identity service for?",
+            "answer": "Mainly new companies and products launching for the first time, where the brand is what makes someone willing to try the product at all."
+          },
+          {
+            "question": "Does Watad design launch assets like social and marketing graphics?",
+            "answer": "Yes — launch assets are part of the brand & identity engagement, sized and styled to match the core visual identity."
+          },
+          {
+            "question": "Does Watad work with businesses outside Jordan on branding?",
+            "answer": "Yes — like the rest of Watad's services, brand & identity work is available to clients in Jordan, the MENA region, and beyond."
+          }
         ]
       },
       {
@@ -221,14 +412,34 @@
         "title": "Cloud & DevOps",
         "subtitle": "Infrastructure sized for now, ready for later",
         "description": "Deployment on AWS or Azure with environments, CI/CD, and monitoring matched to your actual scale — no enterprise cluster on day one, and real headroom once traffic earns it.",
-        "features": ["Hosting setup", "CI/CD", "Observability", "Security basics"],
+        "features": [
+          "Hosting setup",
+          "CI/CD",
+          "Observability",
+          "Security basics"
+        ],
         "icon": "⬟",
         "faqs": [
-          {"question": "Which cloud providers does Watad deploy on?", "answer": "Most commonly AWS or Azure, with environments, CI/CD, and monitoring matched to the product's actual scale — not an enterprise cluster on day one."},
-          {"question": "Can Watad take over hosting for an existing app?", "answer": "Yes — cloud and DevOps work is available as a standalone engagement, including setting up hosting, CI/CD, and monitoring for a product Watad didn't originally build."},
-          {"question": "Does Watad set up CI/CD pipelines?", "answer": "Yes — continuous integration and deployment pipelines are part of the standard cloud setup, so releases go out safely without manual steps."},
-          {"question": "What does cloud and DevOps setup cost?", "answer": "It's scoped per project depending on the infrastructure needed — a single-server marketing site and a multi-region platform don't need the same setup."},
-          {"question": "Does Watad handle security basics for hosted apps?", "answer": "Yes — basic security practices such as access control, secrets management, and backups are included as part of a proper cloud setup, not treated as an afterthought."}
+          {
+            "question": "Which cloud providers does Watad deploy on?",
+            "answer": "Most commonly AWS or Azure, with environments, CI/CD, and monitoring matched to the product's actual scale — not an enterprise cluster on day one."
+          },
+          {
+            "question": "Can Watad take over hosting for an existing app?",
+            "answer": "Yes — cloud and DevOps work is available as a standalone engagement, including setting up hosting, CI/CD, and monitoring for a product Watad didn't originally build."
+          },
+          {
+            "question": "Does Watad set up CI/CD pipelines?",
+            "answer": "Yes — continuous integration and deployment pipelines are part of the standard cloud setup, so releases go out safely without manual steps."
+          },
+          {
+            "question": "What does cloud and DevOps setup cost?",
+            "answer": "It's scoped per project depending on the infrastructure needed — a single-server marketing site and a multi-region platform don't need the same setup."
+          },
+          {
+            "question": "Does Watad handle security basics for hosted apps?",
+            "answer": "Yes — basic security practices such as access control, secrets management, and backups are included as part of a proper cloud setup, not treated as an afterthought."
+          }
         ]
       },
       {
@@ -237,14 +448,34 @@
         "title": "Workflow automation",
         "subtitle": "How many hours a week does your team spend moving data by hand?",
         "description": "We replace the manual handoffs between your CRM, sheets, and inbox with n8n flows that are documented, testable, and fully yours after delivery — including the credentials and the runbook.",
-        "features": ["n8n flows", "Third-party APIs", "Retries & alerts", "Data sync"],
+        "features": [
+          "n8n flows",
+          "Third-party APIs",
+          "Retries & alerts",
+          "Data sync"
+        ],
         "icon": "⬟",
         "faqs": [
-          {"question": "What is workflow automation, and who needs it?", "answer": "It's replacing manual handoffs between tools — a CRM, a spreadsheet, an inbox — with automated flows, useful for any team spending hours a week moving data by hand."},
-          {"question": "Which tools does Watad use for automation?", "answer": "Most automations are built with n8n, connected to whatever tools the business already uses through their APIs, with retries and alerts so failures don't go unnoticed."},
-          {"question": "Do I own the automation after it's delivered?", "answer": "Yes — every automation is documented, testable, and handed over fully, including credentials and a runbook, so it isn't dependent on Watad to keep running."},
-          {"question": "Can Watad automate workflows between tools we already use?", "answer": "Yes — automations are built around your existing CRM, spreadsheets, and other tools rather than requiring you to switch systems."},
-          {"question": "How is a workflow automation project priced?", "answer": "Pricing depends on how many workflows and integrations are involved, scoped after a discovery call rather than sold as a fixed package."}
+          {
+            "question": "What is workflow automation, and who needs it?",
+            "answer": "It's replacing manual handoffs between tools — a CRM, a spreadsheet, an inbox — with automated flows, useful for any team spending hours a week moving data by hand."
+          },
+          {
+            "question": "Which tools does Watad use for automation?",
+            "answer": "Most automations are built with n8n, connected to whatever tools the business already uses through their APIs, with retries and alerts so failures don't go unnoticed."
+          },
+          {
+            "question": "Do I own the automation after it's delivered?",
+            "answer": "Yes — every automation is documented, testable, and handed over fully, including credentials and a runbook, so it isn't dependent on Watad to keep running."
+          },
+          {
+            "question": "Can Watad automate workflows between tools we already use?",
+            "answer": "Yes — automations are built around your existing CRM, spreadsheets, and other tools rather than requiring you to switch systems."
+          },
+          {
+            "question": "How is a workflow automation project priced?",
+            "answer": "Pricing depends on how many workflows and integrations are involved, scoped after a discovery call rather than sold as a fixed package."
+          }
         ]
       }
     ]
@@ -405,7 +636,11 @@
         "title": "Discovery",
         "description": "We agree on goals, users, constraints, and what success will be measured by — before any code exists. Changing your mind on paper costs a conversation; changing it in code costs a sprint.",
         "duration": "3–5 days",
-        "deliverables": ["Problem brief", "Scope & milestones", "Risk notes"],
+        "deliverables": [
+          "Problem brief",
+          "Scope & milestones",
+          "Risk notes"
+        ],
         "accent": "#22B8DE"
       },
       {
@@ -413,7 +648,11 @@
         "title": "Design",
         "description": "You see and click through the product before it's built. Wireframes, then screens, then a working prototype your team reviews — so ideas change in Figma rather than in production.",
         "duration": "5–7 days",
-        "deliverables": ["Flows & wireframes", "UI screens", "Clickable prototype"],
+        "deliverables": [
+          "Flows & wireframes",
+          "UI screens",
+          "Clickable prototype"
+        ],
         "accent": "#3ED2F0"
       },
       {
@@ -421,7 +660,11 @@
         "title": "Development",
         "description": "Iterative builds with something tangible to look at every week — APIs, frontend or app, and automated checks running from the start. Nothing is saved up for a single delivery-day reveal.",
         "duration": "2–3 weeks",
-        "deliverables": ["Sprint demos", "Staging environment", "Technical docs"],
+        "deliverables": [
+          "Sprint demos",
+          "Staging environment",
+          "Technical docs"
+        ],
         "accent": "#1B6491"
       },
       {
@@ -429,7 +672,11 @@
         "title": "Launch",
         "description": "We launch alongside you, stabilise alongside you, and hand over properly — documentation, credentials, and a walkthrough — until your team can run the system without calling us for small things.",
         "duration": "2–5 days",
-        "deliverables": ["Release checklist", "Production deploy", "Handover session"],
+        "deliverables": [
+          "Release checklist",
+          "Production deploy",
+          "Handover session"
+        ],
         "accent": "#22B8DE"
       }
     ]
@@ -482,15 +729,42 @@
       "message": "The goal, who it's for, and roughly when you need it live..."
     },
     "times": [
-      { "value": "09:00", "label": "9:00 AM" },
-      { "value": "10:00", "label": "10:00 AM" },
-      { "value": "11:00", "label": "11:00 AM" },
-      { "value": "12:00", "label": "12:00 PM" },
-      { "value": "13:00", "label": "1:00 PM" },
-      { "value": "14:00", "label": "2:00 PM" },
-      { "value": "15:00", "label": "3:00 PM" },
-      { "value": "16:00", "label": "4:00 PM" },
-      { "value": "17:00", "label": "5:00 PM" }
+      {
+        "value": "09:00",
+        "label": "9:00 AM"
+      },
+      {
+        "value": "10:00",
+        "label": "10:00 AM"
+      },
+      {
+        "value": "11:00",
+        "label": "11:00 AM"
+      },
+      {
+        "value": "12:00",
+        "label": "12:00 PM"
+      },
+      {
+        "value": "13:00",
+        "label": "1:00 PM"
+      },
+      {
+        "value": "14:00",
+        "label": "2:00 PM"
+      },
+      {
+        "value": "15:00",
+        "label": "3:00 PM"
+      },
+      {
+        "value": "16:00",
+        "label": "4:00 PM"
+      },
+      {
+        "value": "17:00",
+        "label": "5:00 PM"
+      }
     ]
   },
   "whatsapp": {
@@ -534,13 +808,20 @@
     "techStackHeading": "Technologies we use",
     "relatedProjectsHeading": "Related work",
     "faqHeading": "Frequently asked questions",
-    "otherServicesHeading": "Other services"
+    "otherServicesHeading": "Other services",
+    "relatedArticlesHeading": "Related articles"
   },
   "projectPage": {
     "eyebrow": "Case study",
     "techHeading": "Built with",
     "relatedServicesHeading": "Related services",
-    "otherProjectsHeading": "More projects"
+    "otherProjectsHeading": "More projects",
+    "overviewHeading": "Overview",
+    "challengeHeading": "The challenge",
+    "solutionHeading": "Our solution",
+    "featuresHeading": "Key features",
+    "outcomeHeading": "Outcome",
+    "relatedArticlesHeading": "Related articles"
   },
   "blog": {
     "eyebrow": "Knowledge Hub",
@@ -679,6 +960,29 @@
           "The businesses that get this wrong are usually the ones that pick mobile first because it looks more like a \"real\" product, then discover most of their actual usage would have been fine — and cheaper — on the web the whole time."
         ]
       }
-    }
+    },
+    "relatedServicesHeading": "Related services",
+    "relatedProjectsHeading": "Related projects"
+  },
+  "authorPage": {
+    "name": "Bilal Altiti",
+    "role": "Founder & Lead Engineer at Watad",
+    "metaDescription": "Bilal Altiti is the founder and lead engineer at Watad (4o4 Solutions), a software studio in Amman, Jordan specialising in web applications, mobile apps, and business automation.",
+    "bioShort": "Founder and lead engineer at Watad, a software studio based in Amman, Jordan.",
+    "bio1": "Bilal Altiti founded Watad to help businesses across the MENA region turn ideas into reliable, production-ready software. With hands-on experience spanning ASP.NET, React, Next.js, React Native, Laravel, and cloud infrastructure on AWS and Azure, he leads every project from architecture through deployment.",
+    "bio2": "Before starting Watad, Bilal shipped products across e-commerce, fintech, education, and healthcare — building systems that handle real traffic, real payments, and real users. He writes about software development, mobile apps, and technology decisions on the Watad Knowledge Hub.",
+    "expertiseHeading": "Areas of expertise",
+    "expertise": [
+      "Web application development",
+      "Mobile app development (React Native)",
+      "ASP.NET Core & .NET ecosystem",
+      "React & Next.js",
+      "Cloud infrastructure (AWS, Azure)",
+      "UI/UX design collaboration",
+      "API architecture",
+      "Business automation"
+    ],
+    "articlesHeading": "Published articles",
+    "breadcrumbAuthors": "Authors"
   }
 }

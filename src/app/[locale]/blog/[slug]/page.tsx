@@ -7,6 +7,8 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { BLOG_META } from "@/data/blog";
+import { SERVICE_META } from "@/data/services";
+import { PROJECT_META } from "@/data/projects";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type BlogItemCopy = {
@@ -101,9 +103,10 @@ export default async function BlogPostPage({ params }: Props) {
     dateModified: post.date,
     author: {
       "@type": "Person",
+      "@id": `${siteUrl}/#bilal-altiti`,
       name: "Bilal Altiti",
       jobTitle: "Founder",
-      url: `${siteUrl}/${locale}#about`,
+      url: `${siteUrl}/${locale}/authors/bilal-altiti`,
     },
     publisher: { "@id": `${siteUrl}/#organization` },
     url,
@@ -214,6 +217,69 @@ export default async function BlogPostPage({ params }: Props) {
               {tProjects("startProject")}
             </a>
           </div>
+
+          {/* Related services */}
+          {(() => {
+            const meta = BLOG_META.find((m) => m.slug === slug);
+            const relSvcSlugs = meta?.relatedServices ?? [];
+            if (relSvcSlugs.length === 0) return null;
+            const svcList = tServices.raw("list") as { id: number; title: string }[];
+            const relSvcs = SERVICE_META.filter((s) => relSvcSlugs.includes(s.slug))
+              .map((s) => {
+                const copy = svcList.find((c) => c.id === s.id);
+                return copy ? { slug: s.slug, title: copy.title } : null;
+              })
+              .filter((s): s is { slug: string; title: string } => s !== null);
+            if (relSvcs.length === 0) return null;
+            return (
+              <>
+                <h2 className="font-display text-xl font-bold text-[#123A5F] mb-4">
+                  {t("relatedServicesHeading")}
+                </h2>
+                <div className="flex flex-wrap gap-3 mb-12">
+                  {relSvcs.map((s) => (
+                    <Link
+                      key={s.slug}
+                      href={`/services/${s.slug}`}
+                      className="px-5 py-3 rounded-full border border-gray-200 font-heading text-sm text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
+                    >
+                      {s.title}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+
+          {/* Related projects */}
+          {(() => {
+            const meta = BLOG_META.find((m) => m.slug === slug);
+            const relProjKeys = meta?.relatedProjects ?? [];
+            if (relProjKeys.length === 0) return null;
+            const projItems = tProjects.raw("items") as Record<string, { title: string }>;
+            const relProjs = relProjKeys
+              .map((key) => projItems[key] ? { key, title: projItems[key].title } : null)
+              .filter((p): p is { key: string; title: string } => p !== null);
+            if (relProjs.length === 0) return null;
+            return (
+              <>
+                <h2 className="font-display text-xl font-bold text-[#123A5F] mb-4">
+                  {t("relatedProjectsHeading")}
+                </h2>
+                <div className="flex flex-wrap gap-3 mb-12">
+                  {relProjs.map((p) => (
+                    <Link
+                      key={p.key}
+                      href={`/projects/${p.key}`}
+                      className="px-5 py-3 rounded-full border border-gray-200 font-heading text-sm text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
+                    >
+                      {p.title}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
 
           <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
             {t("backToBlog")}

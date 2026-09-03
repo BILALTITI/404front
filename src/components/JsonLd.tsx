@@ -35,8 +35,10 @@ export async function JsonLd({ locale }: { locale: string }) {
     foundingDate: "2025",
     founder: {
       "@type": "Person",
+      "@id": `${siteUrl}/#bilal-altiti`,
       name: "Bilal Altiti",
       jobTitle: "Founder",
+      url: `${siteUrl}/en/authors/bilal-altiti`,
       sameAs: ["https://github.com/BILALTITI"],
     },
     contactPoint: {

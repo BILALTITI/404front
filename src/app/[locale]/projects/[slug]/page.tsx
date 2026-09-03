@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { PROJECT_META } from "@/data/projects";
 import { SERVICE_META } from "@/data/services";
+import { BLOG_META } from "@/data/blog";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ProjectItemCopy = {
@@ -18,6 +19,10 @@ type ProjectItemCopy = {
   description: string;
   result: string;
   imageAlt: string;
+  challenge?: string;
+  solution?: string;
+  features?: string[];
+  outcome?: string;
 };
 
 type Props = {
@@ -91,6 +96,7 @@ export default async function ProjectPage({ params }: Props) {
   const tWa = await getTranslations({ locale, namespace: "whatsapp" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
   const tServices = await getTranslations({ locale, namespace: "services" });
+  const tBlog = await getTranslations({ locale, namespace: "blog" });
   const items = t.raw("items") as Record<string, ProjectItemCopy>;
   const project = findProject(items, slug);
   if (!project) notFound();
@@ -110,14 +116,25 @@ export default async function ProjectPage({ params }: Props) {
     })
     .filter((s): s is { slug: string; title: string } => s !== null);
 
+  const isSoftware = ["Web application", "Marketplace platform", "Booking system",
+    "Engagement platform", "Real-time application", "EdTech", "Desktop application",
+    "تطبيق ويب", "منصة سوق", "نظام حجز", "منصة تفاعل", "تطبيق فوري", "تقنية تعليمية", "تطبيق سطح مكتب"
+  ].includes(project.category);
+
   const projectJson = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    "@type": isSoftware ? "SoftwareApplication" : "CreativeWork",
     name: project.title,
     description: project.description,
     creator: { "@id": `${siteUrl}/#organization` },
     url,
+    dateCreated: project.year,
+    ...(isSoftware ? {
+      applicationCategory: project.category,
+      operatingSystem: project.tags.some((t: string) => t === "React Native") ? "Android, iOS" : undefined,
+    } : {}),
     ...(project.link ? { sameAs: project.link } : {}),
+    keywords: project.tags.join(", "),
   };
 
   const breadcrumbJson = {
@@ -238,6 +255,62 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
 
+          {/* Case study sections */}
+          {project.challenge && (
+            <div className="mb-10">
+              <h2 className="font-display text-xl font-bold text-[#123A5F] mb-3">
+                {tPage("challengeHeading")}
+              </h2>
+              <p className="font-body text-gray-600 text-lg leading-relaxed">
+                {project.challenge}
+              </p>
+            </div>
+          )}
+
+          {project.solution && (
+            <div className="mb-10">
+              <h2 className="font-display text-xl font-bold text-[#123A5F] mb-3">
+                {tPage("solutionHeading")}
+              </h2>
+              <p className="font-body text-gray-600 text-lg leading-relaxed">
+                {project.solution}
+              </p>
+            </div>
+          )}
+
+          {project.features && project.features.length > 0 && (
+            <div className="mb-10">
+              <h2 className="font-display text-xl font-bold text-[#123A5F] mb-4">
+                {tPage("featuresHeading")}
+              </h2>
+              <ul className="space-y-2">
+                {project.features.map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 font-body text-gray-600 text-lg leading-relaxed"
+                  >
+                    <span
+                      className="mt-2 w-2 h-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: project.accent }}
+                    />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {project.outcome && (
+            <div className="mb-12 p-6 rounded-2xl border border-gray-100 bg-gray-50">
+              <h2 className="font-display text-lg font-bold text-[#123A5F] mb-2">
+                {tPage("outcomeHeading")}
+              </h2>
+              <p className="font-body text-gray-600 text-lg leading-relaxed">
+                {project.outcome}
+              </p>
+            </div>
+          )}
+
           <h2 className="font-display text-lg font-bold text-[#123A5F] mb-4">
             {tPage("techHeading")}
           </h2>
@@ -291,6 +364,42 @@ export default async function ProjectPage({ params }: Props) {
               </svg>
             </a>
           </div>
+
+          {/* Related articles */}
+          {(() => {
+            const relArticles = BLOG_META.filter((b) =>
+              b.relatedProjects?.includes(slug),
+            );
+            if (relArticles.length === 0) return null;
+            const blogItems = tBlog.raw("items") as Record<string, { title: string; excerpt: string }>;
+            return (
+              <>
+                <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
+                  {tPage("relatedArticlesHeading")}
+                </h2>
+                <div className="space-y-3 mb-16">
+                  {relArticles.map((article) => {
+                    const copy = blogItems[article.slug];
+                    if (!copy) return null;
+                    return (
+                      <Link
+                        key={article.slug}
+                        href={`/blog/${article.slug}`}
+                        className="block p-4 rounded-xl border border-gray-100 hover:border-orange-300 transition-colors group"
+                      >
+                        <p className="font-display text-base font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-1">
+                          {copy.title}
+                        </p>
+                        <p className="font-body text-sm text-gray-500 line-clamp-1">
+                          {copy.excerpt}
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </>
+            );
+          })()}
 
           {relatedServices.length > 0 && (
             <>
