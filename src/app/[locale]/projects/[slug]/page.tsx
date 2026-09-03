@@ -8,6 +8,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { PROJECT_META } from "@/data/projects";
+import { SERVICE_META } from "@/data/services";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 type ProjectItemCopy = {
@@ -89,6 +90,7 @@ export default async function ProjectPage({ params }: Props) {
   const tPage = await getTranslations({ locale, namespace: "projectPage" });
   const tWa = await getTranslations({ locale, namespace: "whatsapp" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
+  const tServices = await getTranslations({ locale, namespace: "services" });
   const items = t.raw("items") as Record<string, ProjectItemCopy>;
   const project = findProject(items, slug);
   if (!project) notFound();
@@ -96,6 +98,17 @@ export default async function ProjectPage({ params }: Props) {
   const startLink = buildWhatsAppLink(tWa("startProject"));
   const otherProjects = PROJECT_META.filter((p) => p.messageKey !== slug);
   const url = `${siteUrl}/${locale}/projects/${slug}`;
+
+  const serviceList = tServices.raw("list") as { id: number; title: string }[];
+  const relatedServices = SERVICE_META.filter((s) =>
+    s.relatedProjects.includes(slug),
+  )
+    .map((s) => {
+      const copy = serviceList.find((c) => c.id === s.id);
+      if (!copy) return null;
+      return { slug: s.slug, title: copy.title };
+    })
+    .filter((s): s is { slug: string; title: string } => s !== null);
 
   const projectJson = {
     "@context": "https://schema.org",
@@ -278,6 +291,25 @@ export default async function ProjectPage({ params }: Props) {
               </svg>
             </a>
           </div>
+
+          {relatedServices.length > 0 && (
+            <>
+              <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
+                {tPage("relatedServicesHeading")}
+              </h2>
+              <div className="flex flex-wrap gap-3 mb-16">
+                {relatedServices.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/services/${s.slug}`}
+                    className="px-5 py-3 rounded-full border border-gray-200 font-heading text-sm text-gray-700 hover:border-orange-400 hover:text-orange-500 transition-colors"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
 
           <h2 className="font-display text-xl font-bold text-[#123A5F] mb-5">
             {tPage("otherProjectsHeading")}
