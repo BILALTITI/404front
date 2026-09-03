@@ -47,11 +47,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
+
+  const authorEntries: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
+    url: `${siteUrl}/${locale}/authors/bilal-altiti`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
   return [
     ...homeEntries,
     ...serviceEntries,
     ...projectEntries,
     ...blogIndexEntries,
     ...blogPostEntries,
+    ...authorEntries,
   ];
 }
