@@ -17,8 +17,8 @@ export async function JsonLd({ locale }: { locale: string }) {
   const organizationJson = {
     "@context": "https://schema.org",
     "@type": ["Organization", "ProfessionalService"],
-    name: "Watad",
-    alternateName: ["وتد", "4o4 Solutions"],
+    name: "Watad Solutions",
+    alternateName: ["وتد"],
     url: siteUrl,
     sameAs: ["https://www.instagram.com/4o4_solution"],
     logo: `${siteUrl}/watad-logo.png`,
@@ -64,7 +64,7 @@ export async function JsonLd({ locale }: { locale: string }) {
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Watad services",
+      name: "Watad Solutions services",
       itemListElement: serviceItems.map((service) => ({
         "@type": "Offer",
         itemOffered: {
@@ -82,7 +82,7 @@ export async function JsonLd({ locale }: { locale: string }) {
   const websiteJson = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Watad",
+    name: "Watad Solutions",
     url: siteUrl,
     description,
     inLanguage: locale === "ar" ? "ar" : "en",

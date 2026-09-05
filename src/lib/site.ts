@@ -6,5 +6,5 @@
  * env var is missing at build time.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.4o4solutions.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://watad-solutions.com"
 ).replace(/\/$/, "");

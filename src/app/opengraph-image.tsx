@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
 
-export const alt = "Watad — your idea, built to hold";
+export const alt = "Watad Solutions — your idea, built to hold";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,10 +41,11 @@ export default function OpenGraphImage() {
             fontSize: 96,
             fontWeight: 700,
             letterSpacing: "0.06em",
+            gap: "0.1em",
           }}
         >
-          <span style={{ color: "#E8EDF1" }}>WAT</span>
-          <span style={{ color: "#22B8DE" }}>AD</span>
+          <span style={{ color: "#E8EDF1" }}>WATAD </span>
+          <span style={{ color: "#22B8DE" }}>SOLUTIONS</span>
         </div>
         <div
           style={{

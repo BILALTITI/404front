@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: "article",
       url,
-      siteName: "Watad",
+      siteName: "Watad Solutions",
       locale: locale === "ar" ? "ar_JO" : "en_US",
     },
     twitter: {

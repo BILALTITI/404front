@@ -43,6 +43,35 @@ export function Hero() {
 
   const fgX = useTransform(smoothX, [-1, 1], [-5, 5]);
 
+  const brandText = tCommon("brand");
+  const renderBrand = () => {
+    if (/^[A-Za-z\s]+$/.test(brandText) && brandText.includes(" ")) {
+      // Multi-word brand like "Watad Solutions"
+      const words = brandText.split(" ");
+      return (
+        <>
+          {words.slice(0, -1).join(" ")}{" "}
+          <span style={{ color: "#22B8DE" }}>
+            {words[words.length - 1]}
+          </span>
+        </>
+      );
+    } else if (/^[A-Za-z]+$/.test(brandText)) {
+      // Single word brand
+      return (
+        <>
+          {brandText.slice(0, -2)}
+          <span style={{ color: "#22B8DE" }}>
+            {brandText.slice(-2)}
+          </span>
+        </>
+      );
+    } else {
+      // Fallback
+      return brandText;
+    }
+  };
+
   return (
     <section
       ref={containerRef}
@@ -83,16 +112,7 @@ export function Hero() {
             <span
               className="animate-hero-title-reveal block text-[clamp(3.25rem,16vw,7.5rem)] sm:text-8xl lg:text-[120px] text-white"
             >
-              {/^[A-Za-z]+$/.test(tCommon("brand")) ? (
-                <>
-                  {tCommon("brand").slice(0, -2)}
-                  <span style={{ color: "#22B8DE" }}>
-                    {tCommon("brand").slice(-2)}
-                  </span>
-                </>
-              ) : (
-                tCommon("brand")
-              )}
+              {renderBrand()}
             </span>
           </h1>
 

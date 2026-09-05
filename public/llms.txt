@@ -1,46 +1,46 @@
-# Watad (4o4 Solutions)
+# Watad Solutions
 
 > Watad is a software development company based in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and beyond. Engagements run discovery through launch in about a month, ending with a full production handover: deploy, documentation, credentials, and a walkthrough.
 
-Founded 2025 by Bilal Altiti. Also known as 4o4 Solutions / وتد.
+Founded 2025 by Bilal Altiti.
 
 ## Services
 
-- [Web development](https://www.4o4solutions.com/en/services/web-development): Custom web applications and SaaS platforms — SPA and SSR, e-commerce, REST/GraphQL APIs, from marketing sites to multi-tenant SaaS. Stack: React, Next.js, ASP.NET Core, Vue.js, Laravel, SQL Server.
-- [Mobile apps](https://www.4o4solutions.com/en/services/mobile-apps): Native-feeling iOS/Android apps, most commonly React Native, with authentication and backend integration handled from day one, including App Store and Google Play release.
-- [UI/UX design](https://www.4o4solutions.com/en/services/ui-ux-design): User flow mapping, wireframes, design systems, and clickable prototypes focused on reducing drop-off and confusion.
-- [Brand & identity](https://www.4o4solutions.com/en/services/brand-identity): Visual identity, core assets, and in-product patterns for new companies.
-- [Cloud & DevOps](https://www.4o4solutions.com/en/services/cloud-devops): AWS/Azure deployment, CI/CD, and monitoring sized to actual traffic.
-- [Workflow automation](https://www.4o4solutions.com/en/services/workflow-automation): n8n-based business automation replacing manual handoffs between CRMs, spreadsheets, and inboxes.
+- [Web development](https://watad-solutions.com/en/services/web-development): Custom web applications and SaaS platforms — SPA and SSR, e-commerce, REST/GraphQL APIs, from marketing sites to multi-tenant SaaS. Stack: React, Next.js, ASP.NET Core, Vue.js, Laravel, SQL Server.
+- [Mobile apps](https://watad-solutions.com/en/services/mobile-apps): Native-feeling iOS/Android apps, most commonly React Native, with authentication and backend integration handled from day one, including App Store and Google Play release.
+- [UI/UX design](https://watad-solutions.com/en/services/ui-ux-design): User flow mapping, wireframes, design systems, and clickable prototypes focused on reducing drop-off and confusion.
+- [Brand & identity](https://watad-solutions.com/en/services/brand-identity): Visual identity, core assets, and in-product patterns for new companies.
+- [Cloud & DevOps](https://watad-solutions.com/en/services/cloud-devops): AWS/Azure deployment, CI/CD, and monitoring sized to actual traffic.
+- [Workflow automation](https://watad-solutions.com/en/services/workflow-automation): n8n-based business automation replacing manual handoffs between CRMs, spreadsheets, and inboxes.
 
 ## Projects
 
-- [Cashtics](https://www.4o4solutions.com/en/projects/cashtics): Freelance task marketplace with escrow-style payments (Laravel, Vue.js, AWS).
-- [Sooquk](https://www.4o4solutions.com/en/projects/sooquk): Regional e-commerce marketplace for fashion and lifestyle sellers (ASP.NET Core, Next.js, React Native).
-- [Okal for Heroes](https://www.4o4solutions.com/en/projects/okal): Kids' barber booking system with automated reminders (ASP.NET MVC, UX design).
-- [Breshta](https://www.4o4solutions.com/en/projects/breshta): Loyalty and rewards platform with daily deals and gamification (ASP.NET Core, React Native, Azure).
-- [LastOneWin](https://www.4o4solutions.com/en/projects/lastonewin): Real-time last-finger-on-screen competition app (ASP.NET Core, React Native, Azure).
-- [ILern](https://www.4o4solutions.com/en/projects/ilern): Learning management platform with structured courses, enrolment, instructor tooling, and digital certificates (ASP.NET MVC, SQL Server).
-- [Clinical desktop suite](https://www.4o4solutions.com/en/projects/clinical): Patient records, scheduling, and billing for clinic teams (.NET Framework, SQL Server).
+- [Cashtics](https://watad-solutions.com/en/projects/cashtics): Freelance task marketplace with escrow-style payments (Laravel, Vue.js, AWS).
+- [Sooquk](https://watad-solutions.com/en/projects/sooquk): Regional e-commerce marketplace for fashion and lifestyle sellers (ASP.NET Core, Next.js, React Native).
+- [Okal for Heroes](https://watad-solutions.com/en/projects/okal): Kids' barber booking system with automated reminders (ASP.NET MVC, UX design).
+- [Breshta](https://watad-solutions.com/en/projects/breshta): Loyalty and rewards platform with daily deals and gamification (ASP.NET Core, React Native, Azure).
+- [LastOneWin](https://watad-solutions.com/en/projects/lastonewin): Real-time last-finger-on-screen competition app (ASP.NET Core, React Native, Azure).
+- [ILern](https://watad-solutions.com/en/projects/ilern): Learning management platform with structured courses, enrolment, instructor tooling, and digital certificates (ASP.NET MVC, SQL Server).
+- [Clinical desktop suite](https://watad-solutions.com/en/projects/clinical): Patient records, scheduling, and billing for clinic teams (.NET Framework, SQL Server).
 
 ## Blog
 
-- [Blog index](https://www.4o4solutions.com/en/blog)
-- [Scoping before code](https://www.4o4solutions.com/en/blog/scoping-before-code)
-- [See it before it's built](https://www.4o4solutions.com/en/blog/see-it-before-its-built)
-- [Ship something every week](https://www.4o4solutions.com/en/blog/ship-something-every-week)
-- [What handover includes](https://www.4o4solutions.com/en/blog/what-handover-includes)
-- [Cost of mobile app development in Jordan](https://www.4o4solutions.com/en/blog/cost-of-mobile-app-development-in-jordan)
-- [How to choose a software development company in Jordan](https://www.4o4solutions.com/en/blog/how-to-choose-a-software-development-company-in-jordan)
-- [Mobile app development process, idea to launch](https://www.4o4solutions.com/en/blog/mobile-app-development-process-idea-to-launch)
-- [React Native vs native development](https://www.4o4solutions.com/en/blog/react-native-vs-native-development)
-- [How custom software automates business operations](https://www.4o4solutions.com/en/blog/how-custom-software-automates-business-operations)
-- [How to choose a SaaS development partner](https://www.4o4solutions.com/en/blog/how-to-choose-a-saas-development-partner)
-- [Web app vs mobile app](https://www.4o4solutions.com/en/blog/web-app-vs-mobile-app-which-is-right-for-your-business)
+- [Blog index](https://watad-solutions.com/en/blog)
+- [Scoping before code](https://watad-solutions.com/en/blog/scoping-before-code)
+- [See it before it's built](https://watad-solutions.com/en/blog/see-it-before-its-built)
+- [Ship something every week](https://watad-solutions.com/en/blog/ship-something-every-week)
+- [What handover includes](https://watad-solutions.com/en/blog/what-handover-includes)
+- [Cost of mobile app development in Jordan](https://watad-solutions.com/en/blog/cost-of-mobile-app-development-in-jordan)
+- [How to choose a software development company in Jordan](https://watad-solutions.com/en/blog/how-to-choose-a-software-development-company-in-jordan)
+- [Mobile app development process, idea to launch](https://watad-solutions.com/en/blog/mobile-app-development-process-idea-to-launch)
+- [React Native vs native development](https://watad-solutions.com/en/blog/react-native-vs-native-development)
+- [How custom software automates business operations](https://watad-solutions.com/en/blog/how-custom-software-automates-business-operations)
+- [How to choose a SaaS development partner](https://watad-solutions.com/en/blog/how-to-choose-a-saas-development-partner)
+- [Web app vs mobile app](https://watad-solutions.com/en/blog/web-app-vs-mobile-app-which-is-right-for-your-business)
 
 ## Team
 
-- [Bilal Altiti — Founder & Lead Engineer](https://www.4o4solutions.com/en/authors/bilal-altiti): Hands-on experience with ASP.NET, React, Next.js, React Native, Laravel, AWS, and Azure. Leads every project from architecture through deployment.
+- [Bilal Altiti — Founder & Lead Engineer](https://watad-solutions.com/en/authors/bilal-altiti): Hands-on experience with ASP.NET, React, Next.js, React Native, Laravel, AWS, and Azure. Leads every project from architecture through deployment.
 
 ## Contact
 

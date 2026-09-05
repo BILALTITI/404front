@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     description: t("description"),
     keywords,
-    authors: [{ name: "Watad", url: siteUrl }],
-    creator: "Watad",
+    authors: [{ name: "Watad Solutions", url: siteUrl }],
+    creator: "Watad Solutions",
     robots: { index: true, follow: true },
     alternates: {
       canonical: `/${locale}`,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       locale: locale === "ar" ? "ar_JO" : "en_US",
       url: `${siteUrl}/${locale}`,
-      siteName: "Watad",
+      siteName: "Watad Solutions",
     },
     twitter: {
       card: "summary_large_image",

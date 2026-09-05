@@ -10,14 +10,14 @@ import { syne, spaceGrotesk, inter, ibmPlexSansArabic } from "@/lib/fonts";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Watad",
-    template: "%s | Watad",
+    default: "Watad Solutions",
+    template: "%s | Watad Solutions",
   },
   openGraph: {
-    title: "Watad",
+    title: "Watad Solutions",
     description: "Custom software, delivered and handed over.",
     url: siteUrl,
-    siteName: "Watad",
+    siteName: "Watad Solutions",
     type: "website",
   },
   verification: {

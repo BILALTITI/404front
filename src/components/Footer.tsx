@@ -25,6 +25,35 @@ export function Footer() {
     { key: "contact" as const, href: "#contact" },
   ];
 
+  const brandText = tCommon("brand");
+  const renderBrand = () => {
+    if (/^[A-Za-z\s]+$/.test(brandText) && brandText.includes(" ")) {
+      // Multi-word brand like "Watad Solutions"
+      const words = brandText.split(" ");
+      return (
+        <>
+          {words.slice(0, -1).join(" ")}{" "}
+          <span className="text-[#22B8DE]">
+            {words[words.length - 1]}
+          </span>
+        </>
+      );
+    } else if (/^[A-Za-z]+$/.test(brandText)) {
+      // Single word brand
+      return (
+        <>
+          {brandText.slice(0, -2)}
+          <span className="text-[#22B8DE]">
+            {brandText.slice(-2)}
+          </span>
+        </>
+      );
+    } else {
+      // Fallback
+      return brandText;
+    }
+  };
+
   return (
     <footer
       ref={footerRef}
@@ -46,16 +75,7 @@ export function Footer() {
               <Link href="/" className="inline-block mb-6">
                 <span className="font-display text-2xl sm:text-3xl font-bold">
                   <span className="text-white">
-                    {/^[A-Za-z]+$/.test(tCommon("brand")) ? (
-                      <>
-                        {tCommon("brand").slice(0, -2)}
-                        <span className="text-[#22B8DE]">
-                          {tCommon("brand").slice(-2)}
-                        </span>
-                      </>
-                    ) : (
-                      tCommon("brand")
-                    )}
+                    {renderBrand()}
                   </span>
                 </span>
               </Link>
