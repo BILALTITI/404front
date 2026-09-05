@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
-import watadLogo from "@/images/Watadlogo.png";
+import watadLogo from "@/images/watad-solutions-logo.png";
 
 const NAV_LINKS = [
   { key: "work", href: "#work" },
@@ -72,7 +72,7 @@ export function Navigation() {
             >
               <Image
                 src={watadLogo}
-                alt={tCommon("brand")}
+                alt={tCommon("logoAlt")}
                 priority
                 className="h-8 sm:h-10 md:h-11 w-auto max-w-[min(52vw,13rem)] object-contain object-left"
                 sizes="(max-width: 640px) 52vw, 208px"

@@ -5,21 +5,13 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { syne, spaceGrotesk, inter, ibmPlexSansArabic } from "@/lib/fonts";
 
-/** Default metadata when middleware has not yet resolved locale (overridden per `[locale]`).
- *  The OG image comes from the app/opengraph-image.tsx file convention (1200×630). */
+/**
+ * Root metadata must NOT set a title.template — locale layout owns titles.
+ * A root template was double-suffixing every page (e.g. "… — Watad | Watad").
+ * OG image comes from app/opengraph-image.tsx (1200×630).
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "Watad Solutions",
-    template: "%s | Watad Solutions",
-  },
-  openGraph: {
-    title: "Watad Solutions",
-    description: "Custom software, delivered and handed over.",
-    url: siteUrl,
-    siteName: "Watad Solutions",
-    type: "website",
-  },
   verification: {
     google: "tFgjC0cr61vbHLOP4qcHKNHL4Vyel10TgthZphxBiiw",
   },

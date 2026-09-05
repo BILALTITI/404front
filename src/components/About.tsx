@@ -4,7 +4,7 @@ import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import watadLogo from "@/images/Watadlogo.png";
+import watadLogo from "@/images/watad-solutions-logo.png";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function About() {
@@ -240,7 +240,7 @@ export function About() {
                   >
                     <Image
                       src={watadLogo}
-                      alt={tCommon("brand")}
+                      alt={tCommon("logoAlt")}
                       className="h-10 sm:h-12 md:h-14 w-auto max-w-[min(55vw,14rem)] object-contain object-right drop-shadow-md"
                       sizes="(max-width: 640px) 55vw, 224px"
                     />

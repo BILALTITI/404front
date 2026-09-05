@@ -1,12 +1,12 @@
 import type { StaticImageData } from "next/image";
 
-import cashtics from "../images/cashtics.com_en.png";
-import Sooquk from "../images/sooquk.com_en.png";
-import okal from "../images/okalforheroes.com.png";
-import Lastonewin from "../images/last_one_win_1920x1440.png";
-import LMS from "../images/LMS.png";
-import CMS from "../images/clincal.png";
-import Breshta from "../images/logo.png";
+import cashtics from "../images/cashtics-freelance-marketplace-watad-solutions.png";
+import Sooquk from "../images/sooquk-ecommerce-marketplace-watad-solutions.png";
+import okal from "../images/okal-for-heroes-booking-app-watad-solutions.png";
+import Lastonewin from "../images/lastonewin-realtime-game-app-watad-solutions.png";
+import LMS from "../images/ilern-learning-platform-watad-solutions.png";
+import CMS from "../images/clinical-desktop-suite-watad-solutions.png";
+import Breshta from "../images/breshta-loyalty-app-watad-solutions.png";
 
 /** Non-translatable portfolio metadata; copy lives in messages/{locale}.json under projects.items.<key> */
 export type PortfolioProjectMeta = {

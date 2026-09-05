@@ -1,8 +1,20 @@
 # Watad Solutions
 
-> Watad is a software development company based in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and beyond. Engagements run discovery through launch in about a month, ending with a full production handover: deploy, documentation, credentials, and a walkthrough.
+> Watad Solutions is a software development company based in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and beyond. Engagements run discovery through launch in about a month, ending with a full production handover: deploy, documentation, credentials, and a walkthrough.
 
-Founded 2025 by Bilal Altiti.
+Founded 2025 by Bilal Altiti. Official site: https://watad-solutions.com
+
+## Entity facts (AI-citable)
+
+- **Legal / brand name:** Watad Solutions (Arabic: وتد)
+- **Type:** Software development company / professional service
+- **HQ:** Amman, Jordan
+- **Serves:** Jordan, MENA, and international clients
+- **Email:** info@watad-solutions.com
+- **Phone / WhatsApp:** +962 7 9812 4169
+- **Hours:** Sunday–Thursday, 9:00–18:00 (AST)
+- **Core services:** Web development, mobile apps, UI/UX, brand & identity, cloud & DevOps, workflow automation (n8n)
+- **Common stack:** ASP.NET Core, React, Next.js, React Native, Laravel, Vue.js, AWS, Azure
 
 ## Services
 

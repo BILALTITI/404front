@@ -48,11 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!routing.locales.includes(locale as "en" | "ar")) return {};
 
   const t = await getTranslations({ locale, namespace: "projects" });
+  const tPage = await getTranslations({ locale, namespace: "projectPage" });
   const items = t.raw("items") as Record<string, ProjectItemCopy>;
   const project = findProject(items, slug);
   if (!project) return {};
 
-  const title = `${project.title} — Watad`;
+  const title = tPage("seoTitle", { project: project.title });
   const description =
     project.description.length > 160
       ? `${project.description.slice(0, 157)}...`
@@ -121,12 +122,19 @@ export default async function ProjectPage({ params }: Props) {
     "تطبيق ويب", "منصة سوق", "نظام حجز", "منصة تفاعل", "تطبيق فوري", "تقنية تعليمية", "تطبيق سطح مكتب"
   ].includes(project.category);
 
+  const projectImageSrc =
+    typeof project.image === "object" && project.image && "src" in project.image
+      ? `${siteUrl}${project.image.src}`
+      : `${siteUrl}/opengraph-image`;
+
   const projectJson = {
     "@context": "https://schema.org",
     "@type": isSoftware ? "SoftwareApplication" : "CreativeWork",
     name: project.title,
     description: project.description,
+    image: projectImageSrc,
     creator: { "@id": `${siteUrl}/#organization` },
+    provider: { "@id": `${siteUrl}/#organization` },
     url,
     dateCreated: project.year,
     ...(isSoftware ? {

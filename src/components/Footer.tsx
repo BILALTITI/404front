@@ -4,13 +4,18 @@ import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { SERVICE_META } from "@/data/services";
+
+type ServiceCopy = { id: number; title: string };
 
 export function Footer() {
   const t = useTranslations("footer");
   const locale = useLocale();
   const tCommon = useTranslations("common");
+  const tServices = useTranslations("services");
   const footerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(footerRef, { once: true });
+  const serviceList = tServices.raw("list") as ServiceCopy[];
 
   const currentYear = new Date().getFullYear();
 
@@ -82,8 +87,35 @@ export function Footer() {
               <p className="font-body text-gray-400 leading-relaxed mb-6 max-w-sm">
                 {t("blurb")}
               </p>
-              <p className="font-heading text-sm text-gray-500">
+              <p className="font-heading text-sm text-gray-500 mb-2">
                 {t("location")}
+              </p>
+              <p className="font-heading text-sm text-gray-500 mb-2">
+                <a
+                  href={`mailto:${t("email")}`}
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  {t("email")}
+                </a>
+              </p>
+              <p className="font-heading text-sm text-gray-500 mb-2">
+                <a
+                  href={t("phoneHref")}
+                  className="hover:text-orange-500 transition-colors"
+                  dir="ltr"
+                >
+                  {t("phone")}
+                </a>
+              </p>
+              <p className="font-heading text-sm text-gray-500">
+                <a
+                  href={`https://wa.me/962798124169`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-orange-500 transition-colors"
+                >
+                  {t("whatsappLabel")}
+                </a>
               </p>
             </motion.div>
 
@@ -107,6 +139,33 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="lg:col-span-5"
+            >
+              <h3 className="font-heading font-semibold text-white mb-4">
+                {t("links.services")}
+              </h3>
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {SERVICE_META.map((meta) => {
+                  const copy = serviceList.find((s) => s.id === meta.id);
+                  if (!copy) return null;
+                  return (
+                    <li key={meta.slug}>
+                      <Link
+                        href={`/services/${meta.slug}`}
+                        className="font-body text-gray-400 hover:text-orange-500 transition-colors"
+                      >
+                        {copy.title}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           </div>

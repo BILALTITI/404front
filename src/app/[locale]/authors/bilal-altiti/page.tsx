@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!routing.locales.includes(locale as "en" | "ar")) return {};
 
   const t = await getTranslations({ locale, namespace: "authorPage" });
-  const title = `${t("name")} — Watad Solutions`;
+  const title = t("name");
   const description = t("metaDescription");
   const url = `${siteUrl}/${locale}/authors/bilal-altiti`;
 

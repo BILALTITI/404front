@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = findPost(items, slug);
   if (!post) return {};
 
-  const title = `${post.title} — Watad`;
+  const title = post.title;
   const url = `${siteUrl}/${locale}/blog/${slug}`;
 
   return {
@@ -99,6 +99,7 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
+    image: `${siteUrl}/opengraph-image`,
     datePublished: post.date,
     dateModified: post.date,
     author: {
@@ -108,9 +109,21 @@ export default async function BlogPostPage({ params }: Props) {
       jobTitle: "Founder",
       url: `${siteUrl}/${locale}/authors/bilal-altiti`,
     },
-    publisher: { "@id": `${siteUrl}/#organization` },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Watad Solutions",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/watad-logo.png`,
+      },
+    },
     url,
-    mainEntityOfPage: url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    inLanguage: locale === "ar" ? "ar" : "en",
   };
 
   const formattedDate = new Date(post.date).toLocaleDateString(
@@ -178,7 +191,12 @@ export default async function BlogPostPage({ params }: Props) {
             {post.title}
           </h1>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-heading text-xs font-semibold tracking-wider uppercase text-gray-400 mb-12">
-            <span>{t("byLine", { author: t("authorName") })}</span>
+            <Link
+              href="/authors/bilal-altiti"
+              className="hover:text-orange-500 transition-colors"
+            >
+              {t("byLine", { author: t("authorName") })}
+            </Link>
             <span aria-hidden="true">&middot;</span>
             <span>{t("authorRole")}</span>
             <span aria-hidden="true">&middot;</span>

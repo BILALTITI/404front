@@ -1,16 +1,16 @@
 {
   "metadata": {
-    "title": "Watad — software that holds | Web, mobile & automation",
-    "titleTemplate": "%s | Watad",
-    "description": "Watad is a software development company based in Amman, Jordan, building web applications, mobile apps, and workflow automation for founders and operators across Jordan, the Middle East, and worldwide. Written scope, weekly demos, production on schedule.",
-    "keywords": "software development company, custom web applications, mobile app development, MVP development, workflow automation, n8n, UI UX design, cloud deployment, ASP.NET Core, React, React Native, Jordan software company, Amman developers, MENA software",
-    "openGraphTitle": "Watad — your idea, built to hold",
-    "openGraphDescription": "A technology company for founders who need the thing to actually work. Written scope, weekly demos, and a handover that leaves you owning your product.",
-    "twitterTitle": "Watad — your idea, built to hold",
-    "twitterDescription": "Custom software delivered on a timeline you can plan around — and documented well enough that your team can run it without us."
+    "title": "Watad Solutions | Software Development Company in Jordan",
+    "titleTemplate": "%s | Watad Solutions",
+    "description": "Watad Solutions is a software development company in Amman, Jordan building custom web apps, mobile apps, and automation for businesses and startups.",
+    "keywords": "software development company jordan, software development company amman, software company jordan, web development jordan, mobile app development jordan, custom software development jordan, software developers amman, Watad Solutions",
+    "openGraphTitle": "Watad Solutions | Software Development Company in Jordan",
+    "openGraphDescription": "Custom web apps, mobile apps, and workflow automation from Amman — written scope, weekly demos, and a full production handover.",
+    "twitterTitle": "Watad Solutions | Software Development Company in Jordan",
+    "twitterDescription": "Software development company in Amman, Jordan — web, mobile, custom software, and automation for businesses and startups."
   },
   "jsonLd": {
-    "organizationDescription": "Watad is a software development company based in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and beyond."
+    "organizationDescription": "Watad Solutions is a software development company based in Amman, Jordan, building custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and beyond."
   },
   "nav": {
     "primary": "Primary navigation",
@@ -55,7 +55,7 @@
         "category": "Web application",
         "description": "A task marketplace connecting flexible workers with businesses posting short jobs — verified profiles, escrow-style payment flow, and an operator dashboard that clears a day's queue in one pass.",
         "result": "Steady month-over-month growth in posted tasks since launch",
-        "imageAlt": "Cashtics freelance marketplace interface, built by Watad",
+        "imageAlt": "Cashtics freelance marketplace interface built by Watad Solutions",
         "challenge": "Freelancers and short-job employers in the region lacked a unified platform. Existing solutions were generic, had no payment protection, and offered limited Arabic-language support for local operators.",
         "solution": "We built a task marketplace from scratch using Laravel and Vue.js, deployed on AWS. The platform includes verified user profiles, an escrow-style payment flow that protects both parties, and an operator dashboard designed to clear a full day's queue in a single pass.",
         "features": [
@@ -73,7 +73,7 @@
         "category": "Marketplace platform",
         "description": "A storefront for fashion and lifestyle sellers — organised catalogue, checkout that holds under load, practical vendor tooling, and mobile performance tuned for how customers here actually shop.",
         "result": "Active vendors and stable checkout in production since launch",
-        "imageAlt": "Sooquk e-commerce marketplace built by Watad",
+        "imageAlt": "Sooquk e-commerce marketplace built by Watad Solutions",
         "challenge": "Fashion and lifestyle sellers in the region needed a marketplace that could handle high catalogue volumes, support vendor self-management, and maintain stable checkout even under load spikes during promotions.",
         "solution": "We developed a full-stack marketplace using ASP.NET Core on the backend and Next.js for the storefront, with a React Native mobile app for on-the-go shopping. The architecture was designed to sustain checkout stability under concurrent traffic.",
         "features": [
@@ -91,7 +91,7 @@
         "category": "Booking system",
         "description": "Appointment booking and shop operations for a children's barber brand — automated reminders, digital coupons, and a parent-friendly flow that removed the phone calls entirely.",
         "result": "Adopted by families across launch neighbourhoods within weeks",
-        "imageAlt": "Okal for Heroes booking experience designed by Watad",
+        "imageAlt": "Okal for Heroes booking experience designed by Watad Solutions",
         "challenge": "A children's barber brand needed to move from phone-based booking to a digital system — one that parents would actually use, with automated reminders and a way to manage promotions without manual effort.",
         "solution": "We built a booking and operations platform using ASP.NET MVC with a focus on UX designed for parents. The system includes automated appointment reminders, digital coupon management, and a clean parent-facing interface that works on any device.",
         "features": [
@@ -109,7 +109,7 @@
         "category": "Engagement platform",
         "description": "A loyalty system built to feel worth opening — daily deals, birthday rewards, and light gamification. Offers that land as genuine rather than as filler.",
         "result": "3,500+ active members returning through loyalty loops",
-        "imageAlt": "Breshta loyalty app screen from Watad client work",
+        "imageAlt": "Breshta loyalty app screen from Watad Solutions client work",
         "challenge": "A retail loyalty programme needed to move beyond generic punch cards to a digital experience that would keep customers returning — with personalised offers, gamification elements, and seamless mobile access.",
         "solution": "We designed and built a loyalty platform using ASP.NET Core for the backend and React Native for the mobile app, deployed on Azure. The system includes daily deals, birthday rewards, and light gamification to make earning and redeeming points feel rewarding.",
         "features": [
@@ -127,7 +127,7 @@
         "category": "Real-time application",
         "description": "A real-time last-finger-on-screen competition — rooms, sessions, and sync resilient enough to absorb campaign-window traffic spikes without lag or dropped players.",
         "result": "3,000 concurrent players at peak with no downtime",
-        "imageAlt": "LastOneWin real-time mobile game artwork in the Watad portfolio",
+        "imageAlt": "LastOneWin real-time mobile game artwork in the Watad Solutions portfolio",
         "challenge": "A gaming concept needed real-time infrastructure that could handle thousands of concurrent players in a last-finger-on-screen competition — with synchronised sessions, room management, and zero tolerance for downtime during peak campaign windows.",
         "solution": "We engineered a real-time application using ASP.NET Core with WebSocket-based synchronisation and React Native for the mobile client. The backend was deployed on Azure with auto-scaling configured for traffic spikes during promotional campaigns.",
         "features": [
@@ -145,7 +145,7 @@
         "category": "EdTech",
         "description": "A complete learning platform — structured courses, enrolment, instructor tooling, and digital certificates, with clean role separation between admins, teachers, and students.",
         "result": "800+ students on one consolidated, auditable stack",
-        "imageAlt": "ILern learning platform dashboard built by Watad",
+        "imageAlt": "ILern learning platform dashboard built by Watad Solutions",
         "challenge": "An educational institution needed to consolidate fragmented learning tools into a single platform — structured courses, student enrolment, instructor management, and verifiable digital certificates, all on one auditable system.",
         "solution": "We built a complete learning management system using ASP.NET MVC and SQL Server. The platform covers the full student lifecycle from enrolment through course completion and certificate generation, with role-based access for instructors and administrators.",
         "features": [
@@ -163,7 +163,7 @@
         "category": "Desktop application",
         "description": "Patient records, scheduling, and a complete billing cycle for clinic teams — keyboard-first interfaces designed for staff who work faster than a mouse allows.",
         "result": "1,000+ patients handled daily on a single database",
-        "imageAlt": "Clinic management desktop interface delivered by Watad",
+        "imageAlt": "Clinic management desktop interface delivered by Watad Solutions",
         "challenge": "Clinic teams were managing patient records, scheduling, and billing across disconnected systems — resulting in data entry duplication, scheduling conflicts, and slow end-of-day reconciliation.",
         "solution": "We developed a desktop application using .NET Framework and SQL Server, designed for keyboard-first operation. The system unifies patient records, appointment scheduling, and the complete billing cycle into a single interface optimised for clinical workflow speed.",
         "features": [
@@ -575,48 +575,68 @@
     "intro": "Short, direct answers — the same ones you'd get on a call, without booking one.",
     "items": [
       {
-        "question": "What does Watad do?",
-        "answer": "Watad builds custom web applications, mobile apps, and workflow automation for founders and operating businesses — primarily across Jordan and the wider MENA region. Every engagement starts with a written scope and ends with a full handover, not just a demo."
+        "question": "What is Watad Solutions?",
+        "answer": "Watad Solutions (وتد) is a software development company based in Amman, Jordan. It builds custom web applications, mobile apps, and workflow automation for founders and operating businesses across Jordan, the MENA region, and internationally."
       },
       {
-        "question": "Who is Watad for?",
-        "answer": "Founders launching a new product, and operators running an existing business who need software built and properly handed over — with documentation and access, not held together by a team you can't reach afterward."
+        "question": "What does Watad Solutions do?",
+        "answer": "Watad Solutions builds custom web applications, mobile apps, and workflow automation for founders and operating businesses — primarily across Jordan and the wider MENA region. Every engagement starts with a written scope and ends with a full handover, not just a demo."
       },
       {
-        "question": "Where is Watad based, and which regions do you work with?",
-        "answer": "Watad is based in Amman, Jordan, and works primarily with founders and businesses across Jordan and the MENA region, though the team also takes on projects outside the region."
+        "question": "Where is Watad Solutions located?",
+        "answer": "Watad Solutions is based in Amman, Jordan, and works primarily with founders and businesses across Jordan and the MENA region, while also taking on projects outside the region."
       },
       {
-        "question": "How long does a typical project take?",
+        "question": "Does Watad Solutions develop mobile apps?",
+        "answer": "Yes — Watad builds native-feeling mobile apps for both iOS and Android, most commonly with React Native, including App Store and Google Play release support."
+      },
+      {
+        "question": "Does Watad Solutions develop web applications?",
+        "answer": "Yes. Watad builds custom web applications and SaaS platforms — from marketing sites to multi-tenant products — with APIs, permissions, and frontends designed to grow with the business."
+      },
+      {
+        "question": "Does Watad Solutions build custom software?",
+        "answer": "Yes. Watad focuses on custom software for real operating needs — marketplaces, booking systems, internal tools, learning platforms, and clinic systems — not one-size-fits-all templates."
+      },
+      {
+        "question": "Does Watad Solutions work with startups?",
+        "answer": "Yes. A large share of Watad's work is with founders launching a first product, alongside operators scaling an existing business — the process and handover are the same either way."
+      },
+      {
+        "question": "Does Watad Solutions work with international clients?",
+        "answer": "Yes. While most clients are in Jordan and the wider MENA region, Watad also works with businesses outside the region on web, mobile, and automation projects."
+      },
+      {
+        "question": "What technologies does Watad Solutions use?",
+        "answer": "The stack is chosen per project rather than fixed — commonly ASP.NET Core, React and React Native, Laravel, Vue.js, cloud hosting on AWS or Azure, and n8n for workflow automation."
+      },
+      {
+        "question": "How does Watad Solutions develop software?",
+        "answer": "Projects follow four phases — discovery, design, development, and launch — typically about a month depending on size. You get a written scope before coding and a demo every week during the build."
+      },
+      {
+        "question": "How long does a software project take?",
         "answer": "Most engagements run the full process — discovery, design, development, and launch — in about a month, depending on project size. You get a demo every week, so you always know where things stand."
       },
       {
-        "question": "What's included when a project is handed over?",
-        "answer": "A production deploy, technical documentation, full credentials, and a walkthrough session — enough for your own team to run and extend the system without calling us for small things."
+        "question": "How much does software development cost in Jordan?",
+        "answer": "Pricing is scoped per project after a discovery call. Watad avoids fixed package pricing because a marketing site, an MVP, and a multi-tenant platform do not cost the same to build properly."
       },
       {
-        "question": "What technologies does Watad use?",
-        "answer": "The stack is chosen per project rather than fixed — commonly ASP.NET Core, React and React Native, cloud hosting on AWS or Azure, and n8n for workflow automation, picked for what the product actually needs."
+        "question": "Does Watad provide source code and full ownership after delivery?",
+        "answer": "Yes. Handover includes a production deploy, technical documentation, full credentials, and a walkthrough — so your team owns and can run the system without depending on Watad for day-to-day operation."
       },
       {
-        "question": "How much does a project cost?",
-        "answer": "Pricing is scoped per project after a discovery call. Watad avoids fixed package pricing because a marketing site, an MVP, and a multi-tenant platform don't cost the same to build properly."
+        "question": "Can Watad integrate APIs and third-party systems?",
+        "answer": "Yes. Watad builds REST and GraphQL APIs and connects products to third-party systems — CRMs, payment flows, messaging, and other tools — as part of web, mobile, and automation work."
+      },
+      {
+        "question": "Does Watad build scalable cloud applications?",
+        "answer": "Yes. Watad deploys on AWS or Azure with environments, CI/CD, and monitoring matched to real traffic — sized for your current stage, with room to grow when demand proves it."
       },
       {
         "question": "How do I start a project with Watad?",
         "answer": "Book a 30-minute call or send project details on WhatsApp. You'll get a reply within 24 hours — including if Watad isn't the right fit for it."
-      },
-      {
-        "question": "Does Watad build iOS and Android apps?",
-        "answer": "Yes — Watad builds native-feeling mobile apps for both iOS and Android, most commonly with React Native, including full App Store and Google Play release support."
-      },
-      {
-        "question": "Does Watad work with startups?",
-        "answer": "Yes. A large share of Watad's work is with founders launching a first product, alongside operators scaling an existing business — the process and handover are the same either way."
-      },
-      {
-        "question": "Does Watad take on clients outside Jordan?",
-        "answer": "Yes. While most clients are in Jordan and the wider MENA region, Watad also works with businesses outside the region on web, mobile, and automation projects."
       }
     ]
   },
@@ -688,6 +708,9 @@
     "intro": "Tell us what you're working on — an idea, a stalled build, or a problem you haven't named yet. You'll get a reply within 24 hours with concrete next steps rather than a sales sequence. If we're not the right team for it, we'll tell you that instead.",
     "emailLabel": "Email us directly",
     "emailValue": "info@watad-solutions.com",
+    "phoneLabel": "Call or WhatsApp",
+    "phoneValue": "+962 7 9812 4169",
+    "phoneHref": "tel:+962798124169",
     "responseLabel": "Response time",
     "responseValue": "Within 24 hours — including when the answer is no",
     "scheduleLabel": "Call availability",
@@ -785,9 +808,13 @@
       "blog": "Blog",
       "contact": "Contact"
     },
-    "blurb": "A watad is the peg that holds the tent down. We build the software layer businesses depend on — web, mobile, and automation, delivered and handed over.",
+    "blurb": "Watad Solutions is a software development company in Amman, Jordan — web apps, mobile apps, and workflow automation, delivered and handed over.",
     "location": "Amman, Jordan",
-    "rights": "{year} Watad. All rights reserved."
+    "email": "info@watad-solutions.com",
+    "phone": "+962 7 9812 4169",
+    "phoneHref": "tel:+962798124169",
+    "whatsappLabel": "WhatsApp",
+    "rights": "{year} Watad Solutions. All rights reserved."
   },
   "notFound": {
     "eyebrow": "404",
@@ -797,13 +824,15 @@
   },
   "common": {
     "languageSwitcher": "Language",
-    "brand": "Watad",
+    "brand": "Watad Solutions",
+    "logoAlt": "Watad Solutions logo — software development company in Amman, Jordan",
     "countShipped": "20",
     "details": "Details",
     "breadcrumbHome": "Home"
   },
   "servicePage": {
     "eyebrow": "Service",
+    "seoTitle": "{service} in Jordan",
     "featuresHeading": "What's included",
     "techStackHeading": "Technologies we use",
     "relatedProjectsHeading": "Related work",
@@ -813,6 +842,7 @@
   },
   "projectPage": {
     "eyebrow": "Case study",
+    "seoTitle": "{project} — Case Study",
     "techHeading": "Built with",
     "relatedServicesHeading": "Related services",
     "otherProjectsHeading": "More projects",

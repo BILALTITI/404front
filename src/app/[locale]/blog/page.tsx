@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!routing.locales.includes(locale as "en" | "ar")) return {};
 
   const t = await getTranslations({ locale, namespace: "blog" });
-  const title = `${t("eyebrow")} — Watad`;
+  const title = t("eyebrow");
   const description = t("intro");
   const url = `${siteUrl}/${locale}/blog`;
 
@@ -46,6 +46,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "Watad Solutions",
       locale: locale === "ar" ? "ar_JO" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }

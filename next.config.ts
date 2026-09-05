@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
+    // All hosts redirect straight to the non-www canonical to avoid
+    // www.4o4solutions.com → www.watad-solutions.com → watad-solutions.com chains.
     return [
       {
         source: "/:path*",

@@ -45,12 +45,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!routing.locales.includes(locale as "en" | "ar")) return {};
 
   const t = await getTranslations({ locale, namespace: "services" });
-  const tBlog = await getTranslations({ locale, namespace: "blog" });
+  const tPage = await getTranslations({ locale, namespace: "servicePage" });
   const list = t.raw("list") as ServiceCopy[];
   const service = findService(list, slug);
   if (!service) return {};
 
-  const title = `${service.title} — Watad`;
+  const title = tPage("seoTitle", { service: service.title });
   const description =
     service.description.length > 160
       ? `${service.description.slice(0, 157)}...`

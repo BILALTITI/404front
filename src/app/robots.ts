@@ -16,6 +16,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "PerplexityBot", allow: "/" },
       { userAgent: "Perplexity-User", allow: "/" },
       { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "Bingbot", allow: "/" },
+      { userAgent: "Applebot-Extended", allow: "/" },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
   };
