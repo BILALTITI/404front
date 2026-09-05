@@ -17,31 +17,26 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   async redirects() {
     return [
-      // Redirect www new domain to non-www canonical
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.watad-solutions.com" }],
         destination: "https://watad-solutions.com/:path*",
         permanent: true,
-        statusCode: 308,
       },
-      // Redirect old domain (non-www) to new canonical
       {
         source: "/:path*",
         has: [{ type: "host", value: "4o4solutions.com" }],
         destination: "https://watad-solutions.com/:path*",
         permanent: true,
-        statusCode: 308,
       },
-      // Redirect old domain (www) to new canonical
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.4o4solutions.com" }],
         destination: "https://watad-solutions.com/:path*",
         permanent: true,
-        statusCode: 308,
       },
     ];
   },
